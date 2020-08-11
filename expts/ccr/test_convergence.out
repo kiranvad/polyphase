@@ -1,0 +1,148 @@
+Number of cores available: 40
+performing test 2
+Grid size : 100, Threshold: 5.0
+3-dimensional grid generated at 0.04s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 4.64s
+Convexhull is computed at 4.65s
+Using 7.14E-02 as a threshold for Laplacian of a simplex
+Total of 2247 simplices in the convex hull
+Simplices are labelled at 6.39s
+Computation took 6.40s
+Grid size : 100, Threshold: 10.0
+3-dimensional grid generated at 0.04s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 6.29s
+Convexhull is computed at 6.30s
+Using 1.43E-01 as a threshold for Laplacian of a simplex
+Total of 2247 simplices in the convex hull
+Simplices are labelled at 7.34s
+Computation took 7.34s
+Grid size : 100, Threshold: 20.0
+3-dimensional grid generated at 0.03s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 4.22s
+Convexhull is computed at 4.23s
+Using 2.86E-01 as a threshold for Laplacian of a simplex
+Total of 2247 simplices in the convex hull
+Simplices are labelled at 5.68s
+Computation took 5.68s
+Grid size : 200, Threshold: 10.0
+3-dimensional grid generated at 0.25s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 30.65s
+Convexhull is computed at 30.69s
+Using 5.03E-02 as a threshold for Laplacian of a simplex
+Total of 9599 simplices in the convex hull
+Simplices are labelled at 34.81s
+Computation took 34.82s
+Grid size : 200, Threshold: 20.0
+3-dimensional grid generated at 0.24s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 30.00s
+Convexhull is computed at 30.04s
+Using 1.01E-01 as a threshold for Laplacian of a simplex
+Total of 9599 simplices in the convex hull
+Simplices are labelled at 34.06s
+Computation took 34.08s
+Grid size : 200, Threshold: 40.0
+3-dimensional grid generated at 0.24s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 30.22s
+Convexhull is computed at 30.26s
+Using 2.01E-01 as a threshold for Laplacian of a simplex
+Total of 9599 simplices in the convex hull
+Simplices are labelled at 34.22s
+Computation took 34.23s
+Grid size : 300, Threshold: 15.0
+3-dimensional grid generated at 0.80s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 122.30s
+Convexhull is computed at 122.42s
+Using 5.02E-02 as a threshold for Laplacian of a simplex
+Total of 22059 simplices in the convex hull
+Simplices are labelled at 131.29s
+Computation took 131.33s
+Grid size : 300, Threshold: 30.0
+3-dimensional grid generated at 0.79s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 123.22s
+Convexhull is computed at 123.34s
+Using 1.00E-01 as a threshold for Laplacian of a simplex
+Total of 22059 simplices in the convex hull
+Simplices are labelled at 132.40s
+Computation took 132.44s
+Grid size : 300, Threshold: 60.0
+3-dimensional grid generated at 0.80s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 117.97s
+Convexhull is computed at 118.09s
+Using 2.01E-01 as a threshold for Laplacian of a simplex
+Total of 22059 simplices in the convex hull
+Simplices are labelled at 127.26s
+Computation took 127.30s
+Grid size : 400, Threshold: 20.0
+3-dimensional grid generated at 1.92s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 334.29s
+Convexhull is computed at 334.54s
+Using 5.01E-02 as a threshold for Laplacian of a simplex
+Total of 39727 simplices in the convex hull
+Simplices are labelled at 350.84s
+Computation took 350.91s
+Grid size : 400, Threshold: 40.0
+3-dimensional grid generated at 1.87s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 327.40s
+Convexhull is computed at 327.66s
+Using 1.00E-01 as a threshold for Laplacian of a simplex
+Total of 39727 simplices in the convex hull
+Simplices are labelled at 343.84s
+Computation took 343.91s
+Grid size : 400, Threshold: 80.0
+3-dimensional grid generated at 1.89s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 338.00s
+Convexhull is computed at 338.25s
+Using 2.01E-01 as a threshold for Laplacian of a simplex
+Total of 39727 simplices in the convex hull
+Simplices are labelled at 354.46s
+Computation took 354.55s
+performing test 8
+Mesh size : 100
+3-dimensional grid generated at 0.03s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 6.55s
+Convexhull is computed at 6.56s
+Using 2.97E-02 as a threshold for Laplacian of a simplex
+Total of 2247 simplices in the convex hull
+Simplices are labelled at 8.52s
+Computation took 8.53s
+Mesh size : 200
+3-dimensional grid generated at 0.26s
+Making energy manifold a paraboloid with 2x padding of 0.11 maximum energy
+Energy computed at 30.68s
+Convexhull is computed at 30.72s
+Using 2.63E-02 as a threshold for Laplacian of a simplex
+Total of 9599 simplices in the convex hull
+Simplices are labelled at 36.68s
+Computation took 36.70s
+Mesh size : 300
+3-dimensional grid generated at 0.80s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 121.80s
+Convexhull is computed at 121.92s
+Using 2.56E-02 as a threshold for Laplacian of a simplex
+Total of 22059 simplices in the convex hull
+Simplices are labelled at 135.07s
+Computation took 135.11s
+Mesh size : 400
+3-dimensional grid generated at 1.95s
+Making energy manifold a paraboloid with 2x padding of 0.12 maximum energy
+Energy computed at 335.27s
+Convexhull is computed at 335.52s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 39727 simplices in the convex hull
+Simplices are labelled at 360.41s
+Computation took 360.48s
+Program ended

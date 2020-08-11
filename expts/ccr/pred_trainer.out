@@ -1,0 +1,22 @@
+SLURM_JOBID=3278936
+SLURM_JOB_NODELIST=cpn-p28-[08,10,12,19]
+SLURM_NNODES=4
+SLURMTMPDIR=/scratch/3278936
+working directory = /projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/expts
+IP Head: 10.116.28.8:6379
+STARTING HEAD at cpn-p28-08
+Head PID: 23497
+23497
+STARTING WORKER 1 at cpn-p28-10
+Worker 1 PID: 26016
+26016
+STARTING WORKER 2 at cpn-p28-12
+STARTING WORKER 3 at cpn-p28-19
+Worker 2 PID: 24917
+24917
+Worker 3 PID: 15869
+15869
+Launch Python job
+ENDING SLEEP
+Head stopped
+All Done!
