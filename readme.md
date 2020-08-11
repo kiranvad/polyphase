@@ -1,19 +1,42 @@
-# Phase Modelling using Hessians and Convex Envelopes
+# Phase Modelling Convex Envelope method
 
-Code is writtern for Python 3.7
-
-Dependencies are following:
-```
-autograd : pip install autograd
-matplotlib (latest): python -m pip install -U matplotlib
-plotly (latest) : pip install plotly==4.6.0
-plotly static image export : conda install -c plotly plotly-orca==1.2.1 psutil request
-numpy, scipy
+To install, run the following commands (with git and python pip installed)
+```bash
+git clone https://github.com/kiranvad/polyphase.git
+cd polyphase
 ```
 
-To run the code that generates phase plots for different materials, in a shell command line:
+Install `polyphase` as a Python package:
+```python
+pip install -e .
 ```
-cd /expts
-python run_all_materials.py
+This will instal polyphase and other dependencies namely : numpy, scipy, matplotlib, pandas and ray (for parallel comutation)
+
+A sample use case is as follows:
+
+```python
+import polyphase as phase
+import ray
+ray.init()
+
+M = [5,5,1]
+chi = [0.5, 0.5, 1]
+configuration = {'M':M, 'chi':chi}
+meshsize = 100
+output = phase.compute(configuration,100 ) 
 ```
-Corresponding phase diagram is stored in `./data/paper_materials.py`
+This generates phase diagrams of the confuguration mentioned.
+Few useful visualization tools are also provided. For example, phase diagram generated above can be visualized using:
+```python
+import matplotlib.pyplot as plt
+
+grid = out['grid']
+num_comps = out['num_comps']
+simplices = out['simplices']
+phase.plot_mpltern(grid, simplices, num_comps)
+plt.show()
+```
+
+Notes:
+---------
+Currently support multi-node parallelization using ray.

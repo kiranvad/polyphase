@@ -412,3 +412,157 @@ Computing 30 : ../figures/hteplots/1_DPP(TBFu)2_MEH-PPV
 3-dimensional grid generated at 1.76s
 Energy computed at 11.35s
 Making energy manifold a paraboloid with 2x padding of 1.62 maximum energy
+Energy is corrected at 140.27s
+Convexhull is computed at 140.39s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 374 simplices in the convex hull
+Simplices are labelled at 152.68s
+Labels are lifted at 153.31s
+Total 0/374 coplanar simplices
+Computation took 153.32s
+Computing 31 : ../figures/hteplots/1_DPP(TBFu)2_P3HT
+{'M': [100, 5, 1],
+ 'chi': [0.8863492000271569, 10.27089236513942, 7.998739106258372]}
+3-dimensional grid generated at 1.76s
+Energy computed at 11.32s
+Making energy manifold a paraboloid with 2x padding of 2.26 maximum energy
+Energy is corrected at 135.75s
+Convexhull is computed at 135.87s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 25 simplices in the convex hull
+Simplices are labelled at 146.49s
+Labels are lifted at 146.90s
+Total 0/25 coplanar simplices
+Computation took 146.91s
+Computing 32 : ../figures/hteplots/1_DPP(TBFu)2_PFO
+{'M': [100, 5, 1],
+ 'chi': [0.6443411762842244, 10.127387400178296, 7.998739106258372]}
+3-dimensional grid generated at 1.75s
+Energy computed at 11.21s
+Making energy manifold a paraboloid with 2x padding of 2.22 maximum energy
+Energy is corrected at 133.45s
+Convexhull is computed at 133.56s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 90 simplices in the convex hull
+Simplices are labelled at 144.18s
+Labels are lifted at 144.72s
+Total 0/90 coplanar simplices
+Computation took 144.73s
+Computing 33 : ../figures/hteplots/1_F8-NODIPS_MDMO-PPV
+{'M': [100, 5, 1],
+ 'chi': [0.8811454161322121, 7.078234636921905, 10.556591326391677]}
+3-dimensional grid generated at 1.74s
+Energy computed at 11.23s
+Making energy manifold a paraboloid with 2x padding of 2.27 maximum energy
+Energy is corrected at 135.81s
+Convexhull is computed at 135.93s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 25 simplices in the convex hull
+Simplices are labelled at 146.61s
+Labels are lifted at 147.04s
+Total 0/25 coplanar simplices
+Computation took 147.04s
+Computing 34 : ../figures/hteplots/1_F8-NODIPS_MEH-PPV
+{'M': [100, 5, 1],
+ 'chi': [0.8529215034816655, 7.309285849120244, 10.556591326391677]}
+3-dimensional grid generated at 1.76s
+Energy computed at 11.35s
+Making energy manifold a paraboloid with 2x padding of 2.27 maximum energy
+Energy is corrected at 141.84s
+Convexhull is computed at 141.97s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 25 simplices in the convex hull
+Simplices are labelled at 152.48s
+Labels are lifted at 152.95s
+Total 0/25 coplanar simplices
+Computation took 152.96s
+Computing 35 : ../figures/hteplots/1_F8-NODIPS_P3HT
+{'M': [100, 5, 1],
+ 'chi': [0.34306694505364604, 10.27089236513942, 10.556591326391677]}
+3-dimensional grid generated at 1.79s
+Energy computed at 12.13s
+Making energy manifold a paraboloid with 2x padding of 2.27 maximum energy
+Energy is corrected at 141.60s
+Convexhull is computed at 141.71s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 443 simplices in the convex hull
+Simplices are labelled at 154.32s
+Labels are lifted at 154.97s
+Total 0/443 coplanar simplices
+Computation took 154.98s
+Computing 36 : ../figures/hteplots/1_F8-NODIPS_PFO
+{'M': [100, 5, 1],
+ 'chi': [0.40615781343172147, 10.127387400178296, 10.556591326391677]}
+3-dimensional grid generated at 1.73s
+Energy computed at 11.21s
+Making energy manifold a paraboloid with 2x padding of 2.27 maximum energy
+Energy is corrected at 136.83s
+Convexhull is computed at 136.94s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 344 simplices in the convex hull
+Simplices are labelled at 147.20s
+Labels are lifted at 147.79s
+Total 0/344 coplanar simplices
+Computation took 147.80s
+Computing 37 : ../figures/hteplots/1_DPP(PhTT)2_MDMO-PPV
+{'M': [100, 5, 1],
+ 'chi': [0.5552233702744236, 7.078234636921905, 9.477796410580563]}
+3-dimensional grid generated at 1.74s
+Energy computed at 11.25s
+Making energy manifold a paraboloid with 2x padding of 1.99 maximum energy
+Energy is corrected at 133.89s
+Convexhull is computed at 134.00s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 145 simplices in the convex hull
+Simplices are labelled at 144.91s
+Labels are lifted at 145.40s
+Total 0/145 coplanar simplices
+Computation took 145.41s
+Computing 38 : ../figures/hteplots/1_DPP(PhTT)2_MEH-PPV
+{'M': [100, 5, 1],
+ 'chi': [0.5077558808166862, 7.309285849120244, 9.477796410580563]}
+3-dimensional grid generated at 1.74s
+Energy computed at 11.41s
+Making energy manifold a paraboloid with 2x padding of 1.99 maximum energy
+Energy is corrected at 133.55s
+Convexhull is computed at 133.67s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 196 simplices in the convex hull
+Simplices are labelled at 145.45s
+Labels are lifted at 145.96s
+Total 0/196 coplanar simplices
+Computation took 145.97s
+Computing 39 : ../figures/hteplots/1_DPP(PhTT)2_P3HT
+{'M': [100, 5, 1],
+ 'chi': [0.7484008178691092, 10.27089236513942, 9.477796410580563]}
+3-dimensional grid generated at 1.74s
+Energy computed at 11.31s
+Making energy manifold a paraboloid with 2x padding of 2.26 maximum energy
+Energy is corrected at 138.31s
+Convexhull is computed at 138.43s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 51 simplices in the convex hull
+Simplices are labelled at 149.76s
+Labels are lifted at 150.25s
+Total 0/51 coplanar simplices
+Computation took 150.26s
+Computing 40 : ../figures/hteplots/1_DPP(PhTT)2_PFO
+{'M': [100, 5, 1],
+ 'chi': [0.5135048993878344, 10.127387400178296, 9.477796410580563]}
+3-dimensional grid generated at 1.74s
+Energy computed at 11.32s
+Making energy manifold a paraboloid with 2x padding of 2.22 maximum energy
+Energy is corrected at 132.21s
+Convexhull is computed at 132.33s
+Using 2.54E-02 as a threshold for Laplacian of a simplex
+Total of 184 simplices in the convex hull
+Simplices are labelled at 143.26s
+Labels are lifted at 143.73s
+Total 0/184 coplanar simplices
+Computation took 143.73s
+Computing 41 : ../figures/hteplots/2_PC61BM_MDMO-PPV
+{'M': [100, 5, 1],
+ 'chi': [0.4755910439991671, 1.0088105119339168, 1.4803462980446183]}
+3-dimensional grid generated at 1.74s
+Energy computed at 11.39s
+Making energy manifold a paraboloid with 2x padding of 0.05 maximum energy
