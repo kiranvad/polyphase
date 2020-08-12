@@ -270,7 +270,7 @@ def compute(dimensions, configuration, meshsize,\
     """
     
     # Initialize ray for parallel computation
-    #ray.init(ignore_reinit_error=True, lru_evict=False)
+    ray.init(ignore_reinit_error=True, lru_evict=False)
 
     since = time.time()
     
@@ -429,7 +429,7 @@ def compute(dimensions, configuration, meshsize,\
     del grid_ray  
     
     # finish computation and exit ray
-    #ray.shutdown()
+    ray.shutdown()
 
     return outdict
 
