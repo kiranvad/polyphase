@@ -1,230 +1,321 @@
-from matplotlib import rc
-rc('text', usetex=True)
-import seaborn as sns
-import matplotlib.pyplot as plt
-
 import pdb
 import numpy as np
 import time
-
-import sys
-if '../' not in sys.path:
-    sys.path.append('../')
-
-from scipy.spatial import ConvexHull
+import pandas as pd
+import os
+from collections import Counter
+    
+from scipy.spatial import ConvexHull, Delaunay
 from scipy.spatial.distance import pdist, euclidean, squareform
 from scipy.sparse import csr_matrix
 from scipy.sparse.csgraph import connected_components
+from numpy.linalg import norm
 
-from solvers import helpers
-        
-""" Main class for computing phase labels """    
-class PhaseModelling(object):
+import warnings
+from collections import Counter
+from itertools import combinations
+   
+MIN_POINT_PRECISION = 1e-8
+            
+""" Main functions serial """
+def makegridnd(meshsize, dimension):
     """
-    Main python class used to obtain a phase diagram for n-component polymer mixture system.
+    Given mesh size and a dimensions, creates a n-dimensional grid for the volume fraction.
+    Note that the grid would be a hyper plane in the n-dimensions.
+    """
+    x = np.meshgrid(*[np.linspace(MIN_POINT_PRECISION, 1,meshsize) for d in range(dimension)])
+    mesh = np.asarray(x)
+    total = np.sum(mesh,axis=0)
+    plane_mesh = mesh[:,np.isclose(total,1.0,atol=1e-2)]
+
+    return plane_mesh
+
+def _utri2mat(utri, dimension):
+    """ convert list of chi values to a matrix form """
+    inds = np.triu_indices(dimension,1)
+    ret = np.zeros((dimension, dimension))
+    ret[inds] = utri
+    ret.T[inds] = utri
+
+    return ret
+
+def label_simplex(grid, simplex, thresh):
+    """ given a simplex, labels it to be a n-phase region by computing number of connected components """
+    coords = [grid[:,x] for x in simplex]
+    dist = squareform(pdist(coords,'euclidean'))
+    adjacency = dist<thresh
+    adjacency =  adjacency.astype(int)  
+    graph = csr_matrix(adjacency)
+    n_components, labels = connected_components(csgraph=graph, directed=False, return_labels=True)
+
+    return n_components
+
+
+def is_upper_hull(grid, simplex):
+    """ 
+    return True if a simplex connects anything on the edge.
+    
+    The assumption is that everything that connects to the edge belongs to upper convex hull.
+    We would want to compute only the lower convex hull.
+    """
+    point = grid[:,simplex]
+    if np.isclose(point, MIN_POINT_PRECISION).any():
+        return True
+    else:
+        return False
+
+    
+def lift_label(grid,lift_grid, simplex, label):
+    """ Lifting the labels from simplices to points """
+    try:
+        v = np.asarray([grid[:-1,x] for x in simplex])
+        #inside = inpolyhedron(v, grid[:-1,:].T)
+        tri = Delaunay(v)
+        inside = Delaunay.find_simplex(tri,lift_grid[:-1,:].T)
+        inside =~(inside<0)
+        flag = 1
+    except:
+        inside = None
+        flag = 0
+        
+    return inside, flag
+
+"""Some helper functions"""
+def flory_huggins(x, M,CHI,beta=1e-3):
+    """ Free energy formulation """
+    T1 = 0
+    for i,xi in enumerate(x):
+        T1 += (xi*np.log(xi))/M[i] + beta/xi
+    T2 = 0.5*np.matmul((np.matmul(x,CHI)),np.transpose(x)) 
+    
+    return T1+T2  
+        
+# determine points inside a polyhedron
+from scipy.spatial import Delaunay
+
+def inpolyhedron(ph,points):
+    """
+    Given a polyhedron vertices in `ph`, and `points` return 
+    critera that each point is either with in or outside the polyhedron
+    
+    Both polyhedron and points should have the same shape i.e. num_points X num_dimensions
+    
+    Returns a boolian array : True if inside, False if outside
+    
+    """
+    tri = Delaunay(ph)
+    inside = Delaunay.find_simplex(tri,points)
+    criteria = inside<0
+    return ~criteria
+
+def is_collinear(grid,tri_coords, simplex):
+    """ 
+    determines whether a simplex is coplanar when lifted to design space.
+    Returns True is a simplex has the lifted coordinates as collinear.
+    """
+    coords = np.array([tri_coords[x,:] for x in simplex])
+    M= np.vstack((coords.T,np.array([1,1,1])))
+    area = np.linalg.det(M)    
+    flag = area<1e-15
+    
+    return flag
+
+from math import pi
+def get_ternary_coords(point):
+    a,b,c = point
+    x = 0.5-a*np.cos(pi/3)+b/2;
+    y = 0.866-a*np.sin(pi/3)-b*(1/np.tan(pi/6)/2);
+    
+    return [x,y]
+
+def is_boundary_point(point, zero_value = MIN_POINT_PRECISION):
+    if np.isclose(point, MIN_POINT_PRECISION).any():
+        return True
+    else:
+        return False
+
+def is_pure_component(point, zero_value = MIN_POINT_PRECISION):
+    counts = Counter(point)
+    if counts[MIN_POINT_PRECISION]>1:
+        return True
+    else:
+        return False
+
+def get_max_delaunay_edge_length(grid):
+    delaunay = Delaunay(np.asarray(grid[:-1,:].T))
+    max_delaunay_edge = 0.0
+    for sx in delaunay.simplices:
+        vertex_sx = [grid[:,x] for x in sx]
+        edges = combinations(vertex_sx, 2)
+        edge_lengths = np.array([norm(e[0]-e[1]) for e in edges])
+        current_max = np.max(edge_lengths)
+        if max_delaunay_edge<current_max:
+            max_delaunay_edge = current_max
+    
+    return max_delaunay_edge       
+            
+            
+""" Main comoutation function """
+def serialcompute(dimensions, configuration, meshsize,\
+            flag_refine_simplices = True, flag_lift_label =False,\
+            lift_grid_size=200, use_weighted_delaunay = False, **kwargs):
+    """
+    Main python function to obtain a phase diagram for n-component polymer mixture system.
     
     parameters:
     -----------
-        dimension : number of components of mixture
+        dimension     : number of components of mixture
         configuration : a dictornay with keys:
-                        'M' : degree of polymerization (list of length = dimension)
-                        'chi' : off diagonal non-zero entries of flory-huggins parameters
-                                (exmaple: for two component system: [chi_12], three component system : [chi_12, chi_13, chi_23])
-        meshsize  : number of grid points per dimension  
-        refine_simplices  : weather to remove simplices that connect pure components
-    
-    attributes:
-    -----------
-        run : computes phase labels for the convex lifted simplex.
-        plot : for three and four component system plots the phase diagram
-    
+                            'M'   : degree of polymerization (list of length = dimension)
+                            'chi' : off diagonal non-zero entries of flory-huggins parameters
+                                    (exmaple: three component system : [chi_12, chi_13, chi_23])
+        meshsize      : number of grid points per dimension  
+        
+        kwargs:
+        -------
+        flag_refine_simplices        : whether to remove simplices that connect pure components (default: True)
+        flag_lift_label              : Whether to list labels of simplices to a point cloud of constant size (default: False). Point cloud                                          is constantsize regadless of original meshsize and is computed using a 200 points per dimension mesh.         use_weighted_delaunay        : Uses a weighted delaunay triangulation to compute triangulation of design space. (not complete yet)
+        beta                         : beta correction value used to compute flory-huggins free energy (default 1e-4)
+        flag_remove_collinear        : In three dimensional case, removes simplices that lift to collinear points in phi space. 
+                                       (default, False)
+        flag_make_energy_paraboloid  : Bypasses the beta correction and makes the boundary points to have a constant energy (default, True)
+        pad_energy                   : factor of maximum energy used as a padding near the boundary of manifold. (default, 2)
+        flag_lift_purecomp_energy    : Makes the energy of pure components `pad_energy` times the maximum energy
+        threshold_type               : Whether to use an 'uniform' threshold method (thresh= edge length) or to use more mathematically                                            sound 'delaunay' (thresh = maximum delaunay edge + epsilon)
+        thresh_scale                 : (scale value of) Uniform edge length threshold to compute adjacency matrix 
+                                       (default: 1.25 times the uniform edge in the grid)
+        
     """
-    
-    def __init__(self,dimension,configuration, meshsize=40,refine_simplices=True):
-        self.dimension = dimension
-        self.M = configuration['M']
-        self.CHI = self._utri2mat(configuration['chi'])
-        self.meshsize = meshsize
-        self.refine_simplices = refine_simplices
-        
-    def makegridnd(self):
-        """
-        Given mesh size and a dimensions, creates a n-dimensional grid for the volume fraction.
-        Note that the grid would be a hyper plane in the n-dimensions.
-        """
-        x = np.meshgrid(*[np.linspace(0.001, 1,self.meshsize) for d in range(self.dimension)])
-        mesh = np.asarray(x)
-        total = np.sum(mesh,axis=0)
-        plane_mesh = mesh[:,np.isclose(total,1.0,atol=1e-2)]
 
-        return plane_mesh
+    since = time.time()
     
-    def _utri2mat(self,utri):
-        """ convert list of chi values to a matrix form """
-        inds = np.triu_indices(self.dimension,1)
-        ret = np.zeros((self.dimension, self.dimension))
-        ret[inds] = utri
-        ret.T[inds] = utri
+    outdict = {}
+    thresh_epsilon = 5e-3
+    
+    """ Perform a parallel computation of phase diagram """
+    # 1. generate grid
+    grid = makegridnd(meshsize, dimensions)
+    outdict['grid'] = grid
+    
+    lap = time.time()
+    print('{}-dimensional grid generated at {:.2f}s'.format(dimensions,lap-since))
+
+    # 2. compute free energy on the grid (parallel)
+    CHI = _utri2mat(configuration['chi'], dimensions)
+    flag_make_energy_paraboloid = kwargs.get('flag_make_energy_paraboloid',True)
+    flag_lift_purecomp_energy = kwargs.get('flag_lift_purecomp_energy',False)
+    
+    if np.logical_or(flag_make_energy_paraboloid, flag_lift_purecomp_energy):
+        beta = 0.0
+    else:
+        beta = kwargs.get('beta',1e-4)
         
-        return ret
-    
-    def _refine_simplices(self,hull):
-        """ refine the simplices such that we only find a convex hull """
-        simplices = []
-        for simplex in hull.simplices:
-            point_class = np.sum(np.isclose(self.grid[:,simplex],0.001),axis=1)
-            point_class = np.unique(self.dimension - point_class)
-            if (point_class==1).any():
-                pass
-            else:
-                simplices.append(simplex)
+    energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
+    lap = time.time()
+    print('Energy computed at {:.2f}s'.format(lap-since))
+    # Make energy a paraboloid like by extending the landscape at the borders
+    if flag_make_energy_paraboloid:
+        max_energy = np.max(energy)
+        pad_energy = kwargs.get('pad_energy',2)
+        print('Making energy manifold a paraboloid with {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
+        boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
+        energy[boundary_points] = pad_energy*max_energy
                 
-        return simplices
+    elif flag_lift_purecomp_energy:
+        max_energy = np.max(energy)
+        pad_energy = kwargs.get('pad_energy',2)
+        print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
+        pure_points = np.asarray([is_pure_component(x) for x in grid.T])
+        energy[pure_points] = pad_energy*max_energy
+                
+    outdict['energy'] = energy
     
-    def label_simplex(self,simplex):
-        """ given a simplex, labels it to be a n-phase region by computing number of connected components """
-        coords = [self.grid[:,x] for x in simplex]
-        dist = squareform(pdist(coords,'euclidean'))
-        adjacency = dist<self.thresh
-        adjacency =  adjacency.astype(int)  
-        graph = csr_matrix(adjacency)
-        n_components, labels = connected_components(csgraph=graph, directed=False, return_labels=True)
-
-        return n_components
-
-    def get_phase_diagram(self):
-        """ repeats the labelling for each simplex in the lifted simplicial complex """
-        num_comps = [self.label_simplex(simplex) for simplex in self.simplices]
-
-        return num_comps 
+    lap = time.time()
+    print('Energy is corrected at {:.2f}s'.format(lap-since))
     
-    def run(self):
-        """ computes the phase labels for the n-component system class"""
-        self.since = time.time()
-        self.grid = self.makegridnd()
-        lap = time.time()
-        print('{}-dimensional grid geenrated at {:.2f}s'.format(self.dimension,lap-self.since))
-        gmix = lambda x: helpers.flory_huggins(x, self.M, self.CHI,beta=1e-4)
-        self.energy = []
-        for i in range(self.grid.shape[1]):
-            self.energy.append(gmix(self.grid[:,i]))
-            
-
-        points = np.concatenate((self.grid[:-1,:].T,np.asarray(self.energy).reshape(-1,1)),axis=1)
+    # 3. Compute convex hull
+    if not use_weighted_delaunay:
+        _method = 'Convexhull'
+        points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)
         hull = ConvexHull(points)
-        lap = time.time()
-        print('Convexhull is computed at {:.2f}s'.format(lap-self.since))
+        outdict['hull'] = hull
+    else:
+        raise NotImplemented
         
-        self.thresh = 5*euclidean(self.grid[:,0],self.grid[:,1])
-        
-        if self.refine_simplices:
-            self.simplices = self._refine_simplices(hull)
-        else:
-            self.simplices = hull.simplices
-        self.num_comps = self.get_phase_diagram()
-        lap = time.time()
-        print('Simplices are labelled at {:.2f}s'.format(lap-self.since))
-        
-        if self.dimension==4:
-            self._interpolate_labels_4d()
+    lap = time.time()
+    print('{} is computed at {:.2f}s'.format(_method,lap-since))
+    
+    # determine threshold
+    threshold_type = kwargs.get('threshold_type','delaunay')
+    if threshold_type=='delaunay':
+        thresh = get_max_delaunay_edge_length(grid) + thresh_epsilon
+    elif threshold_type=='uniform':
+        thresh_scale = kwargs.get('thresh_scale',1.25)
+        thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
+    
+    print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
+    outdict['thresh'] = thresh
+    
+    if not flag_refine_simplices:
+        simplices = hull.simplices
+    else:
+        upper_hull = np.asarray([is_upper_hull(grid,simplex) for simplex in hull.simplices])
+        simplices = hull.simplices[~upper_hull]
             
-        
-        return self.num_comps
-
-    def plot(self,ax = None,**kwargs):
-        """ a helper plotting function got 3 and 4 component phase diagrams"""
-        
-        if self.dimension ==3:
-            ax, cbar = plot_3d_phasediagram(self,ax=ax)
-        elif self.dimension == 4:
-            sliceat = kwargs.pop('sliceat', 0.5)         
-            ax, cbar = plot_4d_phasediagram(self,sliceat=sliceat,ax=ax,**kwargs)
-
-        else:
-            raise NotImplemented
-        
-        return ax,cbar
-    
-    def _interpolate_labels_4d(self):
-        self.coords = np.asarray([helpers.from4d23d(point) for point in self.grid.T])
-        self.phase = np.zeros(self.coords.shape[0])
-        info = {'coplanar':[]}
-        for i,simplex in zip(self.num_comps,self.simplices):
-            try:
-                v = np.asarray([self.grid[:-1,x] for x in simplex])
-                inside = helpers.inpolyhedron(v, self.grid[:-1,:].T)
-                self.phase[inside]=i
-            except:
-                info['coplanar'].append([i,simplex])
+    flag_remove_collinear = kwargs.get('flag_remove_collinear',False)
+    if flag_remove_collinear :
+        # remove colpanar simplices
+        tri_coords =np.array([get_ternary_coords(pt) for pt in grid.T])
+        coplanar_simplices = np.asarray([is_collinear(grid,tri_coords,simplex) for simplex in simplices])
+        if len(coplanar_simplices)==0:
+            warnings.warn('There are no coplanar simplices.')
+        else:    
+            simplices = simplices[~coplanar_simplices]
+            
         lap = time.time()
-        print('Labels are lifted at {:.2f}s'.format(lap-self.since))
-        print('Total {}/{} coplanar simplices'.format(len(info['coplanar']),len(self.simplices)))
+        print('Simplices are refined at {:.2f}s'.format(lap-since))
         
+    outdict['simplices'] = simplices
+    print('Total of {} simplices in the convex hull'.format(len(simplices)))
     
-from matplotlib import colors
-from matplotlib import pyplot as plt
-from mpl_toolkits.mplot3d.art3d import Poly3DCollection
-
-def plot_4d_phasediagram(pm, sliceat=0.5, ax = None,**kwargs):
-    if ax is None:
-        fig = plt.figure()
-        ax = fig.add_subplot(111, projection='3d')
-    else:
-        fig = plt.gcf()
+    # 4. for each simplex in the hull compute number of connected components (parallel)
+    num_comps = [label_simplex(grid, simplex, thresh) for simplex in simplices]
+    lap = time.time()
+    print('Simplices are labelled at {:.2f}s'.format(lap-since))
+    outdict['num_comps'] = num_comps
+    
+    
+    if flag_lift_label:
         
-    v = np.array([[0, 0, 0], [1, 0, 0], [1/2,np.sqrt(3)/2,0],  [1/2,np.sqrt(3)/6,np.sqrt(6)/3]])
-    ax.scatter3D(v[:, 0], v[:, 1], v[:, 2],color='black')
-    verts = helpers.get_convex_faces(v)
-    ax.add_collection3d(Poly3DCollection(verts, facecolors='black', linewidths=0.5, edgecolors='black', alpha=.05))
-    
-    criteria = np.logical_and(pm.grid[3,:]<sliceat,pm.phase>0)
-    cmap = colors.ListedColormap(['tab:red','tab:olive','tab:cyan','tab:purple'])
-    boundaries = np.linspace(1,5,5)
-    norm = colors.BoundaryNorm(boundaries, cmap.N)
-    surf = ax.scatter3D(pm.coords[criteria, 0], pm.coords[criteria, 1], pm.coords[criteria, 2],\
-                        c=pm.phase[criteria],cmap=cmap,norm=norm)
-    if kwargs.get('cbar', True) is True:
-        cbar = fig.colorbar(surf, shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5,4.5])
-        cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase','4-Phase'])
-    else:
-        cbar = []
-    words = [r'$\varphi_{1}$',r'$\varphi_{2}$',r'$\varphi_{3}$',r'$\varphi_{4}$']
-    for vi,w in zip(v,words):
-        ax.text(vi[0],vi[1],vi[2],w,fontsize=20)
-    ax.set_axis_off()
-
-    return ax, cbar
+        # 5. lift the labels from simplices to points (parallel)
+        if lift_grid_size == meshsize:
+            lift_grid = grid
+        else:
+            lift_grid = makegridnd(lift_grid_size, dimensions) # we lift labels to a constant mesh 
+            
+        inside = [lift_label(grid, lift_grid, simplex, label) for simplex, label in zip(simplices, num_comps)]
         
-def plot_3d_phasediagram(pm, ax = None):
-    if ax is None:
-        fig, ax = plt.subplots()
+        flags = [item[1] for item in inside]
+        lap = time.time()
+        print('Labels are lifted at {:.2f}s'.format(lap-since))
+        
+        print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
+
+        phase = np.zeros(lift_grid.shape[1])
+        for i,label in zip(inside,num_comps):
+            if i[1]==1:
+                phase[i[0]] = label
+        phase = phase.reshape(1,-1)
+        output = np.vstack((lift_grid,phase))
+        index = ['Phi_'+str(i) for i in range(1, output.shape[0])]
+        index.append('label')
+        output = pd.DataFrame(data = output,index=index)
+                
     else:
-        fig = plt.gcf()
-    ax.set_aspect('equal')
+        output = []
+        
+    outdict['output'] = output    
+    lap = time.time()
+    print('Computation took {:.2f}s'.format(lap-since))
     
-    coords = np.asarray([helpers.get_ternary_coords(pt) for pt in pm.grid.T])
-    tpc = ax.tripcolor(coords[:,0], coords[:,1], pm.simplices, facecolors=np.asarray(pm.num_comps), edgecolors='none')
-    cbar = fig.colorbar(tpc, ticks=[1, 2, 3])
-    cbar.ax.set_yticklabels(['1-phase', '2-phase', '3-phase'])
-    cbar.set_label('Phase region identification')
-
-    words = [r'$\varphi_{1}$',r'$\varphi_{2}$',r'$\varphi_{3}$']
-    xs = [-0.15,1,0.5]
-    ys = [0,0,np.sqrt(3)/2+0.01]
-    for x, y, s in zip(xs,ys,words):
-        ax.text(x,y,s,fontsize=20)
-
-    plt.axis('off')
-    
-    return ax, cbar
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    return outdict

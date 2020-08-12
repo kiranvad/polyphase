@@ -1,3 +1,4 @@
+
 import numpy as np
 import pandas as pd
 import pdb
@@ -10,7 +11,7 @@ import sys
 if '../' not in sys.path:
     sys.path.insert(0,'../')
 
-from solvers.visuals import plot_mpltern, _set_axislabels_mpltern
+from .visuals import plot_mpltern, _set_axislabels_mpltern
 
 """
 1 :  Understanding simplicial topology of phases

@@ -8,7 +8,9 @@ import pdb
 
 num_cpus = int(sys.argv[1])
 
-ray.init(address=os.environ["ip_head"])
+# ip_head and redis_passwords are set by ray cluster shell scripts
+print(os.environ["ip_head"], os.environ["redis_password"])
+ray.init(address='auto', node_ip_address=os.environ["ip_head"].split(":")[0], redis_password=os.environ["redis_password"])
 
 print("Nodes in the Ray cluster:")
 print(ray.nodes())
@@ -18,7 +20,6 @@ def f():
     time.sleep(1)
     return ray.services.get_node_ip_address()
 
-# The following takes one second (assuming that ray was able to access all of the allocated nodes).
 for i in range(60):
     start = time.time()
     ip_addresses = ray.get([f.remote() for _ in range(num_cpus)])

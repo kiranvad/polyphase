@@ -1,9 +1,5 @@
 #!/bin/bash
-cd $SLURM_SUBMIT_DIR
-ray start --address=$1
 
-echo "Worker ${2} PID: $$"
-echo "$$" | tee ./pid_storage/worker${2}.pid
+echo "starting ray worker node"
+ray start --address $1 --redis-password=$2
 sleep infinity
-
-echo "Worker ${2} stopped"

@@ -3,7 +3,6 @@ import numpy as np
 import time
 import pandas as pd
 import os
-print('Number of cores available: {}'.format(os.cpu_count()))
 from collections import Counter
     
 from scipy.spatial import ConvexHull, Delaunay

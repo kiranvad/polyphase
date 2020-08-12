@@ -10,10 +10,8 @@ import mpltern
 import sys
 if '../' not in sys.path:
     sys.path.insert(0,'../')
-    
-from parallel.parphase import compute
-import pprint
-from solvers.visuals import plot_mpltern
+
+import polyphase as phase
 
 from numpy.linalg import norm
 from scipy.constants import gas_constant
@@ -26,7 +24,9 @@ if not os.path.exists(dirname):
 
 import ray
 
-ray.init(address=os.environ["ip_head"])
+# ip_head and redis_passwords are set by ray cluster shell scripts
+print(os.environ["ip_head"], os.environ["redis_password"])
+ray.init(address='auto', node_ip_address=os.environ["ip_head"].split(":")[0], redis_password=os.environ["redis_password"])
 
 print("Number of Nodes in the Ray cluster: {}".format(len(ray.nodes())))
     
@@ -103,14 +103,25 @@ def plain_phase_diagram(output, ax = None):
     plt.axis('off')
     
     return ax    
-   
+
+@ray.remote
+def plot_phase_diagram(point):
     
-def plot_phase_diagram(chi, fname):
+    delta_solvent = data['solvents'].loc[point[0]].tolist()
+    delta_sm = data['small molecules'].loc[point[1]].tolist()[2:5]
+    delta_polymer = data['polymers'].loc[point[2]].tolist()[2:5]
+    fname = dirname +'{}_{}_{}'.format(point[0],data['small molecules']['name'].loc[point[1]],\
+                            data['polymers']['name'].loc[point[2]])
+    
+    chi = get_chi_vector([delta_polymer,delta_sm,delta_solvent], 100, 2)[0]
+
+    remote_id = ray.services.get_node_ip_address()
+    print('Computing {} on {}'.format(fname, remote_id))
+    
     M = [100,5,1]
     dimensions = len(M)
     configuration = {'M': M, 'chi':chi}
-    pprint.pprint(configuration)
-    dx = 400
+    dx = 200
     kwargs = {
         'flag_refine_simplices':True,
         'flag_lift_label': True,
@@ -120,43 +131,33 @@ def plot_phase_diagram(chi, fname):
         'flag_make_energy_paraboloid': True, 
         'pad_energy': 2,
         'flag_lift_purecomp_energy': False,
-        'threshold_type':'delaunay',
-        'thresh_scale':40 # not used
+        'threshold_type':'uniform',
+        'thresh_scale':20 
      }
 
-    out = compute(dimensions, configuration, dx, **kwargs)
+    out = phase.serialcompute(dimensions, configuration, dx, **kwargs)
     grid = out['grid']
     num_comps = out['num_comps']
     simplices = out['simplices']
     output = out['output']
 
-    #ax, cbar = plot_mpltern(grid, simplices, num_comps)
+    #ax, cbar = phase.plot_mpltern(grid, simplices, num_comps)
     #title = r'$\chi: $'+ ','.join('{:.2f}'.format(k) for k in chi )
     #ax.set_title(title,pad=30)
     plain_phase_diagram(output)
     plt.savefig(fname,dpi=500, bbox_inches='tight')
     plt.close()
-            
-        
+    
+    return remote_id
+               
 axes = [np.arange(0,len(data['solvents'])),np.arange(0,len(data['small molecules'])),np.arange(0,len(data['polymers']))]
 
-counter =1
 start = time.time()
 
-for point in product(*axes):
-    delta_solvent = data['solvents'].loc[point[0]].tolist()
-    delta_sm = data['small molecules'].loc[point[1]].tolist()[2:5]
-    delta_polymer = data['polymers'].loc[point[2]].tolist()[2:5]
-    fname = dirname +'{}_{}_{}'.format(point[0],data['small molecules']['name'].loc[point[1]],\
-                            data['polymers']['name'].loc[point[2]])
-    
-    chi = get_chi_vector([delta_polymer,delta_sm,delta_solvent], 100, 2)[0]
+ip_addresses = ray.get([plot_phase_diagram.remote(i) for i in product(*axes)])
+print(Counter(ip_addresses))    
 
-    print('Computing {} : {}'.format(counter,fname))
-    plot_phase_diagram(chi,fname)
-    counter += 1
-    
 end = time.time()
-print('Program took {} seconds to compute {} phase diagrams'.format(timer(start, end), counter))    
+print('Program took {} seconds'.format(timer(start, end)))    
     
     

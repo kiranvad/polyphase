@@ -11,7 +11,7 @@ import sys
 if '../' not in sys.path:
     sys.path.append('../')
 
-from solvers import helpers
+from .helpers import *
 
 def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
@@ -34,7 +34,7 @@ def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
         ax.scatter3D(v[:, 0], v[:, 1], v[:, 2],color='black')
         ax._axis3don = False
         #ax.view_init(elev=25, azim=75)
-        verts = helpers.get_convex_faces(v)
+        verts = get_convex_faces(v)
         ax.add_collection3d(Poly3DCollection(verts, facecolors='black', linewidths=0.5, edgecolors='black', alpha=.05))
         for vi,w in zip(v,words):
             ax.text(vi[0],vi[1],vi[2],w,fontsize=20)
@@ -42,9 +42,9 @@ def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
     phase_colors =['tab:red','tab:olive','tab:cyan','tab:purple']
     for i,simplex in zip(pm.num_comps,pm.simplices):
         vertices = [pm.grid[:,x] for x in simplex]
-        v = np.asarray([helpers.from4d23d(vertex) for vertex in vertices])
+        v = np.asarray([from4d23d(vertex) for vertex in vertices])
         if np.all(np.asarray(vertices)[:,3]<sliceat):
-            verts = helpers.get_convex_faces(v)
+            verts = get_convex_faces(v)
             axs[i-1].add_collection3d(Poly3DCollection(verts, facecolors=phase_colors[i-1], edgecolors=None))
     cmap = colors.ListedColormap(phase_colors)
     boundaries = np.linspace(1,5,5)
@@ -65,7 +65,7 @@ def plot_3d_phasediagram(grid, simplices, num_comps, ax = None):
         fig = plt.gcf()
     ax.set_aspect('equal')
     
-    coords = np.asarray([helpers.get_ternary_coords(pt) for pt in grid.T])
+    coords = np.asarray([get_ternary_coords(pt) for pt in grid.T])
     tpc = ax.tripcolor(coords[:,0], coords[:,1], simplices, facecolors=np.asarray(num_comps), edgecolors='none')
     cbar = fig.colorbar(tpc, ticks=[1, 2, 3])
     cbar.ax.set_yticklabels(['1-phase', '2-phase', '3-phase'])

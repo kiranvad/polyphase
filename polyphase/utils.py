@@ -98,8 +98,8 @@ def scatter3d(data,energy):
 
     return trace
 
-from solvers.helpers import get_ternary_coords, flory_huggins 
-from parallel.parphase import _utri2mat
+from .helpers import get_ternary_coords, flory_huggins 
+from .parphase import _utri2mat
 
 def plot_energy_landscape(outdict):
     """ Plots a convex hull of a energy landscape """
