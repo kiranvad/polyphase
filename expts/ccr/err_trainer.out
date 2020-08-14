@@ -1,43 +1,43 @@
  Main Python Loaded 
-2020-08-12 10:02:19,133	WARNING scripts.py:320 -- The --redis-port argument will be deprecated soon. Please use --port instead.
-2020-08-12 10:02:19,134	INFO scripts.py:395 -- Using IP address 10.116.28.28 for this node.
-2020-08-12 10:02:19,138	INFO resource_spec.py:212 -- Starting Ray with 36.18 GiB memory available for workers and up to 18.09 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-12 10:02:19,442	WARNING services.py:923 -- Redis failed to start, retrying now.
-2020-08-12 10:02:21,058	INFO services.py:1165 -- View the Ray dashboard at [1m[32mlocalhost:8265[39m[22m
-2020-08-12 10:02:21,203	INFO scripts.py:425 -- 
+2020-08-14 00:00:49,539	WARNING scripts.py:320 -- The --redis-port argument will be deprecated soon. Please use --port instead.
+2020-08-14 00:00:49,539	INFO scripts.py:395 -- Using IP address 10.116.28.10 for this node.
+2020-08-14 00:00:49,543	INFO resource_spec.py:212 -- Starting Ray with 36.52 GiB memory available for workers and up to 18.28 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 00:00:49,770	WARNING services.py:923 -- Redis failed to start, retrying now.
+2020-08-14 00:00:50,210	INFO services.py:1165 -- View the Ray dashboard at [1m[32mlocalhost:8265[39m[22m
+2020-08-14 00:00:50,313	INFO scripts.py:425 -- 
 Started Ray on this node. You can add additional nodes to the cluster by calling
 
-    ray start --address='10.116.28.28:6379' --redis-password='4490f6cd-f5a8-46b1-ae0c-c87a8721e75c'
+    ray start --address='10.116.28.10:6379' --redis-password='2c451f51-0aa1-4e15-9fec-3070e2b5ab11'
 
 from the node you wish to add. You can connect a driver to the cluster from Python by running
 
     import ray
-    ray.init(address='auto', redis_password='4490f6cd-f5a8-46b1-ae0c-c87a8721e75c')
+    ray.init(address='auto', redis_password='2c451f51-0aa1-4e15-9fec-3070e2b5ab11')
 
 If you have trouble connecting from a different machine, check that your firewall is configured properly. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-12 10:02:39,500	INFO scripts.py:468 -- Using IP address 10.116.28.29 for this node.
-2020-08-12 10:02:39,506	INFO resource_spec.py:212 -- Starting Ray with 42.19 GiB memory available for workers and up to 18.1 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-12 10:02:39,558	INFO scripts.py:477 -- 
+2020-08-14 00:01:21,644	INFO scripts.py:468 -- Using IP address 10.116.28.13 for this node.
+2020-08-14 00:01:21,649	INFO resource_spec.py:212 -- Starting Ray with 42.72 GiB memory available for workers and up to 18.32 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 00:01:21,703	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-12 10:02:45,867	INFO scripts.py:468 -- Using IP address 10.116.28.30 for this node.
-2020-08-12 10:02:45,872	INFO resource_spec.py:212 -- Starting Ray with 42.24 GiB memory available for workers and up to 18.1 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-12 10:02:45,926	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-08-12 10:02:49,845	INFO scripts.py:468 -- Using IP address 10.116.28.31 for this node.
-2020-08-12 10:02:49,851	INFO resource_spec.py:212 -- Starting Ray with 42.24 GiB memory available for workers and up to 18.1 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-12 10:02:49,925	INFO scripts.py:477 -- 
+2020-08-14 00:01:21,913	INFO scripts.py:468 -- Using IP address 10.116.28.11 for this node.
+2020-08-14 00:01:21,920	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 00:01:21,984	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
 WARNING: Logging before InitGoogleLogging() is written to STDERR
-I0812 10:02:52.915024 14957 14957 global_state_accessor.cc:25] Redis server address = 10.116.28.28:6379, is test flag = 0
-I0812 10:02:52.916211 14957 14957 redis_client.cc:141] RedisClient connected.
-I0812 10:02:52.924983 14957 14957 redis_gcs_client.cc:88] RedisGcsClient Connected.
-I0812 10:02:52.926455 14957 14957 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
-2020-08-12 10:02:56,261	WARNING worker.py:1047 -- The actor or task with ID b7a925d36303590affffffff0100 is pending and cannot currently be scheduled. It requires {CPU: 1.000000} for execution and {CPU: 1.000000} for placement, but this node only has remaining {node:10.116.28.30: 1.000000}, {CPU: 20.000000}, {memory: 42.236328 GiB}, {object_store_memory: 12.451172 GiB}. In total there are 1 pending tasks and 0 pending actors on this node. This is likely due to all cluster resources being claimed by actors. To resolve the issue, consider creating fewer actors or increase the resources available to this Ray cluster. You can ignore this message if this Ray cluster is expected to auto-scale.
+I0814 00:01:32.474750  6065  6065 global_state_accessor.cc:25] Redis server address = 10.116.28.10:6379, is test flag = 0
+I0814 00:01:32.475912  6065  6065 redis_client.cc:141] RedisClient connected.
+I0814 00:01:32.484663  6065  6065 redis_gcs_client.cc:88] RedisGcsClient Connected.
+I0814 00:01:32.486021  6065  6065 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
+2020-08-14 00:01:42,224	INFO scripts.py:468 -- Using IP address 10.116.28.15 for this node.
+2020-08-14 00:01:42,229	INFO resource_spec.py:212 -- Starting Ray with 42.72 GiB memory available for workers and up to 18.31 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 00:01:42,292	INFO scripts.py:477 -- 
+Started Ray on this node. If you wish to terminate the processes that have been started, run
+
+    ray stop
+2020-08-14 00:01:52,403	WARNING worker.py:1047 -- The actor or task with ID 602bc3dce737ca0fffffffff0100 is pending and cannot currently be scheduled. It requires {CPU: 1.000000} for execution and {CPU: 1.000000} for placement, but this node only has remaining {node:10.116.28.15: 1.000000}, {CPU: 20.000000}, {memory: 42.724609 GiB}, {object_store_memory: 12.597656 GiB}. In total there are 1 pending tasks and 0 pending actors on this node. This is likely due to all cluster resources being claimed by actors. To resolve the issue, consider creating fewer actors or increase the resources available to this Ray cluster. You can ignore this message if this Ray cluster is expected to auto-scale.

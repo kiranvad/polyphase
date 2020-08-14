@@ -1,16 +1,16 @@
-SLURM_JOBID=3284704
-SLURM_JOB_NODELIST=cpn-p28-[28-31]
+SLURM_JOBID=3337990
+SLURM_JOB_NODELIST=cpn-p28-[10-11,13,15]
 SLURM_NNODES=4
-SLURMTMPDIR=/scratch/3284704
+SLURMTMPDIR=/scratch/3337990
 working directory = /projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/expts
-IP Head: 10.116.28.28:6379
-STARTING HEAD at cpn-p28-28
+IP Head: 10.116.28.10:6379
+STARTING HEAD at cpn-p28-10
 starting ray head node
-STARTING WORKER 1 at cpn-p28-29
+STARTING WORKER 1 at cpn-p28-11
 starting ray worker node
-STARTING WORKER 2 at cpn-p28-30
+STARTING WORKER 2 at cpn-p28-13
 starting ray worker node
-STARTING WORKER 3 at cpn-p28-31
+STARTING WORKER 3 at cpn-p28-15
 starting ray worker node
 Launch Python job
 All Done!

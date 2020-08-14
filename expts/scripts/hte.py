@@ -26,15 +26,21 @@ import ray
 
 # ip_head and redis_passwords are set by ray cluster shell scripts
 print(os.environ["ip_head"], os.environ["redis_password"])
-ray.init(address='auto', node_ip_address=os.environ["ip_head"].split(":")[0], redis_password=os.environ["redis_password"])
+ray.init(address='auto', node_ip_address=os.environ["ip_head"].split(":")[0],redis_password=os.environ["redis_password"])
 
 print("Number of Nodes in the Ray cluster: {}".format(len(ray.nodes())))
-    
+
+print('Dashboard URL: http://{}'.format(ray.get_webui_url()))
+
 import pickle
 # Load your data from dictonary to pandas data frame
 with open('./data/htpdata/solubility.pkl', 'rb') as handle:
     data = pickle.load(handle)
+    
+axes = [np.arange(0,len(data['solvents'])),np.arange(0,len(data['small molecules'])),np.arange(0,len(data['polymers']))]
 
+data_ray = ray.put(data)
+    
 import time
 
 def timer(start, end):
@@ -104,8 +110,9 @@ def plain_phase_diagram(output, ax = None):
     
     return ax    
 
+
 @ray.remote
-def plot_phase_diagram(point):
+def plot_phase_diagram(data,point):
     
     delta_solvent = data['solvents'].loc[point[0]].tolist()
     delta_sm = data['small molecules'].loc[point[1]].tolist()[2:5]
@@ -119,9 +126,8 @@ def plot_phase_diagram(point):
     print('Computing {} on {}'.format(fname, remote_id))
     
     M = [100,5,1]
-    dimensions = len(M)
     configuration = {'M': M, 'chi':chi}
-    dx = 200
+    dx = 400
     kwargs = {
         'flag_refine_simplices':True,
         'flag_lift_label': True,
@@ -132,32 +138,39 @@ def plot_phase_diagram(point):
         'pad_energy': 2,
         'flag_lift_purecomp_energy': False,
         'threshold_type':'uniform',
-        'thresh_scale':20 
+        'thresh_scale':0.1*dx 
      }
 
-    out = phase.serialcompute(dimensions, configuration, dx, **kwargs)
+    out = phase.serialcompute(len(M), configuration, dx, **kwargs)
     grid = out['grid']
     num_comps = out['num_comps']
     simplices = out['simplices']
     output = out['output']
 
-    #ax, cbar = phase.plot_mpltern(grid, simplices, num_comps)
-    #title = r'$\chi: $'+ ','.join('{:.2f}'.format(k) for k in chi )
-    #ax.set_title(title,pad=30)
     plain_phase_diagram(output)
     plt.savefig(fname,dpi=500, bbox_inches='tight')
     plt.close()
     
-    return remote_id
-               
-axes = [np.arange(0,len(data['solvents'])),np.arange(0,len(data['small molecules'])),np.arange(0,len(data['polymers']))]
+    del out, output, chi, M, configuration, dx, kwargs
+    del delta_solvent, delta_sm, delta_polymer
+    del grid, num_comps, simplices
+    
+    return fname
 
 start = time.time()
 
-ip_addresses = ray.get([plot_phase_diagram.remote(i) for i in product(*axes)])
-print(Counter(ip_addresses))    
+remaining_result_ids  = [plot_phase_diagram.remote(data_ray, i) for i in product(*axes)]
+
+while len(remaining_result_ids) > 0:
+    ready_result_ids, remaining_result_ids = ray.wait(remaining_result_ids, num_returns=1)
+    result_id = ready_result_ids[0]
+    result = ray.get(result_id)
+    print('Processed : {}'.format(result)) 
+
 
 end = time.time()
+del data_ray
+
 print('Program took {} seconds'.format(timer(start, end)))    
     
     
