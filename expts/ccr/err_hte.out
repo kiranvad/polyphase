@@ -1,285 +1,79 @@
  Main Python Loaded 
-2020-08-14 00:54:22,424	WARNING scripts.py:320 -- The --redis-port argument will be deprecated soon. Please use --port instead.
-2020-08-14 00:54:22,425	INFO scripts.py:395 -- Using IP address 10.116.28.10 for this node.
-2020-08-14 00:54:22,438	INFO resource_spec.py:212 -- Starting Ray with 36.72 GiB memory available for workers and up to 18.36 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:54:22,663	WARNING services.py:923 -- Redis failed to start, retrying now.
-2020-08-14 00:54:23,070	INFO services.py:1165 -- View the Ray dashboard at [1m[32mlocalhost:8265[39m[22m
-2020-08-14 00:54:23,179	INFO scripts.py:425 -- 
+2020-08-14 01:04:13,295	WARNING scripts.py:320 -- The --redis-port argument will be deprecated soon. Please use --port instead.
+2020-08-14 01:04:13,295	INFO scripts.py:395 -- Using IP address 10.116.28.10 for this node.
+2020-08-14 01:04:13,299	INFO resource_spec.py:212 -- Starting Ray with 36.57 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:04:13,584	WARNING services.py:923 -- Redis failed to start, retrying now.
+2020-08-14 01:04:14,654	INFO services.py:1165 -- View the Ray dashboard at [1m[32mlocalhost:8265[39m[22m
+2020-08-14 01:04:14,797	INFO scripts.py:425 -- 
 Started Ray on this node. You can add additional nodes to the cluster by calling
 
-    ray start --address='10.116.28.10:6379' --redis-password='c73c81f7-bb54-422f-a4b2-51e4d353dc3b'
+    ray start --address='10.116.28.10:6379' --redis-password='e0d9ea7a-5e7b-4a39-8968-b23a8035e7bb'
 
 from the node you wish to add. You can connect a driver to the cluster from Python by running
 
     import ray
-    ray.init(address='auto', redis_password='c73c81f7-bb54-422f-a4b2-51e4d353dc3b')
+    ray.init(address='auto', redis_password='e0d9ea7a-5e7b-4a39-8968-b23a8035e7bb')
 
 If you have trouble connecting from a different machine, check that your firewall is configured properly. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:54:52,556	INFO scripts.py:468 -- Using IP address 10.116.28.11 for this node.
-2020-08-14 00:54:52,639	INFO resource_spec.py:212 -- Starting Ray with 42.87 GiB memory available for workers and up to 18.38 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:54:52,701	INFO scripts.py:477 -- 
+2020-08-14 01:04:42,175	INFO scripts.py:468 -- Using IP address 10.116.28.11 for this node.
+2020-08-14 01:04:42,180	INFO resource_spec.py:212 -- Starting Ray with 42.87 GiB memory available for workers and up to 18.38 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:04:42,230	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:54:57,147	INFO scripts.py:468 -- Using IP address 10.116.28.13 for this node.
-2020-08-14 00:54:57,151	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:54:57,204	INFO scripts.py:477 -- 
+2020-08-14 01:04:48,498	INFO scripts.py:468 -- Using IP address 10.116.28.13 for this node.
+2020-08-14 01:04:48,520	INFO resource_spec.py:212 -- Starting Ray with 42.97 GiB memory available for workers and up to 18.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:04:48,568	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:04,868	INFO scripts.py:468 -- Using IP address 10.116.28.15 for this node.
-2020-08-14 00:55:04,873	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:04,933	INFO scripts.py:477 -- 
+2020-08-14 01:04:53,141	INFO scripts.py:468 -- Using IP address 10.116.28.15 for this node.
+2020-08-14 01:04:53,161	INFO resource_spec.py:212 -- Starting Ray with 42.97 GiB memory available for workers and up to 18.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:04:53,204	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:07,039	INFO scripts.py:468 -- Using IP address 10.116.28.16 for this node.
-2020-08-14 00:55:07,043	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:07,098	INFO scripts.py:477 -- 
+2020-08-14 01:04:57,464	INFO scripts.py:468 -- Using IP address 10.116.28.16 for this node.
+2020-08-14 01:04:57,469	INFO resource_spec.py:212 -- Starting Ray with 42.77 GiB memory available for workers and up to 18.34 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:04:57,517	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:12,069	INFO scripts.py:468 -- Using IP address 10.116.28.17 for this node.
-2020-08-14 00:55:12,074	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.29 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:12,132	INFO scripts.py:477 -- 
+2020-08-14 01:05:04,154	INFO scripts.py:468 -- Using IP address 10.116.28.17 for this node.
+2020-08-14 01:05:04,191	INFO resource_spec.py:212 -- Starting Ray with 42.92 GiB memory available for workers and up to 18.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:05:04,240	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:17,296	INFO scripts.py:468 -- Using IP address 10.116.28.18 for this node.
-2020-08-14 00:55:17,301	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:17,358	INFO scripts.py:477 -- 
+2020-08-14 01:05:07,835	INFO scripts.py:468 -- Using IP address 10.116.28.18 for this node.
+2020-08-14 01:05:07,841	INFO resource_spec.py:212 -- Starting Ray with 42.87 GiB memory available for workers and up to 18.37 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:05:07,888	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:22,189	INFO scripts.py:468 -- Using IP address 10.116.28.19 for this node.
-2020-08-14 00:55:22,194	INFO resource_spec.py:212 -- Starting Ray with 42.68 GiB memory available for workers and up to 18.3 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:22,251	INFO scripts.py:477 -- 
+2020-08-14 01:05:13,246	INFO scripts.py:468 -- Using IP address 10.116.28.19 for this node.
+2020-08-14 01:05:13,252	INFO resource_spec.py:212 -- Starting Ray with 42.97 GiB memory available for workers and up to 18.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:05:13,297	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:27,150	INFO scripts.py:468 -- Using IP address 10.116.28.20 for this node.
-2020-08-14 00:55:27,154	INFO resource_spec.py:212 -- Starting Ray with 42.82 GiB memory available for workers and up to 18.36 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:27,204	INFO scripts.py:477 -- 
+2020-08-14 01:05:18,117	INFO scripts.py:468 -- Using IP address 10.116.28.20 for this node.
+2020-08-14 01:05:18,131	INFO resource_spec.py:212 -- Starting Ray with 42.72 GiB memory available for workers and up to 18.31 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:05:18,199	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-08-14 00:55:32,707	INFO scripts.py:468 -- Using IP address 10.116.28.26 for this node.
-2020-08-14 00:55:32,713	INFO resource_spec.py:212 -- Starting Ray with 42.87 GiB memory available for workers and up to 18.37 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-08-14 00:55:32,771	INFO scripts.py:477 -- 
+2020-08-14 01:05:24,389	INFO scripts.py:468 -- Using IP address 10.116.28.26 for this node.
+2020-08-14 01:05:24,408	INFO resource_spec.py:212 -- Starting Ray with 42.97 GiB memory available for workers and up to 18.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-08-14 01:05:24,451	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
 WARNING: Logging before InitGoogleLogging() is written to STDERR
-I0814 00:55:40.430603 18922 18922 global_state_accessor.cc:25] Redis server address = 10.116.28.10:6379, is test flag = 0
-I0814 00:55:40.432359 18922 18922 redis_client.cc:141] RedisClient connected.
-I0814 00:55:40.441062 18922 18922 redis_gcs_client.cc:88] RedisGcsClient Connected.
-I0814 00:55:40.442598 18922 18922 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
-2020-08-14 00:55:42,906	WARNING worker.py:1047 -- The actor or task with ID 14bdd5885a092820ffffffff0100 is pending and cannot currently be scheduled. It requires {CPU: 1.000000} for execution and {CPU: 1.000000} for placement, but this node only has remaining {node:10.116.28.26: 1.000000}, {CPU: 20.000000}, {memory: 42.871094 GiB}, {object_store_memory: 12.646484 GiB}. In total there are 1 pending tasks and 0 pending actors on this node. This is likely due to all cluster resources being claimed by actors. To resolve the issue, consider creating fewer actors or increase the resources available to this Ray cluster. You can ignore this message if this Ray cluster is expected to auto-scale.
-E0814 00:58:46.567032 18922 18944 task_manager.cc:301] 3 retries left for task 71781b0626d04974ffffffff0100, attempting to resubmit.
-E0814 00:58:52.522647 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=71781b0626d04974ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:58:55.573745 18922 18944 task_manager.cc:301] 3 retries left for task e928ffbbbde9a4deffffffff0100, attempting to resubmit.
-E0814 00:58:55.573812 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=e928ffbbbde9a4deffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:58:56.672554 18922 18944 task_manager.cc:301] 3 retries left for task 04df2a355e22995fffffffff0100, attempting to resubmit.
-E0814 00:58:56.672963 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=04df2a355e22995fffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:58:56.799340 18922 18944 task_manager.cc:301] 3 retries left for task aed08acb5cdff1b9ffffffff0100, attempting to resubmit.
-E0814 00:58:56.799389 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=aed08acb5cdff1b9ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:58:58.883198 18922 18944 task_manager.cc:301] 3 retries left for task 8e1cb38fda1387abffffffff0100, attempting to resubmit.
-E0814 00:58:58.889729 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=8e1cb38fda1387abffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:58:59.358048 18922 18944 task_manager.cc:301] 3 retries left for task 19808551c92757faffffffff0100, attempting to resubmit.
-E0814 00:58:59.358101 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=19808551c92757faffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:58:59.913911 18922 18944 task_manager.cc:301] 3 retries left for task f57f9d81e685198affffffff0100, attempting to resubmit.
-E0814 00:58:59.913980 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=f57f9d81e685198affffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:03.952721 18922 18944 task_manager.cc:301] 3 retries left for task cf4505fd48c21dd2ffffffff0100, attempting to resubmit.
-E0814 00:59:03.952795 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=cf4505fd48c21dd2ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:04.083613 18922 18944 task_manager.cc:301] 3 retries left for task 15c675b22d037e3bffffffff0100, attempting to resubmit.
-E0814 00:59:04.083734 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=15c675b22d037e3bffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:05.497017 18922 18944 task_manager.cc:301] 3 retries left for task aa33b34bb97c67d1ffffffff0100, attempting to resubmit.
-E0814 00:59:05.497105 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=aa33b34bb97c67d1ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:05.880718 18922 18944 task_manager.cc:301] 3 retries left for task 0ef052962f815a2affffffff0100, attempting to resubmit.
-E0814 00:59:05.888948 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=0ef052962f815a2affffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:07.774924 18922 18944 task_manager.cc:301] 3 retries left for task 8e66e25489e4b4f1ffffffff0100, attempting to resubmit.
-E0814 00:59:07.775004 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=8e66e25489e4b4f1ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:08.518458 18922 18944 task_manager.cc:301] 3 retries left for task f66d17bae2b0e765ffffffff0100, attempting to resubmit.
-E0814 00:59:08.518553 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=f66d17bae2b0e765ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:08.619303 18922 18944 task_manager.cc:301] 3 retries left for task 4c7ae8aa0022905dffffffff0100, attempting to resubmit.
-E0814 00:59:08.619369 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=4c7ae8aa0022905dffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:10.190191 18922 18944 task_manager.cc:301] 3 retries left for task 7dc54b9d1dd59da9ffffffff0100, attempting to resubmit.
-E0814 00:59:10.190563 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=7dc54b9d1dd59da9ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:11.602741 18922 18944 task_manager.cc:301] 3 retries left for task 3660e84a454e879effffffff0100, attempting to resubmit.
-E0814 00:59:11.602813 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=3660e84a454e879effffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:12.451622 18922 18944 task_manager.cc:301] 3 retries left for task b30b2a6289aadebeffffffff0100, attempting to resubmit.
-E0814 00:59:12.451722 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=b30b2a6289aadebeffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:13.236040 18922 18944 task_manager.cc:301] 3 retries left for task 5edd81f1df1ba73dffffffff0100, attempting to resubmit.
-E0814 00:59:13.236137 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=5edd81f1df1ba73dffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:13.621959 18922 18944 task_manager.cc:301] 3 retries left for task 70b16fe8b545fae1ffffffff0100, attempting to resubmit.
-E0814 00:59:13.622040 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=70b16fe8b545fae1ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:14.922749 18922 18944 task_manager.cc:301] 3 retries left for task 3b70af2a54509284ffffffff0100, attempting to resubmit.
-E0814 00:59:14.922822 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=3b70af2a54509284ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:15.256659 18922 18944 task_manager.cc:301] 3 retries left for task ff22de474eb7ba1effffffff0100, attempting to resubmit.
-E0814 00:59:15.256850 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=ff22de474eb7ba1effffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:15.728821 18922 18944 task_manager.cc:301] 3 retries left for task b8f327c71682e5b2ffffffff0100, attempting to resubmit.
-E0814 00:59:15.728902 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=b8f327c71682e5b2ffffffff0100, job_id=0100, num_args=4, num_returns=1
-E0814 00:59:16.280838 18922 18944 task_manager.cc:301] 3 retries left for task ef0a6c221819881cffffffff0100, attempting to resubmit.
-E0814 00:59:16.649468 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=ef0a6c221819881cffffffff0100, job_id=0100, num_args=4, num_returns=1
-2020-08-14 00:59:08,012	WARNING worker.py:1047 -- A worker died or was killed while executing task 71781b0626d04974ffffffff0100.
-2020-08-14 00:59:23,149	WARNING worker.py:1047 -- A worker died or was killed while executing task e928ffbbbde9a4deffffffff0100.
-2020-08-14 00:59:23,149	WARNING worker.py:1047 -- A worker died or was killed while executing task 8e1cb38fda1387abffffffff0100.
-2020-08-14 00:59:23,150	WARNING worker.py:1047 -- A worker died or was killed while executing task aa33b34bb97c67d1ffffffff0100.
-2020-08-14 00:59:23,180	WARNING worker.py:1047 -- A worker died or was killed while executing task 04df2a355e22995fffffffff0100.
-2020-08-14 00:59:23,180	WARNING worker.py:1047 -- A worker died or was killed while executing task f57f9d81e685198affffffff0100.
-2020-08-14 00:59:23,180	WARNING worker.py:1047 -- A worker died or was killed while executing task cf4505fd48c21dd2ffffffff0100.
-2020-08-14 00:59:23,180	WARNING worker.py:1047 -- A worker died or was killed while executing task 0ef052962f815a2affffffff0100.
-2020-08-14 00:59:23,180	WARNING worker.py:1047 -- A worker died or was killed while executing task 3660e84a454e879effffffff0100.
-2020-08-14 00:59:23,185	WARNING worker.py:1047 -- A worker died or was killed while executing task aed08acb5cdff1b9ffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task 15c675b22d037e3bffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task 8e66e25489e4b4f1ffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task 19808551c92757faffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task f66d17bae2b0e765ffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task 4c7ae8aa0022905dffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task 5edd81f1df1ba73dffffffff0100.
-2020-08-14 00:59:23,186	WARNING worker.py:1047 -- A worker died or was killed while executing task 7dc54b9d1dd59da9ffffffff0100.
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- A worker died or was killed while executing task b30b2a6289aadebeffffffff0100.
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- A worker died or was killed while executing task 70b16fe8b545fae1ffffffff0100.
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- The log monitor on node cpn-p28-19.cbls.ccr.buffalo.edu failed with the following error:
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 199, in check_log_files_and_publish_updates
-    next_line = file_info.file_handle.readline()
-OSError: [Errno 12] Cannot allocate memory
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 298, in <module>
-    log_monitor.run()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 249, in run
-    anything_published = self.check_log_files_and_publish_updates()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 212, in check_log_files_and_publish_updates
-    file_info.full_path,
-AttributeError: 'LogFileInfo' object has no attribute 'full_path'
-
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- A worker died or was killed while executing task 3b70af2a54509284ffffffff0100.
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- The log monitor on node cpn-p28-13.cbls.ccr.buffalo.edu failed with the following error:
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 199, in check_log_files_and_publish_updates
-    next_line = file_info.file_handle.readline()
-OSError: [Errno 12] Cannot allocate memory
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 298, in <module>
-    log_monitor.run()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 249, in run
-    anything_published = self.check_log_files_and_publish_updates()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 212, in check_log_files_and_publish_updates
-    file_info.full_path,
-AttributeError: 'LogFileInfo' object has no attribute 'full_path'
-
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- A worker died or was killed while executing task ff22de474eb7ba1effffffff0100.
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- A worker died or was killed while executing task b8f327c71682e5b2ffffffff0100.
-2020-08-14 00:59:23,187	WARNING worker.py:1047 -- A worker died or was killed while executing task ef0a6c221819881cffffffff0100.
-2020-08-14 00:59:23,188	WARNING worker.py:1047 -- The log monitor on node cpn-p28-20.cbls.ccr.buffalo.edu failed with the following error:
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 199, in check_log_files_and_publish_updates
-    next_line = file_info.file_handle.readline()
-OSError: [Errno 12] Cannot allocate memory
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 298, in <module>
-    log_monitor.run()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 249, in run
-    anything_published = self.check_log_files_and_publish_updates()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 212, in check_log_files_and_publish_updates
-    file_info.full_path,
-AttributeError: 'LogFileInfo' object has no attribute 'full_path'
-
-2020-08-14 00:59:26,741	WARNING worker.py:1047 -- The log monitor on node cpn-p28-10.cbls.ccr.buffalo.edu failed with the following error:
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 199, in check_log_files_and_publish_updates
-    next_line = file_info.file_handle.readline()
-OSError: [Errno 12] Cannot allocate memory
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 298, in <module>
-    log_monitor.run()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 249, in run
-    anything_published = self.check_log_files_and_publish_updates()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 212, in check_log_files_and_publish_updates
-    file_info.full_path,
-AttributeError: 'LogFileInfo' object has no attribute 'full_path'
-
-E0814 00:59:28.570989 18922 18944 task_manager.cc:301] 3 retries left for task 1b26bd521b502473ffffffff0100, attempting to resubmit.
-E0814 00:59:28.571108 18922 18944 core_worker.cc:383] Will resubmit task after a 5000ms delay: Type=NORMAL_TASK, Language=PYTHON, function_descriptor={type=PythonFunctionDescriptor, module_name=__main__, class_name=, function_name=plot_phase_diagram, function_hash=974abd289d548f26e5a24dcea6b3bf9476637a3c}, task_id=1b26bd521b502473ffffffff0100, job_id=0100, num_args=4, num_returns=1
-2020-08-14 00:59:28,628	ERROR worker.py:987 -- Possible unhandled error from worker: [36mray::__main__.plot_phase_diagram()[39m (pid=19250, ip=10.116.28.10)
-  File "python/ray/_raylet.pyx", line 408, in ray._raylet.execute_task
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/memory_monitor.py", line 128, in raise_if_low_memory
-    self.error_threshold))
-ray.memory_monitor.RayOutOfMemoryError: More than 95% of the memory on node cpn-p28-10.cbls.ccr.buffalo.edu is used (61.44 / 62.67 GB). The top 10 memory consumers are:
-
-PID	MEM	COMMAND
-18074	3.2GiB	ray::__main__.plot_phase_diagram()
-18063	3.19GiB	ray::__main__.plot_phase_diagram()
-18065	3.19GiB	ray::__main__.plot_phase_diagram()
-18066	3.19GiB	ray::__main__.plot_phase_diagram()
-18072	3.19GiB	ray::__main__.plot_phase_diagram()
-18073	3.19GiB	ray::__main__.plot_phase_diagram()
-18064	3.19GiB	ray::__main__.plot_phase_diagram()
-18059	3.19GiB	ray::__main__.plot_phase_diagram()
-18067	3.19GiB	ray::__main__.plot_phase_diagram()
-18060	3.19GiB	ray::__main__.plot_phase_diagram()
-
-In addition, up to 0.0 GiB of shared memory is currently being used by the Ray object store. You can set the object store size with the `object_store_memory` parameter when starting Ray.
----
---- Tip: Use the `ray memory` command to list active objects in the cluster.
----
-Traceback (most recent call last):
-  File "scripts/hte.py", line 167, in <module>
-    result = ray.get(result_id)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/worker.py", line 1474, in get
-    raise value.as_instanceof_cause()
-ray.exceptions.RayTaskError(RayOutOfMemoryError): [36mray::__main__.plot_phase_diagram()[39m (pid=19250, ip=10.116.28.10)
-  File "python/ray/_raylet.pyx", line 408, in ray._raylet.execute_task
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/memory_monitor.py", line 128, in raise_if_low_memory
-    self.error_threshold))
-ray.memory_monitor.RayOutOfMemoryError: More than 95% of the memory on node cpn-p28-10.cbls.ccr.buffalo.edu is used (61.44 / 62.67 GB). The top 10 memory consumers are:
-
-PID	MEM	COMMAND
-18074	3.2GiB	ray::__main__.plot_phase_diagram()
-18063	3.19GiB	ray::__main__.plot_phase_diagram()
-18065	3.19GiB	ray::__main__.plot_phase_diagram()
-18066	3.19GiB	ray::__main__.plot_phase_diagram()
-18072	3.19GiB	ray::__main__.plot_phase_diagram()
-18073	3.19GiB	ray::__main__.plot_phase_diagram()
-18064	3.19GiB	ray::__main__.plot_phase_diagram()
-18059	3.19GiB	ray::__main__.plot_phase_diagram()
-18067	3.19GiB	ray::__main__.plot_phase_diagram()
-18060	3.19GiB	ray::__main__.plot_phase_diagram()
-
-In addition, up to 0.0 GiB of shared memory is currently being used by the Ray object store. You can set the object store size with the `object_store_memory` parameter when starting Ray.
----
---- Tip: Use the `ray memory` command to list active objects in the cluster.
----
-2020-08-14 00:59:30,778	WARNING worker.py:1047 -- The log monitor on node cpn-p28-17.cbls.ccr.buffalo.edu failed with the following error:
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 199, in check_log_files_and_publish_updates
-    next_line = file_info.file_handle.readline()
-OSError: [Errno 12] Cannot allocate memory
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 298, in <module>
-    log_monitor.run()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 249, in run
-    anything_published = self.check_log_files_and_publish_updates()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 212, in check_log_files_and_publish_updates
-    file_info.full_path,
-AttributeError: 'LogFileInfo' object has no attribute 'full_path'
-
-slurmstepd: error: Detected 151 oom-kill event(s) in step 3338635.batch cgroup. Some of your processes may have been killed by the cgroup out-of-memory handler.
+I0814 01:05:30.455982 21453 21453 global_state_accessor.cc:25] Redis server address = 10.116.28.10:6379, is test flag = 0
+I0814 01:05:30.457548 21453 21453 redis_client.cc:141] RedisClient connected.
+I0814 01:05:30.466236 21453 21453 redis_gcs_client.cc:88] RedisGcsClient Connected.
+I0814 01:05:30.467667 21453 21453 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
+2020-08-14 01:05:34,602	WARNING worker.py:1047 -- The actor or task with ID 8ac5365af51af881ffffffff0100 is pending and cannot currently be scheduled. It requires {CPU: 1.000000} for execution and {CPU: 1.000000} for placement, but this node only has remaining {node:10.116.28.26: 1.000000}, {CPU: 20.000000}, {memory: 42.968750 GiB}, {object_store_memory: 12.695312 GiB}. In total there are 1 pending tasks and 0 pending actors on this node. This is likely due to all cluster resources being claimed by actors. To resolve the issue, consider creating fewer actors or increase the resources available to this Ray cluster. You can ignore this message if this Ray cluster is expected to auto-scale.

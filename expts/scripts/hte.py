@@ -127,7 +127,7 @@ def plot_phase_diagram(data,point):
     
     M = [100,5,1]
     configuration = {'M': M, 'chi':chi}
-    dx = 400
+    dx = 200
     kwargs = {
         'flag_refine_simplices':True,
         'flag_lift_label': True,

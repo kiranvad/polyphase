@@ -1,7 +1,7 @@
-SLURM_JOBID=3338635
+SLURM_JOBID=3338755
 SLURM_JOB_NODELIST=cpn-p28-[10-11,13,15-20,26]
 SLURM_NNODES=10
-SLURMTMPDIR=/scratch/3338635
+SLURMTMPDIR=/scratch/3338755
 working directory = /projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/expts
 IP Head: 10.116.28.10:6379
 STARTING HEAD at cpn-p28-10

@@ -1,4 +1,4 @@
-# Phase Modelling Convex Envelope method
+# Phase Modelling Using Convex Envelope Method
 
 To install, run the following commands (with git and python pip installed)
 ```bash
@@ -37,7 +37,7 @@ phase.plot_mpltern(grid, simplices, num_comps)
 plt.show()
 ```
 
-If you would like to run a multi-node parallel high-throughput computation use the serial version by replacing the compute line as below:
+If you would like to run a multi-node parallel high-throughput computation use the serial version instead by replacing the compute line as below:
 ```python
 output = phase.serialcompute(3, configuration,meshsize )
 ```
@@ -45,4 +45,4 @@ output = phase.serialcompute(3, configuration,meshsize )
 
 Notes:
 ---------
-Currently support multi-node parallelization using ray.
+This repository is arranged as follows : `/polyphase` contains the python codes required to compute phase diagram and visualization scripts. `expts` contains the scripts that were run on UB CCR, `notebooks` contains various test cases and example usage (some may be outdated and might not work)

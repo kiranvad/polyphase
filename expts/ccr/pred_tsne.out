@@ -1,0 +1,58 @@
+SLURM_JOBID=3380189
+SLURM_JOB_NODELIST=cpn-p28-[09-20,23-35]
+SLURM_NNODES=25
+SLURMTMPDIR=/scratch/3380189
+working directory = /projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/expts
+IP Head: 10.116.28.9:6379
+STARTING HEAD at cpn-p28-09
+starting ray head node
+STARTING WORKER 1 at cpn-p28-10
+starting ray worker node
+STARTING WORKER 2 at cpn-p28-11
+starting ray worker node
+STARTING WORKER 3 at cpn-p28-12
+starting ray worker node
+STARTING WORKER 4 at cpn-p28-13
+starting ray worker node
+STARTING WORKER 5 at cpn-p28-14
+starting ray worker node
+STARTING WORKER 6 at cpn-p28-15
+starting ray worker node
+STARTING WORKER 7 at cpn-p28-16
+starting ray worker node
+STARTING WORKER 8 at cpn-p28-17
+starting ray worker node
+STARTING WORKER 9 at cpn-p28-18
+starting ray worker node
+STARTING WORKER 10 at cpn-p28-19
+starting ray worker node
+STARTING WORKER 11 at cpn-p28-20
+starting ray worker node
+STARTING WORKER 12 at cpn-p28-23
+starting ray worker node
+STARTING WORKER 13 at cpn-p28-24
+starting ray worker node
+STARTING WORKER 14 at cpn-p28-25
+starting ray worker node
+STARTING WORKER 15 at cpn-p28-26
+starting ray worker node
+STARTING WORKER 16 at cpn-p28-27
+starting ray worker node
+STARTING WORKER 17 at cpn-p28-28
+starting ray worker node
+STARTING WORKER 18 at cpn-p28-29
+starting ray worker node
+STARTING WORKER 19 at cpn-p28-30
+starting ray worker node
+STARTING WORKER 20 at cpn-p28-31
+starting ray worker node
+STARTING WORKER 21 at cpn-p28-32
+starting ray worker node
+STARTING WORKER 22 at cpn-p28-33
+starting ray worker node
+STARTING WORKER 23 at cpn-p28-34
+starting ray worker node
+STARTING WORKER 24 at cpn-p28-35
+starting ray worker node
+Launch Python job
+All Done!
