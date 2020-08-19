@@ -1,36 +1,21 @@
 import numpy as np
 import pdb
-
-
-def makegrid2d(num=50):
-    X = np.linspace(0.001,0.999,num=num)
-    Y = X
-    grid = []
-    for x in X:
-        for y in Y:
-            if np.isclose(x+y,1.0,atol=1e-3,rtol=1e-3):
-                grid.append([x,y])
-    return grid
-
-def makegrid3d(num=50):
-    X = np.linspace(0.001,0.999,num=num)
-    Y,Z = X,X
-    grid = []
-    for x in X:
-        for y in Y:
-            for z in Z:
-                if np.isclose(x+y+z,1.0,atol=1e-3,rtol=1e-3):
-                    grid.append([x,y,z])
-           
-    return grid
+from itertools import combinations
 
 """ Plot tools """
 import mpltern
-from matplotlib import rc
-rc('text', usetex=True)
 import seaborn as sns
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
+
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
+from scipy.spatial import Delaunay
+
+
+from .helpers import get_ternary_coords, flory_huggins 
+from .parphase import _utri2mat
+from scipy.constants import gas_constant
 
 def set_ternlabel(ax):
     ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)
@@ -42,64 +27,7 @@ def set_ternlabel(ax):
     sns.axes_style("ticks")
     
     return ax
-    
-def plotlocus(points,curvature,ax = None):
-    t,l,r = points[:,0],points[:,1],points[:,2]
-    colors = ["windows blue", "amber", "greyish", "faded green", "dusty purple"]
-    labels = ["+ve",'-ve','mixed','other']
-    #colors = sns.mpl_palette("Set2",4)
-    colors = sns.xkcd_palette(colors)
-    for label in range(4):
-        ids = np.where(np.asarray(curvature)==label)
-        ax.scatter(t[ids[0]], l[ids[0]], r[ids[0]],c=colors[label],label=labels[label])
-    ax = set_ternlabel(ax)
-    return ax
 
-def contours(points,colorcode, mode='lines', ax = None,level=None):
-    t, l, r, v = points[:,0],points[:,1],points[:,2], colorcode
-    if ax is None:
-        fig = plt.figure(figsize=(10.8, 4.8))
-        fig.subplots_adjust(left=0.075, right=0.85, wspace=0.3)
-        ax = fig.add_subplot(projection='ternary')
-
-    pad_title = 36
-
-    if mode is 'lines':
-        if level is not None:
-            cs = ax.tricontour(t, l, r, v,levels=level)
-        else:
-            cs = ax.tricontour(t, l, r, v)
-        ax.clabel(cs)
-        ax.set_title("Contour lines", pad=pad_title)
-
-        cax = ax.inset_axes([1.05, 0.1, 0.05, 0.9], transform=ax.transAxes)
-
-    elif mode is 'contour':
-        cs = ax.tricontourf(t, l, r, v)
-        cax = ax.inset_axes([1.05, 0.1, 0.05, 0.9], transform=ax.transAxes)
-    else:
-        raise KeyError("No such mode detected.")
-    
-    ax = set_ternlabel(ax)
-    
-    return ax,cs, cax
-
-import plotly.graph_objects as go
-
-def scatter3d(data,energy):
-    data = np.asarray(data)
-
-    trace = go.Scatter3d(
-        x=data[:,0],
-        y=data[:,1],
-        z=energy,
-        mode='markers',
-        marker=dict(size=5,color=[],colorscale='RdBu',  opacity=0.8 ))
-
-    return trace
-
-from .helpers import get_ternary_coords, flory_huggins 
-from .parphase import _utri2mat
 
 def plot_energy_landscape(outdict):
     """ Plots a convex hull of a energy landscape """
@@ -118,11 +46,6 @@ def plot_energy_landscape(outdict):
     
     plt.show()
 
-
-
-# Intereactive energy manifolds and convex hulls
-import plotly.figure_factory as ff
-from scipy.spatial import Delaunay
 
 def plot_triangulated_surface(u, v, x,y,z):
     points2D = np.vstack([u,v]).T
@@ -175,9 +98,52 @@ def test_plot_triangulated_surface():
     )
     fig.write_html('../figures/3dplots/test_mobious.html')    
     
+
     
+""" Compute chi from solubilities """
+
+def _compute_chi(delta_i,delta_j,V):
+    """
+    total solubility parameters delta_i, delta_j are computed from hydrogen, polar, dispersive components
     
+    delta_i, delta_j in MPa^{1/2} and V in cm3/mol
     
+    returns a scalar chi value
+    
+    """
+    constant = 1.0 #4.184*(2.045**2)/(8.314)
+    chi_ij =  0.34+(constant)*(V/(gas_constant*300)*( np.asarray(delta_i) - np.asarray(delta_j) )**2)
+        
+    return chi_ij
+
+def _compute_weighted_chi(vec1,vec2,V, W):
+    value = 0.0
+    for i,w  in enumerate(W):
+        value += w*(vec1[i]-vec2[i])**2
+    
+    value = 0.34 + value*(V/(gas_constant*300))
+    
+    return value
+                   
+def get_chi_vector(deltas, V0, approach=1):
+    """
+    Given a list of deltas, computes binary interactions of chis
+    """
+    combs = combinations(deltas,2)
+    inds = list((i,j) for ((i,_),(j,_)) in combinations(enumerate(deltas), 2))
+      
+    if approach==1:
+        chi = [_compute_chi(np.linalg.norm(i[0]),np.linalg.norm(i[1]),V0) for i in combs]
+    elif approach==2:
+        chi = [_compute_weighted_chi(i[0],i[1],V0, W = [1.0,1.0,1.0]) for i in combs] 
+    elif approach==3:
+        chi = [_compute_weighted_chi(i[0],i[1],V0, W = [1.0,0.25,0.25]) for i in combs]            
+    else:
+        raise KeyError
+        
+    return chi, inds
+    
+
 """ utilities for some example runs """
 
 def get_data(name='ow',fhid=0):
