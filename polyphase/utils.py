@@ -13,7 +13,7 @@ import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
 
 
-from .helpers import get_ternary_coords, flory_huggins 
+from .helpers import get_ternary_coords 
 from .parphase import _utri2mat
 from scipy.constants import gas_constant
 

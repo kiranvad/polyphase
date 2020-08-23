@@ -1,11 +1,12 @@
 """ Bunch of visualization tools that aid analysis """
-from matplotlib import rc
-rc('text', usetex=True)
 import seaborn as sns
 import matplotlib.pyplot as plt
 
 import pdb
 import numpy as np
+import mpltern
+from matplotlib.cm import ScalarMappable
+from matplotlib import colors
 
 import sys
 if '../' not in sys.path:
@@ -81,10 +82,6 @@ def plot_3d_phasediagram(grid, simplices, num_comps, ax = None):
     
     return ax, cbar    
     
-import mpltern
-from matplotlib.cm import ScalarMappable
-from matplotlib import colors
-
 def _set_axislabels_mpltern(ax):
     """ 
     Sets axis labels for phase plots using mpltern 

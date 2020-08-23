@@ -3,21 +3,18 @@ import numpy as np
 import pandas as pd
 import pdb
 
-from matplotlib import rc
-rc('text', usetex=True)
 import matplotlib.pyplot as plt
 from pprint import pprint
-import sys
-if '../' not in sys.path:
-    sys.path.insert(0,'../')
+
+import cechmate as cm
+from persim import plot_diagrams
 
 from .visuals import plot_mpltern, _set_axislabels_mpltern
 
 """
 1 :  Understanding simplicial topology of phases
 """
-import cechmate as cm
-from persim import plot_diagrams
+
 rips = cm.Rips(maxdim=1, verbose=False) #Go up to 1D homology
 
 def _show_simplex_mpltern(euclidean_coords,ax):

@@ -1,0 +1,9 @@
+10.116.28.7:6379 9027cd1b-4616-4eea-bf31-fa9476cea43f
+Number of Nodes in the Ray cluster: 25
+Total of 1720 phase diagrams
+[2m[36m(pid=10886, ip=10.116.28.13)[0m Computed 1718 on 10.116.28.13
+Processed : 1718
+Processed : 1717
+[2m[36m(pid=10119, ip=10.116.28.30)[0m Computed 1717 on 10.116.28.30
+Processed : 1716
+[2m[36m(pid=10654, ip=10.116.28.10)[0m Computed 1716 on 10.116.28.10
