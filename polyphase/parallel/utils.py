@@ -7,16 +7,16 @@ from scipy.spatial.distance import squareform
 
 @ray.remote
 def _get_distance_row(data, metric, rowid, triuids):
+    print('Staging {} on {}'.format(rowid, ray.services.get_node_ip_address()))
+    T = timer()
     rowid_flags = triuids[0]
     rows = triuids[0][rowid_flags==rowid]
     cols = triuids[1][rowid_flags==rowid]
     dist_row = []
     for r,c in zip(rows, cols):
         dist_row.append(metric(data[r], data[c]))
-        
-    print('Computed {} on {}'.format(rowid, ray.services.get_node_ip_address()))
-    
-    return dist_row, rowid
+
+    return dist_row, rowid, T.end()
 
 def get_distance_matrix(X, metric):
     """ Compute distance matrix in parallel using ray
@@ -68,11 +68,11 @@ def get_distance_matrix(X, metric):
     while len(remaining_result_ids) > 0:
         ready_result_ids, remaining_result_ids = ray.wait(remaining_result_ids, num_returns=1)
         result_id = ready_result_ids[0]
-        dist_result,rowid_result = ray.get(result_id)
+        dist_result,rowid_result, time_result = ray.get(result_id)
         dist[rowid_result] = dist_result
-        print('Processed : {}'.format(rowid_result)) 
+        print('Processed : {} took {} '.format(rowid_result, time_result)) 
         
-    del remaining_result_ids,result_id, iu_ray, metric_ray, X_ray      
+    del remaining_result_ids,result_id, iu_ray, metric_ray, X_ray, dist_result,rowid_result, time_result      
     
     reduce_dist = [dist[k] for k in sorted(dist)]
     dist = np.hstack(reduce_dist)
@@ -83,6 +83,6 @@ def get_distance_matrix(X, metric):
     
     assert n_samples==np.shape(D)[0] , "Shape of distance matrix is {}, expected {}x{}".format(D.shape, n_samples, n_samples)
     
-    print('Computation took : {}'.format(T.end()))
+    print('\nComputation took : {}'.format(T.end()))
 
     return D
