@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#SBATCH --time=10:00:00
+#SBATCH --time=12:00:00
 #SBATCH --cluster=faculty
 #SBATCH --partition=planex --qos=planex
 #SBATCH --account=olgawodo
-#SBATCH --nodes=10
+#SBATCH --nodes=25
 #SBATCH --ntasks-per-node=20
 #SBATCH --job-name="HTE"
 #SBATCH --output=ccr/pred_hte.out

@@ -188,7 +188,8 @@ def serialcompute(configuration, meshsize,**kwargs):
     flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
     flag_lift_label = kwargs.get('flag_lift_label',False)
     use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
-
+    lift_grid_size = kwargs.get('lift_grid_size', 200)
+    
     dimensions = len(configuration['M'])
                                        
     since = time.time()

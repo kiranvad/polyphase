@@ -11,7 +11,7 @@ import sys
 if '../' not in sys.path:
     sys.path.insert(0,'../')
 
-import polyphase import serialcompute, get_chi_vector, timer
+from polyphase import serialcompute, timer
 
 from numpy.linalg import norm
 from scipy.constants import gas_constant
@@ -82,10 +82,7 @@ def plot_phase_diagram(row):
         'verbose' : False
      }
 
-    out = phase.serialcompute(configuration, dx, **kwargs)
-    grid = out['grid']
-    num_comps = out['num_comps']
-    simplices = out['simplices']
+    out = serialcompute(configuration, dx, **kwargs)
     output = out['output']
 
     plain_phase_diagram(output)
@@ -93,13 +90,10 @@ def plot_phase_diagram(row):
     plt.close()
     
     del out, output, chi, M, configuration, dx, kwargs
-    del delta_solvent, delta_sm, delta_polymer
-    del grid, num_comps, simplices
     
     return fname
 
-start = time.time()
-
+T = timer()
 remaining_result_ids  = [plot_phase_diagram.remote(i) for _,i in allsys_df.iterrows()]
 
 while len(remaining_result_ids) > 0:
@@ -109,9 +103,6 @@ while len(remaining_result_ids) > 0:
     print('Processed : {}'.format(result)) 
 
 
-end = time.time()
-del data_ray
-
-print('Program took {} seconds'.format(timer(start, end)))    
+print('Program took {}'.format(timer.end()))    
     
     
