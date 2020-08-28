@@ -167,3 +167,54 @@ I0823 11:12:39.244782 31460 31460 redis_client.cc:141] RedisClient connected.
 I0823 11:12:39.253587 31460 31460 redis_gcs_client.cc:88] RedisGcsClient Connected.
 I0823 11:12:39.255291 31460 31460 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
 2020-08-23 11:12:40,351	ERROR worker.py:655 -- Calling ray.init() again after it has already been called.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+srun: Job step aborted: Waiting up to 32 seconds for job step to finish.
+slurmstepd: error: *** STEP 3426721.2 ON cpn-p28-08 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** JOB 3426721 ON cpn-p28-07 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.8 ON cpn-p28-14 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.6 ON cpn-p28-12 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.5 ON cpn-p28-11 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.3 ON cpn-p28-09 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.9 ON cpn-p28-15 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.10 ON cpn-p28-16 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.13 ON cpn-p28-19 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.18 ON cpn-p28-26 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.4 ON cpn-p28-10 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.7 ON cpn-p28-13 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.17 ON cpn-p28-25 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.16 ON cpn-p28-24 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.15 ON cpn-p28-23 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.12 ON cpn-p28-18 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.19 ON cpn-p28-27 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.23 ON cpn-p28-31 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.21 ON cpn-p28-29 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.11 ON cpn-p28-17 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.24 ON cpn-p28-32 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.20 ON cpn-p28-28 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.22 ON cpn-p28-30 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.14 ON cpn-p28-20 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.25 ON cpn-p28-33 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***
+slurmstepd: error: *** STEP 3426721.1 ON cpn-p28-07 CANCELLED AT 2020-08-25T11:10:14 DUE TO TIME LIMIT ***

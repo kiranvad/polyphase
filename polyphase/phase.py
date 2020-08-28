@@ -156,15 +156,12 @@ def get_max_delaunay_edge_length(grid):
             
             
 """ Main comoutation function """
-def serialcompute(dimensions, configuration, meshsize,\
-            flag_refine_simplices = True, flag_lift_label =False,\
-            lift_grid_size=200, use_weighted_delaunay = False, **kwargs):
+def serialcompute(configuration, meshsize,**kwargs):
     """
     Main python function to obtain a phase diagram for n-component polymer mixture system.
     
     parameters:
     -----------
-        dimension     : number of components of mixture
         configuration : a dictornay with keys:
                             'M'   : degree of polymerization (list of length = dimension)
                             'chi' : off diagonal non-zero entries of flory-huggins parameters
@@ -184,9 +181,16 @@ def serialcompute(dimensions, configuration, meshsize,\
         threshold_type               : Whether to use an 'uniform' threshold method (thresh= edge length) or to use more mathematically                                            sound 'delaunay' (thresh = maximum delaunay edge + epsilon)
         thresh_scale                 : (scale value of) Uniform edge length threshold to compute adjacency matrix 
                                        (default: 1.25 times the uniform edge in the grid)
+        lift_grid_size               : A uniform grid to which simplex labels will be lifted to points inside corresponding simplices
         
     """
+    verbose = kwargs.get('verbose', False)
+    flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
+    flag_lift_label = kwargs.get('flag_lift_label',False)
+    use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
 
+    dimensions = len(configuration['M'])
+                                       
     since = time.time()
     
     outdict = {}
@@ -198,7 +202,8 @@ def serialcompute(dimensions, configuration, meshsize,\
     outdict['grid'] = grid
     
     lap = time.time()
-    print('{}-dimensional grid generated at {:.2f}s'.format(dimensions,lap-since))
+    if verbose:
+        print('{}-dimensional grid generated at {:.2f}s'.format(dimensions,lap-since))
 
     # 2. compute free energy on the grid (parallel)
     CHI = _utri2mat(configuration['chi'], dimensions)
@@ -212,26 +217,31 @@ def serialcompute(dimensions, configuration, meshsize,\
         
     energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
     lap = time.time()
-    print('Energy computed at {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Energy computed at {:.2f}s'.format(lap-since))
+        
     # Make energy a paraboloid like by extending the landscape at the borders
     if flag_make_energy_paraboloid:
         max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
-        print('Making energy manifold a paraboloid with {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
+        if verbose:
+            print('Making energy manifold a paraboloid with {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
         boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
         energy[boundary_points] = pad_energy*max_energy
                 
     elif flag_lift_purecomp_energy:
         max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
-        print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
+        if verbose:
+            print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
         pure_points = np.asarray([is_pure_component(x) for x in grid.T])
         energy[pure_points] = pad_energy*max_energy
                 
     outdict['energy'] = energy
     
     lap = time.time()
-    print('Energy is corrected at {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Energy is corrected at {:.2f}s'.format(lap-since))
     
     # 3. Compute convex hull
     if not use_weighted_delaunay:
@@ -243,7 +253,8 @@ def serialcompute(dimensions, configuration, meshsize,\
         raise NotImplemented
         
     lap = time.time()
-    print('{} is computed at {:.2f}s'.format(_method,lap-since))
+    if verbose:
+        print('{} is computed at {:.2f}s'.format(_method,lap-since))
     
     # determine threshold
     threshold_type = kwargs.get('threshold_type','delaunay')
@@ -253,7 +264,8 @@ def serialcompute(dimensions, configuration, meshsize,\
         thresh_scale = kwargs.get('thresh_scale',1.25)
         thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
     
-    print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
+    if verbose:
+        print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
     outdict['thresh'] = thresh
     
     if not flag_refine_simplices:
@@ -273,18 +285,20 @@ def serialcompute(dimensions, configuration, meshsize,\
             simplices = simplices[~coplanar_simplices]
             
         lap = time.time()
-        print('Simplices are refined at {:.2f}s'.format(lap-since))
+        if verbose:
+            print('Simplices are refined at {:.2f}s'.format(lap-since))
         
     outdict['simplices'] = simplices
-    print('Total of {} simplices in the convex hull'.format(len(simplices)))
+    if verbose:
+        print('Total of {} simplices in the convex hull'.format(len(simplices)))
     
     # 4. for each simplex in the hull compute number of connected components (parallel)
     num_comps = [label_simplex(grid, simplex, thresh) for simplex in simplices]
     lap = time.time()
-    print('Simplices are labelled at {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Simplices are labelled at {:.2f}s'.format(lap-since))
     outdict['num_comps'] = num_comps
-    
-    
+
     if flag_lift_label:
         
         # 5. lift the labels from simplices to points (parallel)
@@ -297,9 +311,10 @@ def serialcompute(dimensions, configuration, meshsize,\
         
         flags = [item[1] for item in inside]
         lap = time.time()
-        print('Labels are lifted at {:.2f}s'.format(lap-since))
-        
-        print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
+        if verbose:
+            print('Labels are lifted at {:.2f}s'.format(lap-since))
+
+            print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
 
         phase = np.zeros(lift_grid.shape[1])
         for i,label in zip(inside,num_comps):
@@ -314,7 +329,8 @@ def serialcompute(dimensions, configuration, meshsize,\
     else:
         output = []
         
-    outdict['output'] = output    
+    outdict['output'] = output 
+    
     lap = time.time()
     print('Computation took {:.2f}s'.format(lap-since))
     
