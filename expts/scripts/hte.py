@@ -55,7 +55,7 @@ def plain_phase_diagram(output, ax = None):
     return ax    
 
 
-@ray.remote(num_cpus=2)
+@ray.remote(num_cpus=5)
 def plot_phase_diagram(row):
     
     chi = [row['chi12'], row['chi13'], row['chi23']]

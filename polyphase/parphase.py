@@ -238,9 +238,7 @@ def get_max_delaunay_edge_length(grid):
             
             
 """ Main comoutation function """
-def compute(dimensions, configuration, meshsize,\
-            flag_refine_simplices = True, flag_lift_label =False,\
-            lift_grid_size=200, use_weighted_delaunay = False, **kwargs):
+def compute(configuration, meshsize,**kwargs):
     """
     Main python function to obtain a phase diagram for n-component polymer mixture system.
     
@@ -268,6 +266,13 @@ def compute(dimensions, configuration, meshsize,\
                                        (default: 1.25 times the uniform edge in the grid)
         
     """
+    verbose = kwargs.get('verbose', False)
+    flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
+    flag_lift_label = kwargs.get('flag_lift_label',False)
+    use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
+    lift_grid_size = kwargs.get('lift_grid_size', 200)
+    
+    dimensions = len(configuration['M'])
     
     # Initialize ray for parallel computation
     ray.init(ignore_reinit_error=True, lru_evict=False)
@@ -282,8 +287,9 @@ def compute(dimensions, configuration, meshsize,\
     outdict['grid'] = grid
     grid_ray = ray.put(grid)
     lap = time.time()
-    print('{}-dimensional grid generated at {:.2f}s'.format(dimensions,lap-since))
-
+    if verbose:
+        print('{}-dimensional grid generated at {:.2f}s'.format(dimensions,lap-since))
+        
     # 2. compute free energy on the grid (parallel)
     CHI = _utri2mat(configuration['chi'], dimensions)
     flag_make_energy_paraboloid = kwargs.get('flag_make_energy_paraboloid',True)
@@ -296,12 +302,15 @@ def compute(dimensions, configuration, meshsize,\
         
     energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
     lap = time.time()
-    print('Energy computed at {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Energy computed at {:.2f}s'.format(lap-since))
+        
     # Make energy a paraboloid like by extending the landscape at the borders
     if flag_make_energy_paraboloid:
         max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
-        print('Making energy manifold a paraboloid with {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
+        if verbose:
+            print('Making energy manifold a paraboloid with {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
         boundary_points_ray = [is_boundary_point.remote(x) for x in grid.T]
         boundary_points = np.asarray(ray.get(boundary_points_ray))
         energy[boundary_points] = pad_energy*max_energy
@@ -311,7 +320,8 @@ def compute(dimensions, configuration, meshsize,\
     elif flag_lift_purecomp_energy:
         max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
-        print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
+        if verbose:
+            print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
         pure_points_ray = [is_pure_component.remote(x) for x in grid.T]
         pure_points = np.asarray(ray.get(pure_points_ray))
         energy[pure_points] = pad_energy*max_energy
@@ -337,7 +347,8 @@ def compute(dimensions, configuration, meshsize,\
         outdict['hull'] = hull
         
     lap = time.time()
-    print('{} is computed at {:.2f}s'.format(_method,lap-since))
+    if verbose:
+        print('{} is computed at {:.2f}s'.format(_method,lap-since))
     
     # determine threshold
     threshold_type = kwargs.get('threshold_type','delaunay')
@@ -347,7 +358,9 @@ def compute(dimensions, configuration, meshsize,\
         thresh_scale = kwargs.get('thresh_scale',1.25)
         thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
     
-    print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
+    if verbose:
+        print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
+        
     outdict['thresh'] = thresh
     
     if not flag_refine_simplices:
@@ -370,19 +383,22 @@ def compute(dimensions, configuration, meshsize,\
         else:    
             simplices = simplices[~coplanar_simplices]
             
-        lap = time.time()
-        print('Simplices are refined at {:.2f}s'.format(lap-since))
+        if verbose:
+            print('Simplices are refined at {:.2f}s'.format(lap-since))
 
         del tri_coords_ray, coplanar_ray
         
     outdict['simplices'] = simplices
-    print('Total of {} simplices in the convex hull'.format(len(simplices)))
-    
+    if verbose:
+        print('Total of {} simplices in the convex hull'.format(len(simplices)))
+        
     # 4. for each simplex in the hull compute number of connected components (parallel)
     num_comps_ray = [label_simplex.remote(grid_ray, simplex, thresh) for simplex in simplices]
     num_comps = ray.get(num_comps_ray) 
     lap = time.time()
-    print('Simplices are labelled at {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Simplices are labelled at {:.2f}s'.format(lap-since))
+        
     outdict['num_comps'] = num_comps
     
     del num_comps_ray
@@ -402,9 +418,11 @@ def compute(dimensions, configuration, meshsize,\
         
         flags = [item[1] for item in inside]
         lap = time.time()
-        print('Labels are lifted at {:.2f}s'.format(lap-since))
         
-        print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
+        if verbose:
+            print('Labels are lifted at {:.2f}s'.format(lap-since))
+
+            print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
 
         phase = np.zeros(lift_grid.shape[1])
         for i,label in zip(inside,num_comps):

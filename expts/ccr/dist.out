@@ -1,1977 +1,350 @@
-10.116.28.7:6379 9027cd1b-4616-4eea-bf31-fa9476cea43f
-Number of Nodes in the Ray cluster: 25
-Total of 1720 phase diagrams
-[2m[36m(pid=10886, ip=10.116.28.13)[0m Computed 1718 on 10.116.28.13
-Processed : 1718
-Processed : 1717
-[2m[36m(pid=10119, ip=10.116.28.30)[0m Computed 1717 on 10.116.28.30
-Processed : 1716
-[2m[36m(pid=10654, ip=10.116.28.10)[0m Computed 1716 on 10.116.28.10
-Processed : 1715
-[2m[36m(pid=10709, ip=10.116.28.29)[0m Computed 1715 on 10.116.28.29
-[2m[36m(pid=11237, ip=10.116.28.9)[0m Computed 1714 on 10.116.28.9
-Processed : 1714
-Processed : 1713
-[2m[36m(pid=10879, ip=10.116.28.13)[0m Computed 1713 on 10.116.28.13
-[2m[36m(pid=22678, ip=10.116.28.25)[0m Computed 1712 on 10.116.28.25
-Processed : 1712
-[2m[36m(pid=7271, ip=10.116.28.31)[0m Computed 1711 on 10.116.28.31
-Processed : 1711
-Processed : 1710
-[2m[36m(pid=21722, ip=10.116.28.28)[0m Computed 1710 on 10.116.28.28
-[2m[36m(pid=15950, ip=10.116.28.8)[0m Computed 1709 on 10.116.28.8
-Processed : 1709
-[2m[36m(pid=10670, ip=10.116.28.10)[0m Computed 1708 on 10.116.28.10
-Processed : 1708
-[2m[36m(pid=11235, ip=10.116.28.9)[0m Computed 1707 on 10.116.28.9
-Processed : 1707
-[2m[36m(pid=18022, ip=10.116.28.24)[0m Computed 1706 on 10.116.28.24
-Processed : 1706
-[2m[36m(pid=2088, ip=10.116.28.33)[0m Computed 1705 on 10.116.28.33
-Processed : 1705
-Processed : 1704
-[2m[36m(pid=10637, ip=10.116.28.19)[0m Computed 1704 on 10.116.28.19
-[2m[36m(pid=21718, ip=10.116.28.28)[0m Computed 1703 on 10.116.28.28
-Processed : 1703
-[2m[36m(pid=4581, ip=10.116.28.32)[0m Computed 1702 on 10.116.28.32
-Processed : 1702
-Processed : 1701
-[2m[36m(pid=22692, ip=10.116.28.25)[0m Computed 1701 on 10.116.28.25
-Processed : 1700
-[2m[36m(pid=12704, ip=10.116.28.20)[0m Computed 1700 on 10.116.28.20
-[2m[36m(pid=10123, ip=10.116.28.30)[0m Computed 1699 on 10.116.28.30
-Processed : 1699
-[2m[36m(pid=11236, ip=10.116.28.9)[0m Computed 1698 on 10.116.28.9
-Processed : 1698
-[2m[36m(pid=10664, ip=10.116.28.10)[0m Computed 1697 on 10.116.28.10
-Processed : 1697
-[2m[36m(pid=10880, ip=10.116.28.13)[0m Computed 1696 on 10.116.28.13
-Processed : 1696
-[2m[36m(pid=2085, ip=10.116.28.33)[0m Computed 1695 on 10.116.28.33
-Processed : 1695
-Processed : 1694
-[2m[36m(pid=4985, ip=10.116.28.14)[0m Computed 1694 on 10.116.28.14
-Processed : 1693
-[2m[36m(pid=770, ip=10.116.28.12)[0m Computed 1693 on 10.116.28.12
-[2m[36m(pid=2087, ip=10.116.28.33)[0m Computed 1692 on 10.116.28.33
-Processed : 1692
-[2m[36m(pid=11233, ip=10.116.28.9)[0m Computed 1691 on 10.116.28.9
-Processed : 1691
-[2m[36m(pid=18020, ip=10.116.28.24)[0m Computed 1690 on 10.116.28.24
-Processed : 1690
-[2m[36m(pid=4989, ip=10.116.28.14)[0m Computed 1689 on 10.116.28.14
-Processed : 1689
-[2m[36m(pid=15536, ip=10.116.28.16)[0m Computed 1688 on 10.116.28.16
-Processed : 1688
-Processed : 1687
-[2m[36m(pid=10108, ip=10.116.28.30)[0m Computed 1687 on 10.116.28.30
-Processed : 1686
-[2m[36m(pid=24290, ip=10.116.28.18)[0m Computed 1686 on 10.116.28.18
-[2m[36m(pid=23131, ip=10.116.28.23)[0m Computed 1685 on 10.116.28.23
-Processed : 1685
-[2m[36m(pid=18101, ip=10.116.28.15)[0m Computed 1684 on 10.116.28.15
-Processed : 1684
-Processed : 1682
-[2m[36m(pid=15952, ip=10.116.28.8)[0m Computed 1682 on 10.116.28.8
-[2m[36m(pid=7259, ip=10.116.28.31)[0m Computed 1680 on 10.116.28.31
-Processed : 1680
-Processed : 1679
-[2m[36m(pid=21348, ip=10.116.28.26)[0m Computed 1679 on 10.116.28.26
-Processed : 1678
-[2m[36m(pid=11225, ip=10.116.28.9)[0m Computed 1678 on 10.116.28.9
-[2m[36m(pid=18004, ip=10.116.28.24)[0m Computed 1677 on 10.116.28.24
-Processed : 1677
-[2m[36m(pid=10877, ip=10.116.28.13)[0m Computed 1676 on 10.116.28.13
-Processed : 1676
-Processed : 1675
-[2m[36m(pid=2091, ip=10.116.28.33)[0m Computed 1675 on 10.116.28.33
-Processed : 1683
-[2m[36m(pid=30723)[0m Computed 1683 on 10.116.28.7
-[2m[36m(pid=10641, ip=10.116.28.19)[0m Computed 1673 on 10.116.28.19
-Processed : 1673
-[2m[36m(pid=3283, ip=10.116.28.17)[0m Computed 1672 on 10.116.28.17
-Processed : 1672
-[2m[36m(pid=10630, ip=10.116.28.19)[0m Computed 1671 on 10.116.28.19
-Processed : 1671
-Processed : 1681
-[2m[36m(pid=30719)[0m Computed 1681 on 10.116.28.7
-[2m[36m(pid=22691, ip=10.116.28.25)[0m Computed 1669 on 10.116.28.25
-Processed : 1669
-[2m[36m(pid=21730, ip=10.116.28.28)[0m Computed 1670 on 10.116.28.28
-Processed : 1670
-Processed : 1668
-[2m[36m(pid=17874, ip=10.116.28.27)[0m Computed 1668 on 10.116.28.27
-[2m[36m(pid=21336, ip=10.116.28.26)[0m Computed 1667 on 10.116.28.26
-Processed : 1667
-[2m[36m(pid=7260, ip=10.116.28.31)[0m Computed 1666 on 10.116.28.31
-Processed : 1666
-[2m[36m(pid=12697, ip=10.116.28.20)[0m Computed 1665 on 10.116.28.20
-Processed : 1665
-[2m[36m(pid=30721)[0m Computed 1674 on 10.116.28.7
-Processed : 1674
-[2m[36m(pid=7258, ip=10.116.28.31)[0m Computed 1663 on 10.116.28.31
-Processed : 1663
-[2m[36m(pid=10876, ip=10.116.28.13)[0m Computed 1664 on 10.116.28.13
-Processed : 1664
-Processed : 1661
-[2m[36m(pid=22689, ip=10.116.28.25)[0m Computed 1661 on 10.116.28.25
-[2m[36m(pid=7264, ip=10.116.28.31)[0m Computed 1660 on 10.116.28.31
-Processed : 1660
-[2m[36m(pid=10874, ip=10.116.28.13)[0m Computed 1662 on 10.116.28.13
-Processed : 1662
-[2m[36m(pid=769, ip=10.116.28.12)[0m Computed 1659 on 10.116.28.12
-Processed : 1659
-Processed : 1658
-[2m[36m(pid=7255, ip=10.116.28.31)[0m Computed 1658 on 10.116.28.31
-[2m[36m(pid=3287, ip=10.116.28.17)[0m Computed 1657 on 10.116.28.17
-Processed : 1657
-[2m[36m(pid=18099, ip=10.116.28.15)[0m Computed 1656 on 10.116.28.15
-Processed : 1656
-[2m[36m(pid=4573, ip=10.116.28.32)[0m Computed 1655 on 10.116.28.32
-Processed : 1655
-[2m[36m(pid=4977, ip=10.116.28.14)[0m Computed 1654 on 10.116.28.14
-Processed : 1654
-Processed : 1653
-[2m[36m(pid=15953, ip=10.116.28.8)[0m Computed 1653 on 10.116.28.8
-[2m[36m(pid=21723, ip=10.116.28.28)[0m Computed 1652 on 10.116.28.28
-Processed : 1652
-Processed : 1650
-[2m[36m(pid=15542, ip=10.116.28.16)[0m Computed 1650 on 10.116.28.16
-Processed : 1649
-[2m[36m(pid=22688, ip=10.116.28.25)[0m Computed 1649 on 10.116.28.25
-[2m[36m(pid=23129, ip=10.116.28.23)[0m Computed 1648 on 10.116.28.23
-Processed : 1648
-[2m[36m(pid=22683, ip=10.116.28.25)[0m Computed 1647 on 10.116.28.25Processed : 1647
+10.116.28.7:6379 608d6c71-d7e2-4f60-a058-c853c1767fc9
+Number of Nodes in the Ray cluster: 16
+0 Y6 PFO
+1 Y6 PM6
+Total of 172 phase diagrams
+[2m[36m(pid=24014, ip=10.116.28.19)[0m Staging 135 on 10.116.28.19
+[2m[36m(pid=24010, ip=10.116.28.19)[0m Staging 131 on 10.116.28.19
+[2m[36m(pid=24015, ip=10.116.28.19)[0m Staging 170 on 10.116.28.19
+[2m[36m(pid=24009, ip=10.116.28.19)[0m Staging 138 on 10.116.28.19
+[2m[36m(pid=24011, ip=10.116.28.19)[0m Staging 167 on 10.116.28.19
+[2m[36m(pid=24018, ip=10.116.28.19)[0m Staging 52 on 10.116.28.19
+[2m[36m(pid=24006, ip=10.116.28.19)[0m Staging 91 on 10.116.28.19
+[2m[36m(pid=24013, ip=10.116.28.19)[0m Staging 22 on 10.116.28.19
+[2m[36m(pid=24008, ip=10.116.28.19)[0m Staging 19 on 10.116.28.19
+[2m[36m(pid=5685, ip=10.116.28.18)[0m Staging 92 on 10.116.28.18
+[2m[36m(pid=5692, ip=10.116.28.18)[0m Staging 32 on 10.116.28.18
+[2m[36m(pid=3715, ip=10.116.28.23)[0m Staging 132 on 10.116.28.23
+[2m[36m(pid=3707, ip=10.116.28.23)[0m Staging 142 on 10.116.28.23
+[2m[36m(pid=3718, ip=10.116.28.23)[0m Staging 96 on 10.116.28.23
+[2m[36m(pid=3719, ip=10.116.28.23)[0m Staging 36 on 10.116.28.23
+[2m[36m(pid=3705, ip=10.116.28.23)[0m Staging 100 on 10.116.28.23
+[2m[36m(pid=3713, ip=10.116.28.23)[0m Staging 79 on 10.116.28.23
+[2m[36m(pid=3708, ip=10.116.28.23)[0m Staging 29 on 10.116.28.23
+[2m[36m(pid=3709, ip=10.116.28.23)[0m Staging 68 on 10.116.28.23
+[2m[36m(pid=3721, ip=10.116.28.23)[0m Staging 13 on 10.116.28.23
+[2m[36m(pid=3720, ip=10.116.28.23)[0m Staging 21 on 10.116.28.23
+[2m[36m(pid=3723, ip=10.116.28.23)[0m Staging 1 on 10.116.28.23
+[2m[36m(pid=29943, ip=10.116.28.10)[0m Staging 139 on 10.116.28.10
+[2m[36m(pid=29946, ip=10.116.28.10)[0m Staging 71 on 10.116.28.10
+[2m[36m(pid=29962, ip=10.116.28.10)[0m Staging 157 on 10.116.28.10
+[2m[36m(pid=29945, ip=10.116.28.10)[0m Staging 69 on 10.116.28.10
+[2m[36m(pid=29956, ip=10.116.28.10)[0m Staging 39 on 10.116.28.10
+[2m[36m(pid=29953, ip=10.116.28.10)[0m Staging 31 on 10.116.28.10
+[2m[36m(pid=29944, ip=10.116.28.10)[0m Staging 11 on 10.116.28.10
+[2m[36m(pid=29959, ip=10.116.28.10)[0m Staging 124 on 10.116.28.10
+[2m[36m(pid=29961, ip=10.116.28.10)[0m Staging 9 on 10.116.28.10
+[2m[36m(pid=29949, ip=10.116.28.10)[0m Staging 145 on 10.116.28.10
+[2m[36m(pid=29952, ip=10.116.28.10)[0m Staging 72 on 10.116.28.10
+[2m[36m(pid=29960, ip=10.116.28.10)[0m Staging 104 on 10.116.28.10
+[2m[36m(pid=29948, ip=10.116.28.10)[0m Staging 94 on 10.116.28.10
+[2m[36m(pid=28239, ip=10.116.28.16)[0m Staging 155 on 10.116.28.16
+[2m[36m(pid=28234, ip=10.116.28.16)[0m Staging 98 on 10.116.28.16
+[2m[36m(pid=28247, ip=10.116.28.16)[0m Staging 70 on 10.116.28.16
+[2m[36m(pid=28235, ip=10.116.28.16)[0m Staging 76 on 10.116.28.16
+[2m[36m(pid=28241, ip=10.116.28.16)[0m Staging 105 on 10.116.28.16
+[2m[36m(pid=28242, ip=10.116.28.16)[0m Staging 66 on 10.116.28.16
+[2m[36m(pid=28249, ip=10.116.28.16)[0m Staging 50 on 10.116.28.16
+[2m[36m(pid=28250, ip=10.116.28.16)[0m Staging 3 on 10.116.28.16
+[2m[36m(pid=28253, ip=10.116.28.16)[0m Staging 45 on 10.116.28.16
+[2m[36m(pid=28251, ip=10.116.28.16)[0m Staging 46 on 10.116.28.16
+[2m[36m(pid=28243, ip=10.116.28.16)[0m Staging 146 on 10.116.28.16
+[2m[36m(pid=28236, ip=10.116.28.16)[0m Staging 35 on 10.116.28.16
+[2m[36m(pid=28252, ip=10.116.28.16)[0m Staging 43 on 10.116.28.16
+[2m[36m(pid=28246, ip=10.116.28.16)[0m Staging 82 on 10.116.28.16
+[2m[36m(pid=9041, ip=10.116.28.11)[0m Staging 128 on 10.116.28.11
+[2m[36m(pid=9042, ip=10.116.28.11)[0m Staging 119 on 10.116.28.11
+[2m[36m(pid=9040, ip=10.116.28.11)[0m Staging 111 on 10.116.28.11
+[2m[36m(pid=9038, ip=10.116.28.11)[0m Staging 108 on 10.116.28.11
+[2m[36m(pid=9039, ip=10.116.28.11)[0m Staging 120 on 10.116.28.11
+[2m[36m(pid=9045, ip=10.116.28.11)[0m Staging 4 on 10.116.28.11
+[2m[36m(pid=31793, ip=10.116.28.24)[0m Staging 125 on 10.116.28.24
+[2m[36m(pid=31800, ip=10.116.28.24)[0m Staging 121 on 10.116.28.24
+[2m[36m(pid=31799, ip=10.116.28.24)[0m Staging 118 on 10.116.28.24
+[2m[36m(pid=31803, ip=10.116.28.24)[0m Staging 149 on 10.116.28.24
+[2m[36m(pid=31791, ip=10.116.28.24)[0m Staging 115 on 10.116.28.24
+[2m[36m(pid=31806, ip=10.116.28.24)[0m Staging 103 on 10.116.28.24
+[2m[36m(pid=31802, ip=10.116.28.24)[0m Staging 95 on 10.116.28.24
+[2m[36m(pid=31808, ip=10.116.28.24)[0m Staging 41 on 10.116.28.24
+[2m[36m(pid=31794, ip=10.116.28.24)[0m Staging 84 on 10.116.28.24
+[2m[36m(pid=31805, ip=10.116.28.24)[0m Staging 90 on 10.116.28.24
+[2m[36m(pid=16323, ip=10.116.28.13)[0m Staging 107 on 10.116.28.13
+[2m[36m(pid=16313, ip=10.116.28.13)[0m Staging 152 on 10.116.28.13
+[2m[36m(pid=16322, ip=10.116.28.13)[0m Staging 129 on 10.116.28.13
+[2m[36m(pid=16312, ip=10.116.28.13)[0m Staging 101 on 10.116.28.13
+[2m[36m(pid=16324, ip=10.116.28.13)[0m Staging 130 on 10.116.28.13
+[2m[36m(pid=16318, ip=10.116.28.13)[0m Staging 86 on 10.116.28.13
+[2m[36m(pid=16326, ip=10.116.28.13)[0m Staging 20 on 10.116.28.13
+[2m[36m(pid=16314, ip=10.116.28.13)[0m Staging 162 on 10.116.28.13
+[2m[36m(pid=16316, ip=10.116.28.13)[0m Staging 10 on 10.116.28.13
+[2m[36m(pid=16317, ip=10.116.28.13)[0m Staging 7 on 10.116.28.13
+[2m[36m(pid=16311, ip=10.116.28.13)[0m Staging 159 on 10.116.28.13
+[2m[36m(pid=24051, ip=10.116.28.20)[0m Staging 156 on 10.116.28.20
+[2m[36m(pid=24053, ip=10.116.28.20)[0m Staging 168 on 10.116.28.20
+[2m[36m(pid=24065, ip=10.116.28.20)[0m Staging 109 on 10.116.28.20
+[2m[36m(pid=24064, ip=10.116.28.20)[0m Staging 99 on 10.116.28.20
+[2m[36m(pid=24063, ip=10.116.28.20)[0m Staging 163 on 10.116.28.20
+[2m[36m(pid=24050, ip=10.116.28.20)[0m Staging 123 on 10.116.28.20
+[2m[36m(pid=24059, ip=10.116.28.20)[0m Staging 63 on 10.116.28.20
+[2m[36m(pid=24069, ip=10.116.28.20)[0m Staging 151 on 10.116.28.20
+[2m[36m(pid=24066, ip=10.116.28.20)[0m Staging 49 on 10.116.28.20
+[2m[36m(pid=24062, ip=10.116.28.20)[0m Staging 42 on 10.116.28.20
+[2m[36m(pid=8269, ip=10.116.28.12)[0m Staging 154 on 10.116.28.12
+[2m[36m(pid=8268, ip=10.116.28.12)[0m Staging 127 on 10.116.28.12
+[2m[36m(pid=8261, ip=10.116.28.12)[0m Staging 54 on 10.116.28.12
+[2m[36m(pid=8265, ip=10.116.28.12)[0m Staging 27 on 10.116.28.12
+[2m[36m(pid=8257, ip=10.116.28.12)[0m Staging 26 on 10.116.28.12
+[2m[36m(pid=8267, ip=10.116.28.12)[0m Staging 147 on 10.116.28.12
+[2m[36m(pid=8266, ip=10.116.28.12)[0m Staging 65 on 10.116.28.12
+[2m[36m(pid=10001, ip=10.116.28.14)[0m Staging 122 on 10.116.28.14
+[2m[36m(pid=10007, ip=10.116.28.14)[0m Staging 141 on 10.116.28.14
+[2m[36m(pid=10016, ip=10.116.28.14)[0m Staging 143 on 10.116.28.14
+[2m[36m(pid=10005, ip=10.116.28.14)[0m Staging 150 on 10.116.28.14
+[2m[36m(pid=10006, ip=10.116.28.14)[0m Staging 144 on 10.116.28.14
+[2m[36m(pid=10003, ip=10.116.28.14)[0m Staging 89 on 10.116.28.14
+[2m[36m(pid=10017, ip=10.116.28.14)[0m Staging 62 on 10.116.28.14
+[2m[36m(pid=10015, ip=10.116.28.14)[0m Staging 55 on 10.116.28.14
+[2m[36m(pid=10018, ip=10.116.28.14)[0m Staging 113 on 10.116.28.14
+[2m[36m(pid=10036, ip=10.116.28.14)[0m Staging 34 on 10.116.28.14
+[2m[36m(pid=10011, ip=10.116.28.14)[0m Staging 16 on 10.116.28.14
+[2m[36m(pid=10012, ip=10.116.28.14)[0m Staging 15 on 10.116.28.14
+[2m[36m(pid=10013, ip=10.116.28.14)[0m Staging 33 on 10.116.28.14
+[2m[36m(pid=30655)[0m Staging 51 on 10.116.28.7
+[2m[36m(pid=30656)[0m Staging 73 on 10.116.28.7
+[2m[36m(pid=30654)[0m Staging 64 on 10.116.28.7
+[2m[36m(pid=30670)[0m Staging 87 on 10.116.28.7
+[2m[36m(pid=30664)[0m Staging 88 on 10.116.28.7
+[2m[36m(pid=30651)[0m Staging 67 on 10.116.28.7
+[2m[36m(pid=30657)[0m Staging 59 on 10.116.28.7
+[2m[36m(pid=30669)[0m Staging 0 on 10.116.28.7
+[2m[36m(pid=30668)[0m Staging 44 on 10.116.28.7
+[2m[36m(pid=30666)[0m Staging 74 on 10.116.28.7
+[2m[36m(pid=30661)[0m Staging 38 on 10.116.28.7
+[2m[36m(pid=30660)[0m Staging 78 on 10.116.28.7
+[2m[36m(pid=30653)[0m Staging 57 on 10.116.28.7
+[2m[36m(pid=30662)[0m Staging 60 on 10.116.28.7
+[2m[36m(pid=30659)[0m Staging 24 on 10.116.28.7
+[2m[36m(pid=30667)[0m Staging 83 on 10.116.28.7
+[2m[36m(pid=30658)[0m Staging 56 on 10.116.28.7
+[2m[36m(pid=30663)[0m Staging 25 on 10.116.28.7
+[2m[36m(pid=30652)[0m Staging 80 on 10.116.28.7
+[2m[36m(pid=30665)[0m Staging 5 on 10.116.28.7
+[2m[36m(pid=30701, ip=10.116.28.8)[0m Staging 169 on 10.116.28.8
+[2m[36m(pid=30695, ip=10.116.28.8)[0m Staging 117 on 10.116.28.8
+[2m[36m(pid=30699, ip=10.116.28.8)[0m Staging 148 on 10.116.28.8
+[2m[36m(pid=30705, ip=10.116.28.8)[0m Staging 102 on 10.116.28.8
+[2m[36m(pid=30704, ip=10.116.28.8)[0m Staging 136 on 10.116.28.8
+[2m[36m(pid=30706, ip=10.116.28.8)[0m Staging 47 on 10.116.28.8
+[2m[36m(pid=30710, ip=10.116.28.8)[0m Staging 37 on 10.116.28.8
+[2m[36m(pid=30707, ip=10.116.28.8)[0m Staging 75 on 10.116.28.8
+[2m[36m(pid=30708, ip=10.116.28.8)[0m Staging 126 on 10.116.28.8
+[2m[36m(pid=30692, ip=10.116.28.8)[0m Staging 58 on 10.116.28.8
+[2m[36m(pid=30702, ip=10.116.28.8)[0m Staging 6 on 10.116.28.8
+[2m[36m(pid=30709, ip=10.116.28.8)[0m Staging 158 on 10.116.28.8
+[2m[36m(pid=2087, ip=10.116.28.15)[0m Staging 114 on 10.116.28.15
+[2m[36m(pid=2089, ip=10.116.28.15)[0m Staging 153 on 10.116.28.15
+[2m[36m(pid=2084, ip=10.116.28.15)[0m Staging 97 on 10.116.28.15
+[2m[36m(pid=2094, ip=10.116.28.15)[0m Staging 30 on 10.116.28.15
+[2m[36m(pid=2088, ip=10.116.28.15)[0m Staging 165 on 10.116.28.15
+[2m[36m(pid=2095, ip=10.116.28.15)[0m Staging 28 on 10.116.28.15
+[2m[36m(pid=2096, ip=10.116.28.15)[0m Staging 93 on 10.116.28.15
+[2m[36m(pid=2098, ip=10.116.28.15)[0m Staging 17 on 10.116.28.15
+[2m[36m(pid=2100, ip=10.116.28.15)[0m Staging 14 on 10.116.28.15
+[2m[36m(pid=2092, ip=10.116.28.15)[0m Staging 161 on 10.116.28.15
+[2m[36m(pid=2097, ip=10.116.28.15)[0m Staging 12 on 10.116.28.15
+[2m[36m(pid=29643, ip=10.116.28.9)[0m Staging 137 on 10.116.28.9
+[2m[36m(pid=29637, ip=10.116.28.9)[0m Staging 166 on 10.116.28.9
+[2m[36m(pid=29640, ip=10.116.28.9)[0m Staging 112 on 10.116.28.9
+[2m[36m(pid=29638, ip=10.116.28.9)[0m Staging 81 on 10.116.28.9
+[2m[36m(pid=29647, ip=10.116.28.9)[0m Staging 134 on 10.116.28.9
+[2m[36m(pid=29641, ip=10.116.28.9)[0m Staging 48 on 10.116.28.9
+[2m[36m(pid=29645, ip=10.116.28.9)[0m Staging 40 on 10.116.28.9
+[2m[36m(pid=29646, ip=10.116.28.9)[0m Staging 8 on 10.116.28.9
+[2m[36m(pid=29648, ip=10.116.28.9)[0m Staging 18 on 10.116.28.9
+[2m[36m(pid=18732, ip=10.116.28.17)[0m Staging 85 on 10.116.28.17
+[2m[36m(pid=18730, ip=10.116.28.17)[0m Staging 116 on 10.116.28.17
+[2m[36m(pid=18729, ip=10.116.28.17)[0m Staging 106 on 10.116.28.17
+[2m[36m(pid=18725, ip=10.116.28.17)[0m Staging 110 on 10.116.28.17
+[2m[36m(pid=18735, ip=10.116.28.17)[0m Staging 140 on 10.116.28.17
+[2m[36m(pid=18733, ip=10.116.28.17)[0m Staging 61 on 10.116.28.17
+[2m[36m(pid=18731, ip=10.116.28.17)[0m Staging 133 on 10.116.28.17
+[2m[36m(pid=18741, ip=10.116.28.17)[0m Staging 160 on 10.116.28.17
+[2m[36m(pid=18734, ip=10.116.28.17)[0m Staging 53 on 10.116.28.17
+[2m[36m(pid=18739, ip=10.116.28.17)[0m Staging 2 on 10.116.28.17
+[2m[36m(pid=18740, ip=10.116.28.17)[0m Staging 23 on 10.116.28.17
+[2m[36m(pid=18742, ip=10.116.28.17)[0m Staging 77 on 10.116.28.17
+[2m[36m(pid=18743, ip=10.116.28.17)[0m Staging 164 on 10.116.28.17
+Processed : 170 took 00 Hr:00 min:54.76 sec 
+Processed : 169 took 00 Hr:02 min:22.37 sec 
+Processed : 168 took 00 Hr:02 min:58.35 sec 
+Processed : 167 took 00 Hr:03 min:15.43 sec 
+Processed : 166 took 00 Hr:04 min:25.12 sec 
+Processed : 165 took 00 Hr:06 min:27.30 sec 
+Processed : 163 took 00 Hr:07 min:22.28 sec 
+Processed : 164 took 00 Hr:08 min:55.46 sec 
+Processed : 162 took 00 Hr:09 min:41.05 sec 
+Processed : 161 took 00 Hr:10 min:20.71 sec 
+Processed : 154 took 00 Hr:11 min:38.39 sec 
+Processed : 159 took 00 Hr:12 min:34.20 sec 
+Processed : 156 took 00 Hr:12 min:49.82 sec 
+Processed : 160 took 00 Hr:13 min:35.66 sec 
+Processed : 158 took 00 Hr:14 min:07.74 sec 
+Processed : 92 took 00 Hr:15 min:22.52 sec 
+Processed : 147 took 00 Hr:15 min:43.69 sec 
+Processed : 151 took 00 Hr:16 min:16.81 sec 
+Processed : 153 took 00 Hr:17 min:20.31 sec 
+Processed : 157 took 00 Hr:17 min:45.41 sec 
+Processed : 152 took 00 Hr:18 min:41.70 sec 
+Processed : 32 took 00 Hr:21 min:11.64 sec 
+Processed : 155 took 00 Hr:21 min:52.33 sec 
+Processed : 149 took 00 Hr:22 min:07.65 sec 
+Processed : 138 took 00 Hr:23 min:00.74 sec 
+Processed : 148 took 00 Hr:23 min:47.64 sec 
+Processed : 135 took 00 Hr:24 min:46.90 sec 
+Processed : 128 took 00 Hr:25 min:08.35 sec 
+Processed : 127 took 00 Hr:25 min:29.49 sec 
+Processed : 150 took 00 Hr:26 min:39.24 sec 
+Processed : 131 took 00 Hr:26 min:44.14 sec 
+Processed : 137 took 00 Hr:26 min:58.29 sec 
+Processed : 120 took 00 Hr:29 min:01.42 sec 
+Processed : 134 took 00 Hr:29 min:01.48 sec 
+Processed : 119 took 00 Hr:29 min:24.72 sec 
+Processed : 145 took 00 Hr:31 min:43.09 sec 
+Processed : 111 took 00 Hr:31 min:45.49 sec 
+Processed : 142 took 00 Hr:32 min:04.99 sec 
+Processed : 108 took 00 Hr:32 min:20.04 sec 
+Processed : 123 took 00 Hr:32 min:40.35 sec 
+Processed : 146 took 00 Hr:33 min:19.80 sec 
+Processed : 144 took 00 Hr:33 min:40.09 sec 
+Processed : 136 took 00 Hr:34 min:14.13 sec 
+Processed : 143 took 00 Hr:34 min:44.35 sec 
+Processed : 140 took 00 Hr:35 min:03.20 sec 
+Processed : 130 took 00 Hr:35 min:45.96 sec 
+Processed : 129 took 00 Hr:36 min:26.80 sec 
+Processed : 141 took 00 Hr:36 min:40.96 sec 
+Processed : 139 took 00 Hr:38 min:08.10 sec 
+Processed : 109 took 00 Hr:39 min:31.55 sec 
+Processed : 112 took 00 Hr:41 min:52.02 sec 
+Processed : 133 took 00 Hr:41 min:56.78 sec 
+Processed : 126 took 00 Hr:41 min:59.12 sec 
+Processed : 132 took 00 Hr:42 min:07.12 sec 
+Processed : 91 took 00 Hr:42 min:21.21 sec 
+Processed : 4 took 00 Hr:42 min:23.70 sec 
+Processed : 125 took 00 Hr:43 min:53.67 sec 
+Processed : 99 took 00 Hr:44 min:20.97 sec 
+Processed : 121 took 00 Hr:45 min:54.79 sec 
+Processed : 114 took 00 Hr:47 min:42.08 sec 
+Processed : 117 took 00 Hr:48 min:05.56 sec 
+Processed : 118 took 00 Hr:49 min:06.71 sec 
+Processed : 107 took 00 Hr:49 min:16.41 sec 
+Processed : 65 took 00 Hr:49 min:44.12 sec 
+Processed : 115 took 00 Hr:50 min:53.63 sec 
+Processed : 101 took 00 Hr:52 min:11.17 sec 
+Processed : 124 took 00 Hr:52 min:44.61 sec 
+Processed : 54 took 00 Hr:52 min:54.97 sec 
+Processed : 122 took 00 Hr:53 min:21.94 sec 
+Processed : 52 took 00 Hr:53 min:45.11 sec 
+Processed : 63 took 00 Hr:55 min:09.35 sec 
+Processed : 116 took 00 Hr:56 min:46.69 sec 
+Processed : 102 took 00 Hr:56 min:51.19 sec 
+Processed : 103 took 00 Hr:56 min:56.91 sec 
+Processed : 81 took 00 Hr:56 min:56.39 sec 
+Processed : 49 took 00 Hr:57 min:13.76 sec 
+Processed : 42 took 00 Hr:57 min:54.54 sec 
+Processed : 86 took 00 Hr:58 min:01.14 sec 
+Processed : 27 took 00 Hr:58 min:09.90 sec 
+Processed : 26 took 00 Hr:58 min:15.73 sec 
+Processed : 95 took 00 Hr:59 min:13.67 sec 
+Processed : 97 took 00 Hr:59 min:15.29 sec 
+Processed : 22 took 00 Hr:59 min:35.26 sec 
+Processed : 19 took 00 Hr:59 min:52.73 sec 
+Processed : 113 took 01 Hr:00 min:22.55 sec 
+Processed : 90 took 01 Hr:00 min:42.04 sec 
+Processed : 110 took 01 Hr:01 min:26.90 sec 
+Processed : 93 took 01 Hr:01 min:35.58 sec 
+Processed : 84 took 01 Hr:01 min:52.43 sec 
+Processed : 106 took 01 Hr:04 min:09.78 sec 
+Processed : 41 took 01 Hr:06 min:26.64 sec 
+Processed : 48 took 01 Hr:09 min:46.59 sec 
+Processed : 75 took 01 Hr:09 min:56.23 sec 
+Processed : 104 took 01 Hr:10 min:14.96 sec 
+Processed : 100 took 01 Hr:11 min:10.56 sec 
+Processed : 40 took 01 Hr:12 min:06.72 sec 
+Processed : 96 took 01 Hr:14 min:20.54 sec 
+Processed : 18 took 01 Hr:16 min:23.29 sec 
+Processed : 85 took 01 Hr:16 min:29.02 sec 
+Processed : 58 took 01 Hr:16 min:33.59 sec 
+Processed : 89 took 01 Hr:16 min:45.95 sec 
+Processed : 20 took 01 Hr:17 min:13.84 sec 
+Processed : 8 took 01 Hr:17 min:21.42 sec 
+Processed : 94 took 01 Hr:17 min:58.88 sec 
+Processed : 10 took 01 Hr:19 min:10.92 sec 
+Processed : 7 took 01 Hr:19 min:28.11 sec 
+Processed : 47 took 01 Hr:19 min:45.57 sec 
+Processed : 77 took 01 Hr:20 min:23.30 sec 
+Processed : 105 took 01 Hr:21 min:17.93 sec 
+Processed : 37 took 01 Hr:21 min:40.78 sec 
+Processed : 6 took 01 Hr:24 min:40.09 sec 
+Processed : 79 took 01 Hr:26 min:19.59 sec 
+Processed : 61 took 01 Hr:26 min:37.34 sec 
+Processed : 53 took 01 Hr:28 min:57.15 sec 
+Processed : 98 took 01 Hr:31 min:15.56 sec 
+Processed : 30 took 01 Hr:32 min:17.49 sec 
+Processed : 62 took 01 Hr:32 min:34.58 sec 
+Processed : 68 took 01 Hr:32 min:59.11 sec 
+Processed : 72 took 01 Hr:33 min:01.43 sec 
+Processed : 28 took 01 Hr:33 min:04.22 sec 
+Processed : 71 took 01 Hr:33 min:32.36 sec 
+Processed : 69 took 01 Hr:34 min:30.83 sec 
+Processed : 23 took 01 Hr:34 min:47.49 sec 
+Processed : 55 took 01 Hr:35 min:59.51 sec 
+Processed : 17 took 01 Hr:36 min:17.16 sec 
+Processed : 2 took 01 Hr:36 min:49.65 sec 
+Processed : 14 took 01 Hr:36 min:52.76 sec 
+Processed : 12 took 01 Hr:37 min:04.10 sec 
+Processed : 34 took 01 Hr:44 min:11.51 sec 
+Processed : 33 took 01 Hr:44 min:26.55 sec 
+Processed : 82 took 01 Hr:44 min:45.42 sec 
+Processed : 39 took 01 Hr:46 min:09.46 sec 
+Processed : 16 took 01 Hr:47 min:46.22 sec 
+Processed : 15 took 01 Hr:47 min:52.04 sec 
+Processed : 31 took 01 Hr:48 min:29.66 sec 
+Processed : 36 took 01 Hr:49 min:06.61 sec 
+Processed : 76 took 01 Hr:49 min:59.23 sec 
+Processed : 29 took 01 Hr:51 min:56.09 sec 
+Processed : 11 took 01 Hr:52 min:22.58 sec 
+Processed : 9 took 01 Hr:52 min:34.15 sec 
+Processed : 21 took 01 Hr:54 min:21.17 sec 
+Processed : 70 took 01 Hr:54 min:37.05 sec 
+Processed : 13 took 01 Hr:55 min:57.79 sec 
+Processed : 1 took 01 Hr:57 min:09.41 sec 
+Processed : 66 took 01 Hr:57 min:21.57 sec 
+Processed : 50 took 02 Hr:06 min:43.65 sec 
+Processed : 46 took 02 Hr:08 min:39.96 sec 
+Processed : 45 took 02 Hr:09 min:03.50 sec 
+Processed : 43 took 02 Hr:09 min:38.70 sec 
+Processed : 35 took 02 Hr:11 min:12.14 sec 
+Processed : 3 took 02 Hr:14 min:18.53 sec 
+Processed : 88 took 03 Hr:05 min:32.65 sec 
+Processed : 87 took 03 Hr:08 min:44.79 sec 
+Processed : 83 took 03 Hr:16 min:47.44 sec 
+Processed : 80 took 03 Hr:22 min:29.27 sec 
+Processed : 78 took 03 Hr:26 min:05.33 sec 
+Processed : 74 took 03 Hr:31 min:56.15 sec 
+Processed : 73 took 03 Hr:34 min:16.88 sec 
+Processed : 67 took 03 Hr:42 min:56.61 sec 
+Processed : 64 took 03 Hr:46 min:56.43 sec 
+Processed : 60 took 03 Hr:51 min:47.92 sec 
+Processed : 59 took 03 Hr:52 min:55.79 sec 
+Processed : 57 took 03 Hr:54 min:55.73 sec 
+Processed : 56 took 03 Hr:55 min:50.06 sec 
+Processed : 51 took 03 Hr:59 min:43.18 sec 
+Processed : 44 took 04 Hr:04 min:05.14 sec 
+Processed : 38 took 04 Hr:07 min:42.96 sec 
+Processed : 25 took 04 Hr:13 min:31.53 sec 
+Processed : 24 took 04 Hr:13 min:51.79 sec 
+Processed : 5 took 04 Hr:18 min:06.88 sec 
+Processed : 0 took 04 Hr:18 min:37.35 sec 
 
-[2m[36m(pid=10107, ip=10.116.28.30)[0m Computed 1646 on 10.116.28.30
-Processed : 1646
-[2m[36m(pid=23132, ip=10.116.28.23)[0m Computed 1644 on 10.116.28.23
-Processed : 1644
-Processed : 1643
-[2m[36m(pid=4578, ip=10.116.28.32)[0m Computed 1643 on 10.116.28.32
-Processed : 1641
-[2m[36m(pid=10706, ip=10.116.28.29)[0m Computed 1641 on 10.116.28.29
-[2m[36m(pid=21724, ip=10.116.28.28)[0m Computed 1642 on 10.116.28.28
-Processed : 1642
-[2m[36m(pid=24282, ip=10.116.28.18)[0m Computed 1640 on 10.116.28.18
-Processed : 1640
-[2m[36m(pid=15529, ip=10.116.28.16)[0m Computed 1639 on 10.116.28.16
-Processed : 1639
-[2m[36m(pid=10699, ip=10.116.28.29)[0m Computed 1637 on 10.116.28.29
-Processed : 1637
-[2m[36m(pid=24291, ip=10.116.28.18)[0m Computed 1636 on 10.116.28.18
-Processed : 1636
-[2m[36m(pid=11234, ip=10.116.28.9)[0m Computed 1635 on 10.116.28.9
-Processed : 1635
-Processed : 1638
-[2m[36m(pid=10666, ip=10.116.28.10)[0m Computed 1638 on 10.116.28.10
-[2m[36m(pid=30715)[0m Computed 1651 on 10.116.28.7
-Processed : 1651
-Processed : 1634
-[2m[36m(pid=4577, ip=10.116.28.32)[0m Computed 1634 on 10.116.28.32
-[2m[36m(pid=18015, ip=10.116.28.24)[0m Computed 1633 on 10.116.28.24
-Processed : 1633
-Processed : 1632
-[2m[36m(pid=11230, ip=10.116.28.9)[0m Computed 1632 on 10.116.28.9
-Processed : 1631
-[2m[36m(pid=4570, ip=10.116.28.32)[0m Computed 1631 on 10.116.28.32
-[2m[36m(pid=7254, ip=10.116.28.31)[0m Computed 1630 on 10.116.28.31
-Processed : 1630
-[2m[36m(pid=10640, ip=10.116.28.19)[0m Computed 1629 on 10.116.28.19
-Processed : 1629
-[2m[36m(pid=18098, ip=10.116.28.15)[0m Computed 1628 on 10.116.28.15
-Processed : 1628
-[2m[36m(pid=12699, ip=10.116.28.20)[0m Computed 1627 on 10.116.28.20
-Processed : 1627
-[2m[36m(pid=2089, ip=10.116.28.33)[0m Computed 1626 on 10.116.28.33
-Processed : 1626
-[2m[36m(pid=11218, ip=10.116.28.9)[0m Computed 1625 on 10.116.28.9
-Processed : 1625
-Processed : 1645
-[2m[36m(pid=30724)[0m Computed 1645 on 10.116.28.7
-Processed : 1623
-[2m[36m(pid=18007, ip=10.116.28.24)[0m Computed 1623 on 10.116.28.24
-[2m[36m(pid=10696, ip=10.116.28.29)[0m Computed 1622 on 10.116.28.29
-Processed : 1622
-Processed : 1621
-[2m[36m(pid=10668, ip=10.116.28.10)[0m Computed 1621 on 10.116.28.10
-[2m[36m(pid=15539, ip=10.116.28.16)[0m Computed 1620 on 10.116.28.16
-Processed : 1620
-Processed : 1619
-[2m[36m(pid=2090, ip=10.116.28.33)[0m Computed 1619 on 10.116.28.33
-[2m[36m(pid=15937, ip=10.116.28.8)[0m Computed 1617 on 10.116.28.8
-Processed : 1617
-[2m[36m(pid=22690, ip=10.116.28.25)[0m Computed 1615 on 10.116.28.25
-Processed : 1615
-[2m[36m(pid=4576, ip=10.116.28.32)[0m Computed 1614 on 10.116.28.32
-Processed : 1614
-[2m[36m(pid=21735, ip=10.116.28.28)[0m Computed 1616 on 10.116.28.28
-Processed : 1616
-[2m[36m(pid=15943, ip=10.116.28.8)[0m Computed 1613 on 10.116.28.8
-Processed : 1613
-[2m[36m(pid=24287, ip=10.116.28.18)[0m Computed 1612 on 10.116.28.18
-Processed : 1612
-[2m[36m(pid=21347, ip=10.116.28.26)[0m Computed 1610 on 10.116.28.26
-Processed : 1610
-[2m[36m(pid=2086, ip=10.116.28.33)[0m Computed 1609 on 10.116.28.33
-Processed : 1609
-[2m[36m(pid=11220, ip=10.116.28.9)[0m Computed 1608 on 10.116.28.9
-Processed : 1608
-[2m[36m(pid=15538, ip=10.116.28.16)[0m Computed 1611 on 10.116.28.16
-Processed : 1611
-[2m[36m(pid=23122, ip=10.116.28.23)[0m Computed 1606 on 10.116.28.23
-Processed : 1606
-Processed : 1605
-[2m[36m(pid=4563, ip=10.116.28.32)[0m Computed 1605 on 10.116.28.32
-[2m[36m(pid=18102, ip=10.116.28.15)[0m Computed 1604 on 10.116.28.15
-Processed : 1604
-[2m[36m(pid=2082, ip=10.116.28.33)[0m Computed 1603 on 10.116.28.33
-Processed : 1603
-[2m[36m(pid=10872, ip=10.116.28.13)[0m Computed 1607 on 10.116.28.13
-Processed : 1607
-Processed : 1602
-[2m[36m(pid=10875, ip=10.116.28.13)[0m Computed 1602 on 10.116.28.13
-[2m[36m(pid=15947, ip=10.116.28.8)[0m Computed 1601 on 10.116.28.8
-Processed : 1601
-[2m[36m(pid=22674, ip=10.116.28.25)[0m Computed 1600 on 10.116.28.25
-Processed : 1600
-Processed : 1599
-[2m[36m(pid=24272, ip=10.116.28.18)[0m Computed 1599 on 10.116.28.18
-[2m[36m(pid=22685, ip=10.116.28.25)[0m Computed 1598 on 10.116.28.25
-Processed : 1598
-Processed : 1597
-[2m[36m(pid=15945, ip=10.116.28.8)[0m Computed 1597 on 10.116.28.8
-Processed : 1596
-[2m[36m(pid=15524, ip=10.116.28.16)[0m Computed 1596 on 10.116.28.16
-[2m[36m(pid=30728)[0m Computed 1624 on 10.116.28.7
-Processed : 1624
-[2m[36m(pid=18014, ip=10.116.28.24)[0m Computed 1595 on 10.116.28.24
-Processed : 1595
-[2m[36m(pid=22679, ip=10.116.28.25)[0m Computed 1594 on 10.116.28.25
-Processed : 1594
-[2m[36m(pid=30717)[0m Computed 1618 on 10.116.28.7
-Processed : 1618
-[2m[36m(pid=21344, ip=10.116.28.26)[0m Computed 1593 on 10.116.28.26
-Processed : 1593
-Processed : 1591
-[2m[36m(pid=7252, ip=10.116.28.31)[0m Computed 1591 on 10.116.28.31
-Processed : 1590
-[2m[36m(pid=15532, ip=10.116.28.16)[0m Computed 1590 on 10.116.28.16
-[2m[36m(pid=3279, ip=10.116.28.17)[0m Computed 1589 on 10.116.28.17
-Processed : 1589
-Processed : 1588
-[2m[36m(pid=30368, ip=10.116.28.11)[0m Computed 1588 on 10.116.28.11
-Processed : 1587
-[2m[36m(pid=7256, ip=10.116.28.31)[0m Computed 1587 on 10.116.28.31
-[2m[36m(pid=10652, ip=10.116.28.10)[0m Computed 1586 on 10.116.28.10
-Processed : 1586
-Processed : 1585
-[2m[36m(pid=7263, ip=10.116.28.31)[0m Computed 1585 on 10.116.28.31
-[2m[36m(pid=24288, ip=10.116.28.18)[0m Computed 1583 on 10.116.28.18
-Processed : 1583
-[2m[36m(pid=10115, ip=10.116.28.30)[0m Computed 1582 on 10.116.28.30
-Processed : 1582
-[2m[36m(pid=15523, ip=10.116.28.16)[0m Computed 1581 on 10.116.28.16
-Processed : 1581
-[2m[36m(pid=4571, ip=10.116.28.32)[0m Computed 1580 on 10.116.28.32
-Processed : 1580
-Processed : 1584
-[2m[36m(pid=15541, ip=10.116.28.16)[0m Computed 1584 on 10.116.28.16
-Processed : 1576
-[2m[36m(pid=17880, ip=10.116.28.27)[0m Computed 1576 on 10.116.28.27
-[2m[36m(pid=10878, ip=10.116.28.13)[0m Computed 1574 on 10.116.28.13
-Processed : 1574
-[2m[36m(pid=21733, ip=10.116.28.28)[0m Computed 1577 on 10.116.28.28
-Processed : 1577
-[2m[36m(pid=11223, ip=10.116.28.9)[0m Computed 1578 on 10.116.28.9
-Processed : 1578
-Processed : 1573
-[2m[36m(pid=757, ip=10.116.28.12)[0m Computed 1573 on 10.116.28.12
-[2m[36m(pid=10870, ip=10.116.28.13)[0m Computed 1572 on 10.116.28.13
-Processed : 1572
-[2m[36m(pid=4562, ip=10.116.28.32)[0m Computed 1571 on 10.116.28.32
-Processed : 1571
-[2m[36m(pid=10644, ip=10.116.28.19)[0m Computed 1570 on 10.116.28.19
-Processed : 1570
-[2m[36m(pid=10653, ip=10.116.28.10)[0m Computed 1575 on 10.116.28.10
-Processed : 1575
-[2m[36m(pid=22673, ip=10.116.28.25)[0m Computed 1569 on 10.116.28.25
-Processed : 1569
-Processed : 1568
-[2m[36m(pid=4568, ip=10.116.28.32)[0m Computed 1568 on 10.116.28.32
-[2m[36m(pid=17872, ip=10.116.28.27)[0m Computed 1567 on 10.116.28.27
-Processed : 1567
-Processed : 1566
-[2m[36m(pid=17869, ip=10.116.28.27)[0m Computed 1566 on 10.116.28.27
-[2m[36m(pid=10867, ip=10.116.28.13)[0m Computed 1565 on 10.116.28.13
-Processed : 1565
-[2m[36m(pid=22681, ip=10.116.28.25)[0m Computed 1563 on 10.116.28.25
-Processed : 1563
-[2m[36m(pid=2074, ip=10.116.28.33)[0m Computed 1562 on 10.116.28.33
-Processed : 1562
-[2m[36m(pid=30727)[0m Computed 1592 on 10.116.28.7
-Processed : 1592
-[2m[36m(pid=21726, ip=10.116.28.28)[0m Computed 1564 on 10.116.28.28
-Processed : 1564
-Processed : 1560
-[2m[36m(pid=15535, ip=10.116.28.16)[0m Computed 1560 on 10.116.28.16
-Processed : 1559
-[2m[36m(pid=24286, ip=10.116.28.18)[0m Computed 1559 on 10.116.28.18
-[2m[36m(pid=3289, ip=10.116.28.17)[0m Computed 1557 on 10.116.28.17
-Processed : 1557
-[2m[36m(pid=10118, ip=10.116.28.30)[0m Computed 1556 on 10.116.28.30
-Processed : 1556
-[2m[36m(pid=17877, ip=10.116.28.27)[0m Computed 1555 on 10.116.28.27
-Processed : 1555
-[2m[36m(pid=21728, ip=10.116.28.28)[0m Computed 1558 on 10.116.28.28
-Processed : 1558
-Processed : 1554
-[2m[36m(pid=22682, ip=10.116.28.25)[0m Computed 1554 on 10.116.28.25
-Processed : 1553
-[2m[36m(pid=21346, ip=10.116.28.26)[0m Computed 1553 on 10.116.28.26
-[2m[36m(pid=10116, ip=10.116.28.30)[0m Computed 1552 on 10.116.28.30
-Processed : 1552
-[2m[36m(pid=17863, ip=10.116.28.27)[0m Computed 1551 on 10.116.28.27
-Processed : 1551
-Processed : 1550
-[2m[36m(pid=17871, ip=10.116.28.27)[0m Computed 1550 on 10.116.28.27
-Processed : 1549
-[2m[36m(pid=10703, ip=10.116.28.29)[0m Computed 1549 on 10.116.28.29
-[2m[36m(pid=3285, ip=10.116.28.17)[0m Computed 1548 on 10.116.28.17
-Processed : 1548
-Processed : 1547
-[2m[36m(pid=10120, ip=10.116.28.30)[0m Computed 1547 on 10.116.28.30
-Processed : 1546
-[2m[36m(pid=4569, ip=10.116.28.32)[0m Computed 1546 on 10.116.28.32
-Processed : 1544
-[2m[36m(pid=21329, ip=10.116.28.26)[0m Computed 1544 on 10.116.28.26
-[2m[36m(pid=18095, ip=10.116.28.15)[0m Computed 1543 on 10.116.28.15
-Processed : 1543
-[2m[36m(pid=10705, ip=10.116.28.29)[0m Computed 1542 on 10.116.28.29
-Processed : 1542
-[2m[36m(pid=760, ip=10.116.28.12)[0m Computed 1541 on 10.116.28.12
-Processed : 1541
-[2m[36m(pid=766, ip=10.116.28.12)[0m Computed 1540 on 10.116.28.12
-Processed : 1540
-[2m[36m(pid=15534, ip=10.116.28.16)[0m Computed 1539 on 10.116.28.16
-Processed : 1539
-Processed : 1545
-[2m[36m(pid=10869, ip=10.116.28.13)[0m Computed 1545 on 10.116.28.13
-Processed : 1538
-[2m[36m(pid=11228, ip=10.116.28.9)[0m Computed 1538 on 10.116.28.9
-[2m[36m(pid=18012, ip=10.116.28.24)[0m Computed 1537 on 10.116.28.24
-Processed : 1537
-[2m[36m(pid=30708)[0m Computed 1579 on 10.116.28.7
-Processed : 1579
-[2m[36m(pid=2069, ip=10.116.28.33)[0m Computed 1536 on 10.116.28.33
-Processed : 1536
-[2m[36m(pid=4986, ip=10.116.28.14)[0m Computed 1535 on 10.116.28.14
-Processed : 1535
-[2m[36m(pid=10626, ip=10.116.28.19)[0m Computed 1534 on 10.116.28.19
-Processed : 1534
-[2m[36m(pid=24273, ip=10.116.28.18)[0m Computed 1532 on 10.116.28.18
-Processed : 1532
-[2m[36m(pid=30369, ip=10.116.28.11)[0m Computed 1531 on 10.116.28.11
-Processed : 1531
-[2m[36m(pid=7265, ip=10.116.28.31)[0m Computed 1530 on 10.116.28.31
-Processed : 1530
-Processed : 1533
-[2m[36m(pid=21729, ip=10.116.28.28)[0m Computed 1533 on 10.116.28.28
-[2m[36m(pid=10663, ip=10.116.28.10)[0m Computed 1529 on 10.116.28.10
-Processed : 1529
-[2m[36m(pid=10700, ip=10.116.28.29)[0m Computed 1525 on 10.116.28.29
-Processed : 1525
-[2m[36m(pid=4567, ip=10.116.28.32)[0m Computed 1524 on 10.116.28.32
-Processed : 1524
-[2m[36m(pid=22680, ip=10.116.28.25)[0m Computed 1523 on 10.116.28.25
-Processed : 1523
-[2m[36m(pid=10868, ip=10.116.28.13)[0m Computed 1522 on 10.116.28.13
-Processed : 1522
-[2m[36m(pid=17867, ip=10.116.28.27)[0m Computed 1521 on 10.116.28.27
-Processed : 1521
-[2m[36m(pid=10873, ip=10.116.28.13)[0m Computed 1528 on 10.116.28.13
-Processed : 1528
-[2m[36m(pid=10656, ip=10.116.28.10)[0m Computed 1520 on 10.116.28.10
-Processed : 1520
-Processed : 1519
-[2m[36m(pid=7253, ip=10.116.28.31)[0m Computed 1519 on 10.116.28.31
-[2m[36m(pid=10881, ip=10.116.28.13)[0m Computed 1518 on 10.116.28.13
-Processed : 1518
-Processed : 1517
-[2m[36m(pid=24289, ip=10.116.28.18)[0m Computed 1517 on 10.116.28.18
-[2m[36m(pid=22675, ip=10.116.28.25)[0m Computed 1516 on 10.116.28.25
-Processed : 1516
-[2m[36m(pid=10665, ip=10.116.28.10)[0m Computed 1515 on 10.116.28.10
-Processed : 1515
-[2m[36m(pid=10657, ip=10.116.28.10)[0m Computed 1514 on 10.116.28.10
-Processed : 1514
-[2m[36m(pid=30709)[0m Computed 1561 on 10.116.28.7
-Processed : 1561
-[2m[36m(pid=10113, ip=10.116.28.30)[0m Computed 1511 on 10.116.28.30
-Processed : 1511
-[2m[36m(pid=10671, ip=10.116.28.10)[0m Computed 1510 on 10.116.28.10
-Processed : 1510
-Processed : 1508
-[2m[36m(pid=10631, ip=10.116.28.19)[0m Computed 1508 on 10.116.28.19
-[2m[36m(pid=4580, ip=10.116.28.32)[0m Computed 1507 on 10.116.28.32
-Processed : 1507
-[2m[36m(pid=4579, ip=10.116.28.32)[0m Computed 1506 on 10.116.28.32
-Processed : 1506
-Processed : 1513
-[2m[36m(pid=11222, ip=10.116.28.9)[0m Computed 1513 on 10.116.28.9
-[2m[36m(pid=21331, ip=10.116.28.26)[0m Computed 1505 on 10.116.28.26
-Processed : 1505
-[2m[36m(pid=18090, ip=10.116.28.15)[0m Computed 1502 on 10.116.28.15
-Processed : 1502
-[2m[36m(pid=12705, ip=10.116.28.20)[0m Computed 1501 on 10.116.28.20
-Processed : 1501
-Processed : 1500
-[2m[36m(pid=10712, ip=10.116.28.29)[0m Computed 1500 on 10.116.28.29
-Processed : 1499
-[2m[36m(pid=4981, ip=10.116.28.14)[0m Computed 1499 on 10.116.28.14
-[2m[36m(pid=12698, ip=10.116.28.20)[0m Computed 1498 on 10.116.28.20
-Processed : 1498
-Processed : 1497
-[2m[36m(pid=21337, ip=10.116.28.26)[0m Computed 1497 on 10.116.28.26
-Processed : 1504
-[2m[36m(pid=30362, ip=10.116.28.11)[0m Computed 1504 on 10.116.28.11
-[2m[36m(pid=30358, ip=10.116.28.11)[0m Computed 1495 on 10.116.28.11
-Processed : 1495
-[2m[36m(pid=11219, ip=10.116.28.9)[0m Computed 1494 on 10.116.28.9
-Processed : 1494
-[2m[36m(pid=10105, ip=10.116.28.30)[0m Computed 1492 on 10.116.28.30
-Processed : 1492
-Processed : 1490
-[2m[36m(pid=21335, ip=10.116.28.26)[0m Computed 1490 on 10.116.28.26
-[2m[36m(pid=15940, ip=10.116.28.8)[0m Computed 1488 on 10.116.28.8
-Processed : 1488
-[2m[36m(pid=10667, ip=10.116.28.10)[0m Computed 1496 on 10.116.28.10
-Processed : 1496
-[2m[36m(pid=24274, ip=10.116.28.18)[0m Computed 1487 on 10.116.28.18
-Processed : 1487
-[2m[36m(pid=21732, ip=10.116.28.28)[0m Computed 1491 on 10.116.28.28
-Processed : 1491
-[2m[36m(pid=18023, ip=10.116.28.24)[0m Computed 1486 on 10.116.28.24
-Processed : 1486
-Processed : 1484
-[2m[36m(pid=2092, ip=10.116.28.33)[0m Computed 1484 on 10.116.28.33
-[2m[36m(pid=4574, ip=10.116.28.32)[0m Computed 1483 on 10.116.28.32
-Processed : 1483
-[2m[36m(pid=30710)[0m Computed 1527 on 10.116.28.7
-Processed : 1527
-[2m[36m(pid=21716, ip=10.116.28.28)[0m Computed 1485 on 10.116.28.28
-Processed : 1485
-[2m[36m(pid=10882, ip=10.116.28.13)[0m Computed 1480 on 10.116.28.13
-Processed : 1480
-[2m[36m(pid=10658, ip=10.116.28.10)[0m Computed 1489 on 10.116.28.10
-Processed : 1489
-[2m[36m(pid=17875, ip=10.116.28.27)[0m Computed 1479 on 10.116.28.27
-Processed : 1479
-Processed : 1526
-[2m[36m(pid=30720)[0m Computed 1526 on 10.116.28.7
-[2m[36m(pid=10713, ip=10.116.28.29)[0m Computed 1478 on 10.116.28.29
-Processed : 1478
-[2m[36m(pid=23120, ip=10.116.28.23)[0m Computed 1477 on 10.116.28.23
-Processed : 1477
-[2m[36m(pid=30353, ip=10.116.28.11)[0m Computed 1476 on 10.116.28.11
-Processed : 1476
-[2m[36m(pid=17864, ip=10.116.28.27)[0m Computed 1475 on 10.116.28.27
-Processed : 1475
-[2m[36m(pid=17873, ip=10.116.28.27)[0m Computed 1474 on 10.116.28.27
-Processed : 1474
-[2m[36m(pid=30370, ip=10.116.28.11)[0m Computed 1481 on 10.116.28.11
-Processed : 1481
-Processed : 1472
-[2m[36m(pid=4974, ip=10.116.28.14)[0m Computed 1472 on 10.116.28.14
-Processed : 1471
-[2m[36m(pid=4572, ip=10.116.28.32)[0m Computed 1471 on 10.116.28.32
-[2m[36m(pid=21341, ip=10.116.28.26)[0m Computed 1469 on 10.116.28.26
-Processed : 1469
-[2m[36m(pid=30360, ip=10.116.28.11)[0m Computed 1468 on 10.116.28.11
-Processed : 1468
-[2m[36m(pid=7257, ip=10.116.28.31)[0m Computed 1466 on 10.116.28.31
-Processed : 1466
-Processed : 1465
-[2m[36m(pid=10661, ip=10.116.28.10)[0m Computed 1465 on 10.116.28.10
-[2m[36m(pid=18013, ip=10.116.28.24)[0m Computed 1464 on 10.116.28.24
-Processed : 1464
-[2m[36m(pid=24285, ip=10.116.28.18)[0m Computed 1473 on 10.116.28.18
-Processed : 1473
-Processed : 1462
-[2m[36m(pid=22676, ip=10.116.28.25)[0m Computed 1462 on 10.116.28.25
-[2m[36m(pid=12689, ip=10.116.28.20)[0m Computed 1461 on 10.116.28.20
-Processed : 1461
-Processed : 1470
-[2m[36m(pid=10662, ip=10.116.28.10)[0m Computed 1470 on 10.116.28.10
-[2m[36m(pid=22686, ip=10.116.28.25)[0m Computed 1459 on 10.116.28.25
-Processed : 1459
-[2m[36m(pid=10871, ip=10.116.28.13)[0m Computed 1467 on 10.116.28.13
-Processed : 1467
-[2m[36m(pid=2084, ip=10.116.28.33)[0m Computed 1457 on 10.116.28.33
-Processed : 1457
-Processed : 1456
-[2m[36m(pid=15525, ip=10.116.28.16)[0m Computed 1456 on 10.116.28.16
-[2m[36m(pid=21720, ip=10.116.28.28)[0m Computed 1460 on 10.116.28.28
-Processed : 1460
-[2m[36m(pid=4980, ip=10.116.28.14)[0m Computed 1455 on 10.116.28.14
-Processed : 1455
-Processed : 1454
-[2m[36m(pid=3280, ip=10.116.28.17)[0m Computed 1454 on 10.116.28.17
-Processed : 1463
-[2m[36m(pid=30354, ip=10.116.28.11)[0m Computed 1463 on 10.116.28.11
-[2m[36m(pid=15528, ip=10.116.28.16)[0m Computed 1453 on 10.116.28.16
-Processed : 1453
-[2m[36m(pid=10714, ip=10.116.28.29)[0m Computed 1452 on 10.116.28.29
-Processed : 1452
-[2m[36m(pid=30726)[0m Computed 1503 on 10.116.28.7
-Processed : 1503
-[2m[36m(pid=4972, ip=10.116.28.14)[0m Computed 1451 on 10.116.28.14
-Processed : 1451
-[2m[36m(pid=10121, ip=10.116.28.30)[0m Computed 1450 on 10.116.28.30
-Processed : 1450
-[2m[36m(pid=30713)[0m Computed 1512 on 10.116.28.7
-Processed : 1512
-[2m[36m(pid=10883, ip=10.116.28.13)[0m Computed 1458 on 10.116.28.13
-Processed : 1458
-[2m[36m(pid=23114, ip=10.116.28.23)[0m Computed 1448 on 10.116.28.23
-Processed : 1448
-[2m[36m(pid=4982, ip=10.116.28.14)[0m Computed 1447 on 10.116.28.14
-Processed : 1447
-[2m[36m(pid=30712)[0m Computed 1509 on 10.116.28.7
-Processed : 1509
-[2m[36m(pid=18097, ip=10.116.28.15)[0m Computed 1446 on 10.116.28.15
-Processed : 1446
-[2m[36m(pid=21339, ip=10.116.28.26)[0m Computed 1445 on 10.116.28.26
-Processed : 1445
-[2m[36m(pid=4990, ip=10.116.28.14)[0m Computed 1444 on 10.116.28.14
-Processed : 1444
-Processed : 1443
-[2m[36m(pid=10639, ip=10.116.28.19)[0m Computed 1443 on 10.116.28.19
-[2m[36m(pid=10884, ip=10.116.28.13)[0m Computed 1442 on 10.116.28.13
-Processed : 1442
-Processed : 1441
-[2m[36m(pid=17882, ip=10.116.28.27)[0m Computed 1441 on 10.116.28.27
-Processed : 1440
-[2m[36m(pid=18011, ip=10.116.28.24)[0m Computed 1440 on 10.116.28.24
-Processed : 1439
-[2m[36m(pid=2070, ip=10.116.28.33)[0m Computed 1439 on 10.116.28.33
-Processed : 1449
-[2m[36m(pid=30351, ip=10.116.28.11)[0m Computed 1449 on 10.116.28.11
-Processed : 1493
-[2m[36m(pid=30711)[0m Computed 1493 on 10.116.28.7
-[2m[36m(pid=10114, ip=10.116.28.30)[0m Computed 1437 on 10.116.28.30
-Processed : 1437
-[2m[36m(pid=18093, ip=10.116.28.15)[0m Computed 1438 on 10.116.28.15
-Processed : 1438
-Processed : 1433
-[2m[36m(pid=30363, ip=10.116.28.11)[0m Computed 1433 on 10.116.28.11
-[2m[36m(pid=22677, ip=10.116.28.25)[0m Computed 1432 on 10.116.28.25
-Processed : 1432
-[2m[36m(pid=18096, ip=10.116.28.15)[0m Computed 1427 on 10.116.28.15
-Processed : 1427
-[2m[36m(pid=10885, ip=10.116.28.13)[0m Computed 1436 on 10.116.28.13
-Processed : 1436
-[2m[36m(pid=10711, ip=10.116.28.29)[0m Computed 1425 on 10.116.28.29
-Processed : 1425
-Processed : 1482
-[2m[36m(pid=30714)[0m Computed 1482 on 10.116.28.7
-[2m[36m(pid=3282, ip=10.116.28.17)[0m Computed 1435 on 10.116.28.17
-Processed : 1435
-[2m[36m(pid=3273, ip=10.116.28.17)[0m Computed 1434 on 10.116.28.17
-Processed : 1434
-[2m[36m(pid=15537, ip=10.116.28.16)[0m Computed 1423 on 10.116.28.16
-Processed : 1423
-[2m[36m(pid=12696, ip=10.116.28.20)[0m Computed 1422 on 10.116.28.20
-Processed : 1422
-[2m[36m(pid=21719, ip=10.116.28.28)[0m Computed 1426 on 10.116.28.28
-Processed : 1426
-[2m[36m(pid=7262, ip=10.116.28.31)[0m Computed 1419 on 10.116.28.31
-Processed : 1419
-[2m[36m(pid=4978, ip=10.116.28.14)[0m Computed 1420 on 10.116.28.14
-Processed : 1420
-[2m[36m(pid=18088, ip=10.116.28.15)[0m Computed 1430 on 10.116.28.15
-Processed : 1430
-Processed : 1429
-[2m[36m(pid=11226, ip=10.116.28.9)[0m Computed 1429 on 10.116.28.9
-[2m[36m(pid=15527, ip=10.116.28.16)[0m Computed 1418 on 10.116.28.16
-Processed : 1418
-[2m[36m(pid=23130, ip=10.116.28.23)[0m Computed 1417 on 10.116.28.23
-Processed : 1417
-[2m[36m(pid=3275, ip=10.116.28.17)[0m Computed 1415 on 10.116.28.17
-Processed : 1415
-[2m[36m(pid=30359, ip=10.116.28.11)[0m Computed 1414 on 10.116.28.11
-Processed : 1414
-[2m[36m(pid=24277, ip=10.116.28.18)[0m Computed 1413 on 10.116.28.18
-Processed : 1413
-[2m[36m(pid=18018, ip=10.116.28.24)[0m Computed 1412 on 10.116.28.24
-Processed : 1412
-[2m[36m(pid=764, ip=10.116.28.12)[0m Computed 1411 on 10.116.28.12
-Processed : 1411
-Processed : 1410
-[2m[36m(pid=10643, ip=10.116.28.19)[0m Computed 1410 on 10.116.28.19
-[2m[36m(pid=11221, ip=10.116.28.9)[0m Computed 1421 on 10.116.28.9
-Processed : 1421
-[2m[36m(pid=10106, ip=10.116.28.30)[0m Computed 1408 on 10.116.28.30
-Processed : 1408
-Processed : 1409
-[2m[36m(pid=30361, ip=10.116.28.11)[0m Computed 1409 on 10.116.28.11
-[2m[36m(pid=3276, ip=10.116.28.17)[0m Computed 1407 on 10.116.28.17
-Processed : 1407
-[2m[36m(pid=4975, ip=10.116.28.14)[0m Computed 1406 on 10.116.28.14
-Processed : 1406
-[2m[36m(pid=11229, ip=10.116.28.9)[0m Computed 1416 on 10.116.28.9
-Processed : 1416
-[2m[36m(pid=17868, ip=10.116.28.27)[0m Computed 1401 on 10.116.28.27
-Processed : 1401
-[2m[36m(pid=4566, ip=10.116.28.32)[0m Computed 1399 on 10.116.28.32
-Processed : 1399
-[2m[36m(pid=12693, ip=10.116.28.20)[0m Computed 1398 on 10.116.28.20
-Processed : 1398
-[2m[36m(pid=23118, ip=10.116.28.23)[0m Computed 1397 on 10.116.28.23
-Processed : 1397
-[2m[36m(pid=10111, ip=10.116.28.30)[0m Computed 1395 on 10.116.28.30
-Processed : 1395
-Processed : 1405
-[2m[36m(pid=15526, ip=10.116.28.16)[0m Computed 1405 on 10.116.28.16
-[2m[36m(pid=22684, ip=10.116.28.25)[0m Computed 1393 on 10.116.28.25
-Processed : 1393
-[2m[36m(pid=24275, ip=10.116.28.18)[0m Computed 1404 on 10.116.28.18
-Processed : 1404
-[2m[36m(pid=10710, ip=10.116.28.29)[0m Computed 1391 on 10.116.28.29
-Processed : 1391
-[2m[36m(pid=15951, ip=10.116.28.8)[0m Computed 1402 on 10.116.28.8
-Processed : 1402
-[2m[36m(pid=11231, ip=10.116.28.9)[0m Computed 1403 on 10.116.28.9
-Processed : 1403
-Processed : 1400
-[2m[36m(pid=24279, ip=10.116.28.18)[0m Computed 1400 on 10.116.28.18
-[2m[36m(pid=2079, ip=10.116.28.33)[0m Computed 1387 on 10.116.28.33
-Processed : 1387
-[2m[36m(pid=15942, ip=10.116.28.8)[0m Computed 1385 on 10.116.28.8
-Processed : 1385
-[2m[36m(pid=21734, ip=10.116.28.28)[0m Computed 1392 on 10.116.28.28
-Processed : 1392
-Processed : 1383
-[2m[36m(pid=10109, ip=10.116.28.30)[0m Computed 1383 on 10.116.28.30
-[2m[36m(pid=15533, ip=10.116.28.16)[0m Computed 1396 on 10.116.28.16
-Processed : 1396
-[2m[36m(pid=21334, ip=10.116.28.26)[0m Computed 1382 on 10.116.28.26
-Processed : 1382
-[2m[36m(pid=3281, ip=10.116.28.17)[0m Computed 1394 on 10.116.28.17
-Processed : 1394
-[2m[36m(pid=18024, ip=10.116.28.24)[0m Computed 1381 on 10.116.28.24
-Processed : 1381
-[2m[36m(pid=17881, ip=10.116.28.27)[0m Computed 1379 on 10.116.28.27
-Processed : 1379
-[2m[36m(pid=10695, ip=10.116.28.29)[0m Computed 1378 on 10.116.28.29
-Processed : 1378
-[2m[36m(pid=10104, ip=10.116.28.30)[0m Computed 1377 on 10.116.28.30
-Processed : 1377
-[2m[36m(pid=15531, ip=10.116.28.16)[0m Computed 1390 on 10.116.28.16
-Processed : 1390
-[2m[36m(pid=21717, ip=10.116.28.28)[0m Computed 1384 on 10.116.28.28
-Processed : 1384
-[2m[36m(pid=23115, ip=10.116.28.23)[0m Computed 1389 on 10.116.28.23
-Processed : 1389
-[2m[36m(pid=24280, ip=10.116.28.18)[0m Computed 1388 on 10.116.28.18
-Processed : 1388
-Processed : 1386
-[2m[36m(pid=18100, ip=10.116.28.15)[0m Computed 1386 on 10.116.28.15
-[2m[36m(pid=21725, ip=10.116.28.28)[0m Computed 1380 on 10.116.28.28
-Processed : 1380
-[2m[36m(pid=24278, ip=10.116.28.18)[0m Computed 1372 on 10.116.28.18
-Processed : 1372
-[2m[36m(pid=22687, ip=10.116.28.25)[0m Computed 1371 on 10.116.28.25
-Processed : 1371
-Processed : 1370
-[2m[36m(pid=3277, ip=10.116.28.17)[0m Computed 1370 on 10.116.28.17
-[2m[36m(pid=17870, ip=10.116.28.27)[0m Computed 1369 on 10.116.28.27
-Processed : 1369
-[2m[36m(pid=21727, ip=10.116.28.28)[0m Computed 1376 on 10.116.28.28
-Processed : 1376
-[2m[36m(pid=21332, ip=10.116.28.26)[0m Computed 1368 on 10.116.28.26
-Processed : 1368
-Processed : 1366
-[2m[36m(pid=7267, ip=10.116.28.31)[0m Computed 1366 on 10.116.28.31
-[2m[36m(pid=21731, ip=10.116.28.28)[0m Computed 1374 on 10.116.28.28
-Processed : 1374
-[2m[36m(pid=18089, ip=10.116.28.15)[0m Computed 1367 on 10.116.28.15
-Processed : 1367
-[2m[36m(pid=10627, ip=10.116.28.19)[0m Computed 1365 on 10.116.28.19
-Processed : 1365
-[2m[36m(pid=7268, ip=10.116.28.31)[0m Computed 1362 on 10.116.28.31
-Processed : 1362
-Processed : 1361
-[2m[36m(pid=10110, ip=10.116.28.30)[0m Computed 1361 on 10.116.28.30
-Processed : 1375
-[2m[36m(pid=30356, ip=10.116.28.11)[0m Computed 1375 on 10.116.28.11
-Processed : 1360
-[2m[36m(pid=3290, ip=10.116.28.17)[0m Computed 1360 on 10.116.28.17
-Processed : 1373
-[2m[36m(pid=24283, ip=10.116.28.18)[0m Computed 1373 on 10.116.28.18
-[2m[36m(pid=18087, ip=10.116.28.15)[0m Computed 1359 on 10.116.28.15
-Processed : 1359
-[2m[36m(pid=12700, ip=10.116.28.20)[0m Computed 1358 on 10.116.28.20
-Processed : 1358
-[2m[36m(pid=4565, ip=10.116.28.32)[0m Computed 1357 on 10.116.28.32
-Processed : 1357
-Processed : 1428
-[2m[36m(pid=30718)[0m Computed 1428 on 10.116.28.7
-[2m[36m(pid=12691, ip=10.116.28.20)[0m Computed 1356 on 10.116.28.20
-Processed : 1356
-[2m[36m(pid=4575, ip=10.116.28.32)[0m Computed 1355 on 10.116.28.32
-Processed : 1355
-[2m[36m(pid=30716)[0m Computed 1424 on 10.116.28.7
-Processed : 1424
-[2m[36m(pid=7266, ip=10.116.28.31)[0m Computed 1351 on 10.116.28.31
-Processed : 1351
-Processed : 1364
-[2m[36m(pid=11232, ip=10.116.28.9)[0m Computed 1364 on 10.116.28.9
-Processed : 1350
-[2m[36m(pid=12702, ip=10.116.28.20)[0m Computed 1350 on 10.116.28.20
-[2m[36m(pid=24281, ip=10.116.28.18)[0m Computed 1363 on 10.116.28.18
-Processed : 1363
-[2m[36m(pid=23126, ip=10.116.28.23)[0m Computed 1348 on 10.116.28.23
-Processed : 1348
-[2m[36m(pid=15530, ip=10.116.28.16)[0m Computed 1347 on 10.116.28.16
-Processed : 1347
-[2m[36m(pid=23117, ip=10.116.28.23)[0m Computed 1346 on 10.116.28.23
-Processed : 1346
-[2m[36m(pid=10698, ip=10.116.28.29)[0m Computed 1345 on 10.116.28.29
-Processed : 1345
-Processed : 1344
-[2m[36m(pid=11227, ip=10.116.28.9)[0m Computed 1344 on 10.116.28.9
-[2m[36m(pid=17878, ip=10.116.28.27)[0m Computed 1343 on 10.116.28.27
-Processed : 1343
-[2m[36m(pid=30722)[0m Computed 1431 on 10.116.28.7
-Processed : 1431
-Processed : 1354
-[2m[36m(pid=21343, ip=10.116.28.26)[0m Computed 1354 on 10.116.28.26
-[2m[36m(pid=10638, ip=10.116.28.19)[0m Computed 1340 on 10.116.28.19
-Processed : 1340
-[2m[36m(pid=7270, ip=10.116.28.31)[0m Computed 1339 on 10.116.28.31
-Processed : 1339
-Processed : 1353
-[2m[36m(pid=23116, ip=10.116.28.23)[0m Computed 1353 on 10.116.28.23
-[2m[36m(pid=4564, ip=10.116.28.32)[0m Computed 1338 on 10.116.28.32
-Processed : 1338
-Processed : 1352
-[2m[36m(pid=10659, ip=10.116.28.10)[0m Computed 1352 on 10.116.28.10
-Processed : 1336
-[2m[36m(pid=10634, ip=10.116.28.19)[0m Computed 1336 on 10.116.28.19
-[2m[36m(pid=2071, ip=10.116.28.33)[0m Computed 1335 on 10.116.28.33
-Processed : 1335
-Processed : 1349
-[2m[36m(pid=11224, ip=10.116.28.9)[0m Computed 1349 on 10.116.28.9
-[2m[36m(pid=10122, ip=10.116.28.30)[0m Computed 1333 on 10.116.28.30
-Processed : 1333
-[2m[36m(pid=21721, ip=10.116.28.28)[0m Computed 1341 on 10.116.28.28
-Processed : 1341
-[2m[36m(pid=17866, ip=10.116.28.27)[0m Computed 1331 on 10.116.28.27
-Processed : 1331
-[2m[36m(pid=7269, ip=10.116.28.31)[0m Computed 1328 on 10.116.28.31
-Processed : 1328
-[2m[36m(pid=3288, ip=10.116.28.17)[0m Computed 1329 on 10.116.28.17
-Processed : 1329
-[2m[36m(pid=30352, ip=10.116.28.11)[0m Computed 1342 on 10.116.28.11
-Processed : 1342
-[2m[36m(pid=24276, ip=10.116.28.18)[0m Computed 1326 on 10.116.28.18
-Processed : 1326
-Processed : 1325
-[2m[36m(pid=23127, ip=10.116.28.23)[0m Computed 1325 on 10.116.28.23
-[2m[36m(pid=10112, ip=10.116.28.30)[0m Computed 1323 on 10.116.28.30
-Processed : 1323
-Processed : 1337
-[2m[36m(pid=21338, ip=10.116.28.26)[0m Computed 1337 on 10.116.28.26
-[2m[36m(pid=17865, ip=10.116.28.27)[0m Computed 1321 on 10.116.28.27
-Processed : 1321
-[2m[36m(pid=10707, ip=10.116.28.29)[0m Computed 1320 on 10.116.28.29
-Processed : 1320
-Processed : 1334
-[2m[36m(pid=30367, ip=10.116.28.11)[0m Computed 1334 on 10.116.28.11
-[2m[36m(pid=759, ip=10.116.28.12)[0m Computed 1319 on 10.116.28.12
-Processed : 1319
-[2m[36m(pid=21340, ip=10.116.28.26)[0m Computed 1317 on 10.116.28.26
-Processed : 1317
-Processed : 1332
-[2m[36m(pid=18092, ip=10.116.28.15)[0m Computed 1332 on 10.116.28.15
-[2m[36m(pid=21345, ip=10.116.28.26)[0m Computed 1316 on 10.116.28.26
-Processed : 1316
-[2m[36m(pid=17879, ip=10.116.28.27)[0m Computed 1315 on 10.116.28.27
-Processed : 1315
-[2m[36m(pid=10669, ip=10.116.28.10)[0m Computed 1330 on 10.116.28.10
-Processed : 1330
-[2m[36m(pid=12695, ip=10.116.28.20)[0m Computed 1314 on 10.116.28.20
-Processed : 1314
-[2m[36m(pid=18009, ip=10.116.28.24)[0m Computed 1313 on 10.116.28.24
-Processed : 1313
-Processed : 1327
-[2m[36m(pid=4976, ip=10.116.28.14)[0m Computed 1327 on 10.116.28.14
-[2m[36m(pid=3272, ip=10.116.28.17)[0m Computed 1312 on 10.116.28.17
-Processed : 1312
-[2m[36m(pid=10117, ip=10.116.28.30)[0m Computed 1311 on 10.116.28.30
-Processed : 1311
-[2m[36m(pid=12690, ip=10.116.28.20)[0m Computed 1324 on 10.116.28.20
-Processed : 1324
-[2m[36m(pid=10625, ip=10.116.28.19)[0m Computed 1309 on 10.116.28.19
-Processed : 1309
-[2m[36m(pid=10655, ip=10.116.28.10)[0m Computed 1310 on 10.116.28.10
-Processed : 1310
-[2m[36m(pid=3278, ip=10.116.28.17)[0m Computed 1308 on 10.116.28.17
-Processed : 1308
-[2m[36m(pid=23124, ip=10.116.28.23)[0m Computed 1307 on 10.116.28.23
-Processed : 1307
-Processed : 1322
-[2m[36m(pid=30365, ip=10.116.28.11)[0m Computed 1322 on 10.116.28.11
-[2m[36m(pid=10660, ip=10.116.28.10)[0m Computed 1306 on 10.116.28.10
-Processed : 1306
-[2m[36m(pid=3274, ip=10.116.28.17)[0m Computed 1304 on 10.116.28.17
-Processed : 1304
-[2m[36m(pid=2080, ip=10.116.28.33)[0m Computed 1302 on 10.116.28.33
-Processed : 1302
-[2m[36m(pid=30355, ip=10.116.28.11)[0m Computed 1318 on 10.116.28.11
-Processed : 1318
-[2m[36m(pid=21342, ip=10.116.28.26)[0m Computed 1300 on 10.116.28.26
-Processed : 1300
-[2m[36m(pid=753, ip=10.116.28.12)[0m Computed 1301 on 10.116.28.12
-Processed : 1301
-[2m[36m(pid=12703, ip=10.116.28.20)[0m Computed 1299 on 10.116.28.20
-Processed : 1299
-[2m[36m(pid=21333, ip=10.116.28.26)[0m Computed 1298 on 10.116.28.26
-Processed : 1298
-[2m[36m(pid=12694, ip=10.116.28.20)[0m Computed 1297 on 10.116.28.20
-Processed : 1297
-[2m[36m(pid=10704, ip=10.116.28.29)[0m Computed 1296 on 10.116.28.29
-Processed : 1296
-[2m[36m(pid=23121, ip=10.116.28.23)[0m Computed 1295 on 10.116.28.23
-Processed : 1295
-[2m[36m(pid=750, ip=10.116.28.12)[0m Computed 1294 on 10.116.28.12
-Processed : 1294
-[2m[36m(pid=24284, ip=10.116.28.18)[0m Computed 1293 on 10.116.28.18
-Processed : 1293
-[2m[36m(pid=7261, ip=10.116.28.31)[0m Computed 1291 on 10.116.28.31
-Processed : 1291
-[2m[36m(pid=12707, ip=10.116.28.20)[0m Computed 1292 on 10.116.28.20
-Processed : 1292
-[2m[36m(pid=18016, ip=10.116.28.24)[0m Computed 1290 on 10.116.28.24
-Processed : 1290
-[2m[36m(pid=17876, ip=10.116.28.27)[0m Computed 1289 on 10.116.28.27
-Processed : 1289
-[2m[36m(pid=755, ip=10.116.28.12)[0m Computed 1305 on 10.116.28.12
-Processed : 1305
-[2m[36m(pid=18010, ip=10.116.28.24)[0m Computed 1288 on 10.116.28.24
-Processed : 1288
-[2m[36m(pid=15939, ip=10.116.28.8)[0m Computed 1287 on 10.116.28.8
-Processed : 1287
-[2m[36m(pid=2083, ip=10.116.28.33)[0m Computed 1286 on 10.116.28.33
-Processed : 1286
-[2m[36m(pid=18083, ip=10.116.28.15)[0m Computed 1303 on 10.116.28.15
-Processed : 1303
-[2m[36m(pid=18084, ip=10.116.28.15)[0m Computed 1285 on 10.116.28.15
-Processed : 1285
-[2m[36m(pid=30357, ip=10.116.28.11)[0m Computed 1284 on 10.116.28.11
-Processed : 1284
-[2m[36m(pid=18006, ip=10.116.28.24)[0m Computed 1283 on 10.116.28.24
-Processed : 1283
-[2m[36m(pid=10697, ip=10.116.28.29)[0m Computed 1282 on 10.116.28.29
-Processed : 1282
-[2m[36m(pid=4987, ip=10.116.28.14)[0m Computed 1281 on 10.116.28.14
-Processed : 1281
-[2m[36m(pid=4983, ip=10.116.28.14)[0m Computed 1280 on 10.116.28.14
-Processed : 1280
-[2m[36m(pid=18094, ip=10.116.28.15)[0m Computed 1279 on 10.116.28.15
-Processed : 1279
-[2m[36m(pid=4979, ip=10.116.28.14)[0m Computed 1278 on 10.116.28.14
-Processed : 1278
-[2m[36m(pid=18085, ip=10.116.28.15)[0m Computed 1277 on 10.116.28.15
-Processed : 1277
-[2m[36m(pid=12706, ip=10.116.28.20)[0m Computed 1276 on 10.116.28.20
-Processed : 1276
-[2m[36m(pid=18019, ip=10.116.28.24)[0m Computed 1275 on 10.116.28.24
-Processed : 1275
-[2m[36m(pid=18005, ip=10.116.28.24)[0m Computed 1274 on 10.116.28.24
-Processed : 1274
-[2m[36m(pid=2072, ip=10.116.28.33)[0m Computed 1272 on 10.116.28.33
-Processed : 1272
-[2m[36m(pid=3284, ip=10.116.28.17)[0m Computed 1273 on 10.116.28.17
-Processed : 1273
-[2m[36m(pid=30364, ip=10.116.28.11)[0m Computed 1270 on 10.116.28.11
-Processed : 1270
-[2m[36m(pid=3291, ip=10.116.28.17)[0m Computed 1269 on 10.116.28.17
-Processed : 1269
-[2m[36m(pid=768, ip=10.116.28.12)[0m Computed 1268 on 10.116.28.12
-Processed : 1268
-[2m[36m(pid=2068, ip=10.116.28.33)[0m Computed 1265 on 10.116.28.33
-Processed : 1265
-[2m[36m(pid=18086, ip=10.116.28.15)[0m Computed 1266 on 10.116.28.15
-Processed : 1266
-Processed : 1264
-[2m[36m(pid=752, ip=10.116.28.12)[0m Computed 1264 on 10.116.28.12
-[2m[36m(pid=23128, ip=10.116.28.23)[0m Computed 1262 on 10.116.28.23
-Processed : 1262
-[2m[36m(pid=18021, ip=10.116.28.24)[0m Computed 1261 on 10.116.28.24
-Processed : 1261
-[2m[36m(pid=4973, ip=10.116.28.14)[0m Computed 1260 on 10.116.28.14
-Processed : 1260
-[2m[36m(pid=762, ip=10.116.28.12)[0m Computed 1258 on 10.116.28.12
-Processed : 1258
-Processed : 1256
-[2m[36m(pid=23119, ip=10.116.28.23)[0m Computed 1256 on 10.116.28.23
-Processed : 1255
-[2m[36m(pid=2081, ip=10.116.28.33)[0m Computed 1255 on 10.116.28.33
-[2m[36m(pid=18008, ip=10.116.28.24)[0m Computed 1254 on 10.116.28.24
-Processed : 1254
-[2m[36m(pid=4971, ip=10.116.28.14)[0m Computed 1271 on 10.116.28.14
-Processed : 1271
-[2m[36m(pid=23125, ip=10.116.28.23)[0m Computed 1252 on 10.116.28.23
-Processed : 1252
-[2m[36m(pid=30366, ip=10.116.28.11)[0m Computed 1251 on 10.116.28.11
-Processed : 1251
-[2m[36m(pid=23133, ip=10.116.28.23)[0m Computed 1250 on 10.116.28.23
-Processed : 1250
-Processed : 1267
-[2m[36m(pid=763, ip=10.116.28.12)[0m Computed 1267 on 10.116.28.12
-Processed : 1249
-[2m[36m(pid=767, ip=10.116.28.12)[0m Computed 1249 on 10.116.28.12
-Processed : 1247
-[2m[36m(pid=10628, ip=10.116.28.19)[0m Computed 1247 on 10.116.28.19
-[2m[36m(pid=12709, ip=10.116.28.20)[0m Computed 1245 on 10.116.28.20
-Processed : 1245
-Processed : 1263
-[2m[36m(pid=18091, ip=10.116.28.15)[0m Computed 1263 on 10.116.28.15
-[2m[36m(pid=10702, ip=10.116.28.29)[0m Computed 1242 on 10.116.28.29
-Processed : 1242
-Processed : 1259
-[2m[36m(pid=4988, ip=10.116.28.14)[0m Computed 1259 on 10.116.28.14
-[2m[36m(pid=23123, ip=10.116.28.23)[0m Computed 1241 on 10.116.28.23
-Processed : 1241
-[2m[36m(pid=15936, ip=10.116.28.8)[0m Computed 1240 on 10.116.28.8
-Processed : 1240
-[2m[36m(pid=3286, ip=10.116.28.17)[0m Computed 1257 on 10.116.28.17
-Processed : 1257
-[2m[36m(pid=12692, ip=10.116.28.20)[0m Computed 1239 on 10.116.28.20
-Processed : 1239
-[2m[36m(pid=21330, ip=10.116.28.26)[0m Computed 1237 on 10.116.28.26
-Processed : 1237
-Processed : 1253
-[2m[36m(pid=15935, ip=10.116.28.8)[0m Computed 1253 on 10.116.28.8
-[2m[36m(pid=10708, ip=10.116.28.29)[0m Computed 1235 on 10.116.28.29
-Processed : 1235
-[2m[36m(pid=15938, ip=10.116.28.8)[0m Computed 1233 on 10.116.28.8
-Processed : 1233
-[2m[36m(pid=10701, ip=10.116.28.29)[0m Computed 1232 on 10.116.28.29
-Processed : 1232
-[2m[36m(pid=10629, ip=10.116.28.19)[0m Computed 1231 on 10.116.28.19
-Processed : 1231
-[2m[36m(pid=10636, ip=10.116.28.19)[0m Computed 1230 on 10.116.28.19
-Processed : 1230
-[2m[36m(pid=15934, ip=10.116.28.8)[0m Computed 1246 on 10.116.28.8
-Processed : 1246
-[2m[36m(pid=756, ip=10.116.28.12)[0m Computed 1248 on 10.116.28.12
-Processed : 1248
-[2m[36m(pid=10642, ip=10.116.28.19)[0m Computed 1228 on 10.116.28.19
-Processed : 1228
-[2m[36m(pid=10635, ip=10.116.28.19)[0m Computed 1227 on 10.116.28.19
-Processed : 1227
-[2m[36m(pid=15948, ip=10.116.28.8)[0m Computed 1225 on 10.116.28.8
-Processed : 1225
-[2m[36m(pid=10633, ip=10.116.28.19)[0m Computed 1243 on 10.116.28.19
-Processed : 1243
-[2m[36m(pid=765, ip=10.116.28.12)[0m Computed 1244 on 10.116.28.12
-Processed : 1244
-[2m[36m(pid=15949, ip=10.116.28.8)[0m Computed 1223 on 10.116.28.8
-Processed : 1223
-[2m[36m(pid=15941, ip=10.116.28.8)[0m Computed 1221 on 10.116.28.8
-Processed : 1221
-[2m[36m(pid=12708, ip=10.116.28.20)[0m Computed 1238 on 10.116.28.20
-Processed : 1238
-[2m[36m(pid=4984, ip=10.116.28.14)[0m Computed 1220 on 10.116.28.14
-Processed : 1220
-[2m[36m(pid=10886, ip=10.116.28.13)[0m Computed 1218 on 10.116.28.13
-Processed : 1218
-Processed : 1236
-[2m[36m(pid=754, ip=10.116.28.12)[0m Computed 1236 on 10.116.28.12
-Processed : 1217
-[2m[36m(pid=10119, ip=10.116.28.30)[0m Computed 1217 on 10.116.28.30
-[2m[36m(pid=761, ip=10.116.28.12)[0m Computed 1234 on 10.116.28.12
-Processed : 1234
-[2m[36m(pid=10709, ip=10.116.28.29)[0m Computed 1215 on 10.116.28.29
-Processed : 1215
-[2m[36m(pid=10632, ip=10.116.28.19)[0m Computed 1229 on 10.116.28.19
-Processed : 1229
-[2m[36m(pid=10654, ip=10.116.28.10)[0m Computed 1216 on 10.116.28.10
-Processed : 1216
-[2m[36m(pid=15946, ip=10.116.28.8)[0m Computed 1226 on 10.116.28.8
-Processed : 1226
-[2m[36m(pid=11237, ip=10.116.28.9)[0m Computed 1214 on 10.116.28.9
-Processed : 1214
-[2m[36m(pid=10879, ip=10.116.28.13)[0m Computed 1213 on 10.116.28.13
-Processed : 1213
-[2m[36m(pid=22678, ip=10.116.28.25)[0m Computed 1212 on 10.116.28.25
-Processed : 1212
-[2m[36m(pid=15944, ip=10.116.28.8)[0m Computed 1222 on 10.116.28.8
-Processed : 1222
-Processed : 1211
-[2m[36m(pid=7271, ip=10.116.28.31)[0m Computed 1211 on 10.116.28.31
-[2m[36m(pid=751, ip=10.116.28.12)[0m Computed 1224 on 10.116.28.12
-Processed : 1224
-[2m[36m(pid=15950, ip=10.116.28.8)[0m Computed 1209 on 10.116.28.8
-Processed : 1209
-[2m[36m(pid=15540, ip=10.116.28.16)[0m Computed 1219 on 10.116.28.16
-Processed : 1219
-[2m[36m(pid=10670, ip=10.116.28.10)[0m Computed 1208 on 10.116.28.10
-Processed : 1208
-Processed : 1207
-[2m[36m(pid=11235, ip=10.116.28.9)[0m Computed 1207 on 10.116.28.9
-[2m[36m(pid=18022, ip=10.116.28.24)[0m Computed 1206 on 10.116.28.24
-Processed : 1206
-[2m[36m(pid=2088, ip=10.116.28.33)[0m Computed 1205 on 10.116.28.33
-Processed : 1205
-[2m[36m(pid=21722, ip=10.116.28.28)[0m Computed 1210 on 10.116.28.28
-Processed : 1210
-[2m[36m(pid=10637, ip=10.116.28.19)[0m Computed 1204 on 10.116.28.19
-Processed : 1204
-[2m[36m(pid=4581, ip=10.116.28.32)[0m Computed 1202 on 10.116.28.32
-Processed : 1202
-[2m[36m(pid=22692, ip=10.116.28.25)[0m Computed 1201 on 10.116.28.25
-Processed : 1201
-[2m[36m(pid=12704, ip=10.116.28.20)[0m Computed 1200 on 10.116.28.20
-Processed : 1200
-[2m[36m(pid=10123, ip=10.116.28.30)[0m Computed 1199 on 10.116.28.30
-Processed : 1199
-[2m[36m(pid=11236, ip=10.116.28.9)[0m Computed 1198 on 10.116.28.9
-Processed : 1198
-[2m[36m(pid=21718, ip=10.116.28.28)[0m Computed 1203 on 10.116.28.28
-Processed : 1203
-[2m[36m(pid=10664, ip=10.116.28.10)[0m Computed 1197 on 10.116.28.10
-Processed : 1197
-[2m[36m(pid=10880, ip=10.116.28.13)[0m Computed 1196 on 10.116.28.13
-Processed : 1196
-[2m[36m(pid=2085, ip=10.116.28.33)[0m Computed 1195 on 10.116.28.33
-Processed : 1195
-[2m[36m(pid=4985, ip=10.116.28.14)[0m Computed 1194 on 10.116.28.14
-Processed : 1194
-[2m[36m(pid=2087, ip=10.116.28.33)[0m Computed 1192 on 10.116.28.33
-Processed : 1192
-[2m[36m(pid=770, ip=10.116.28.12)[0m Computed 1193 on 10.116.28.12
-Processed : 1193
-Processed : 1191
-[2m[36m(pid=11233, ip=10.116.28.9)[0m Computed 1191 on 10.116.28.9
-[2m[36m(pid=18020, ip=10.116.28.24)[0m Computed 1190 on 10.116.28.24
-Processed : 1190
-Processed : 1189
-[2m[36m(pid=4989, ip=10.116.28.14)[0m Computed 1189 on 10.116.28.14
-[2m[36m(pid=10108, ip=10.116.28.30)[0m Computed 1187 on 10.116.28.30
-Processed : 1187
-[2m[36m(pid=15536, ip=10.116.28.16)[0m Computed 1188 on 10.116.28.16
-Processed : 1188
-[2m[36m(pid=24290, ip=10.116.28.18)[0m Computed 1186 on 10.116.28.18
-Processed : 1186
-[2m[36m(pid=23131, ip=10.116.28.23)[0m Computed 1185 on 10.116.28.23
-Processed : 1185
-[2m[36m(pid=18101, ip=10.116.28.15)[0m Computed 1184 on 10.116.28.15
-Processed : 1184
-[2m[36m(pid=15952, ip=10.116.28.8)[0m Computed 1183 on 10.116.28.8
-Processed : 1183
-Processed : 1182
-[2m[36m(pid=7259, ip=10.116.28.31)[0m Computed 1182 on 10.116.28.31
-[2m[36m(pid=21348, ip=10.116.28.26)[0m Computed 1181 on 10.116.28.26
-Processed : 1181
-[2m[36m(pid=11225, ip=10.116.28.9)[0m Computed 1180 on 10.116.28.9
-Processed : 1180
-Processed : 1179
-[2m[36m(pid=18004, ip=10.116.28.24)[0m Computed 1179 on 10.116.28.24
-[2m[36m(pid=10877, ip=10.116.28.13)[0m Computed 1178 on 10.116.28.13
-Processed : 1178
-[2m[36m(pid=2091, ip=10.116.28.33)[0m Computed 1177 on 10.116.28.33
-Processed : 1177
-[2m[36m(pid=10641, ip=10.116.28.19)[0m Computed 1175 on 10.116.28.19
-Processed : 1175
-[2m[36m(pid=3283, ip=10.116.28.17)[0m Computed 1174 on 10.116.28.17
-Processed : 1174
-[2m[36m(pid=10630, ip=10.116.28.19)[0m Computed 1173 on 10.116.28.19
-Processed : 1173
-[2m[36m(pid=22691, ip=10.116.28.25)[0m Computed 1171 on 10.116.28.25
-Processed : 1171
-[2m[36m(pid=17874, ip=10.116.28.27)[0m Computed 1169 on 10.116.28.27
-Processed : 1169
-[2m[36m(pid=21336, ip=10.116.28.26)[0m Computed 1168 on 10.116.28.26
-Processed : 1168
-[2m[36m(pid=7260, ip=10.116.28.31)[0m Computed 1167 on 10.116.28.31
-Processed : 1167
-[2m[36m(pid=12697, ip=10.116.28.20)[0m Computed 1166 on 10.116.28.20
-Processed : 1166
-[2m[36m(pid=7258, ip=10.116.28.31)[0m Computed 1164 on 10.116.28.31
-Processed : 1164
-[2m[36m(pid=21730, ip=10.116.28.28)[0m Computed 1170 on 10.116.28.28
-Processed : 1170
-[2m[36m(pid=10876, ip=10.116.28.13)[0m Computed 1163 on 10.116.28.13
-Processed : 1163
-Processed : 1162
-[2m[36m(pid=22689, ip=10.116.28.25)[0m Computed 1162 on 10.116.28.25
-[2m[36m(pid=7264, ip=10.116.28.31)[0m Computed 1161 on 10.116.28.31
-Processed : 1161
-[2m[36m(pid=10874, ip=10.116.28.13)[0m Computed 1160 on 10.116.28.13
-Processed : 1160
-[2m[36m(pid=7255, ip=10.116.28.31)[0m Computed 1158 on 10.116.28.31
-Processed : 1158
-Processed : 1159
-[2m[36m(pid=769, ip=10.116.28.12)[0m Computed 1159 on 10.116.28.12
-[2m[36m(pid=3287, ip=10.116.28.17)[0m Computed 1157 on 10.116.28.17
-Processed : 1157
-[2m[36m(pid=4573, ip=10.116.28.32)[0m Computed 1155 on 10.116.28.32
-Processed : 1155
-[2m[36m(pid=18099, ip=10.116.28.15)[0m Computed 1156 on 10.116.28.15
-Processed : 1156
-[2m[36m(pid=15953, ip=10.116.28.8)[0m Computed 1153 on 10.116.28.8
-Processed : 1153
-[2m[36m(pid=4977, ip=10.116.28.14)[0m Computed 1154 on 10.116.28.14
-Processed : 1154
-Processed : 1151
-[2m[36m(pid=15542, ip=10.116.28.16)[0m Computed 1151 on 10.116.28.16
-[2m[36m(pid=22688, ip=10.116.28.25)[0m Computed 1150 on 10.116.28.25
-Processed : 1150
-[2m[36m(pid=23129, ip=10.116.28.23)[0m Computed 1149 on 10.116.28.23
-Processed : 1149
-[2m[36m(pid=22683, ip=10.116.28.25)[0m Computed 1148 on 10.116.28.25
-Processed : 1148
-[2m[36m(pid=10107, ip=10.116.28.30)[0m Computed 1147 on 10.116.28.30
-Processed : 1147
-[2m[36m(pid=21723, ip=10.116.28.28)[0m Computed 1152 on 10.116.28.28
-Processed : 1152
-[2m[36m(pid=23132, ip=10.116.28.23)[0m Computed 1146 on 10.116.28.23
-Processed : 1146
-[2m[36m(pid=4578, ip=10.116.28.32)[0m Computed 1145 on 10.116.28.32
-Processed : 1145
-[2m[36m(pid=10706, ip=10.116.28.29)[0m Computed 1144 on 10.116.28.29
-Processed : 1144
-[2m[36m(pid=24282, ip=10.116.28.18)[0m Computed 1142 on 10.116.28.18
-Processed : 1142
-[2m[36m(pid=10699, ip=10.116.28.29)[0m Computed 1140 on 10.116.28.29
-Processed : 1140
-[2m[36m(pid=24291, ip=10.116.28.18)[0m Computed 1139 on 10.116.28.18
-Processed : 1139
-Processed : 1138
-[2m[36m(pid=11234, ip=10.116.28.9)[0m Computed 1138 on 10.116.28.9
-[2m[36m(pid=21724, ip=10.116.28.28)[0m Computed 1143 on 10.116.28.28
-Processed : 1143
-[2m[36m(pid=4577, ip=10.116.28.32)[0m Computed 1135 on 10.116.28.32
-Processed : 1135
-[2m[36m(pid=18015, ip=10.116.28.24)[0m Computed 1134 on 10.116.28.24
-Processed : 1134
-[2m[36m(pid=11230, ip=10.116.28.9)[0m Computed 1133 on 10.116.28.9
-Processed : 1133
-[2m[36m(pid=4570, ip=10.116.28.32)[0m Computed 1132 on 10.116.28.32
-Processed : 1132
-[2m[36m(pid=7254, ip=10.116.28.31)[0m Computed 1131 on 10.116.28.31
-Processed : 1131
-[2m[36m(pid=10640, ip=10.116.28.19)[0m Computed 1130 on 10.116.28.19
-Processed : 1130
-[2m[36m(pid=15529, ip=10.116.28.16)[0m Computed 1141 on 10.116.28.16
-Processed : 1141
-[2m[36m(pid=18098, ip=10.116.28.15)[0m Computed 1129 on 10.116.28.15
-Processed : 1129
-[2m[36m(pid=12699, ip=10.116.28.20)[0m Computed 1128 on 10.116.28.20
-Processed : 1128
-[2m[36m(pid=2089, ip=10.116.28.33)[0m Computed 1127 on 10.116.28.33
-Processed : 1127
-[2m[36m(pid=11218, ip=10.116.28.9)[0m Computed 1126 on 10.116.28.9
-Processed : 1126
-[2m[36m(pid=10666, ip=10.116.28.10)[0m Computed 1137 on 10.116.28.10
-Processed : 1137
-[2m[36m(pid=10696, ip=10.116.28.29)[0m Computed 1123 on 10.116.28.29
-Processed : 1123
-[2m[36m(pid=10668, ip=10.116.28.10)[0m Computed 1122 on 10.116.28.10
-Processed : 1122
-[2m[36m(pid=2090, ip=10.116.28.33)[0m Computed 1120 on 10.116.28.33
-Processed : 1120
-Processed : 1121
-[2m[36m(pid=15539, ip=10.116.28.16)[0m Computed 1121 on 10.116.28.16
-[2m[36m(pid=15937, ip=10.116.28.8)[0m Computed 1119 on 10.116.28.8
-Processed : 1119
-[2m[36m(pid=22690, ip=10.116.28.25)[0m Computed 1118 on 10.116.28.25
-Processed : 1118
-[2m[36m(pid=4576, ip=10.116.28.32)[0m Computed 1117 on 10.116.28.32
-Processed : 1117
-[2m[36m(pid=15943, ip=10.116.28.8)[0m Computed 1115 on 10.116.28.8
-Processed : 1115
-[2m[36m(pid=24287, ip=10.116.28.18)[0m Computed 1114 on 10.116.28.18
-Processed : 1114
-[2m[36m(pid=18007, ip=10.116.28.24)[0m Computed 1124 on 10.116.28.24
-Processed : 1124
-[2m[36m(pid=21347, ip=10.116.28.26)[0m Computed 1113 on 10.116.28.26
-Processed : 1113
-[2m[36m(pid=2086, ip=10.116.28.33)[0m Computed 1112 on 10.116.28.33
-Processed : 1112
-[2m[36m(pid=11220, ip=10.116.28.9)[0m Computed 1111 on 10.116.28.9
-Processed : 1111
-[2m[36m(pid=21735, ip=10.116.28.28)[0m Computed 1116 on 10.116.28.28
-Processed : 1116
-[2m[36m(pid=30723)[0m Computed 1176 on 10.116.28.7
-Processed : 1176
-[2m[36m(pid=15538, ip=10.116.28.16)[0m Computed 1110 on 10.116.28.16
-Processed : 1110
-[2m[36m(pid=23122, ip=10.116.28.23)[0m Computed 1109 on 10.116.28.23
-Processed : 1109
-[2m[36m(pid=4563, ip=10.116.28.32)[0m Computed 1108 on 10.116.28.32
-Processed : 1108
-[2m[36m(pid=2082, ip=10.116.28.33)[0m Computed 1106 on 10.116.28.33
-Processed : 1106
-[2m[36m(pid=18102, ip=10.116.28.15)[0m Computed 1107 on 10.116.28.15
-Processed : 1107
-[2m[36m(pid=10875, ip=10.116.28.13)[0m Computed 1104 on 10.116.28.13
-Processed : 1104
-[2m[36m(pid=15947, ip=10.116.28.8)[0m Computed 1103 on 10.116.28.8
-Processed : 1103
-[2m[36m(pid=24272, ip=10.116.28.18)[0m Computed 1101 on 10.116.28.18
-Processed : 1101
-[2m[36m(pid=22685, ip=10.116.28.25)[0m Computed 1100 on 10.116.28.25
-Processed : 1100
-[2m[36m(pid=15945, ip=10.116.28.8)[0m Computed 1099 on 10.116.28.8
-Processed : 1099
-[2m[36m(pid=30721)[0m Computed 1165 on 10.116.28.7
-Processed : 1165
-[2m[36m(pid=15524, ip=10.116.28.16)[0m Computed 1098 on 10.116.28.16
-Processed : 1098
-[2m[36m(pid=18014, ip=10.116.28.24)[0m Computed 1096 on 10.116.28.24
-Processed : 1096
-[2m[36m(pid=22679, ip=10.116.28.25)[0m Computed 1095 on 10.116.28.25
-Processed : 1095
-[2m[36m(pid=21344, ip=10.116.28.26)[0m Computed 1093 on 10.116.28.26
-Processed : 1093
-[2m[36m(pid=10872, ip=10.116.28.13)[0m Computed 1105 on 10.116.28.13
-Processed : 1105
-[2m[36m(pid=7252, ip=10.116.28.31)[0m Computed 1092 on 10.116.28.31
-Processed : 1092
-[2m[36m(pid=15532, ip=10.116.28.16)[0m Computed 1091 on 10.116.28.16
-Processed : 1091
-[2m[36m(pid=22674, ip=10.116.28.25)[0m Computed 1102 on 10.116.28.25
-Processed : 1102
-[2m[36m(pid=3279, ip=10.116.28.17)[0m Computed 1090 on 10.116.28.17
-Processed : 1090
-[2m[36m(pid=7256, ip=10.116.28.31)[0m Computed 1088 on 10.116.28.31
-Processed : 1088
-[2m[36m(pid=30368, ip=10.116.28.11)[0m Computed 1089 on 10.116.28.11
-Processed : 1089
-[2m[36m(pid=30719)[0m Computed 1172 on 10.116.28.7
-Processed : 1172
-[2m[36m(pid=7263, ip=10.116.28.31)[0m Computed 1086 on 10.116.28.31
-Processed : 1086
-[2m[36m(pid=10652, ip=10.116.28.10)[0m Computed 1087 on 10.116.28.10
-Processed : 1087
-[2m[36m(pid=10115, ip=10.116.28.30)[0m Computed 1084 on 10.116.28.30
-Processed : 1084
-[2m[36m(pid=24288, ip=10.116.28.18)[0m Computed 1085 on 10.116.28.18
-Processed : 1085
-[2m[36m(pid=4571, ip=10.116.28.32)[0m Computed 1082 on 10.116.28.32
-Processed : 1082
-[2m[36m(pid=15523, ip=10.116.28.16)[0m Computed 1083 on 10.116.28.16
-Processed : 1083
-[2m[36m(pid=17880, ip=10.116.28.27)[0m Computed 1080 on 10.116.28.27
-Processed : 1080
-[2m[36m(pid=10878, ip=10.116.28.13)[0m Computed 1079 on 10.116.28.13
-Processed : 1079
-[2m[36m(pid=11223, ip=10.116.28.9)[0m Computed 1077 on 10.116.28.9
-Processed : 1077
-[2m[36m(pid=10870, ip=10.116.28.13)[0m Computed 1075 on 10.116.28.13
-Processed : 1075
-[2m[36m(pid=757, ip=10.116.28.12)[0m Computed 1076 on 10.116.28.12
-Processed : 1076
-[2m[36m(pid=4562, ip=10.116.28.32)[0m Computed 1074 on 10.116.28.32
-Processed : 1074
-[2m[36m(pid=10644, ip=10.116.28.19)[0m Computed 1073 on 10.116.28.19
-Processed : 1073
-[2m[36m(pid=4568, ip=10.116.28.32)[0m Computed 1070 on 10.116.28.32
-Processed : 1070
-[2m[36m(pid=22673, ip=10.116.28.25)[0m Computed 1071 on 10.116.28.25
-Processed : 1071
-[2m[36m(pid=21733, ip=10.116.28.28)[0m Computed 1078 on 10.116.28.28
-Processed : 1078
-[2m[36m(pid=17872, ip=10.116.28.27)[0m Computed 1069 on 10.116.28.27
-Processed : 1069
-[2m[36m(pid=15541, ip=10.116.28.16)[0m Computed 1081 on 10.116.28.16
-Processed : 1081
-[2m[36m(pid=17869, ip=10.116.28.27)[0m Computed 1068 on 10.116.28.27
-Processed : 1068
-[2m[36m(pid=10867, ip=10.116.28.13)[0m Computed 1067 on 10.116.28.13
-Processed : 1067
-[2m[36m(pid=22681, ip=10.116.28.25)[0m Computed 1066 on 10.116.28.25
-Processed : 1066
-[2m[36m(pid=2074, ip=10.116.28.33)[0m Computed 1065 on 10.116.28.33
-Processed : 1065
-[2m[36m(pid=30715)[0m Computed 1136 on 10.116.28.7
-Processed : 1136
-Processed : 1062
-[2m[36m(pid=15535, ip=10.116.28.16)[0m Computed 1062 on 10.116.28.16
-[2m[36m(pid=24286, ip=10.116.28.18)[0m Computed 1061 on 10.116.28.18
-Processed : 1061
-[2m[36m(pid=10653, ip=10.116.28.10)[0m Computed 1072 on 10.116.28.10
-Processed : 1072
-[2m[36m(pid=3289, ip=10.116.28.17)[0m Computed 1060 on 10.116.28.17
-Processed : 1060
-[2m[36m(pid=10118, ip=10.116.28.30)[0m Computed 1059 on 10.116.28.30
-Processed : 1059
-[2m[36m(pid=17877, ip=10.116.28.27)[0m Computed 1058 on 10.116.28.27
-Processed : 1058
-[2m[36m(pid=22682, ip=10.116.28.25)[0m Computed 1056 on 10.116.28.25
-Processed : 1056
-[2m[36m(pid=21726, ip=10.116.28.28)[0m Computed 1063 on 10.116.28.28
-Processed : 1063
-[2m[36m(pid=21346, ip=10.116.28.26)[0m Computed 1055 on 10.116.28.26
-Processed : 1055
-[2m[36m(pid=10116, ip=10.116.28.30)[0m Computed 1054 on 10.116.28.30
-Processed : 1054
-[2m[36m(pid=17863, ip=10.116.28.27)[0m Computed 1053 on 10.116.28.27
-Processed : 1053
-[2m[36m(pid=17871, ip=10.116.28.27)[0m Computed 1052 on 10.116.28.27
-Processed : 1052
-[2m[36m(pid=10703, ip=10.116.28.29)[0m Computed 1051 on 10.116.28.29
-Processed : 1051
-Processed : 1057
-[2m[36m(pid=21728, ip=10.116.28.28)[0m Computed 1057 on 10.116.28.28
-[2m[36m(pid=3285, ip=10.116.28.17)[0m Computed 1050 on 10.116.28.17
-Processed : 1050
-[2m[36m(pid=4569, ip=10.116.28.32)[0m Computed 1048 on 10.116.28.32
-Processed : 1048
-[2m[36m(pid=21329, ip=10.116.28.26)[0m Computed 1047 on 10.116.28.26
-Processed : 1047
-[2m[36m(pid=10705, ip=10.116.28.29)[0m Computed 1045 on 10.116.28.29
-Processed : 1045
-[2m[36m(pid=18095, ip=10.116.28.15)[0m Computed 1046 on 10.116.28.15
-Processed : 1046
-[2m[36m(pid=760, ip=10.116.28.12)[0m Computed 1044 on 10.116.28.12
-Processed : 1044
-[2m[36m(pid=766, ip=10.116.28.12)[0m Computed 1043 on 10.116.28.12
-Processed : 1043
-[2m[36m(pid=15534, ip=10.116.28.16)[0m Computed 1042 on 10.116.28.16
-Processed : 1042
-[2m[36m(pid=11228, ip=10.116.28.9)[0m Computed 1040 on 10.116.28.9
-Processed : 1040
-[2m[36m(pid=18012, ip=10.116.28.24)[0m Computed 1039 on 10.116.28.24
-Processed : 1039
-[2m[36m(pid=2069, ip=10.116.28.33)[0m Computed 1037 on 10.116.28.33
-Processed : 1037
-[2m[36m(pid=10120, ip=10.116.28.30)[0m Computed 1049 on 10.116.28.30
-Processed : 1049
-[2m[36m(pid=4986, ip=10.116.28.14)[0m Computed 1036 on 10.116.28.14
-Processed : 1036
-[2m[36m(pid=10626, ip=10.116.28.19)[0m Computed 1035 on 10.116.28.19
-Processed : 1035
-[2m[36m(pid=30724)[0m Computed 1125 on 10.116.28.7
-Processed : 1125
-[2m[36m(pid=24273, ip=10.116.28.18)[0m Computed 1034 on 10.116.28.18
-Processed : 1034
-[2m[36m(pid=7265, ip=10.116.28.31)[0m Computed 1032 on 10.116.28.31
-Processed : 1032
-[2m[36m(pid=30369, ip=10.116.28.11)[0m Computed 1033 on 10.116.28.11
-Processed : 1033
-[2m[36m(pid=10663, ip=10.116.28.10)[0m Computed 1030 on 10.116.28.10
-Processed : 1030
-[2m[36m(pid=10700, ip=10.116.28.29)[0m Computed 1029 on 10.116.28.29
-Processed : 1029
-[2m[36m(pid=10869, ip=10.116.28.13)[0m Computed 1041 on 10.116.28.13
-Processed : 1041
-[2m[36m(pid=4567, ip=10.116.28.32)[0m Computed 1028 on 10.116.28.32
-Processed : 1028
-[2m[36m(pid=22680, ip=10.116.28.25)[0m Computed 1027 on 10.116.28.25
-Processed : 1027
-[2m[36m(pid=10868, ip=10.116.28.13)[0m Computed 1026 on 10.116.28.13
-Processed : 1026
-[2m[36m(pid=17867, ip=10.116.28.27)[0m Computed 1025 on 10.116.28.27
-Processed : 1025
-[2m[36m(pid=21729, ip=10.116.28.28)[0m Computed 1031 on 10.116.28.28
-Processed : 1031
-[2m[36m(pid=10873, ip=10.116.28.13)[0m Computed 1024 on 10.116.28.13
-Processed : 1024
-[2m[36m(pid=7253, ip=10.116.28.31)[0m Computed 1022 on 10.116.28.31
-Processed : 1022
-[2m[36m(pid=30728)[0m Computed 1097 on 10.116.28.7
-Processed : 1097
-[2m[36m(pid=10656, ip=10.116.28.10)[0m Computed 1023 on 10.116.28.10
-Processed : 1023
-[2m[36m(pid=10881, ip=10.116.28.13)[0m Computed 1021 on 10.116.28.13
-Processed : 1021
-[2m[36m(pid=24289, ip=10.116.28.18)[0m Computed 1020 on 10.116.28.18
-Processed : 1020
-[2m[36m(pid=22675, ip=10.116.28.25)[0m Computed 1019 on 10.116.28.25
-Processed : 1019
-[2m[36m(pid=10665, ip=10.116.28.10)[0m Computed 1018 on 10.116.28.10
-Processed : 1018
-[2m[36m(pid=10657, ip=10.116.28.10)[0m Computed 1017 on 10.116.28.10
-Processed : 1017
-[2m[36m(pid=10671, ip=10.116.28.10)[0m Computed 1014 on 10.116.28.10
-Processed : 1014
-[2m[36m(pid=10631, ip=10.116.28.19)[0m Computed 1013 on 10.116.28.19
-Processed : 1013
-[2m[36m(pid=4580, ip=10.116.28.32)[0m Computed 1012 on 10.116.28.32
-Processed : 1012
-[2m[36m(pid=4579, ip=10.116.28.32)[0m Computed 1011 on 10.116.28.32
-Processed : 1011
-[2m[36m(pid=21331, ip=10.116.28.26)[0m Computed 1009 on 10.116.28.26
-Processed : 1009
-[2m[36m(pid=30717)[0m Computed 1094 on 10.116.28.7
-Processed : 1094
-[2m[36m(pid=10712, ip=10.116.28.29)[0m Computed 1006 on 10.116.28.29
-Processed : 1006
-[2m[36m(pid=18090, ip=10.116.28.15)[0m Computed 1008 on 10.116.28.15
-Processed : 1008
-[2m[36m(pid=12705, ip=10.116.28.20)[0m Computed 1007 on 10.116.28.20
-Processed : 1007
-[2m[36m(pid=4981, ip=10.116.28.14)[0m Computed 1005 on 10.116.28.14
-Processed : 1005
-[2m[36m(pid=12698, ip=10.116.28.20)[0m Computed 1004 on 10.116.28.20
-Processed : 1004
-[2m[36m(pid=10113, ip=10.116.28.30)[0m Computed 1015 on 10.116.28.30
-Processed : 1015
-[2m[36m(pid=21337, ip=10.116.28.26)[0m Computed 1003 on 10.116.28.26
-Processed : 1003
-[2m[36m(pid=30362, ip=10.116.28.11)[0m Computed 1002 on 10.116.28.11
-Processed : 1002
-[2m[36m(pid=30358, ip=10.116.28.11)[0m Computed 1001 on 10.116.28.11
-Processed : 1001
-[2m[36m(pid=11219, ip=10.116.28.9)[0m Computed 1000 on 10.116.28.9
-Processed : 1000
-[2m[36m(pid=10105, ip=10.116.28.30)[0m Computed 999 on 10.116.28.30
-Processed : 999
-[2m[36m(pid=21335, ip=10.116.28.26)[0m Computed 998 on 10.116.28.26
-Processed : 998
-[2m[36m(pid=11222, ip=10.116.28.9)[0m Computed 1010 on 10.116.28.9
-Processed : 1010
-[2m[36m(pid=15940, ip=10.116.28.8)[0m Computed 997 on 10.116.28.8
-Processed : 997
-[2m[36m(pid=24274, ip=10.116.28.18)[0m Computed 995 on 10.116.28.18
-Processed : 995
-Processed : 993
-[2m[36m(pid=18023, ip=10.116.28.24)[0m Computed 993 on 10.116.28.24
-[2m[36m(pid=2092, ip=10.116.28.33)[0m Computed 992 on 10.116.28.33
-Processed : 992
-[2m[36m(pid=4574, ip=10.116.28.32)[0m Computed 991 on 10.116.28.32
-Processed : 991
-[2m[36m(pid=10882, ip=10.116.28.13)[0m Computed 988 on 10.116.28.13
-Processed : 988
-[2m[36m(pid=21732, ip=10.116.28.28)[0m Computed 994 on 10.116.28.28
-Processed : 994
-[2m[36m(pid=30727)[0m Computed 1064 on 10.116.28.7
-Processed : 1064
-[2m[36m(pid=10713, ip=10.116.28.29)[0m Computed 984 on 10.116.28.29
-Processed : 984
-[2m[36m(pid=30353, ip=10.116.28.11)[0m Computed 982 on 10.116.28.11
-Processed : 982
-[2m[36m(pid=17873, ip=10.116.28.27)[0m Computed 980 on 10.116.28.27
-Processed : 980
-[2m[36m(pid=10667, ip=10.116.28.10)[0m Computed 996 on 10.116.28.10
-Processed : 996
-[2m[36m(pid=21716, ip=10.116.28.28)[0m Computed 989 on 10.116.28.28
-Processed : 989
-[2m[36m(pid=4974, ip=10.116.28.14)[0m Computed 978 on 10.116.28.14
-Processed : 978
-[2m[36m(pid=21341, ip=10.116.28.26)[0m Computed 976 on 10.116.28.26
-Processed : 976
-[2m[36m(pid=30360, ip=10.116.28.11)[0m Computed 975 on 10.116.28.11
-Processed : 975
-[2m[36m(pid=7257, ip=10.116.28.31)[0m Computed 974 on 10.116.28.31
-Processed : 974
-[2m[36m(pid=17875, ip=10.116.28.27)[0m Computed 986 on 10.116.28.27
-Processed : 986
-[2m[36m(pid=10658, ip=10.116.28.10)[0m Computed 987 on 10.116.28.10
-Processed : 987
-[2m[36m(pid=18013, ip=10.116.28.24)[0m Computed 972 on 10.116.28.24
-Processed : 972
-[2m[36m(pid=10661, ip=10.116.28.10)[0m Computed 973 on 10.116.28.10
-Processed : 973
-[2m[36m(pid=23120, ip=10.116.28.23)[0m Computed 983 on 10.116.28.23
-Processed : 983
-[2m[36m(pid=22676, ip=10.116.28.25)[0m Computed 970 on 10.116.28.25
-Processed : 970
-[2m[36m(pid=12689, ip=10.116.28.20)[0m Computed 969 on 10.116.28.20
-Processed : 969
-[2m[36m(pid=17864, ip=10.116.28.27)[0m Computed 981 on 10.116.28.27
-Processed : 981
-[2m[36m(pid=22686, ip=10.116.28.25)[0m Computed 967 on 10.116.28.25
-Processed : 967
-[2m[36m(pid=2084, ip=10.116.28.33)[0m Computed 965 on 10.116.28.33
-Processed : 965
-[2m[36m(pid=4572, ip=10.116.28.32)[0m Computed 977 on 10.116.28.32
-Processed : 977
-[2m[36m(pid=30370, ip=10.116.28.11)[0m Computed 979 on 10.116.28.11
-Processed : 979
-[2m[36m(pid=15525, ip=10.116.28.16)[0m Computed 964 on 10.116.28.16
-Processed : 964
-[2m[36m(pid=4980, ip=10.116.28.14)[0m Computed 962 on 10.116.28.14
-Processed : 962
-[2m[36m(pid=3280, ip=10.116.28.17)[0m Computed 961 on 10.116.28.17
-Processed : 961
-[2m[36m(pid=10714, ip=10.116.28.29)[0m Computed 958 on 10.116.28.29
-Processed : 958
-[2m[36m(pid=15528, ip=10.116.28.16)[0m Computed 959 on 10.116.28.16
-Processed : 959
-[2m[36m(pid=10121, ip=10.116.28.30)[0m Computed 955 on 10.116.28.30
-Processed : 955
-[2m[36m(pid=24285, ip=10.116.28.18)[0m Computed 971 on 10.116.28.18
-Processed : 971
-[2m[36m(pid=4972, ip=10.116.28.14)[0m Computed 956 on 10.116.28.14
-Processed : 956
-[2m[36m(pid=21720, ip=10.116.28.28)[0m Computed 963 on 10.116.28.28
-Processed : 963
-[2m[36m(pid=23114, ip=10.116.28.23)[0m Computed 952 on 10.116.28.23
-Processed : 952
-[2m[36m(pid=10662, ip=10.116.28.10)[0m Computed 968 on 10.116.28.10
-Processed : 968
-[2m[36m(pid=10871, ip=10.116.28.13)[0m Computed 966 on 10.116.28.13
-Processed : 966
-[2m[36m(pid=4982, ip=10.116.28.14)[0m Computed 951 on 10.116.28.14
-Processed : 951
-[2m[36m(pid=21339, ip=10.116.28.26)[0m Computed 948 on 10.116.28.26
-Processed : 948
-[2m[36m(pid=18097, ip=10.116.28.15)[0m Computed 949 on 10.116.28.15
-Processed : 949
-[2m[36m(pid=10639, ip=10.116.28.19)[0m Computed 946 on 10.116.28.19
-Processed : 946
-[2m[36m(pid=4990, ip=10.116.28.14)[0m Computed 947 on 10.116.28.14
-Processed : 947
-[2m[36m(pid=10884, ip=10.116.28.13)[0m Computed 945 on 10.116.28.13
-Processed : 945
-[2m[36m(pid=17882, ip=10.116.28.27)[0m Computed 944 on 10.116.28.27
-Processed : 944
-[2m[36m(pid=30354, ip=10.116.28.11)[0m Computed 960 on 10.116.28.11
-Processed : 960
-[2m[36m(pid=2070, ip=10.116.28.33)[0m Computed 942 on 10.116.28.33
-Processed : 942
-[2m[36m(pid=10114, ip=10.116.28.30)[0m Computed 939 on 10.116.28.30
-Processed : 939
-[2m[36m(pid=18093, ip=10.116.28.15)[0m Computed 938 on 10.116.28.15
-Processed : 938
-[2m[36m(pid=10883, ip=10.116.28.13)[0m Computed 953 on 10.116.28.13
-Processed : 953
-[2m[36m(pid=30363, ip=10.116.28.11)[0m Computed 937 on 10.116.28.11
-Processed : 937
-[2m[36m(pid=22677, ip=10.116.28.25)[0m Computed 936 on 10.116.28.25
-Processed : 936
-[2m[36m(pid=30708)[0m Computed 1038 on 10.116.28.7
-Processed : 1038
-[2m[36m(pid=18096, ip=10.116.28.15)[0m Computed 935 on 10.116.28.15
-Processed : 935
-[2m[36m(pid=10711, ip=10.116.28.29)[0m Computed 933 on 10.116.28.29
-Processed : 933
-[2m[36m(pid=3282, ip=10.116.28.17)[0m Computed 931 on 10.116.28.17
-Processed : 931
-[2m[36m(pid=18011, ip=10.116.28.24)[0m Computed 943 on 10.116.28.24
-Processed : 943
-[2m[36m(pid=3273, ip=10.116.28.17)[0m Computed 930 on 10.116.28.17
-Processed : 930
-[2m[36m(pid=30351, ip=10.116.28.11)[0m Computed 941 on 10.116.28.11
-Processed : 941
-[2m[36m(pid=12696, ip=10.116.28.20)[0m Computed 928 on 10.116.28.20
-Processed : 928
-[2m[36m(pid=15537, ip=10.116.28.16)[0m Computed 929 on 10.116.28.16
-Processed : 929
-[2m[36m(pid=7262, ip=10.116.28.31)[0m Computed 926 on 10.116.28.31
-Processed : 926
-[2m[36m(pid=4978, ip=10.116.28.14)[0m Computed 925 on 10.116.28.14
-Processed : 925
-[2m[36m(pid=18088, ip=10.116.28.15)[0m Computed 924 on 10.116.28.15
-Processed : 924
-[2m[36m(pid=11226, ip=10.116.28.9)[0m Computed 923 on 10.116.28.9
-Processed : 923
-[2m[36m(pid=15527, ip=10.116.28.16)[0m Computed 922 on 10.116.28.16
-Processed : 922
-[2m[36m(pid=23130, ip=10.116.28.23)[0m Computed 921 on 10.116.28.23
-Processed : 921
-[2m[36m(pid=3275, ip=10.116.28.17)[0m Computed 920 on 10.116.28.17
-Processed : 920
-[2m[36m(pid=30359, ip=10.116.28.11)[0m Computed 919 on 10.116.28.11
-Processed : 919
-[2m[36m(pid=10885, ip=10.116.28.13)[0m Computed 934 on 10.116.28.13
-Processed : 934
-[2m[36m(pid=21719, ip=10.116.28.28)[0m Computed 927 on 10.116.28.28
-Processed : 927
-[2m[36m(pid=18018, ip=10.116.28.24)[0m Computed 917 on 10.116.28.24
-Processed : 917
-[2m[36m(pid=24277, ip=10.116.28.18)[0m Computed 918 on 10.116.28.18
-Processed : 918
-[2m[36m(pid=10643, ip=10.116.28.19)[0m Computed 915 on 10.116.28.19
-Processed : 915
-[2m[36m(pid=764, ip=10.116.28.12)[0m Computed 916 on 10.116.28.12
-Processed : 916
-[2m[36m(pid=11221, ip=10.116.28.9)[0m Computed 914 on 10.116.28.9
-Processed : 914
-[2m[36m(pid=10106, ip=10.116.28.30)[0m Computed 913 on 10.116.28.30
-Processed : 913
-[2m[36m(pid=30361, ip=10.116.28.11)[0m Computed 912 on 10.116.28.11
-Processed : 912
-[2m[36m(pid=3276, ip=10.116.28.17)[0m Computed 911 on 10.116.28.17
-Processed : 911
-[2m[36m(pid=4975, ip=10.116.28.14)[0m Computed 910 on 10.116.28.14
-Processed : 910
-[2m[36m(pid=30709)[0m Computed 1016 on 10.116.28.7
-Processed : 1016
-[2m[36m(pid=17868, ip=10.116.28.27)[0m Computed 908 on 10.116.28.27
-Processed : 908
-[2m[36m(pid=4566, ip=10.116.28.32)[0m Computed 907 on 10.116.28.32
-Processed : 907
-[2m[36m(pid=12693, ip=10.116.28.20)[0m Computed 906 on 10.116.28.20
-Processed : 906
-[2m[36m(pid=23118, ip=10.116.28.23)[0m Computed 905 on 10.116.28.23
-Processed : 905
-[2m[36m(pid=10111, ip=10.116.28.30)[0m Computed 904 on 10.116.28.30
-Processed : 904
-[2m[36m(pid=22684, ip=10.116.28.25)[0m Computed 902 on 10.116.28.25
-Processed : 902
-[2m[36m(pid=30710)[0m Computed 990 on 10.116.28.7
-Processed : 990
-[2m[36m(pid=24275, ip=10.116.28.18)[0m Computed 901 on 10.116.28.18
-Processed : 901
-[2m[36m(pid=10710, ip=10.116.28.29)[0m Computed 900 on 10.116.28.29
-Processed : 900
-[2m[36m(pid=2079, ip=10.116.28.33)[0m Computed 896 on 10.116.28.33
-Processed : 896
-[2m[36m(pid=30720)[0m Computed 985 on 10.116.28.7
-Processed : 985
-[2m[36m(pid=24279, ip=10.116.28.18)[0m Computed 897 on 10.116.28.18
-Processed : 897
-[2m[36m(pid=11229, ip=10.116.28.9)[0m Computed 909 on 10.116.28.9
-Processed : 909
-[2m[36m(pid=15942, ip=10.116.28.8)[0m Computed 895 on 10.116.28.8
-Processed : 895
-[2m[36m(pid=10109, ip=10.116.28.30)[0m Computed 893 on 10.116.28.30
-Processed : 893
-[2m[36m(pid=21334, ip=10.116.28.26)[0m Computed 891 on 10.116.28.26
-Processed : 891
-[2m[36m(pid=3281, ip=10.116.28.17)[0m Computed 890 on 10.116.28.17
-Processed : 890
-[2m[36m(pid=18024, ip=10.116.28.24)[0m Computed 889 on 10.116.28.24
-Processed : 889
-[2m[36m(pid=17881, ip=10.116.28.27)[0m Computed 888 on 10.116.28.27
-Processed : 888
-[2m[36m(pid=10695, ip=10.116.28.29)[0m Computed 887 on 10.116.28.29
-Processed : 887
-[2m[36m(pid=10104, ip=10.116.28.30)[0m Computed 886 on 10.116.28.30
-Processed : 886
-[2m[36m(pid=15526, ip=10.116.28.16)[0m Computed 903 on 10.116.28.16
-Processed : 903
-[2m[36m(pid=15951, ip=10.116.28.8)[0m Computed 899 on 10.116.28.8
-Processed : 899
-[2m[36m(pid=21734, ip=10.116.28.28)[0m Computed 894 on 10.116.28.28
-Processed : 894
-[2m[36m(pid=23115, ip=10.116.28.23)[0m Computed 883 on 10.116.28.23
-Processed : 883
-[2m[36m(pid=11231, ip=10.116.28.9)[0m Computed 898 on 10.116.28.9
-Processed : 898
-[2m[36m(pid=24280, ip=10.116.28.18)[0m Computed 882 on 10.116.28.18
-Processed : 882
-[2m[36m(pid=18100, ip=10.116.28.15)[0m Computed 881 on 10.116.28.15
-Processed : 881
-[2m[36m(pid=24278, ip=10.116.28.18)[0m Computed 879 on 10.116.28.18
-Processed : 879
-[2m[36m(pid=22687, ip=10.116.28.25)[0m Computed 878 on 10.116.28.25
-Processed : 878
-[2m[36m(pid=3277, ip=10.116.28.17)[0m Computed 877 on 10.116.28.17
-Processed : 877
-[2m[36m(pid=17870, ip=10.116.28.27)[0m Computed 876 on 10.116.28.27
-Processed : 876
-[2m[36m(pid=15533, ip=10.116.28.16)[0m Computed 892 on 10.116.28.16
-Processed : 892
-[2m[36m(pid=21717, ip=10.116.28.28)[0m Computed 884 on 10.116.28.28
-Processed : 884
-[2m[36m(pid=21332, ip=10.116.28.26)[0m Computed 874 on 10.116.28.26
-Processed : 874
-[2m[36m(pid=7267, ip=10.116.28.31)[0m Computed 873 on 10.116.28.31
-Processed : 873
-[2m[36m(pid=18089, ip=10.116.28.15)[0m Computed 871 on 10.116.28.15
-Processed : 871
-[2m[36m(pid=10627, ip=10.116.28.19)[0m Computed 870 on 10.116.28.19
-Processed : 870
-[2m[36m(pid=21725, ip=10.116.28.28)[0m Computed 880 on 10.116.28.28
-Processed : 880
-[2m[36m(pid=7268, ip=10.116.28.31)[0m Computed 869 on 10.116.28.31
-Processed : 869
-[2m[36m(pid=10110, ip=10.116.28.30)[0m Computed 868 on 10.116.28.30
-Processed : 868
-[2m[36m(pid=15531, ip=10.116.28.16)[0m Computed 885 on 10.116.28.16
-Processed : 885
-[2m[36m(pid=21727, ip=10.116.28.28)[0m Computed 875 on 10.116.28.28
-Processed : 875
-[2m[36m(pid=3290, ip=10.116.28.17)[0m Computed 866 on 10.116.28.17
-Processed : 866
-[2m[36m(pid=24283, ip=10.116.28.18)[0m Computed 865 on 10.116.28.18
-Processed : 865
-[2m[36m(pid=18087, ip=10.116.28.15)[0m Computed 864 on 10.116.28.15
-Processed : 864
-[2m[36m(pid=12700, ip=10.116.28.20)[0m Computed 863 on 10.116.28.20
-Processed : 863
-[2m[36m(pid=4565, ip=10.116.28.32)[0m Computed 862 on 10.116.28.32
-Processed : 862
-[2m[36m(pid=21731, ip=10.116.28.28)[0m Computed 872 on 10.116.28.28
-Processed : 872
-[2m[36m(pid=30726)[0m Computed 957 on 10.116.28.7
-Processed : 957
-[2m[36m(pid=12691, ip=10.116.28.20)[0m Computed 860 on 10.116.28.20
-Processed : 860
-[2m[36m(pid=4575, ip=10.116.28.32)[0m Computed 859 on 10.116.28.32
-Processed : 859
-[2m[36m(pid=7266, ip=10.116.28.31)[0m Computed 857 on 10.116.28.31
-Processed : 857
-[2m[36m(pid=12702, ip=10.116.28.20)[0m Computed 855 on 10.116.28.20
-Processed : 855
-[2m[36m(pid=23126, ip=10.116.28.23)[0m Computed 853 on 10.116.28.23
-Processed : 853
-[2m[36m(pid=10698, ip=10.116.28.29)[0m Computed 850 on 10.116.28.29
-Processed : 850
-[2m[36m(pid=23117, ip=10.116.28.23)[0m Computed 851 on 10.116.28.23
-Processed : 851
-[2m[36m(pid=15530, ip=10.116.28.16)[0m Computed 852 on 10.116.28.16
-Processed : 852
-[2m[36m(pid=30356, ip=10.116.28.11)[0m Computed 867 on 10.116.28.11
-Processed : 867
-[2m[36m(pid=17878, ip=10.116.28.27)[0m Computed 848 on 10.116.28.27
-Processed : 848
-[2m[36m(pid=11227, ip=10.116.28.9)[0m Computed 849 on 10.116.28.9
-Processed : 849
-[2m[36m(pid=21343, ip=10.116.28.26)[0m Computed 846 on 10.116.28.26
-Processed : 846
-[2m[36m(pid=10638, ip=10.116.28.19)[0m Computed 845 on 10.116.28.19
-Processed : 845
-[2m[36m(pid=7270, ip=10.116.28.31)[0m Computed 844 on 10.116.28.31
-Processed : 844
-Processed : 842
-[2m[36m(pid=4564, ip=10.116.28.32)[0m Computed 842 on 10.116.28.32
-[2m[36m(pid=30711)[0m Computed 940 on 10.116.28.7
-Processed : 940
-[2m[36m(pid=10634, ip=10.116.28.19)[0m Computed 840 on 10.116.28.19
-Processed : 840
-[2m[36m(pid=2071, ip=10.116.28.33)[0m Computed 839 on 10.116.28.33
-Processed : 839
-[2m[36m(pid=11232, ip=10.116.28.9)[0m Computed 856 on 10.116.28.9
-Processed : 856
-[2m[36m(pid=10122, ip=10.116.28.30)[0m Computed 837 on 10.116.28.30
-Processed : 837
-[2m[36m(pid=24281, ip=10.116.28.18)[0m Computed 854 on 10.116.28.18
-Processed : 854
-[2m[36m(pid=30713)[0m Computed 954 on 10.116.28.7
-Processed : 954
-[2m[36m(pid=17866, ip=10.116.28.27)[0m Computed 835 on 10.116.28.27
-Processed : 835
-[2m[36m(pid=7269, ip=10.116.28.31)[0m Computed 834 on 10.116.28.31
-Processed : 834
-[2m[36m(pid=3288, ip=10.116.28.17)[0m Computed 833 on 10.116.28.17
-Processed : 833
-[2m[36m(pid=30352, ip=10.116.28.11)[0m Computed 832 on 10.116.28.11
-Processed : 832
-[2m[36m(pid=24276, ip=10.116.28.18)[0m Computed 831 on 10.116.28.18
-Processed : 831
-[2m[36m(pid=23127, ip=10.116.28.23)[0m Computed 830 on 10.116.28.23
-Processed : 830
-[2m[36m(pid=10112, ip=10.116.28.30)[0m Computed 829 on 10.116.28.30
-Processed : 829
-[2m[36m(pid=21338, ip=10.116.28.26)[0m Computed 828 on 10.116.28.26
-Processed : 828
-[2m[36m(pid=30712)[0m Computed 950 on 10.116.28.7
-Processed : 950
-[2m[36m(pid=23116, ip=10.116.28.23)[0m Computed 843 on 10.116.28.23
-Processed : 843
-[2m[36m(pid=21721, ip=10.116.28.28)[0m Computed 836 on 10.116.28.28
-Processed : 836
-[2m[36m(pid=17865, ip=10.116.28.27)[0m Computed 827 on 10.116.28.27
-Processed : 827
-[2m[36m(pid=10707, ip=10.116.28.29)[0m Computed 826 on 10.116.28.29
-Processed : 826
-[2m[36m(pid=10659, ip=10.116.28.10)[0m Computed 841 on 10.116.28.10
-Processed : 841
-[2m[36m(pid=30714)[0m Computed 932 on 10.116.28.7
-Processed : 932
-[2m[36m(pid=30367, ip=10.116.28.11)[0m Computed 825 on 10.116.28.11
-Processed : 825
-[2m[36m(pid=21340, ip=10.116.28.26)[0m Computed 823 on 10.116.28.26
-Processed : 823
-[2m[36m(pid=11224, ip=10.116.28.9)[0m Computed 838 on 10.116.28.9
-Processed : 838
-[2m[36m(pid=759, ip=10.116.28.12)[0m Computed 824 on 10.116.28.12
-Processed : 824
-[2m[36m(pid=21345, ip=10.116.28.26)[0m Computed 821 on 10.116.28.26
-Processed : 821
-[2m[36m(pid=17879, ip=10.116.28.27)[0m Computed 820 on 10.116.28.27
-Processed : 820
-[2m[36m(pid=12695, ip=10.116.28.20)[0m Computed 818 on 10.116.28.20
-Processed : 818
-[2m[36m(pid=18009, ip=10.116.28.24)[0m Computed 817 on 10.116.28.24
-Processed : 817
-[2m[36m(pid=3272, ip=10.116.28.17)[0m Computed 815 on 10.116.28.17
-Processed : 815
-[2m[36m(pid=10117, ip=10.116.28.30)[0m Computed 814 on 10.116.28.30
-Processed : 814
-[2m[36m(pid=12690, ip=10.116.28.20)[0m Computed 813 on 10.116.28.20
-Processed : 813
-[2m[36m(pid=10625, ip=10.116.28.19)[0m Computed 812 on 10.116.28.19
-Processed : 812
-[2m[36m(pid=10655, ip=10.116.28.10)[0m Computed 811 on 10.116.28.10
-Processed : 811
-[2m[36m(pid=3278, ip=10.116.28.17)[0m Computed 810 on 10.116.28.17
-Processed : 810
-[2m[36m(pid=23124, ip=10.116.28.23)[0m Computed 809 on 10.116.28.23
-Processed : 809
-[2m[36m(pid=10660, ip=10.116.28.10)[0m Computed 807 on 10.116.28.10
-Processed : 807
-[2m[36m(pid=2080, ip=10.116.28.33)[0m Computed 805 on 10.116.28.33
-Processed : 805
-[2m[36m(pid=3274, ip=10.116.28.17)[0m Computed 806 on 10.116.28.17
-Processed : 806
-[2m[36m(pid=18092, ip=10.116.28.15)[0m Computed 822 on 10.116.28.15
-Processed : 822
-[2m[36m(pid=21342, ip=10.116.28.26)[0m Computed 803 on 10.116.28.26
-Processed : 803
-[2m[36m(pid=753, ip=10.116.28.12)[0m Computed 802 on 10.116.28.12
-Processed : 802
-[2m[36m(pid=12703, ip=10.116.28.20)[0m Computed 801 on 10.116.28.20
-[2m[36m(pid=21333, ip=10.116.28.26)[0m Computed 800 on 10.116.28.26
-Processed : 801
-Processed : 800
-[2m[36m(pid=10669, ip=10.116.28.10)[0m Computed 819 on 10.116.28.10
-Processed : 819
-[2m[36m(pid=12694, ip=10.116.28.20)[0m Computed 799 on 10.116.28.20
-Processed : 799
-[2m[36m(pid=10704, ip=10.116.28.29)[0m Computed 798 on 10.116.28.29
-Processed : 798
-[2m[36m(pid=4976, ip=10.116.28.14)[0m Computed 816 on 10.116.28.14
-Processed : 816
-[2m[36m(pid=23121, ip=10.116.28.23)[0m Computed 797 on 10.116.28.23
-Processed : 797
-[2m[36m(pid=750, ip=10.116.28.12)[0m Computed 796 on 10.116.28.12
-Processed : 796
-[2m[36m(pid=24284, ip=10.116.28.18)[0m Computed 795 on 10.116.28.18
-Processed : 795
-[2m[36m(pid=7261, ip=10.116.28.31)[0m Computed 794 on 10.116.28.31
-Processed : 794
-[2m[36m(pid=12707, ip=10.116.28.20)[0m Computed 793 on 10.116.28.20
-Processed : 793
-[2m[36m(pid=18016, ip=10.116.28.24)[0m Computed 792 on 10.116.28.24
-Processed : 792
-[2m[36m(pid=17876, ip=10.116.28.27)[0m Computed 791 on 10.116.28.27
-Processed : 791
-[2m[36m(pid=30365, ip=10.116.28.11)[0m Computed 808 on 10.116.28.11
-Processed : 808
-[2m[36m(pid=18010, ip=10.116.28.24)[0m Computed 789 on 10.116.28.24
-Processed : 789
-[2m[36m(pid=15939, ip=10.116.28.8)[0m Computed 788 on 10.116.28.8
-Processed : 788
-[2m[36m(pid=2083, ip=10.116.28.33)[0m Computed 787 on 10.116.28.33
-Processed : 787
-[2m[36m(pid=30355, ip=10.116.28.11)[0m Computed 804 on 10.116.28.11
-Processed : 804
-[2m[36m(pid=18083, ip=10.116.28.15)[0m Computed 786 on 10.116.28.15
-Processed : 786
-[2m[36m(pid=18084, ip=10.116.28.15)[0m Computed 785 on 10.116.28.15
-Processed : 785
-[2m[36m(pid=18006, ip=10.116.28.24)[0m Computed 783 on 10.116.28.24
-Processed : 783
-[2m[36m(pid=30357, ip=10.116.28.11)[0m Computed 784 on 10.116.28.11
-Processed : 784
-[2m[36m(pid=10697, ip=10.116.28.29)[0m Computed 782 on 10.116.28.29
-Processed : 782
-[2m[36m(pid=4987, ip=10.116.28.14)[0m Computed 781 on 10.116.28.14
-Processed : 781
-[2m[36m(pid=4983, ip=10.116.28.14)[0m Computed 780 on 10.116.28.14
-Processed : 780
-[2m[36m(pid=18094, ip=10.116.28.15)[0m Computed 779 on 10.116.28.15
-Processed : 779
-[2m[36m(pid=4979, ip=10.116.28.14)[0m Computed 778 on 10.116.28.14
-Processed : 778
-[2m[36m(pid=18085, ip=10.116.28.15)[0m Computed 777 on 10.116.28.15
-Processed : 777
-[2m[36m(pid=12706, ip=10.116.28.20)[0m Computed 776 on 10.116.28.20
-Processed : 776
-[2m[36m(pid=18019, ip=10.116.28.24)[0m Computed 775 on 10.116.28.24
-Processed : 775
-[2m[36m(pid=18005, ip=10.116.28.24)[0m Computed 774 on 10.116.28.24
-Processed : 774
-[2m[36m(pid=2072, ip=10.116.28.33)[0m Computed 773 on 10.116.28.33
-Processed : 773
-[2m[36m(pid=3284, ip=10.116.28.17)[0m Computed 772 on 10.116.28.17
-Processed : 772
-[2m[36m(pid=755, ip=10.116.28.12)[0m Computed 790 on 10.116.28.12
-Processed : 790
-[2m[36m(pid=30364, ip=10.116.28.11)[0m Computed 771 on 10.116.28.11
-Processed : 771
-[2m[36m(pid=3291, ip=10.116.28.17)[0m Computed 770 on 10.116.28.17
-Processed : 770
-[2m[36m(pid=2068, ip=10.116.28.33)[0m Computed 768 on 10.116.28.33
-Processed : 768
-[2m[36m(pid=768, ip=10.116.28.12)[0m Computed 769 on 10.116.28.12
-Processed : 769
-[2m[36m(pid=18086, ip=10.116.28.15)[0m Computed 767 on 10.116.28.15
-Processed : 767
-[2m[36m(pid=752, ip=10.116.28.12)[0m Computed 766 on 10.116.28.12
-Processed : 766
-[2m[36m(pid=23128, ip=10.116.28.23)[0m Computed 765 on 10.116.28.23
-Processed : 765
-[2m[36m(pid=18021, ip=10.116.28.24)[0m Computed 764 on 10.116.28.24
-Processed : 764
-[2m[36m(pid=4973, ip=10.116.28.14)[0m Computed 763 on 10.116.28.14
-Processed : 763
-[2m[36m(pid=762, ip=10.116.28.12)[0m Computed 762 on 10.116.28.12
-Processed : 762
-[2m[36m(pid=23119, ip=10.116.28.23)[0m Computed 761 on 10.116.28.23
-Processed : 761
-[2m[36m(pid=2081, ip=10.116.28.33)[0m Computed 760 on 10.116.28.33
-Processed : 760
-[2m[36m(pid=18008, ip=10.116.28.24)[0m Computed 759 on 10.116.28.24
-Processed : 759
-[2m[36m(pid=30718)[0m Computed 861 on 10.116.28.7
-Processed : 861
-[2m[36m(pid=23125, ip=10.116.28.23)[0m Computed 757 on 10.116.28.23
-Processed : 757
-[2m[36m(pid=23133, ip=10.116.28.23)[0m Computed 755 on 10.116.28.23
-Processed : 755
-[2m[36m(pid=30366, ip=10.116.28.11)[0m Computed 756 on 10.116.28.11
-Processed : 756
-[2m[36m(pid=30716)[0m Computed 858 on 10.116.28.7
-Processed : 858
-[2m[36m(pid=10628, ip=10.116.28.19)[0m Computed 752 on 10.116.28.19
-Processed : 752
-[2m[36m(pid=767, ip=10.116.28.12)[0m Computed 753 on 10.116.28.12
-Processed : 753
-[2m[36m(pid=12709, ip=10.116.28.20)[0m Computed 751 on 10.116.28.20
-Processed : 751
-[2m[36m(pid=18091, ip=10.116.28.15)[0m Computed 750 on 10.116.28.15
-Processed : 750
-[2m[36m(pid=10702, ip=10.116.28.29)[0m Computed 749 on 10.116.28.29
-Processed : 749
-[2m[36m(pid=4988, ip=10.116.28.14)[0m Computed 748 on 10.116.28.14
-Processed : 748
-[2m[36m(pid=15936, ip=10.116.28.8)[0m Computed 746 on 10.116.28.8
-Processed : 746
-[2m[36m(pid=23123, ip=10.116.28.23)[0m Computed 747 on 10.116.28.23
-Processed : 747
-[2m[36m(pid=3286, ip=10.116.28.17)[0m Computed 745 on 10.116.28.17
-Processed : 745
-[2m[36m(pid=12692, ip=10.116.28.20)[0m Computed 744 on 10.116.28.20
-Processed : 744
-[2m[36m(pid=21330, ip=10.116.28.26)[0m Computed 743 on 10.116.28.26
-Processed : 743
-[2m[36m(pid=15935, ip=10.116.28.8)[0m Computed 742 on 10.116.28.8
-Processed : 742
-[2m[36m(pid=10708, ip=10.116.28.29)[0m Computed 741 on 10.116.28.29
-Processed : 741
-[2m[36m(pid=15938, ip=10.116.28.8)[0m Computed 740 on 10.116.28.8
-Processed : 740
-[2m[36m(pid=4971, ip=10.116.28.14)[0m Computed 758 on 10.116.28.14
-Processed : 758
-[2m[36m(pid=10701, ip=10.116.28.29)[0m Computed 739 on 10.116.28.29
-Processed : 739
-[2m[36m(pid=10629, ip=10.116.28.19)[0m Computed 738 on 10.116.28.19
-Processed : 738
-[2m[36m(pid=10636, ip=10.116.28.19)[0m Computed 737 on 10.116.28.19
-Processed : 737
-[2m[36m(pid=15934, ip=10.116.28.8)[0m Computed 736 on 10.116.28.8
-Processed : 736
-[2m[36m(pid=763, ip=10.116.28.12)[0m Computed 754 on 10.116.28.12
-Processed : 754
-[2m[36m(pid=10642, ip=10.116.28.19)[0m Computed 734 on 10.116.28.19
-Processed : 734
-[2m[36m(pid=756, ip=10.116.28.12)[0m Computed 735 on 10.116.28.12
-Processed : 735
-[2m[36m(pid=10635, ip=10.116.28.19)[0m Computed 733 on 10.116.28.19
-Processed : 733
-[2m[36m(pid=15948, ip=10.116.28.8)[0m Computed 732 on 10.116.28.8
-Processed : 732
-[2m[36m(pid=10633, ip=10.116.28.19)[0m Computed 731 on 10.116.28.19
-Processed : 731
+Computation took : 04 Hr:19 min:09.69 sec
+Distance matrix has shape: (172, 172)

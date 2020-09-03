@@ -267,6 +267,7 @@ def serialcompute(configuration, meshsize,**kwargs):
     
     if verbose:
         print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
+        
     outdict['thresh'] = thresh
     
     if not flag_refine_simplices:
