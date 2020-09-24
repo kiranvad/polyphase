@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#SBATCH --time=24:00:00
-#SBATCH --cluster=faculty
-#SBATCH --partition=planex --qos=planex
+#SBATCH --time=5:00:00
+#SBATCH --cluster=ub-hpc
+#SBATCH --partition=general-compute --qos=general-compute
 #SBATCH --account=olgawodo
-#SBATCH --nodes=16
-#SBATCH --ntasks-per-node=20
+#SBATCH --nodes=32
+#SBATCH --ntasks-per-node=32
 #SBATCH --job-name="dist"
 #SBATCH --output=ccr/pred_dist.out
 #SBATCH --error=ccr/err_dist.out

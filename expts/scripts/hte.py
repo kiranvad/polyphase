@@ -18,22 +18,25 @@ from scipy.constants import gas_constant
 from itertools import combinations, product
 
 import os
-dirname = '../figures/hteplots/'
+dirname = '../figures/hteplotsV2/'
 if not os.path.exists(dirname):
     os.makedirs(dirname)
 
 import ray
 
-# ip_head and redis_passwords are set by ray cluster shell scripts
-print(os.environ["ip_head"], os.environ["redis_password"])
-ray.init(address='auto', node_ip_address=os.environ["ip_head"].split(":")[0],redis_password=os.environ["redis_password"])
+""" The following is required for multinode parallelization """
+if os.environ.get("ip_head") is not None:
+    ray.init(address='auto', node_ip_address=os.environ["ip_head"].split(":")[0],redis_password=os.environ["redis_password"])
+    num_nodes = len(ray.nodes())
+    print('Total number of nodes are {}'.format(num_nodes))
+    NUM_CPUS=5
+else:
+    ray.init(local_mode=False)
+    print('Using single node all core paralleization')
+    NUM_CPUS=1
 
-print("Number of Nodes in the Ray cluster: {}".format(len(ray.nodes())))
 
-print('Dashboard URL: http://{}'.format(ray.get_webui_url()))
-
-
-allsys_df = pd.read_pickle('./data/allsys_df.pkl')
+hte_df = pd.read_csv('../data/htev2.csv')
     
         
 def plain_phase_diagram(output, ax = None):
@@ -55,7 +58,7 @@ def plain_phase_diagram(output, ax = None):
     return ax    
 
 
-@ray.remote(num_cpus=5)
+@ray.remote(num_cpus=NUM_CPUS)
 def plot_phase_diagram(row):
     
     chi = [row['chi12'], row['chi13'], row['chi23']]
@@ -64,7 +67,7 @@ def plot_phase_diagram(row):
     remote_id = ray.services.get_node_ip_address()
     print('Computing {} on {}'.format(fname, remote_id))
     
-    M = [100,5,1]
+    M = row['dop']
     configuration = {'M': M, 'chi':chi}
     dx = 400
     kwargs = {
@@ -94,7 +97,9 @@ def plot_phase_diagram(row):
     return fname
 
 T = timer()
-remaining_result_ids  = [plot_phase_diagram.remote(i) for _,i in allsys_df.iterrows()]
+PM6_Y6 = hte_df.loc[(hte_df['SM'] == 'Y6') & (hte_df['polymer'] == 'PM6')]
+
+remaining_result_ids  = [plot_phase_diagram.remote(i) for _,i in PM6_Y6.iterrows()]
 
 while len(remaining_result_ids) > 0:
     ready_result_ids, remaining_result_ids = ray.wait(remaining_result_ids, num_returns=1)

@@ -5,7 +5,7 @@
 #SBATCH --partition=general-compute --qos=general-compute
 #SBATCH --account=olgawodo
 #SBATCH --nodes=25
-#SBATCH --ntasks-per-node=40
+#SBATCH --ntasks-per-node=12
 #SBATCH --job-name="HTE"
 #SBATCH --output=ccr/pred_hte.out
 #SBATCH --error=ccr/err_hte.out

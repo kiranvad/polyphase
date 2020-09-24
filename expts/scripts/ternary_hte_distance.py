@@ -79,7 +79,11 @@ def get_multiple_systems(systems):
     
     return files, sys_df
 
-files, sys_df = get_multiple_systems([('Y6','PFO'), ('Y6','PM6')])
+systems = [('PC61BM','PM6'), ('Y6', 'PM6')]
+x = [item for t in systems for item in t] 
+fname = '_'.join(xi for xi in x)
+
+files, sys_df = get_multiple_systems(systems)
 
 print('Total of {} phase diagrams'.format(len(files)))
 
@@ -87,7 +91,7 @@ M = get_distance_matrix(files, get_ssim_distance)
 print('Distance matrix has shape: {}'.format(M.shape))
 
 out = {'df':sys_df,'M':M}
-save_file = './data/hte_distance.pkl'
+save_file = './data/hte_distance_{}.pkl'.format(fname)
 with open(save_file, 'wb') as fp:
     pickle.dump(out, fp, protocol=pickle.HIGHEST_PROTOCOL)
 
