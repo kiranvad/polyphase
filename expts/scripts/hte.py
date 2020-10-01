@@ -31,14 +31,13 @@ if os.environ.get("ip_head") is not None:
     print('Total number of nodes are {}'.format(num_nodes))
     NUM_CPUS=5
 else:
-    ray.init(local_mode=False)
+    ray.init(local_mode=True)
     print('Using single node all core paralleization')
     NUM_CPUS=1
 
 
-hte_df = pd.read_csv('../data/htev2.csv')
-    
-        
+hte_df = pd.read_pickle('../data/htev2.pkl')
+            
 def plain_phase_diagram(output, ax = None):
     """ 
     Plot phase diagrams as points without any labels or stuff
@@ -56,7 +55,6 @@ def plain_phase_diagram(output, ax = None):
     plt.axis('off')
     
     return ax    
-
 
 @ray.remote(num_cpus=NUM_CPUS)
 def plot_phase_diagram(row):
@@ -82,7 +80,7 @@ def plot_phase_diagram(row):
         'threshold_type':'uniform',
         'thresh_scale':0.1*dx,
         'lift_grid_size':dx,
-        'verbose' : False
+        'verbose' : True
      }
 
     out = serialcompute(configuration, dx, **kwargs)
@@ -97,9 +95,9 @@ def plot_phase_diagram(row):
     return fname
 
 T = timer()
-PM6_Y6 = hte_df.loc[(hte_df['SM'] == 'Y6') & (hte_df['polymer'] == 'PM6')]
+#PM6_Y6 = hte_df.loc[(hte_df['SM'] == 'Y6') & (hte_df['polymer'] == 'PM6')]
 
-remaining_result_ids  = [plot_phase_diagram.remote(i) for _,i in PM6_Y6.iterrows()]
+remaining_result_ids  = [plot_phase_diagram.remote(i) for _,i in hte_df.iterrows()]
 
 while len(remaining_result_ids) > 0:
     ready_result_ids, remaining_result_ids = ray.wait(remaining_result_ids, num_returns=1)
@@ -108,6 +106,6 @@ while len(remaining_result_ids) > 0:
     print('Processed : {}'.format(result)) 
 
 
-print('Program took {}'.format(timer.end()))    
+print('Program took {}'.format(T.end()))    
     
     

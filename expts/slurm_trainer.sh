@@ -57,8 +57,8 @@ do
   sleep 5
 done
 ##############################################################################################
-
+let "total_cores=$(($SLURM_NTASKS * $SLURM_NNODES))"
 echo "Launch Python job"
-python -u scripts/trainer.py 80 > ccr/trainer.out
+python -u scripts/trainer.py ${total_cores} > ccr/trainer.out
 echo "All Done!"
 exit

@@ -1,218 +1,134 @@
  Main Python Loaded 
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/bin/ray", line 8, in <module>
-    sys.exit(main())
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/scripts/scripts.py", line 1101, in main
-    return cli()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 829, in __call__
-    return self.main(*args, **kwargs)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 782, in main
-    rv = self.invoke(ctx)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 1259, in invoke
-    return _process_result(sub_ctx.command.invoke(sub_ctx))
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 1066, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 610, in invoke
-    return callback(*args, **kwargs)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/scripts/scripts.py", line 454, in start
-    redis_address_ip, redis_address_port, password=redis_password)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/services.py", line 562, in wait_for_redis_to_start
-    raise RuntimeError("Unable to connect to Redis. If the Redis instance "
-RuntimeError: Unable to connect to Redis. If the Redis instance is on a different machine, check that your firewall is configured properly.
-2020-09-23 14:40:18,114	WARNING scripts.py:320 -- The --redis-port argument will be deprecated soon. Please use --port instead.
-2020-09-23 14:40:18,114	INFO scripts.py:395 -- Using IP address 10.111.8.101 for this node.
-2020-09-23 14:40:18,121	INFO resource_spec.py:212 -- Starting Ray with 26.76 GiB memory available for workers and up to 13.39 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:18,923	WARNING services.py:923 -- Redis failed to start, retrying now.
-2020-09-23 14:40:24,870	INFO scripts.py:468 -- Using IP address 10.111.8.136 for this node.
-Traceback (most recent call last):
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/bin/ray", line 8, in <module>
-    sys.exit(main())
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/scripts/scripts.py", line 1101, in main
-    return cli()
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 829, in __call__
-    return self.main(*args, **kwargs)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 782, in main
-    rv = self.invoke(ctx)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 1259, in invoke
-    return _process_result(sub_ctx.command.invoke(sub_ctx))
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 1066, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/click/core.py", line 610, in invoke
-    return callback(*args, **kwargs)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/scripts/scripts.py", line 476, in start
-    ray_params, head=False, shutdown_at_exit=block, spawn_reaper=block)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/node.py", line 122, in __init__
-    redis_client.get("session_name"))
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/utils.py", line 216, in decode
-    "The argument {} must be a bytes object.".format(byte_str))
-ValueError: The argument None must be a bytes object.
-2020-09-23 14:40:25,646	INFO services.py:1165 -- View the Ray dashboard at [1m[32mlocalhost:8265[39m[22m
-2020-09-23 14:40:25,821	INFO scripts.py:425 -- 
+2020-09-24 09:48:33,674	INFO scripts.py:395 -- Using IP address 10.64.22.2 for this node.
+2020-09-24 09:48:33,683	INFO resource_spec.py:212 -- Starting Ray with 118.99 GiB memory available for workers and up to 55.0 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:48:34,087	WARNING services.py:923 -- Redis failed to start, retrying now.
+2020-09-24 09:48:39,035	INFO services.py:1165 -- View the Ray dashboard at [1m[32m10.64.22.2:8265[39m[22m
+2020-09-24 09:48:39,277	INFO scripts.py:425 -- 
 Started Ray on this node. You can add additional nodes to the cluster by calling
 
-    ray start --address='10.111.8.101:6379' --redis-password='130b345c-b1d6-4196-8b0e-6f0e7f5339ad'
+    ray start --address='10.64.22.2:6379' --redis-password='35bb4aeb-7642-4b2a-a675-4f96402c49f8'
 
 from the node you wish to add. You can connect a driver to the cluster from Python by running
 
     import ray
-    ray.init(address='auto', redis_password='130b345c-b1d6-4196-8b0e-6f0e7f5339ad')
+    ray.init(address='auto', redis_password='35bb4aeb-7642-4b2a-a675-4f96402c49f8')
 
 If you have trouble connecting from a different machine, check that your firewall is configured properly. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:35,405	INFO scripts.py:468 -- Using IP address 10.111.10.113 for this node.
-2020-09-23 14:40:35,413	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:35,526	INFO scripts.py:477 -- 
+2020-09-24 09:48:42,180	INFO scripts.py:468 -- Using IP address 10.64.22.52 for this node.
+2020-09-24 09:48:42,191	INFO resource_spec.py:212 -- Starting Ray with 128.37 GiB memory available for workers and up to 55.02 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:48:42,282	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:36,890	INFO scripts.py:468 -- Using IP address 10.111.10.1 for this node.
-2020-09-23 14:40:36,892	INFO scripts.py:468 -- Using IP address 10.111.8.139 for this node.
-2020-09-23 14:40:36,899	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.43 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:36,902	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.4 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:36,978	INFO scripts.py:477 -- 
+2020-09-24 09:48:51,765	INFO scripts.py:468 -- Using IP address 10.64.22.6 for this node.
+2020-09-24 09:48:51,772	INFO resource_spec.py:212 -- Starting Ray with 128.27 GiB memory available for workers and up to 54.99 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:48:51,844	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:36,985	INFO scripts.py:477 -- 
+2020-09-24 09:48:55,149	INFO scripts.py:468 -- Using IP address 10.64.22.48 for this node.
+2020-09-24 09:48:55,156	INFO resource_spec.py:212 -- Starting Ray with 128.37 GiB memory available for workers and up to 55.03 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:48:55,213	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:47,647	INFO scripts.py:468 -- Using IP address 10.111.10.114 for this node.
-2020-09-23 14:40:47,655	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:47,718	INFO scripts.py:477 -- 
+2020-09-24 09:49:03,102	INFO scripts.py:468 -- Using IP address 10.64.22.8 for this node.
+2020-09-24 09:49:03,109	INFO resource_spec.py:212 -- Starting Ray with 128.32 GiB memory available for workers and up to 55.02 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:03,178	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:55,540	INFO scripts.py:468 -- Using IP address 10.111.10.112 for this node.
-2020-09-23 14:40:55,552	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:55,542	INFO scripts.py:468 -- Using IP address 10.111.10.14 for this node.
-2020-09-23 14:40:55,552	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:55,712	INFO scripts.py:468 -- Using IP address 10.111.10.15 for this node.
-2020-09-23 14:40:55,722	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:40:55,757	INFO scripts.py:477 -- 
+2020-09-24 09:49:05,392	INFO scripts.py:468 -- Using IP address 10.64.22.50 for this node.
+2020-09-24 09:49:05,402	INFO resource_spec.py:212 -- Starting Ray with 128.27 GiB memory available for workers and up to 54.99 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:05,525	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:55,793	INFO scripts.py:477 -- 
+2020-09-24 09:49:06,008	INFO scripts.py:468 -- Using IP address 10.64.22.10 for this node.
+2020-09-24 09:49:06,015	INFO resource_spec.py:212 -- Starting Ray with 128.47 GiB memory available for workers and up to 55.08 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:06,085	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:40:55,894	INFO scripts.py:477 -- 
+2020-09-24 09:49:16,112	INFO scripts.py:468 -- Using IP address 10.64.22.44 for this node.
+2020-09-24 09:49:16,123	INFO resource_spec.py:212 -- Starting Ray with 128.42 GiB memory available for workers and up to 55.05 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:16,192	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:02,356	INFO scripts.py:468 -- Using IP address 10.111.10.116 for this node.
-2020-09-23 14:41:02,364	INFO resource_spec.py:212 -- Starting Ray with 31.1 GiB memory available for workers and up to 13.33 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:02,477	INFO scripts.py:477 -- 
+2020-09-24 09:49:21,657	INFO scripts.py:468 -- Using IP address 10.64.22.42 for this node.
+2020-09-24 09:49:21,664	INFO resource_spec.py:212 -- Starting Ray with 128.47 GiB memory available for workers and up to 55.06 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:21,721	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:07,202	INFO scripts.py:468 -- Using IP address 10.111.10.115 for this node.
-2020-09-23 14:41:07,211	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:07,351	INFO scripts.py:477 -- 
+2020-09-24 09:49:23,783	INFO scripts.py:468 -- Using IP address 10.64.22.12 for this node.
+2020-09-24 09:49:23,792	INFO resource_spec.py:212 -- Starting Ray with 128.47 GiB memory available for workers and up to 55.07 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:23,911	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:09,325	INFO scripts.py:468 -- Using IP address 10.111.10.18 for this node.
-2020-09-23 14:41:09,333	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:09,460	INFO scripts.py:477 -- 
+2020-09-24 09:49:29,909	INFO scripts.py:468 -- Using IP address 10.64.22.16 for this node.
+2020-09-24 09:49:29,913	INFO resource_spec.py:212 -- Starting Ray with 128.37 GiB memory available for workers and up to 55.03 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:29,965	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:15,722	INFO scripts.py:468 -- Using IP address 10.111.10.25 for this node.
-2020-09-23 14:41:15,739	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:15,824	INFO scripts.py:477 -- 
+2020-09-24 09:49:33,759	INFO scripts.py:468 -- Using IP address 10.64.22.40 for this node.
+2020-09-24 09:49:33,766	INFO resource_spec.py:212 -- Starting Ray with 128.42 GiB memory available for workers and up to 55.05 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:33,848	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:16,619	INFO scripts.py:468 -- Using IP address 10.111.10.117 for this node.
-2020-09-23 14:41:16,627	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:16,751	INFO scripts.py:477 -- 
+2020-09-24 09:49:35,766	INFO scripts.py:468 -- Using IP address 10.64.22.38 for this node.
+2020-09-24 09:49:35,775	INFO resource_spec.py:212 -- Starting Ray with 128.37 GiB memory available for workers and up to 55.03 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:35,833	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:18,504	INFO scripts.py:468 -- Using IP address 10.111.10.128 for this node.
-2020-09-23 14:41:18,511	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:18,589	INFO scripts.py:477 -- 
+2020-09-24 09:49:47,668	INFO scripts.py:468 -- Using IP address 10.64.22.15 for this node.
+2020-09-24 09:49:47,673	INFO resource_spec.py:212 -- Starting Ray with 128.52 GiB memory available for workers and up to 55.08 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:47,816	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:33,590	INFO scripts.py:468 -- Using IP address 10.111.10.35 for this node.
-2020-09-23 14:41:33,598	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:33,663	INFO scripts.py:477 -- 
+2020-09-24 09:49:57,930	INFO scripts.py:468 -- Using IP address 10.64.22.39 for this node.
+2020-09-24 09:49:57,936	INFO resource_spec.py:212 -- Starting Ray with 128.32 GiB memory available for workers and up to 55.0 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:49:58,016	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
-2020-09-23 14:41:36,890	INFO scripts.py:468 -- Using IP address 10.111.10.129 for this node.
-2020-09-23 14:41:36,898	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:36,990	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:41:39,427	INFO scripts.py:468 -- Using IP address 10.111.10.38 for this node.
-2020-09-23 14:41:39,435	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:39,514	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:41:47,787	INFO scripts.py:468 -- Using IP address 10.111.10.39 for this node.
-2020-09-23 14:41:47,794	INFO resource_spec.py:212 -- Starting Ray with 31.35 GiB memory available for workers and up to 13.44 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:47,857	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:41:53,291	INFO scripts.py:468 -- Using IP address 10.111.10.138 for this node.
-2020-09-23 14:41:53,299	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.43 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:41:53,441	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:42:00,913	INFO scripts.py:468 -- Using IP address 10.111.10.130 for this node.
-2020-09-23 14:42:00,923	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.4 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:42:01,185	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:42:03,361	INFO scripts.py:468 -- Using IP address 10.111.10.139 for this node.
-2020-09-23 14:42:03,369	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:42:03,436	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:42:03,911	INFO scripts.py:468 -- Using IP address 10.111.10.41 for this node.
-2020-09-23 14:42:03,919	INFO resource_spec.py:212 -- Starting Ray with 31.25 GiB memory available for workers and up to 13.41 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:42:04,045	INFO scripts.py:477 -- 
-Started Ray on this node. If you wish to terminate the processes that have been started, run
-
-    ray stop
-2020-09-23 14:42:11,797	INFO scripts.py:468 -- Using IP address 10.111.10.40 for this node.
-2020-09-23 14:42:11,805	INFO resource_spec.py:212 -- Starting Ray with 31.3 GiB memory available for workers and up to 13.42 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
-2020-09-23 14:42:11,985	INFO scripts.py:477 -- 
+2020-09-24 09:50:01,277	INFO scripts.py:468 -- Using IP address 10.64.22.37 for this node.
+2020-09-24 09:50:01,284	INFO resource_spec.py:212 -- Starting Ray with 128.47 GiB memory available for workers and up to 55.06 GiB for objects. You can adjust these settings with ray.init(memory=<bytes>, object_store_memory=<bytes>).
+2020-09-24 09:50:01,339	INFO scripts.py:477 -- 
 Started Ray on this node. If you wish to terminate the processes that have been started, run
 
     ray stop
 WARNING: Logging before InitGoogleLogging() is written to STDERR
-I0923 14:43:03.706858  9270  9270 global_state_accessor.cc:25] Redis server address = 10.111.8.101:6379, is test flag = 0
-I0923 14:43:03.709214  9270  9270 redis_client.cc:141] RedisClient connected.
-I0923 14:43:03.717774  9270  9270 redis_gcs_client.cc:88] RedisGcsClient Connected.
-I0923 14:43:03.719342  9270  9270 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
+I0924 09:50:20.087420 189843 189843 global_state_accessor.cc:25] Redis server address = 10.64.22.2:6379, is test flag = 0
+I0924 09:50:20.092389 189843 189843 redis_client.cc:141] RedisClient connected.
+I0924 09:50:20.101212 189843 189843 redis_gcs_client.cc:88] RedisGcsClient Connected.
+I0924 09:50:20.102618 189843 189843 service_based_gcs_client.cc:75] ServiceBasedGcsClient Connected.
+2020-09-24 09:50:54,714	WARNING worker.py:1047 -- The actor or task with ID d5f1443f9b893d1affffffff0100 is pending and cannot currently be scheduled. It requires {CPU: 5.000000} for execution and {CPU: 5.000000} for placement, but this node only has remaining {node:10.64.22.12: 1.000000}, {CPU: 40.000000}, {memory: 128.466797 GiB}, {object_store_memory: 37.988281 GiB}. In total there are 1 pending tasks and 0 pending actors on this node. This is likely due to all cluster resources being claimed by actors. To resolve the issue, consider creating fewer actors or increase the resources available to this Ray cluster. You can ignore this message if this Ray cluster is expected to auto-scale.
+2020-09-24 09:51:02,008	WARNING worker.py:1047 -- The actor or task with ID 39db908a392f48b1ffffffff0100 is pending and cannot currently be scheduled. It requires {CPU: 5.000000} for execution and {CPU: 5.000000} for placement, but this node only has remaining {node:10.64.22.37: 1.000000}, {CPU: 40.000000}, {memory: 128.466797 GiB}, {object_store_memory: 37.988281 GiB}. In total there are 1 pending tasks and 0 pending actors on this node. This is likely due to all cluster resources being claimed by actors. To resolve the issue, consider creating fewer actors or increase the resources available to this Ray cluster. You can ignore this message if this Ray cluster is expected to auto-scale.
+2020-09-24 10:40:19,046	WARNING worker.py:945 -- The driver may not be able to keep up with the stdout/stderr of the workers. To avoid forwarding logs to the driver, use 'ray.init(log_to_driver=False)'.
+2020-09-24 10:41:53,783	WARNING worker.py:1047 -- The node with node id 2c8c0f5a33c4557168542c755ee93daa694f5775 has been marked dead because the detector has missed too many heartbeats from it.
+E0924 10:43:36.531837 189843 189932 direct_task_transport.cc:240] Retrying attempt to schedule task at remote node. Error: IOError: 14: Socket closed
+2020-09-24 11:10:34,702	WARNING worker.py:1047 -- The log monitor on node cpn-q07-27-02.compute.cbls.ccr.buffalo.edu failed with the following error:
 Traceback (most recent call last):
-  File "scripts/hte.py", line 107, in <module>
-    result = ray.get(result_id)
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/worker.py", line 1474, in get
-    raise value.as_instanceof_cause()
-ray.exceptions.RayTaskError(ValueError): [36mray::__main__.plot_phase_diagram()[39m (pid=8787, ip=10.111.8.101)
-  File "python/ray/_raylet.pyx", line 446, in ray._raylet.execute_task
-  File "scripts/hte.py", line 88, in plot_phase_diagram
-    out = serialcompute(configuration, dx, **kwargs)
-  File "/projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/polyphase/phase.py", line 202, in serialcompute
-    grid = makegridnd(meshsize, dimensions)
-  File "/projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/polyphase/phase.py", line 26, in makegridnd
-    x = np.meshgrid(*[np.linspace(MIN_POINT_PRECISION, 1,meshsize) for d in range(dimension)])
-  File "<__array_function__ internals>", line 6, in meshgrid
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/numpy/lib/function_base.py", line 4197, in meshgrid
-    for i, x in enumerate(xi)]
-  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/numpy/lib/function_base.py", line 4197, in <listcomp>
-    for i, x in enumerate(xi)]
-ValueError: maximum supported dimension for an ndarray is 32, found 40
+  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 298, in <module>
+    log_monitor.run()
+  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 247, in run
+    self.update_log_filenames()
+  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/site-packages/ray/log_monitor.py", line 113, in update_log_filenames
+    self.logs_dir))
+  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/glob.py", line 20, in glob
+    return list(iglob(pathname, recursive=recursive))
+  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/glob.py", line 72, in _iglob
+    for name in glob_in_dir(dirname, basename, dironly):
+  File "/projects/academic/olgawodo/kiranvad/anaconda3/lib/python3.7/glob.py", line 80, in _glob1
+    names = list(_iterdir(dirname, dironly))
+MemoryError
+
