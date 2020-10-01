@@ -1,165 +1,177 @@
-10.116.28.10:6379 2c451f51-0aa1-4e15-9fec-3070e2b5ab11
 Nodes in the Ray cluster:
-[{'NodeID': 'dd1f97d90d1d1129739624b3e520078aa0dd02f9', 'Alive': True, 'NodeManagerAddress': '10.116.28.11', 'NodeManagerHostname': 'cpn-p28-11.cbls.ccr.buffalo.edu', 'NodeManagerPort': 48170, 'ObjectManagerPort': 43890, 'ObjectStoreSocketName': '/tmp/ray/session_2020-08-14_00-00-49_540596_4989/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-08-14_00-00-49_540596_4989/sockets/raylet', 'alive': True, 'Resources': {'node:10.116.28.11': 1.0, 'object_store_memory': 258.0, 'CPU': 20.0, 'memory': 874.0}}, {'NodeID': '52d6b39ba6b1ff55403333cd491470e32a93867f', 'Alive': True, 'NodeManagerAddress': '10.116.28.13', 'NodeManagerHostname': 'cpn-p28-13.cbls.ccr.buffalo.edu', 'NodeManagerPort': 52304, 'ObjectManagerPort': 35284, 'ObjectStoreSocketName': '/tmp/ray/session_2020-08-14_00-00-49_540596_4989/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-08-14_00-00-49_540596_4989/sockets/raylet', 'alive': True, 'Resources': {'CPU': 20.0, 'memory': 875.0, 'object_store_memory': 258.0, 'node:10.116.28.13': 1.0}}, {'NodeID': '68bf1304d2956a7a2a8fe4a796271de7666acb67', 'Alive': True, 'NodeManagerAddress': '10.116.28.10', 'NodeManagerHostname': 'cpn-p28-10.cbls.ccr.buffalo.edu', 'NodeManagerPort': 57330, 'ObjectManagerPort': 42578, 'ObjectStoreSocketName': '/tmp/ray/session_2020-08-14_00-00-49_540596_4989/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-08-14_00-00-49_540596_4989/sockets/raylet', 'alive': True, 'Resources': {'CPU': 20.0, 'memory': 748.0, 'node:10.116.28.10': 1.0, 'object_store_memory': 258.0}}]
-[2m[36m(pid=5053)[0m Computing 1 on 10.116.28.10
-[2m[36m(pid=5046)[0m Computing 0 on 10.116.28.10
-[2m[36m(pid=5044)[0m Computing 3 on 10.116.28.10
-[2m[36m(pid=5055)[0m Computing 2 on 10.116.28.10
-[2m[36m(pid=5043)[0m Computing 8 on 10.116.28.10
-[2m[36m(pid=5047)[0m Computing 5 on 10.116.28.10
-[2m[36m(pid=5052)[0m Computing 7 on 10.116.28.10
-[2m[36m(pid=3492, ip=10.116.28.13)[0m Computing 4 on 10.116.28.13
-[2m[36m(pid=5056)[0m Computing 11 on 10.116.28.10
-[2m[36m(pid=5059)[0m Computing 12 on 10.116.28.10
-[2m[36m(pid=5058)[0m Computing 14 on 10.116.28.10
-[2m[36m(pid=5060)[0m Computing 13 on 10.116.28.10
-[2m[36m(pid=3491, ip=10.116.28.13)[0m Computing 6 on 10.116.28.13
-[2m[36m(pid=3505, ip=10.116.28.13)[0m Computing 9 on 10.116.28.13
-[2m[36m(pid=3502, ip=10.116.28.13)[0m Computing 10 on 10.116.28.13
-[2m[36m(pid=5048)[0m Computing 16 on 10.116.28.10
-[2m[36m(pid=5045)[0m Computing 19 on 10.116.28.10
-[2m[36m(pid=3499, ip=10.116.28.13)[0m Computing 17 on 10.116.28.13
-[2m[36m(pid=3496, ip=10.116.28.13)[0m Computing 18 on 10.116.28.13
-[2m[36m(pid=3497, ip=10.116.28.13)[0m Computing 15 on 10.116.28.13
-[2m[36m(pid=5050)[0m Computing 24 on 10.116.28.10
-[2m[36m(pid=3504, ip=10.116.28.13)[0m Computing 22 on 10.116.28.13
-[2m[36m(pid=3489, ip=10.116.28.13)[0m Computing 26 on 10.116.28.13
-[2m[36m(pid=3494, ip=10.116.28.13)[0m Computing 25 on 10.116.28.13
-[2m[36m(pid=3495, ip=10.116.28.13)[0m Computing 21 on 10.116.28.13
-[2m[36m(pid=3503, ip=10.116.28.13)[0m Computing 23 on 10.116.28.13
-[2m[36m(pid=3490, ip=10.116.28.13)[0m Computing 20 on 10.116.28.13
-[2m[36m(pid=3501, ip=10.116.28.13)[0m Computing 27 on 10.116.28.13
-[2m[36m(pid=5051)[0m Computing 29 on 10.116.28.10
-[2m[36m(pid=5057)[0m Computing 28 on 10.116.28.10
-[2m[36m(pid=5049)[0m Computing 30 on 10.116.28.10
-[2m[36m(pid=5061)[0m Computing 33 on 10.116.28.10
-[2m[36m(pid=5054)[0m Computing 31 on 10.116.28.10
-[2m[36m(pid=5062)[0m Computing 32 on 10.116.28.10
-[2m[36m(pid=3506, ip=10.116.28.13)[0m Computing 36 on 10.116.28.13
-[2m[36m(pid=3507, ip=10.116.28.13)[0m Computing 35 on 10.116.28.13
-[2m[36m(pid=3508, ip=10.116.28.13)[0m Computing 34 on 10.116.28.13
-[2m[36m(pid=3498, ip=10.116.28.13)[0m Computing 38 on 10.116.28.13
-[2m[36m(pid=3493, ip=10.116.28.13)[0m Computing 39 on 10.116.28.13
-[2m[36m(pid=3500, ip=10.116.28.13)[0m Computing 40 on 10.116.28.13
-[2m[36m(pid=16244, ip=10.116.28.11)[0m Computing 37 on 10.116.28.11
-[2m[36m(pid=16239, ip=10.116.28.11)[0m Computing 42 on 10.116.28.11
-[2m[36m(pid=16243, ip=10.116.28.11)[0m Computing 43 on 10.116.28.11
-[2m[36m(pid=16238, ip=10.116.28.11)[0m Computing 41 on 10.116.28.11
-[2m[36m(pid=16237, ip=10.116.28.11)[0m Computing 44 on 10.116.28.11
-[2m[36m(pid=16241, ip=10.116.28.11)[0m Computing 45 on 10.116.28.11
-[2m[36m(pid=16240, ip=10.116.28.11)[0m Computing 46 on 10.116.28.11
-[2m[36m(pid=16249, ip=10.116.28.11)[0m Computing 47 on 10.116.28.11
-[2m[36m(pid=16251, ip=10.116.28.11)[0m Computing 51 on 10.116.28.11
-[2m[36m(pid=16247, ip=10.116.28.11)[0m Computing 48 on 10.116.28.11
-[2m[36m(pid=16236, ip=10.116.28.11)[0m Computing 49 on 10.116.28.11
-[2m[36m(pid=16255, ip=10.116.28.11)[0m Computing 50 on 10.116.28.11
-[2m[36m(pid=16242, ip=10.116.28.11)[0m Computing 52 on 10.116.28.11
-[2m[36m(pid=16253, ip=10.116.28.11)[0m Computing 53 on 10.116.28.11
-[2m[36m(pid=16246, ip=10.116.28.11)[0m Computing 54 on 10.116.28.11
-[2m[36m(pid=16250, ip=10.116.28.11)[0m Computing 55 on 10.116.28.11
-[2m[36m(pid=16252, ip=10.116.28.11)[0m Computing 57 on 10.116.28.11
-[2m[36m(pid=16245, ip=10.116.28.11)[0m Computing 56 on 10.116.28.11
-[2m[36m(pid=16254, ip=10.116.28.11)[0m Computing 58 on 10.116.28.11
-[2m[36m(pid=16248, ip=10.116.28.11)[0m Computing 59 on 10.116.28.11
-[2m[36m(pid=16249, ip=10.116.28.11)[0m 2020-08-14 00:01:53,128	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.4108376740477979 seconds
-[2m[36m(pid=4867, ip=10.116.28.15)[0m Computing 62 on 10.116.28.15
-[2m[36m(pid=4865, ip=10.116.28.15)[0m Computing 60 on 10.116.28.15
-[2m[36m(pid=4874, ip=10.116.28.15)[0m Computing 61 on 10.116.28.15
-[2m[36m(pid=4879, ip=10.116.28.15)[0m Computing 65 on 10.116.28.15
-[2m[36m(pid=4862, ip=10.116.28.15)[0m Computing 64 on 10.116.28.15
-[2m[36m(pid=4873, ip=10.116.28.15)[0m Computing 69 on 10.116.28.15
-[2m[36m(pid=4863, ip=10.116.28.15)[0m Computing 67 on 10.116.28.15
-[2m[36m(pid=4860, ip=10.116.28.15)[0m Computing 68 on 10.116.28.15
-[2m[36m(pid=4875, ip=10.116.28.15)[0m Computing 70 on 10.116.28.15
-[2m[36m(pid=4877, ip=10.116.28.15)[0m Computing 71 on 10.116.28.15
-[2m[36m(pid=4864, ip=10.116.28.15)[0m Computing 63 on 10.116.28.15
-[2m[36m(pid=4866, ip=10.116.28.15)[0m Computing 66 on 10.116.28.15
-[2m[36m(pid=4872, ip=10.116.28.15)[0m Computing 72 on 10.116.28.15
-[2m[36m(pid=4878, ip=10.116.28.15)[0m Computing 74 on 10.116.28.15
-[2m[36m(pid=4871, ip=10.116.28.15)[0m Computing 73 on 10.116.28.15
-[2m[36m(pid=4870, ip=10.116.28.15)[0m Computing 75 on 10.116.28.15
-[2m[36m(pid=4876, ip=10.116.28.15)[0m Computing 77 on 10.116.28.15
-[2m[36m(pid=4869, ip=10.116.28.15)[0m Computing 78 on 10.116.28.15
-[2m[36m(pid=4861, ip=10.116.28.15)[0m Computing 76 on 10.116.28.15
-[2m[36m(pid=4868, ip=10.116.28.15)[0m Computing 79 on 10.116.28.15
-[2m[36m(pid=5053)[0m Computing 81 on 10.116.28.10
-[2m[36m(pid=5046)[0m Computing 80 on 10.116.28.10
-[2m[36m(pid=5044)[0m Computing 82 on 10.116.28.10
-[2m[36m(pid=5055)[0m Computing 83 on 10.116.28.10
-[2m[36m(pid=5043)[0m Computing 86 on 10.116.28.10
-[2m[36m(pid=5047)[0m Computing 84 on 10.116.28.10
-[2m[36m(pid=5052)[0m Computing 85 on 10.116.28.10
-[2m[36m(pid=3491, ip=10.116.28.13)[0m Computing 91 on 10.116.28.13
-[2m[36m(pid=3502, ip=10.116.28.13)[0m Computing 89 on 10.116.28.13
-[2m[36m(pid=3492, ip=10.116.28.13)[0m Computing 93 on 10.116.28.13
-[2m[36m(pid=3505, ip=10.116.28.13)[0m Computing 92 on 10.116.28.13
-[2m[36m(pid=5056)[0m Computing 88 on 10.116.28.10
-[2m[36m(pid=5059)[0m Computing 87 on 10.116.28.10
-[2m[36m(pid=5058)[0m Computing 94 on 10.116.28.10
-[2m[36m(pid=5060)[0m Computing 90 on 10.116.28.10
-[2m[36m(pid=3499, ip=10.116.28.13)[0m Computing 99 on 10.116.28.13
-[2m[36m(pid=3496, ip=10.116.28.13)[0m Computing 98 on 10.116.28.13
-[2m[36m(pid=3497, ip=10.116.28.13)[0m Computing 95 on 10.116.28.13
-[2m[36m(pid=5048)[0m Computing 96 on 10.116.28.10
-[2m[36m(pid=5045)[0m Computing 97 on 10.116.28.10
-[2m[36m(pid=3504, ip=10.116.28.13)[0m Computing 105 on 10.116.28.13
-[2m[36m(pid=3489, ip=10.116.28.13)[0m Computing 101 on 10.116.28.13
-[2m[36m(pid=3494, ip=10.116.28.13)[0m Computing 102 on 10.116.28.13
-[2m[36m(pid=3495, ip=10.116.28.13)[0m Computing 106 on 10.116.28.13
-[2m[36m(pid=3503, ip=10.116.28.13)[0m Computing 103 on 10.116.28.13
-[2m[36m(pid=3490, ip=10.116.28.13)[0m Computing 104 on 10.116.28.13
-[2m[36m(pid=5050)[0m Computing 100 on 10.116.28.10
-[2m[36m(pid=3501, ip=10.116.28.13)[0m Computing 107 on 10.116.28.13
-[2m[36m(pid=5051)[0m Computing 110 on 10.116.28.10
-[2m[36m(pid=5049)[0m Computing 108 on 10.116.28.10
-[2m[36m(pid=5057)[0m Computing 109 on 10.116.28.10
-[2m[36m(pid=5061)[0m Computing 113 on 10.116.28.10
-[2m[36m(pid=5054)[0m Computing 111 on 10.116.28.10
-[2m[36m(pid=5062)[0m Computing 112 on 10.116.28.10
-[2m[36m(pid=3506, ip=10.116.28.13)[0m Computing 118 on 10.116.28.13
-[2m[36m(pid=3507, ip=10.116.28.13)[0m Computing 119 on 10.116.28.13
-[2m[36m(pid=3493, ip=10.116.28.13)[0m Computing 115 on 10.116.28.13
-[2m[36m(pid=3500, ip=10.116.28.13)[0m Computing 114 on 10.116.28.13
-[2m[36m(pid=3508, ip=10.116.28.13)[0m Computing 117 on 10.116.28.13
-[2m[36m(pid=3498, ip=10.116.28.13)[0m Computing 116 on 10.116.28.13
-[2m[36m(pid=16241, ip=10.116.28.11)[0m Computing 126 on 10.116.28.11
-[2m[36m(pid=16240, ip=10.116.28.11)[0m Computing 125 on 10.116.28.11
-[2m[36m(pid=16306, ip=10.116.28.11)[0m Computing 123 on 10.116.28.11
-[2m[36m(pid=16312, ip=10.116.28.11)[0m Computing 122 on 10.116.28.11
-[2m[36m(pid=16300, ip=10.116.28.11)[0m Computing 124 on 10.116.28.11
-[2m[36m(pid=16365, ip=10.116.28.11)[0m Computing 121 on 10.116.28.11
-[2m[36m(pid=16382, ip=10.116.28.11)[0m Computing 120 on 10.116.28.11
-[2m[36m(pid=16249, ip=10.116.28.11)[0m Computing 127 on 10.116.28.11
-[2m[36m(pid=16251, ip=10.116.28.11)[0m Computing 131 on 10.116.28.11
-[2m[36m(pid=16246, ip=10.116.28.11)[0m Computing 129 on 10.116.28.11
-[2m[36m(pid=16250, ip=10.116.28.11)[0m Computing 130 on 10.116.28.11
-[2m[36m(pid=16245, ip=10.116.28.11)[0m Computing 128 on 10.116.28.11
-[2m[36m(pid=16237, ip=10.116.28.11)[0m Computing 136 on 10.116.28.11
-[2m[36m(pid=16247, ip=10.116.28.11)[0m Computing 134 on 10.116.28.11
-[2m[36m(pid=16254, ip=10.116.28.11)[0m Computing 133 on 10.116.28.11
-[2m[36m(pid=16248, ip=10.116.28.11)[0m Computing 132 on 10.116.28.11
-[2m[36m(pid=16427, ip=10.116.28.11)[0m Computing 135 on 10.116.28.11
-[2m[36m(pid=16472, ip=10.116.28.11)[0m Computing 137 on 10.116.28.11
-[2m[36m(pid=16255, ip=10.116.28.11)[0m Computing 139 on 10.116.28.11
-[2m[36m(pid=16413, ip=10.116.28.11)[0m Computing 138 on 10.116.28.11
-[2m[36m(pid=4875, ip=10.116.28.15)[0m Computing 152 on 10.116.28.15
-[2m[36m(pid=4877, ip=10.116.28.15)[0m Computing 145 on 10.116.28.15
-[2m[36m(pid=4866, ip=10.116.28.15)[0m Computing 146 on 10.116.28.15
-[2m[36m(pid=4878, ip=10.116.28.15)[0m Computing 142 on 10.116.28.15
-[2m[36m(pid=4871, ip=10.116.28.15)[0m Computing 143 on 10.116.28.15
-[2m[36m(pid=4870, ip=10.116.28.15)[0m Computing 144 on 10.116.28.15
-[2m[36m(pid=4876, ip=10.116.28.15)[0m Computing 141 on 10.116.28.15
-[2m[36m(pid=4869, ip=10.116.28.15)[0m Computing 148 on 10.116.28.15
-[2m[36m(pid=4868, ip=10.116.28.15)[0m Computing 140 on 10.116.28.15
-[2m[36m(pid=4953, ip=10.116.28.15)[0m Computing 154 on 10.116.28.15
-[2m[36m(pid=4946, ip=10.116.28.15)[0m Computing 150 on 10.116.28.15
-[2m[36m(pid=4979, ip=10.116.28.15)[0m Computing 151 on 10.116.28.15
-[2m[36m(pid=5027, ip=10.116.28.15)[0m Computing 153 on 10.116.28.15
-[2m[36m(pid=5016, ip=10.116.28.15)[0m Computing 155 on 10.116.28.15
-[2m[36m(pid=4959, ip=10.116.28.15)[0m Computing 156 on 10.116.28.15
-[2m[36m(pid=4999, ip=10.116.28.15)[0m Computing 149 on 10.116.28.15
-[2m[36m(pid=5054, ip=10.116.28.15)[0m Computing 147 on 10.116.28.15
-[2m[36m(pid=4862, ip=10.116.28.15)[0m Computing 159 on 10.116.28.15
-[2m[36m(pid=5000, ip=10.116.28.15)[0m Computing 157 on 10.116.28.15
-[2m[36m(pid=5053, ip=10.116.28.15)[0m Computing 158 on 10.116.28.15
-Execution time was : 149.85
+[{'NodeID': '669b3f6629e7f88343442c92627edfa996bd66ca', 'Alive': True, 'NodeManagerAddress': '10.116.28.13', 'NodeManagerHostname': 'cpn-p28-13.cbls.ccr.buffalo.edu', 'NodeManagerPort': 54786, 'ObjectManagerPort': 44059, 'ObjectStoreSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/raylet', 'alive': True, 'Resources': {'node:10.116.28.13': 1.0, 'CPU': 20.0, 'memory': 865.0, 'object_store_memory': 255.0}}, {'NodeID': '64b906d81f756050e2fddcdb42165fb40473f3cc', 'Alive': True, 'NodeManagerAddress': '10.116.28.12', 'NodeManagerHostname': 'cpn-p28-12.cbls.ccr.buffalo.edu', 'NodeManagerPort': 38847, 'ObjectManagerPort': 37369, 'ObjectStoreSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/raylet', 'alive': True, 'Resources': {'node:10.116.28.12': 1.0, 'CPU': 20.0, 'memory': 865.0, 'object_store_memory': 255.0}}, {'NodeID': '966ec3e2090e0a7f7a8f8ebfef6a1057927d4546', 'Alive': True, 'NodeManagerAddress': '10.116.28.9', 'NodeManagerHostname': 'cpn-p28-09.cbls.ccr.buffalo.edu', 'NodeManagerPort': 57410, 'ObjectManagerPort': 39411, 'ObjectStoreSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/raylet', 'alive': True, 'Resources': {'CPU': 20.0, 'memory': 743.0, 'node:10.116.28.9': 1.0, 'object_store_memory': 256.0}}, {'NodeID': 'a89292eaf07d52c97dfc541a22396745ad081574', 'Alive': True, 'NodeManagerAddress': '10.116.28.14', 'NodeManagerHostname': 'cpn-p28-14.cbls.ccr.buffalo.edu', 'NodeManagerPort': 62298, 'ObjectManagerPort': 42853, 'ObjectStoreSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/plasma_store', 'RayletSocketName': '/tmp/ray/session_2020-09-23_21-47-22_494798_5742/sockets/raylet', 'alive': True, 'Resources': {'CPU': 20.0, 'memory': 865.0, 'object_store_memory': 255.0, 'node:10.116.28.14': 1.0}}]
+[2m[36m(pid=25656, ip=10.116.28.12)[0m 2020-09-23 21:48:08,900	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.2213309861253947 seconds
+[2m[36m(pid=25664, ip=10.116.28.12)[0m 2020-09-23 21:48:08,880	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.1559599752072245 seconds
+[2m[36m(pid=25670, ip=10.116.28.12)[0m 2020-09-23 21:48:08,888	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.06729735806584358 seconds
+[2m[36m(pid=25658, ip=10.116.28.12)[0m 2020-09-23 21:48:08,858	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.02941112103872001 seconds
+[2m[36m(pid=25665, ip=10.116.28.12)[0m 2020-09-23 21:48:08,904	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.17653170507401228 seconds
+[2m[36m(pid=25660, ip=10.116.28.12)[0m 2020-09-23 21:48:08,923	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.10828321287408471 seconds
+[2m[36m(pid=25663, ip=10.116.28.12)[0m 2020-09-23 21:48:08,862	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.16243652603588998 seconds
+[2m[36m(pid=25657, ip=10.116.28.12)[0m 2020-09-23 21:48:08,926	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.021900262916460633 seconds
+[2m[36m(pid=25671, ip=10.116.28.12)[0m 2020-09-23 21:48:08,896	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.22103434009477496 seconds
+[2m[36m(pid=25666, ip=10.116.28.12)[0m 2020-09-23 21:48:08,884	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.1722057880833745 seconds
+[2m[36m(pid=25672, ip=10.116.28.12)[0m 2020-09-23 21:48:08,921	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.22692931885831058 seconds
+[2m[36m(pid=25659, ip=10.116.28.12)[0m 2020-09-23 21:48:08,867	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.17612664494663477 seconds
+[2m[36m(pid=25662, ip=10.116.28.12)[0m 2020-09-23 21:48:08,892	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.17210158286616206 seconds
+[2m[36m(pid=25673, ip=10.116.28.12)[0m 2020-09-23 21:48:08,912	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.22577824187465012 seconds
+[2m[36m(pid=25675, ip=10.116.28.12)[0m 2020-09-23 21:48:08,916	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.212919136043638 seconds
+[2m[36m(pid=25668, ip=10.116.28.12)[0m 2020-09-23 21:48:08,937	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.264933971920982 seconds
+[2m[36m(pid=25661, ip=10.116.28.12)[0m 2020-09-23 21:48:08,938	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.2673967008013278 seconds
+[2m[36m(pid=25667, ip=10.116.28.12)[0m 2020-09-23 21:48:08,934	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.2506312429904938 seconds
+[2m[36m(pid=5802)[0m 2020-09-23 21:48:08,925	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.18341652187518775 seconds
+[2m[36m(pid=5791)[0m 2020-09-23 21:48:08,942	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.19871334894560277 seconds
+[2m[36m(pid=5795)[0m 2020-09-23 21:48:08,907	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.18968946998938918 seconds
+[2m[36m(pid=5793)[0m 2020-09-23 21:48:08,915	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.160823818994686 seconds
+[2m[36m(pid=5799)[0m 2020-09-23 21:48:08,892	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.14648998295888305 seconds
+[2m[36m(pid=5809)[0m 2020-09-23 21:48:08,921	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.171830179868266 seconds
+[2m[36m(pid=5806)[0m 2020-09-23 21:48:08,937	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.23139933915808797 seconds
+[2m[36m(pid=5804)[0m 2020-09-23 21:48:08,889	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.15094338287599385 seconds
+[2m[36m(pid=5808)[0m 2020-09-23 21:48:08,896	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.194507708074525 seconds
+[2m[36m(pid=5800)[0m 2020-09-23 21:48:08,940	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.24601023900322616 seconds
+[2m[36m(pid=5798)[0m 2020-09-23 21:48:08,904	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.16994767216965556 seconds
+[2m[36m(pid=5797)[0m 2020-09-23 21:48:08,911	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.2132233139127493 seconds
+[2m[36m(pid=5807)[0m 2020-09-23 21:48:08,875	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.11310917208902538 seconds
+[2m[36m(pid=5794)[0m 2020-09-23 21:48:08,900	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.19051156309433281 seconds
+[2m[36m(pid=5801)[0m 2020-09-23 21:48:08,871	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.11300971102900803 seconds
+[2m[36m(pid=5805)[0m 2020-09-23 21:48:08,949	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.26097252196632326 seconds
+[2m[36m(pid=5803)[0m 2020-09-23 21:48:08,884	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.15862237196415663 seconds
+[2m[36m(pid=11799, ip=10.116.28.13)[0m 2020-09-23 21:48:13,966	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.02427531103603542 seconds
+[2m[36m(pid=11790, ip=10.116.28.13)[0m 2020-09-23 21:48:13,990	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.009106245823204517 seconds
+[2m[36m(pid=11795, ip=10.116.28.13)[0m 2020-09-23 21:48:13,980	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.00942863686941564 seconds
+[2m[36m(pid=11787, ip=10.116.28.13)[0m 2020-09-23 21:48:14,028	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.009545310866087675 seconds
+[2m[36m(pid=11803, ip=10.116.28.13)[0m 2020-09-23 21:48:14,064	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.008973972871899605 seconds
+[2m[36m(pid=11792, ip=10.116.28.13)[0m 2020-09-23 21:48:14,016	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.008852710947394371 seconds
+[2m[36m(pid=11794, ip=10.116.28.13)[0m 2020-09-23 21:48:13,960	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.014940873021259904 seconds
+[2m[36m(pid=11802, ip=10.116.28.13)[0m 2020-09-23 21:48:14,115	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.027382639003917575 seconds
+[2m[36m(pid=11797, ip=10.116.28.13)[0m 2020-09-23 21:48:14,039	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.00978657091036439 seconds
+[2m[36m(pid=11789, ip=10.116.28.13)[0m 2020-09-23 21:48:14,111	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.02017148514278233 seconds
+[2m[36m(pid=11788, ip=10.116.28.13)[0m 2020-09-23 21:48:14,075	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.009202421875670552 seconds
+[2m[36m(pid=11805, ip=10.116.28.13)[0m 2020-09-23 21:48:14,050	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.009133830899372697 seconds
+[2m[36m(pid=11798, ip=10.116.28.13)[0m 2020-09-23 21:48:14,124	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.21357963420450687 seconds
+[2m[36m(pid=11801, ip=10.116.28.13)[0m 2020-09-23 21:48:13,922	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.011253231903538108 seconds
+[2m[36m(pid=11806, ip=10.116.28.13)[0m 2020-09-23 21:48:14,122	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.17687094397842884 seconds
+[2m[36m(pid=11793, ip=10.116.28.13)[0m 2020-09-23 21:48:13,938	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.010902176145464182 seconds
+[2m[36m(pid=11804, ip=10.116.28.13)[0m 2020-09-23 21:48:14,000	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.009411189006641507 seconds
+[2m[36m(pid=11791, ip=10.116.28.13)[0m 2020-09-23 21:48:14,123	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.23510519904084504 seconds
+[2m[36m(pid=11800, ip=10.116.28.13)[0m 2020-09-23 21:48:14,118	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.03537738206796348 seconds
+[2m[36m(pid=25716, ip=10.116.28.12)[0m 2020-09-23 21:48:14,174	INFO (unknown file):0 -- gc.collect() freed 15 refs in 0.16111379396170378 seconds
+Counter({'10.116.28.9': 124, '10.116.28.13': 89, '10.116.28.12': 87, '10.116.28.14': 20})
+13.6127450466156
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.631539344787598
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.699703931808472
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.14': 80})
+4.736520528793335
+Counter({'10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.13': 80})
+4.667826414108276
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.14': 80})
+4.670565366744995
+Counter({'10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.12': 80})
+4.599082946777344
+Counter({'10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.9': 80})
+4.721689701080322
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.617656469345093
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.573760032653809
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.67712140083313
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.631863594055176
+Counter({'10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.9': 80, '10.116.28.12': 80})
+4.606400489807129
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.744735479354858
+Counter({'10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.9': 80, '10.116.28.12': 80})
+4.6222264766693115
+Counter({'10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.721765995025635
+Counter({'10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.9': 80})
+4.674734354019165
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.823609113693237
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.713738918304443
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.14': 80})
+4.6130897998809814
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.14': 80})
+4.65589451789856
+Counter({'10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.727185010910034
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.12': 80})
+4.630136013031006
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.544253826141357
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.687747478485107
+Counter({'10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.654078006744385
+Counter({'10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.13': 80})
+4.788763523101807
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.820237636566162
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.14': 80})
+4.647622108459473
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.543999195098877
+Counter({'10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.9': 80})
+4.540965795516968
+Counter({'10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80})
+4.712799787521362
+Counter({'10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.9': 80})
+4.8217244148254395
+Counter({'10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.9': 80})
+4.822439908981323
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.6304357051849365
+Counter({'10.116.28.13': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80})
+4.550313711166382
+Counter({'10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.636141538619995
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.12': 80})
+4.6022515296936035
+Counter({'10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80})
+4.6781182289123535
+Counter({'10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80, '10.116.28.9': 80})
+4.703888177871704
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.747066020965576
+Counter({'10.116.28.13': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80})
+4.602452993392944
+Counter({'10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.715773105621338
+Counter({'10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.9': 80, '10.116.28.14': 80})
+4.70632791519165
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.5595784187316895
+Counter({'10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.13': 80})
+4.530835390090942
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.580678939819336
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.14': 80})
+4.649236679077148
+Counter({'10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.13': 80})
+4.7980475425720215
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.574404716491699
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.693732023239136
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.720505237579346
+Counter({'10.116.28.14': 80, '10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.12': 80})
+4.7286529541015625
+Counter({'10.116.28.9': 80, '10.116.28.12': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.618349313735962
+Counter({'10.116.28.9': 80, '10.116.28.13': 80, '10.116.28.14': 80, '10.116.28.12': 80})
+4.631369113922119
+Counter({'10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.12': 80, '10.116.28.13': 80})
+4.65805721282959
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.708750486373901
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.639828681945801
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.613430023193359
+Counter({'10.116.28.12': 80, '10.116.28.9': 80, '10.116.28.14': 80, '10.116.28.13': 80})
+4.742374897003174

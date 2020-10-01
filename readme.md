@@ -10,20 +10,18 @@ Install `polyphase` as a Python package:
 ```python
 pip install -e .
 ```
-This will instal polyphase and other dependencies namely : numpy, scipy, matplotlib, pandas and ray (for parallel comutation), mpltern (for ternary phase diagram visualization), plotly(for intereactive energy landscape visualization)
+This will check and install polyphase and other dependencies namely : numpy, scipy, matplotlib, pandas and ray (for parallel comutation), mpltern (for ternary phase diagram visualization), plotly(for intereactive energy landscape visualization)
 
 A sample use case is as follows:
 
 ```python
 import polyphase as phase
-import ray
-ray.init()
 
 M = [5,5,1]
 chi = [0.5, 0.5, 1]
 configuration = {'M':M, 'chi':chi}
 meshsize = 100
-output = phase.compute(3, configuration,meshsize ) 
+out = phase.compute(configuration,meshsize) 
 ```
 This generates phase diagrams of the confuguration mentioned.
 Few useful visualization tools are also provided. For example, phase diagram generated above can be visualized using:

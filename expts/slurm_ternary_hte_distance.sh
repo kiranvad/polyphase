@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#SBATCH --time=48:00:00
-#SBATCH --cluster=faculty
-#SBATCH --partition=planex --qos=planex
+#SBATCH --time=5:00:00
+#SBATCH --cluster=ub-hpc
+#SBATCH --partition=general-compute --qos=general-compute
 #SBATCH --account=olgawodo
-#SBATCH --nodes=25
-#SBATCH --ntasks-per-node=20
+#SBATCH --nodes=32
+#SBATCH --ntasks-per-node=32
 #SBATCH --job-name="dist"
 #SBATCH --output=ccr/pred_dist.out
 #SBATCH --error=ccr/err_dist.out
@@ -54,7 +54,7 @@ do
   node_i=${nodes_array[$i]}
   echo "STARTING WORKER $i at $node_i"
   srun --nodes=1 --ntasks=1 -w $node_i ray_start_worker.sh $ip_head $redis_password &
-  sleep 5
+  sleep 30
 done
 ##############################################################################################
 

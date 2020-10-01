@@ -62,7 +62,7 @@ def get_distance_matrix(X, metric):
     X_ray = ray.put(X)
     metric_ray = ray.put(metric)
     
-    remaining_result_ids = [_get_distance_row.remote(X_ray, metric_ray, rowid, iu_ray) for rowid in reversed(row_ids)]
+    remaining_result_ids = [_get_distance_row.remote(X_ray, metric_ray, rowid, iu_ray) for rowid in row_ids]
     
     dist = {}
     while len(remaining_result_ids) > 0:
