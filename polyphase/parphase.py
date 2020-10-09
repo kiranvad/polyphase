@@ -299,7 +299,9 @@ def compute(configuration, meshsize,**kwargs):
         beta = 0.0
     else:
         beta = kwargs.get('beta',1e-4)
-        
+        if verbose:
+            print('Using beta (={:.2E}) correction for energy landscape'.format(beta))   
+            
     energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
     lap = time.time()
     if verbose:
@@ -331,7 +333,8 @@ def compute(configuration, meshsize,**kwargs):
     outdict['energy'] = energy
     
     lap = time.time()
-    print('Energy is corrected at {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Energy is corrected at {:.2f}s'.format(lap-since))
     
     # 3. Compute convex hull
     if not use_weighted_delaunay:

@@ -1,5 +1,4 @@
 """ Bunch of visualization tools that aid analysis """
-import seaborn as sns
 import matplotlib.pyplot as plt
 
 import pdb
@@ -7,10 +6,6 @@ import numpy as np
 import mpltern
 from matplotlib.cm import ScalarMappable
 from matplotlib import colors
-
-import sys
-if '../' not in sys.path:
-    sys.path.append('../')
 
 from .helpers import *
 

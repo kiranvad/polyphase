@@ -37,7 +37,7 @@ plt.show()
 
 If you would like to run a multi-node parallel high-throughput computation use the serial version instead by replacing the compute line as below:
 ```python
-output = phase.serialcompute(3, configuration,meshsize )
+output = phase.serialcompute(configuration,meshsize )
 ```
 
 
