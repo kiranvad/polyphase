@@ -1,5 +1,0 @@
- Main Python Loaded 
-Traceback (most recent call last):
-  File "scripts/test_convergence.py", line 10, in <module>
-    from parallel.parphase import compute
-ModuleNotFoundError: No module named 'parallel'

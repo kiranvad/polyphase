@@ -4,14 +4,12 @@ from itertools import combinations
 
 """ Plot tools """
 import mpltern
-import seaborn as sns
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
 
 import plotly.graph_objects as go
 import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
-
 
 from .helpers import get_ternary_coords 
 from .parphase import _utri2mat
@@ -47,12 +45,12 @@ def plot_energy_landscape(outdict):
     plt.show()
 
 
-def plot_triangulated_surface(u, v, x,y,z):
+def plot_triangulated_surface(u, v, x,y,z, **kwargs):
     points2D = np.vstack([u,v]).T
     tri = Delaunay(points2D)
     simplices = tri.simplices
     fig = ff.create_trisurf(x=x, y=y, z=z,
-                         simplices=simplices)
+                         simplices=simplices, **kwargs)
     
     return fig
 

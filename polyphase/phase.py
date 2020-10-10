@@ -215,6 +215,8 @@ def serialcompute(configuration, meshsize,**kwargs):
         beta = 0.0
     else:
         beta = kwargs.get('beta',1e-4)
+        if verbose:
+            print('Using beta (={:.2E}) correction for energy landscape'.format(beta))
         
     energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
     lap = time.time()

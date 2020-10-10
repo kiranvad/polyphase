@@ -4,7 +4,7 @@ import pdb
 from scipy.spatial import Delaunay
 
 def get_ternary_coords(point):
-    """ Compute 3d embedding of a 3d hyperplane """
+    """ Compute 2d embedding of a 3d hyperplane """
     a,b,c = point
     x = 0.5-a*np.cos(pi/3)+b/2;
     y = 0.866-a*np.sin(pi/3)-b*(1/np.tan(pi/6)/2);
