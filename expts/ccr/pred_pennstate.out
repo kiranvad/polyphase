@@ -1,6 +1,0 @@
-SLURM_JOBID=3275996
-SLURM_JOB_NODELIST=cpn-p28-34
-SLURM_NNODES=1
-SLURMTMPDIR=/scratch/3275996
-working directory = /projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/expts
-Launch Python job
