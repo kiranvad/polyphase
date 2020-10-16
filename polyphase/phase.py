@@ -183,6 +183,19 @@ def serialcompute(configuration, meshsize,**kwargs):
                                        (default: 1.25 times the uniform edge in the grid)
         lift_grid_size               : A uniform grid to which simplex labels will be lifted to points inside corresponding simplices
         
+    
+    Output:
+    -------
+    A dictonary with the following keys:
+        grid                         : Uniform grid used for discrete energy computation
+        energy                       : (corrected) energy at each discrete point of the 'grid'
+        thresh                       : Numerical distance threshold used for graph generation to compute number of connected components
+        simplices                    : Simplices of convex hull of the energy landscape
+        num_comps                    : Number of connected components of each simplex in 'simplices'
+        output                       : A pandas dataframe with the rows corresponding to volume fractions (x dimensions) and a point phase                                          label computed using the lifting method 
+                                       (if label=0 corresponding grid point is either does not belong to any simplex 
+                                       or it lies on a collinear simplex) 
+          
     """
     verbose = kwargs.get('verbose', False)
     flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
