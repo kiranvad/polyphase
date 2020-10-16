@@ -41,8 +41,3 @@ output = phase.serialcompute(configuration,meshsize )
 ```
 
 To run a simple example in jupyter use the following [example](/notebooks/example.ipynb)
-
-
-Notes:
----------
-This repository is arranged as follows : `/polyphase` contains the python codes required to compute phase diagram and visualization scripts. `expts` contains the scripts that were run on UB CCR, `notebooks` contains various test cases and example usage (some may be outdated and might not work)
