@@ -18,7 +18,7 @@ A sample use case is as follows:
 import polyphase as phase
 
 M = [5,5,1]
-chi = [0.5, 0.5, 1]
+chi = [1, 0.5, 0.5]
 configuration = {'M':M, 'chi':chi}
 meshsize = 100
 out = phase.compute(configuration,meshsize) 
@@ -39,6 +39,8 @@ If you would like to run a multi-node parallel high-throughput computation use t
 ```python
 output = phase.serialcompute(configuration,meshsize )
 ```
+
+To run a simple example in jupyter use the following [example](/notebooks/example.ipynb)
 
 
 Notes:

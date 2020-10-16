@@ -275,7 +275,7 @@ def compute(configuration, meshsize,**kwargs):
     dimensions = len(configuration['M'])
     
     # Initialize ray for parallel computation
-    ray.init(ignore_reinit_error=True, lru_evict=False)
+    ray.init(ignore_reinit_error=True)
 
     since = time.time()
     
@@ -454,30 +454,6 @@ def compute(configuration, meshsize,**kwargs):
 
     return outdict
 
-if __name__ == '__main__':
-    """ configure your material system """
-    dimensions = 3
-    M = np.ones(dimensions)
-    chi = 3.10*np.ones(int(0.5*dimensions*(dimensions-1)))
-    configuration = {'M': M, 'chi':chi}
-    dx = 200
-    output, simplices, grid, num_comps = compute(dimensions, configuration, dx)
-    filepath = "./output"
-    output.to_csv(filepath + ".csv")
-
-    """ Post-processing """
-    # 6. plotting the phase diagram 
-    import sys
-    if '../' not in sys.path:
-        sys.path.insert(0,'../')
-    import matplotlib.pyplot as plt
-
-    if dimensions==3:
-        from solvers.visuals import plot_3d_phasediagram
-        plot_3d_phasediagram(grid, simplices, num_comps)
-        fname = filepath + ".png"
-        plt.savefig(fname, dpi=500, bbox_inches = "tight")
-        plt.close()
     
     
     
