@@ -3,25 +3,27 @@ import numpy as np
 import pdb
 from scipy.spatial import Delaunay
 
+
 def get_ternary_coords(point):
     """ Compute 2d embedding of a 3d hyperplane """
-    a,b,c = point
-    x = 0.5-a*np.cos(pi/3)+b/2;
-    y = 0.866-a*np.sin(pi/3)-b*(1/np.tan(pi/6)/2);
-    
-    return [x,y]
+    a, b, c = point
+    x = 0.5 - a * np.cos(pi / 3) + b / 2;
+    y = 0.866 - a * np.sin(pi / 3) - b * (1 / np.tan(pi / 6) / 2);
+
+    return [x, y]
+
 
 def from4d23d(fourd_coords):
     """ Compute 3d embedding of a 4d hyperplane """
-    x,y,z,w = fourd_coords
-    u = y+0.5*(z+w)
-    v = np.sqrt(3)*(z/2 + w/6) 
-    w = np.sqrt(6)*(w/3)
-    
-    return [u,v,w]
+    x, y, z, w = fourd_coords
+    u = y + 0.5 * (z + w)
+    v = np.sqrt(3) * (z / 2 + w / 6)
+    w = np.sqrt(6) * (w / 3)
+
+    return [u, v, w]
 
 
-def inpolyhedron(ph,points):
+def inpolyhedron(ph, points):
     """
     Given a polyhedron vertices in `ph`, and `points` return 
     critera that each point is either with in or outside the polyhedron
@@ -32,33 +34,37 @@ def inpolyhedron(ph,points):
     
     """
     tri = Delaunay(ph)
-    inside = Delaunay.find_simplex(tri,points)
-    criteria = inside<0
+    inside = Delaunay.find_simplex(tri, points)
+    criteria = inside < 0
     return ~criteria
 
+
 def get_convex_faces(v):
-    verts = [ [v[0],v[1],v[3]], [v[1],v[2],v[3]],\
-             [v[0],v[2],v[3]], [v[0],v[1],v[2]]]
+    verts = [[v[0], v[1], v[3]], [v[1], v[2], v[3]], \
+             [v[0], v[2], v[3]], [v[0], v[1], v[2]]]
     return verts
+
 
 def utri2mat(utri, dimension):
     """ convert list of chi values to a matrix form """
-    inds = np.triu_indices(dimension,1)
+    inds = np.triu_indices(dimension, 1)
     ret = np.zeros((dimension, dimension))
     ret[inds] = utri
     ret.T[inds] = utri
 
     return ret
 
+
 import time
+
 
 class timer:
     def __init__(self):
         self.start = time.time()
+
     def end(self):
         end = time.time()
-        hours, rem = divmod(end-self.start, 3600)
+        hours, rem = divmod(end - self.start, 3600)
         minutes, seconds = divmod(rem, 60)
 
-        return "{:0>2} Hr:{:0>2} min:{:05.2f} sec".format(int(hours),int(minutes),seconds)
-      
+        return "{:0>2} Hr:{:0>2} min:{:05.2f} sec".format(int(hours), int(minutes), seconds)
