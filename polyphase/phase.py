@@ -290,6 +290,7 @@ def serialcompute(configuration, meshsize,**kwargs):
     else:
         upper_hull = np.asarray([is_upper_hull(grid,simplex) for simplex in hull.simplices])
         simplices = hull.simplices[~upper_hull]
+        outdict['upper_hull']=upper_hull
             
     flag_remove_collinear = kwargs.get('flag_remove_collinear',False)
     if flag_remove_collinear :

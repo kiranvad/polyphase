@@ -125,11 +125,11 @@ def plot_lifted_label_ternary(output, ax = None):
         fig = plt.gcf()
     
     #phase_colors =['tab:red','tab:olive','tab:cyan']
-    phase_colors =['r','g','b']
-    cmap = colors.ListedColormap(phase_colors)
+    phase_colors =['w','r','g','b']
+    cmap = colors.ListedColormap(phase_colors[1:])
     df = output.transpose()
     for i, p in df.groupby('label'):
-        ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i-1)])
+        ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
     _set_axislabels_mpltern(ax)
     
     boundaries = np.linspace(1,4,4)

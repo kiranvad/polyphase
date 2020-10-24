@@ -372,7 +372,7 @@ def compute(configuration, meshsize,**kwargs):
         upper_hull_ray = [is_upper_hull.remote(grid_ray,simplex) for simplex in hull.simplices]
         upper_hull = np.asarray(ray.get(upper_hull_ray))
         simplices = hull.simplices[~upper_hull]
-        
+        outdict['upper_hull'] = upper_hull
         del upper_hull_ray
     
     flag_remove_collinear = kwargs.get('flag_remove_collinear',False)
