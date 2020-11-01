@@ -14,6 +14,7 @@ from numpy.linalg import norm
 import warnings
 from collections import Counter
 from itertools import combinations
+from math import pi
    
 MIN_POINT_PRECISION = 1e-8
             
@@ -90,9 +91,16 @@ def flory_huggins(x, M,CHI,beta=1e-3):
     
     return T1+T2  
         
-# determine points inside a polyhedron
-from scipy.spatial import Delaunay
 
+def polynomial_energy(x,M,CHI,beta=1e-3):
+    """ Free energy using a polynomial function for ternary """
+    
+    assert len(x)==3,'Expected a ternary system got {}'.format(len(x))
+    
+    e = (x[0]**2)*(x[1]**2) + (x[0]**2 + x[1]**2)*(x[2]**2)
+    
+    return e/0.5
+    
 def inpolyhedron(ph,points):
     """
     Given a polyhedron vertices in `ph`, and `points` return 
@@ -120,7 +128,6 @@ def is_collinear(grid,tri_coords, simplex):
     
     return flag
 
-from math import pi
 def get_ternary_coords(point):
     a,b,c = point
     x = 0.5-a*np.cos(pi/3)+b/2;
@@ -201,13 +208,14 @@ def serialcompute(configuration, meshsize,**kwargs):
     flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
     flag_lift_label = kwargs.get('flag_lift_label',False)
     use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
-    lift_grid_size = kwargs.get('lift_grid_size', 200)
+    lift_grid_size = kwargs.get('lift_grid_size', meshsize)
     
     dimensions = len(configuration['M'])
                                        
     since = time.time()
     
     outdict = {}
+    outdict['config'] = configuration
     thresh_epsilon = 5e-3
     
     """ Perform a parallel computation of phase diagram """
@@ -231,7 +239,9 @@ def serialcompute(configuration, meshsize,**kwargs):
         if verbose:
             print('Using beta (={:.2E}) correction for energy landscape'.format(beta))
         
-    energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
+    #energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])   
+    energy = np.asarray([polynomial_energy(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
+
     lap = time.time()
     if verbose:
         print('Energy computed at {:.2f}s'.format(lap-since))
