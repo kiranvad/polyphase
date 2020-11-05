@@ -92,14 +92,18 @@ def flory_huggins(x, M,CHI,beta=1e-3):
     return T1+T2  
         
 
-def polynomial_energy(x,M,CHI,beta=1e-3):
+def polynomial_energy(x):
     """ Free energy using a polynomial function for ternary """
     
     assert len(x)==3,'Expected a ternary system got {}'.format(len(x))
     
-    e = (x[0]**2)*(x[1]**2) + (x[0]**2 + x[1]**2)*(x[2]**2)
-    
-    return e/0.5
+    #e = (x[0]**2)*(x[1]**2) + (x[0]**2 + x[1]**2)*(x[2]**2)
+    # e = -e/0.5
+    e =0
+    for xi in x:
+        e += ((xi-0.1)**2)*((0.9-xi)**2)
+
+    return e*1e3
     
 def inpolyhedron(ph,points):
     """
@@ -240,7 +244,7 @@ def serialcompute(configuration, meshsize,**kwargs):
             print('Using beta (={:.2E}) correction for energy landscape'.format(beta))
         
     #energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])   
-    energy = np.asarray([polynomial_energy(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
+    energy = np.asarray([polynomial_energy(x) for x in grid.T])    
 
     lap = time.time()
     if verbose:

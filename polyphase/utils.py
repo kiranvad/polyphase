@@ -26,25 +26,6 @@ def set_ternlabel(ax):
     
     return ax
 
-
-def plot_energy_landscape(outdict):
-    """ Plots a convex hull of a energy landscape """
-    grid = outdict['grid']
-    tri_coords = np.array([get_ternary_coords(pt) for pt in grid.T])
-    energy = outdict['energy']
-    simplices = outdict['simplices']
-    #simplices = outdict['hull'].simplices
-    
-    fig = plt.figure(figsize=(4*1.6, 4))
-    ax = fig.add_subplot(1, 1, 1, projection='3d')
-    ax.plot_trisurf(grid[0,:], grid[1,:], energy, triangles=simplices, linewidth=0.2,  antialiased=True, color=(0,0,0,0), edgecolor='Gray')
-    ax.set_xlabel(r'$\phi_1$')
-    ax.set_ylabel(r'$\phi_2$')
-    ax.set_zlabel('Energy')
-    
-    plt.show()
-
-
 def plot_triangulated_surface(u, v, x,y,z, **kwargs):
     points2D = np.vstack([u,v]).T
     tri = Delaunay(points2D)

@@ -8,7 +8,7 @@ from matplotlib.cm import ScalarMappable
 from matplotlib import colors
 
 from .helpers import *
-
+from .phase import is_boundary_point
 def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
     from matplotlib.cm import ScalarMappable
@@ -140,7 +140,40 @@ def plot_lifted_label_ternary(output, ax = None):
     
     return ax, cbar 
 
+def plot_energy_landscape(outdict,mode='full', ax = None):
+    """ Plots a convex hull of a energy landscape 
     
+    This function takes an optional argument in mode which can be used to 
+    visualize the just the convex hull (mode='convex_hull') approximation instead
+    By default it plots the triangulated energy landscape (mode='full')
+    This function plots the energy landscape with a thin boundary 
+    cut around the two phase composotions
+    """
+    grid = outdict['grid']
+    assert grid.shape[0]==3, 'Expected a ternary system but got {}'.format(grid.shape[0])
+
+    boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
+    energy = outdict['energy']
+ 
+    if ax is None:
+        fig = plt.figure(figsize=(4*1.6, 4))
+        ax = fig.add_subplot(projection='3d')
+    else:
+        fig = plt.gcf()
+        
+    if mode=='full':    
+        ax.plot_trisurf(grid[0,~boundary_points], grid[1,~boundary_points], 
+                        energy[~boundary_points], linewidth=0.01, antialiased=True)
+    elif mode=='convex_hull':
+        ax.plot_trisurf(grid[0,:], grid[1,:], 
+                        energy, triangles=outdict['simplices'], 
+                        linewidth=0.01, antialiased=True)
+    ax.set_xlabel('Polymer')
+    ax.set_ylabel('Small molecule')
+    ax.set_zlabel('Energy')
+    ax.set_title('Energy landscape', pad=42)
+    
+    return ax, fig    
     
     
     

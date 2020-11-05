@@ -8,60 +8,8 @@ import matplotlib.tri as mtri
 import matplotlib.pyplot as plt
 import numpy as np
 
-class CentralDifference:
-    """Compute central difference gradinet of energy
-    Works only for a 3-dimensional grid or a ternary system
-    
-    Example:
-    
-    delta = np.linalg.norm(grid[:2,0] - grid[:2,1])
-    cd = CentralDifference(grid, energy)    
-    df = np.asarray([cd(x,y, h = delta) for x,y in grid[:-1,:].T])
-    
-    
-    """
-    def __init__(self, grid, energy):
-        assert grid.shape[0]==3,'expected ternary got {}'.format(grid.shape[0])
-        triang = mtri.Triangulation(grid[0,:], grid[1,:])
-        self.interp_lin = mtri.LinearTriInterpolator(triang, energy)
-
-    def __call__(self,x,y, h = 1e-3):
-        """
-        x,y : coordinates (float)
-        h   : gridspacing (float)
-
-        """
-        f_right = self.interp_lin(x+h,y).data.squeeze()
-        f_left = self.interp_lin(x-h,y).data.squeeze()
-        df_dx = (f_right - f_left)/2*h
-        f_right = self.interp_lin(x,y+h).data.squeeze()
-        f_left = self.interp_lin(x,y-h).data.squeeze()
-        df_dy = (f_right - f_left)/2*h
-        
-        return [df_dx, df_dy]
-    
-    def plot_interpolated_energy(self):
-        xi, yi = np.meshgrid(np.linspace(0, 1, 20), np.linspace(0, 1, 20))
-        z = self.interp_lin(xi, yi)
-        fig, ax = plt.subplots()
-        ax.contourf(xi, yi, z)
-        plt.show()
-
-def threecomp_gradphi(x,M,chi, beta=0):
-    assert len(M)==3,'expected ternary got {}'.format(len(M))
-    
-    CHI = phase._utri2mat(configuration['chi'],3)
-
-    dEdx1 = (1/M[0])*(1+np.log(x[0])) - (1/M[2])*(1+np.log(x[2])) + CHI[0,1]*x[0] +\
-    CHI[0,2] - 2*CHI[0,2]*x[0] - CHI[0,2]*x[1] - CHI[1,2]*x[1] + beta*((1/x[2]**2) - (1/x[0]**2))
-    
-    dEdx2 = (1/M[1])*(1+np.log(x[1])) - (1/M[2])*(1+np.log(x[2])) + CHI[0,1]*x[0] -\
-    CHI[0,2]*x[0] + CHI[1,2] - 2*CHI[1,2]*x[1]  - CHI[1,2]*x[0]+ beta*((1/x[2]**2) - (1/x[1]**2))
-    
-    return [dEdx1, dEdx2]
-
 class TestAngles:
-    def __init__(self, out, phase=2, **kwargs):
+    def __init__(self, out,gradient, *,phase=2, **kwargs):
         """ Perform a test to compute angles of tangent planes at vertices to convex combination of points
         Test takes the out from polyphase.compute or polyphase.serialcompute and the same kwargs
         
@@ -85,6 +33,7 @@ class TestAngles:
         self.out_ = out
         
         self.phase = phase
+        self.gradient = gradient
         self.beta = kwargs['beta']
         self.__dict__.update(kwargs)
         self.get_random_simplex()
@@ -97,7 +46,7 @@ class TestAngles:
         self.parametric_points = np.hstack((self.vertices[:,:2],
                                             self.energy[self.rnd_simplex].reshape(-1,1))).tolist()
     
-    def get_angles(self,use_findiff=True, **kwargs):
+    def get_angles(self,**kwargs):
         """Compute angles between tangent planes at the simplex vertices and facet normal
         
         Facet normal can be compute by generating a plane equation or using the hull facet equations
@@ -119,25 +68,15 @@ class TestAngles:
         all_facet_equations = self.out_['hull'].equations[~self.out_['upper_hull']]
         facet_equation = all_facet_equations[self.rnd_simplex_indx].squeeze()
         self.facet_normal = facet_equation[:-1]
-
-        if use_findiff:
-            delta = np.linalg.norm(self.grid[:2,0] - self.grid[:2,1])
-            cd = CentralDifference(self.grid, self.energy)    
-            df = np.asarray([cd(x,y, h = delta) for x,y in self.grid[:-1,:].T])
-        
+            
         thetas = {}
         gradients = {}
         for i, (v,e) in enumerate(zip(self.vertices,
                                       self.energy[self.rnd_simplex])):
             x1,x2,_ = v
             
-            if not use_findiff:
-                configuration = self.out_['config']
-                dx,dy = threecomp_gradphi(v,configuration['M'], configuration['chi'], beta=self.beta)
-            else:
-                dx = df[self.rnd_simplex[i],0]
-                dy = df[self.rnd_simplex[i],1]
-                
+            dx,dy = self.gradient(v)
+
             ru = [1,0,dx]
             rv = [0,1,dy]
             uru = ru/np.linalg.norm(ru)
@@ -192,10 +131,6 @@ class TestAngles:
                                  self.energy[~boundary_points],
                                  linewidth=0.01, antialiased=True)
             ps.set_alpha(0.5)
-            ax.set_xlabel('Polymer')
-            ax.set_ylabel('Small molecule')
-            ax.set_zlabel('Energy')
-            ax.view_init(elev=16, azim=54)
         
         # plot simplex as a triangle
         if 2 in required:
@@ -228,6 +163,10 @@ class TestAngles:
                            c=phase_colors[int(i-1)])
 
 
-
+        ax.set_xlabel('Polymer')
+        ax.set_ylabel('Small molecule')
+        ax.set_zlabel('Energy')
+        ax.view_init(elev=16, azim=54)
+        
         return fig
     
