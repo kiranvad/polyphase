@@ -35,13 +35,13 @@ def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
         for vi,w in zip(v,words):
             ax.text(vi[0],vi[1],vi[2],w,fontsize=20)
             
-    phase_colors =['tab:red','tab:olive','tab:cyan','tab:purple']
+    phase_colors =['','tab:red','tab:olive','tab:cyan','tab:purple']
     for i,simplex in zip(pm.num_comps,pm.simplices):
         vertices = [pm.grid[:,x] for x in simplex]
         v = np.asarray([from4d23d(vertex) for vertex in vertices])
         if np.all(np.asarray(vertices)[:,3]<sliceat):
             verts = get_convex_faces(v)
-            axs[i-1].add_collection3d(Poly3DCollection(verts, facecolors=phase_colors[i-1], edgecolors=None))
+            axs[i-1].add_collection3d(Poly3DCollection(verts, facecolors=phase_colors[i], edgecolors=None))
     cmap = colors.ListedColormap(phase_colors)
     boundaries = np.linspace(1,5,5)
     norm = colors.BoundaryNorm(boundaries, cmap.N)
@@ -97,13 +97,13 @@ def plot_mpltern(grid, simplices, num_comps, ax = None):
         fig = plt.gcf()
     
     """ A phase diagram with simplices glued together with phase colorcoded """
-    phase_colors =['tab:red','tab:olive','tab:cyan']
-    cmap = colors.ListedColormap(phase_colors)
+    phase_colors =['w','tab:red','tab:olive','tab:cyan']
+    cmap = colors.ListedColormap(phase_colors[1:])
     triangle = np.array([[0, 0, 1], [1, 0, 0], [0,1,0]])
     ax.fill(triangle[:,2], triangle[:,0], triangle[:,1], facecolor=phase_colors[0], edgecolor='none', alpha=0.75)
     for l,s in zip(num_comps, simplices):
         simplex_points = np.asarray([grid[:,x] for x in s])
-        ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[l-1])
+        ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
     _set_axislabels_mpltern(ax)
     boundaries = np.linspace(1,4,4)
     norm = colors.BoundaryNorm(boundaries, cmap.N)

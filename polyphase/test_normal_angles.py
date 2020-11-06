@@ -9,7 +9,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 class TestAngles:
-    def __init__(self, out,gradient, *,phase=2, **kwargs):
+    def __init__(self, out, *,phase=2, **kwargs):
         """ Perform a test to compute angles of tangent planes at vertices to convex combination of points
         Test takes the out from polyphase.compute or polyphase.serialcompute and the same kwargs
         
@@ -33,7 +33,6 @@ class TestAngles:
         self.out_ = out
         
         self.phase = phase
-        self.gradient = gradient
         self.beta = kwargs['beta']
         self.__dict__.update(kwargs)
         self.get_random_simplex()
@@ -46,7 +45,7 @@ class TestAngles:
         self.parametric_points = np.hstack((self.vertices[:,:2],
                                             self.energy[self.rnd_simplex].reshape(-1,1))).tolist()
     
-    def get_angles(self,**kwargs):
+    def get_angles(self,gradient,**kwargs):
         """Compute angles between tangent planes at the simplex vertices and facet normal
         
         Facet normal can be compute by generating a plane equation or using the hull facet equations
@@ -75,7 +74,7 @@ class TestAngles:
                                       self.energy[self.rnd_simplex])):
             x1,x2,_ = v
             
-            dx,dy = self.gradient(v)
+            dx,dy = gradient(v)
 
             ru = [1,0,dx]
             rv = [0,1,dy]
@@ -85,7 +84,7 @@ class TestAngles:
             
             angle = self._angle_between_vectors(self.facet_normal, normal_p)
             thetas.update({i:(self.rnd_simplex[i], normal_p, angle)})
-            gradients.update({i:(dx,dy)})
+            gradients.update({i:(dx,dy, normal_p)}) # tuple of gradients along phi_1, phi_2 and the normal of the tangent plane
             
         outdict = {'facet_normal': self.facet_normal, 'thetas':thetas, 'gradients':gradients}  
         
