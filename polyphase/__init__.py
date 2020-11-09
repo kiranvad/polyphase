@@ -5,5 +5,6 @@ from .parphase import compute, WeightedDelaunay
 from .phase import (serialcompute, makegridnd,\
                     flory_huggins, _utri2mat, is_boundary_point, polynomial_energy)
 from .parallel import *
-from .test_normal_angles import TestAngles
+from .tests import TestAngles, TestEpiGraph
 from .core import PHASE
+from ._phase import _serialcompute, _parcompute

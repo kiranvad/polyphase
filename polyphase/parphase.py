@@ -238,44 +238,18 @@ def get_max_delaunay_edge_length(grid):
             
             
 """ Main comoutation function """
-def compute(configuration, meshsize,**kwargs):
-    """
-    Main python function to obtain a phase diagram for n-component polymer mixture system.
-    
-    parameters:
-    -----------
-        dimension     : number of components of mixture
-        configuration : a dictornay with keys:
-                            'M'   : degree of polymerization (list of length = dimension)
-                            'chi' : off diagonal non-zero entries of flory-huggins parameters
-                                    (exmaple: three component system : [chi_12, chi_13, chi_23])
-        meshsize      : number of grid points per dimension  
-        
-        kwargs:
-        -------
-        flag_refine_simplices        : whether to remove simplices that connect pure components (default: True)
-        flag_lift_label              : Whether to list labels of simplices to a point cloud of constant size (default: False). Point cloud                                          is constantsize regadless of original meshsize and is computed using a 200 points per dimension mesh.         use_weighted_delaunay        : Uses a weighted delaunay triangulation to compute triangulation of design space. (not complete yet)
-        beta                         : beta correction value used to compute flory-huggins free energy (default 1e-4)
-        flag_remove_collinear        : In three dimensional case, removes simplices that lift to collinear points in phi space. 
-                                       (default, False)
-        flag_make_energy_paraboloid  : Bypasses the beta correction and makes the boundary points to have a constant energy (default, True)
-        pad_energy                   : factor of maximum energy used as a padding near the boundary of manifold. (default, 2)
-        flag_lift_purecomp_energy    : Makes the energy of pure components `pad_energy` times the maximum energy
-        threshold_type               : Whether to use an 'uniform' threshold method (thresh= edge length) or to use more mathematically                                            sound 'delaunay' (thresh = maximum delaunay edge + epsilon)
-        thresh_scale                 : (scale value of) Uniform edge length threshold to compute adjacency matrix 
-                                       (default: 1.25 times the uniform edge in the grid)
-        
+def compute(f, dimension, meshsize,**kwargs):
+    """Compute phase diagram using parallel computaion
+    parallel version of serialcompute in parphase.py
     """
     verbose = kwargs.get('verbose', False)
     flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
     flag_lift_label = kwargs.get('flag_lift_label',False)
     use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
     lift_grid_size = kwargs.get('lift_grid_size', 200)
-    
-    dimensions = len(configuration['M'])
-    
+        
     # Initialize ray for parallel computation
-    ray.init(ignore_reinit_error=True, lru_evict=False)
+    ray.init(ignore_reinit_error=True)
 
     since = time.time()
     
@@ -283,15 +257,14 @@ def compute(configuration, meshsize,**kwargs):
     thresh_epsilon = 5e-3
     """ Perform a parallel computation of phase diagram """
     # 1. generate grid
-    grid = makegridnd(meshsize, dimensions)
+    grid = makegridnd(meshsize, dimension)
     outdict['grid'] = grid
     grid_ray = ray.put(grid)
     lap = time.time()
     if verbose:
-        print('{}-dimensional grid generated at {:.2f}s'.format(dimensions,lap-since))
+        print('{}-dimensional grid generated at {:.2f}s'.format(dimension,lap-since))
         
     # 2. compute free energy on the grid (parallel)
-    CHI = _utri2mat(configuration['chi'], dimensions)
     flag_make_energy_paraboloid = kwargs.get('flag_make_energy_paraboloid',True)
     flag_lift_purecomp_energy = kwargs.get('flag_lift_purecomp_energy',False)
     
@@ -302,7 +275,8 @@ def compute(configuration, meshsize,**kwargs):
         if verbose:
             print('Using beta (={:.2E}) correction for energy landscape'.format(beta))   
             
-    energy = np.asarray([flory_huggins(x,configuration['M'],CHI,beta=beta) for x in grid.T])    
+    energy = np.asarray([f(x) for x in grid.T])   
+    
     lap = time.time()
     if verbose:
         print('Energy computed at {:.2f}s'.format(lap-since))
