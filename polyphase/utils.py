@@ -15,6 +15,40 @@ from .helpers import get_ternary_coords
 from .parphase import _utri2mat
 from scipy.constants import gas_constant
 
+def flory_huggins(x, M,chi,beta=1e-3):
+    """ Free energy formulation """
+    CHI = _utri2mat(chi, len(M))
+    T1 = 0
+    for i,xi in enumerate(x):
+        T1 += (xi*np.log(xi))/M[i] + beta/xi
+    T2 = 0.5*np.matmul((np.matmul(x,CHI)),np.transpose(x)) 
+    
+    return T1+T2  
+        
+def polynomial_energy(x):
+    """ Free energy using a polynomial function for ternary """
+    
+    assert len(x)==3,'Expected a ternary system got {}'.format(len(x))
+    
+    #e = (x[0]**2)*(x[1]**2) + (x[0]**2 + x[1]**2)*(x[2]**2)
+    # e = -e/0.5
+    e =0
+    for xi in x:
+        e += ((xi-0.1)**2)*((0.9-xi)**2)
+
+    return e*1e3
+
+def _utri2mat(utri, dimension):
+    """ convert list of chi values to a matrix form """
+    inds = np.triu_indices(dimension,1)
+    ret = np.zeros((dimension, dimension))
+    ret[inds] = utri
+    ret.T[inds] = utri
+
+    return ret
+
+
+
 def set_ternlabel(ax):
     ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)
     ax.set_llabel("$\\varphi_{s}$",fontsize=15)

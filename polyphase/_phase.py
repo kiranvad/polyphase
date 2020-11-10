@@ -32,15 +32,6 @@ def makegridnd(meshsize, dimension):
 
     return plane_mesh
 
-def _utri2mat(utri, dimension):
-    """ convert list of chi values to a matrix form """
-    inds = np.triu_indices(dimension,1)
-    ret = np.zeros((dimension, dimension))
-    ret[inds] = utri
-    ret.T[inds] = utri
-
-    return ret
-
 def label_simplex(grid, simplex, thresh):
     """ given a simplex, labels it to be a n-phase region by computing number of connected components """
     coords = [grid[:,x] for x in simplex]
@@ -79,31 +70,7 @@ def lift_label(grid,lift_grid, simplex, label):
         flag = 0
         
     return inside, flag
-
-"""Some helper functions"""
-def flory_huggins(x, M,chi,beta=1e-3):
-    """ Free energy formulation """
-    CHI = _utri2mat(chi, len(M))
-    T1 = 0
-    for i,xi in enumerate(x):
-        T1 += (xi*np.log(xi))/M[i] + beta/xi
-    T2 = 0.5*np.matmul((np.matmul(x,CHI)),np.transpose(x)) 
-    
-    return T1+T2  
-        
-def polynomial_energy(x):
-    """ Free energy using a polynomial function for ternary """
-    
-    assert len(x)==3,'Expected a ternary system got {}'.format(len(x))
-    
-    #e = (x[0]**2)*(x[1]**2) + (x[0]**2 + x[1]**2)*(x[2]**2)
-    # e = -e/0.5
-    e =0
-    for xi in x:
-        e += ((xi-0.1)**2)*((0.9-xi)**2)
-
-    return e*1e3
-    
+   
 def is_boundary_point(point, zero_value = MIN_POINT_PRECISION):
     if np.isclose(point, MIN_POINT_PRECISION).any():
         return True
@@ -130,7 +97,7 @@ def get_max_delaunay_edge_length(grid):
     
     return max_delaunay_edge       
             
-            
+  
 """ Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
     """
@@ -215,7 +182,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
         max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
         if verbose:
-            print('Making energy manifold a paraboloid with {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
+            print('Making energy manifold a paraboloid with {:d}x'
+                  ' padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
         boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
         energy[boundary_points] = pad_energy*max_energy
                 
