@@ -1,21 +1,23 @@
 import numpy as np
 import pdb
 from itertools import combinations
-
-""" Plot tools """
 import mpltern
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-import plotly.graph_objects as go
-import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
-
-from .helpers import get_ternary_coords 
-from .parphase import _utri2mat
 from scipy.constants import gas_constant
+import time
+from math import pi
 
-def flory_huggins(x, M,chi,beta=1e-3):
+def _utri2mat(utri, dimension):
+    """ convert list of chi values to a matrix form """
+    inds = np.triu_indices(dimension,1)
+    ret = np.zeros((dimension, dimension))
+    ret[inds] = utri
+    ret.T[inds] = utri
+
+    return ret
+
+def flory_huggins(x, M,chi,beta=0.0):
     """ Free energy formulation """
     CHI = _utri2mat(chi, len(M))
     T1 = 0
@@ -47,8 +49,6 @@ def _utri2mat(utri, dimension):
 
     return ret
 
-
-
 def set_ternlabel(ax):
     ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)
     ax.set_llabel("$\\varphi_{s}$",fontsize=15)
@@ -59,62 +59,8 @@ def set_ternlabel(ax):
     sns.axes_style("ticks")
     
     return ax
-
-def plot_triangulated_surface(u, v, x,y,z, **kwargs):
-    points2D = np.vstack([u,v]).T
-    tri = Delaunay(points2D)
-    simplices = tri.simplices
-    fig = ff.create_trisurf(x=x, y=y, z=z,
-                         simplices=simplices, **kwargs)
-    
-    return fig
-
-def make_torus():
-    u = np.linspace(0, 2*np.pi, 20)
-    v = np.linspace(0, 2*np.pi, 20)
-    u,v = np.meshgrid(u,v)
-    u = u.flatten()
-    v = v.flatten()
-
-    x = (3 + (np.cos(v)))*np.cos(u)
-    y = (3 + (np.cos(v)))*np.sin(u)
-    z = np.sin(v)
-    
-    return u, v, x, y, z
-
-def make_mobious_strip():
-    u = np.linspace(0, 2*np.pi, 24)
-    v = np.linspace(-1, 1, 8)
-    u,v = np.meshgrid(u,v)
-    u = u.flatten()
-    v = v.flatten()
-
-    tp = 1 + 0.5*v*np.cos(u/2.)
-    x = tp*np.cos(u)
-    y = tp*np.sin(u)
-    z = 0.5*v*np.sin(u/2.)
-    
-    return u, v, x, y, z
-
-def test_plot_triangulated_surface():
-    u, v, x, y, z = make_mobious_strip()
-    fig = plot_triangulated_surface(u, v, x, y, z)
-    fig.update_layout(title=config_str,scene=dict(
-        xaxis_title="x",
-        yaxis_title="y",
-        zaxis_title = "z"),
-        coloraxis_colorbar=dict(title='z'),
-        font=dict(
-            family="Courier New, monospace",
-            size=18,
-            color="RebeccaPurple")
-    )
-    fig.write_html('../figures/3dplots/test_mobious.html')    
-    
-
     
 """ Compute chi from solubilities """
-
 def _compute_chi(delta_i,delta_j,V):
     """
     total solubility parameters delta_i, delta_j are computed from hydrogen, polar, dispersive components
@@ -217,3 +163,53 @@ def compute_chemical_potential(phi,m,chi):
     m[2]*(phi[2]*(1-2*chi[1]+phi[1]*(chi[0] + chi[1]-chi[2])) + phi[1]*(chi[0]*(phi[1]-1)-chi[1] + chi[2])) + np.log(phi[2])
     
     return np.array([mu1,mu2,mu3])
+
+def get_ternary_coords(point):
+    """ Compute 2d embedding of a 3d hyperplane """
+    a, b, c = point
+    x = 0.5 - a * np.cos(pi / 3) + b / 2;
+    y = 0.866 - a * np.sin(pi / 3) - b * (1 / np.tan(pi / 6) / 2);
+
+    return [x, y]
+
+
+def from4d23d(fourd_coords):
+    """ Compute 3d embedding of a 4d hyperplane """
+    x, y, z, w = fourd_coords
+    u = y + 0.5 * (z + w)
+    v = np.sqrt(3) * (z / 2 + w / 6)
+    w = np.sqrt(6) * (w / 3)
+
+    return [u, v, w]
+
+
+def inpolyhedron(ph, points):
+    """
+    Given a polyhedron vertices in `ph`, and `points` return 
+    critera that each point is either with in or outside the polyhedron
+    
+    Both polyhedron and points should have the same shape i.e. num_points X num_dimensions
+    
+    Returns a boolian array : True if inside, False if outside
+    
+    """
+    tri = Delaunay(ph)
+    inside = Delaunay.find_simplex(tri, points)
+    criteria = inside < 0
+    return ~criteria
+
+def get_convex_faces(v):
+    verts = [[v[0], v[1], v[3]], [v[1], v[2], v[3]], \
+             [v[0], v[2], v[3]], [v[0], v[1], v[2]]]
+    return verts
+
+class timer:
+    def __init__(self):
+        self.start = time.time()
+
+    def end(self):
+        end = time.time()
+        hours, rem = divmod(end - self.start, 3600)
+        minutes, seconds = divmod(rem, 60)
+
+        return "{:0>2} Hr:{:0>2} min:{:05.2f} sec".format(int(hours), int(minutes), seconds)

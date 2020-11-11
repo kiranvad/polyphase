@@ -97,8 +97,6 @@ def get_max_delaunay_edge_length(grid):
     
     return max_delaunay_edge       
             
-  
-""" Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
     """
     Main python function to obtain a phase diagram for n-component polymer mixture system.

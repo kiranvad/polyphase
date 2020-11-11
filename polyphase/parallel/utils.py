@@ -1,7 +1,7 @@
 import pdb
 import numpy as np
 import ray
-from ..helpers import timer
+from ..utils import timer
 
 from scipy.spatial.distance import squareform
 
