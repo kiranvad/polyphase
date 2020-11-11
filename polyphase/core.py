@@ -33,9 +33,9 @@ class PHASE:
             return False
         else:
             return True
-    
-    
+
     def is_boundary_point(self,point):
+        
         return is_boundary_point(point)
 
     def is_pure_component(self,point):
@@ -56,7 +56,7 @@ class PHASE:
         self.lift_label = kwargs.get('lift_label',False)
         self.refine_simplices = kwargs.get('refine_simplices',True)
         self.thresholding = kwargs.get('thresholding','uniform')
-        self.thresh_scale = kwargs.get('thresh_scale', 1.25)
+        self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
         _kwargs = self.get_kwargs()
         
         if self.use_parallel:

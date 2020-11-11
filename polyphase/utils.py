@@ -12,10 +12,18 @@ import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
 
 from .helpers import get_ternary_coords 
-from .parphase import _utri2mat
 from scipy.constants import gas_constant
 
-def flory_huggins(x, M,chi,beta=1e-3):
+def _utri2mat(utri, dimension):
+    """ convert list of chi values to a matrix form """
+    inds = np.triu_indices(dimension,1)
+    ret = np.zeros((dimension, dimension))
+    ret[inds] = utri
+    ret.T[inds] = utri
+
+    return ret
+
+def flory_huggins(x, M,chi,beta=0.0):
     """ Free energy formulation """
     CHI = _utri2mat(chi, len(M))
     T1 = 0
@@ -46,8 +54,6 @@ def _utri2mat(utri, dimension):
     ret.T[inds] = utri
 
     return ret
-
-
 
 def set_ternlabel(ax):
     ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)

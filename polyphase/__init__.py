@@ -1,10 +1,11 @@
 from .utils import *
+from .utils import _utri2mat
 from .helpers import *
 from .visuals import *
-from .parphase import compute, WeightedDelaunay
-from .phase import (serialcompute, makegridnd,\
-                    flory_huggins, _utri2mat, is_boundary_point, polynomial_energy)
+from .parphase import compute
+from .phase import serialcompute
+
 from .parallel import *
 from .tests import TestAngles, TestEpiGraph
 from .core import PHASE
-from ._phase import _serialcompute, _parcompute
+from ._phase import makegridnd, is_boundary_point
