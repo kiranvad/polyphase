@@ -90,6 +90,8 @@ class PHASE:
             vertices  : Compositions of coexisting phases. Each row correspond to 
                         an entry in x with the same index
         """
+        from scipy.optimize import lsq_linear
+        
         if not self.is_solved:
             raise RuntimeError('Phase diagram is not computed\n'
                                'Use .solve() before requesting phase compositions')
@@ -100,14 +102,28 @@ class PHASE:
             raise RuntimeError('Boundary points are not considered in the computation.')
         
         inside = np.asarray([self.in_simplex(point, s) for s in self.simplices], dtype=bool)
-        simplex = self.simplices[inside][0] #just pick any one simplex it belongs to
-        num_comps = np.asarray(self.num_comps)[inside][0]
-        vertices = self.grid[:,simplex]
         
-        A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
-        b = np.hstack((point[:-1],1))
+        for i in np.where(inside)[0]:
+            simplex = self.simplices[i]
+            num_comps = np.asarray(self.num_comps)[i]
+            vertices = self.grid[:,simplex]
+            
+            if num_comps==1:
+                # no-phase splits if the simplex is labelled 1-phase
+                continue
 
-        x = np.linalg.solve(A, b)
+            A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
+            b = np.hstack((point[:-1],1))
+
+            #x = np.linalg.solve(A, b)
+            
+            lb = np.zeros(self.dimension)
+            ub = np.ones(self.dimension)
+            res = lsq_linear(A, b, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
+            x = res.x
+            if not (x<0).any():
+                # STOP if you found a simplex that has x>0
+                break
         
         return x, vertices, num_comps
     

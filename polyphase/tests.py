@@ -199,12 +199,15 @@ class TestEpiGraph(base):
             
             is_lower_envelope = np.greater_equal(f_actual,f_convex)
             if not is_lower_envelope:
-                print(point, f_actual, f_convex)
+                if np.isclose(f_actual, f_convex):
+                    is_lower_envelope = True
+                else:
+                    print(point, f_actual, f_convex)
                 
             results.append(is_lower_envelope)
         
         return np.asarray(results).all()
-    
+
     def _get_plane_equation(self):
         A = np.asarray(self.parametric_points)
         b = np.array([1,1,1])
