@@ -41,15 +41,6 @@ def get_convex_faces(v):
              [v[0],v[2],v[3]], [v[0],v[1],v[2]]]
     return verts
 
-def utri2mat(utri, dimension):
-    """ convert list of chi values to a matrix form """
-    inds = np.triu_indices(dimension,1)
-    ret = np.zeros((dimension, dimension))
-    ret[inds] = utri
-    ret.T[inds] = utri
-
-    return ret
-
 import time
 
 class timer:

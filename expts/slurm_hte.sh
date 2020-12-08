@@ -1,11 +1,11 @@
 #!/bin/bash
 
-#SBATCH --time=24:00:00
-#SBATCH --cluster=ub-hpc
-#SBATCH --partition=general-compute --qos=general-compute
+#SBATCH --time=3:00:00
+#SBATCH --cluster=faculty
+#SBATCH --partition=planex --qos=planex
 #SBATCH --account=olgawodo
-#SBATCH --nodes=16
-#SBATCH --ntasks-per-node=40
+#SBATCH --nodes=8
+#SBATCH --ntasks-per-node=20
 #SBATCH --job-name="HTE"
 #SBATCH --output=ccr/pred_hte.out
 #SBATCH --error=ccr/err_hte.out

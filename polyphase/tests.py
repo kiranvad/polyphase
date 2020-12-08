@@ -8,23 +8,21 @@ import matplotlib.tri as mtri
 import matplotlib.pyplot as plt
 import mpltern
 import numpy as np
-from scipy.spatial.distance import pdist
+from scipy.spatial.distance import pdist, cdist
 from itertools import combinations
 from .helpers import inpolyhedron
 from .visuals import _set_axislabels_mpltern
 
 class base:
-    def __init__(self,out, phase=2,simplex_id= None, **kwargs):
-        self.grid = out['grid']
-        self.num_comps = out['num_comps']
-        self.simplices = out['simplices']
-        self.energy = out['energy']
-        self.X = out['output']
-        self.out_ = out
-        
+    def __init__(self,engine, phase=2,simplex_id= None):
+        self.engine = engine
+        self.grid = self.engine.grid
+        self.num_comps = self.engine.num_comps
+        self.simplices = self.engine.simplices
+        self.energy = self.engine.energy
+        self.X = self.engine.df
         self.phase = phase
-        self.beta = kwargs['beta']
-        self.__dict__.update(kwargs)
+        
         if simplex_id is None:
             self.get_random_simplex()
         else:
@@ -46,10 +44,10 @@ class base:
         self.parametric_points = np.hstack((self.vertices[:,:2],
                                             self.energy[self.rnd_simplex].reshape(-1,1))).tolist()
     
-    def base_visualize(self,**kwargs):
+    def base_visualize(self):
         """ Visualize the test case base function
         
-        Plot the usual suspects required: simplex (with required=2, and its facet normal)
+        Plot the usual suspects required: simplex
 
         """
         
@@ -69,23 +67,11 @@ class base:
         
         
 class TestAngles(base):
-    def __init__(self, out,phase=2,simplex_id=None, **kwargs):
+    def __init__(self, engine,phase=2,simplex_id=None, **kwargs):
         """ Perform a test to compute angles of tangent planes at vertices to convex combination of points
         Test takes the out from polyphase.compute or polyphase.serialcompute and the same kwargs
-        
-        Example:
-        otu = polyphase.compute(**)
-        test = TestAngles(out,phase=1,**kwargs)
-        test_out = test.get_angles(use_findiff=True)
-        for key, value in test_out['thetas'].items():
-            print('Angle at vertex {} is {:.2f} degrees'.format(key, value[2]))
-
-        fig = test.visualize()
-        plt.show()
-        
-        
         """
-        super().__init__(out,phase=phase,simplex_id=simplex_id,**kwargs)
+        super().__init__(engine,phase=phase,simplex_id=simplex_id,**kwargs)
 
     def get_angles(self,gradient,**kwargs):
         """Compute angles between tangent planes at the simplex vertices and facet normal
@@ -106,19 +92,22 @@ class TestAngles(base):
                          containing the tuple (df_dx, df_dy)
         """
 
-        all_facet_equations = self.out_['hull'].equations[~self.out_['upper_hull']]
+        all_facet_equations = self.engine.hull.equations[~self.engine.upper_hull]
         facet_equation = all_facet_equations[self.rnd_simplex_indx].squeeze()
         self.facet_normal = facet_equation[:-1]
             
         thetas = {}
         gradients = {}
-        for i, (v,e) in enumerate(zip(self.vertices,
-                                      self.energy[self.rnd_simplex])):
+        for i, (v,e) in enumerate(zip(self.vertices,self.energy[self.rnd_simplex])):
             normal_p, dx, dy = self._get_normal(v, gradient)
             angle = self._angle_between_vectors(self.facet_normal, normal_p)
-            thetas.update({i:(self.rnd_simplex[i], normal_p, angle)})
-            gradients.update({i:(dx,dy, normal_p)}) # tuple of gradients along phi_1, phi_2 and the normal of the tangent plane
+            dot_product = np.abs(np.clip(np.dot(self.facet_normal, normal_p), -1.0, 1.0))
             
+            # tuple of simplex, tangent normal, andle and dot product with facet normal                     
+            thetas.update({i:(self.rnd_simplex[i], normal_p, angle, dot_product)})
+            # tuple of gradients along phi_1, phi_2 and the normal of the tangent plane
+            gradients.update({i:(dx,dy, normal_p)}) 
+
         outdict = {'facet_normal': self.facet_normal, 'thetas':thetas, 'gradients':gradients}  
         
         self._angles_outdict = outdict
@@ -201,9 +190,9 @@ class TestAngles(base):
     
 
 class TestEpiGraph(base):
-    def __init__(self, out,energy_func,phase=2,simplex_id=None, **kwargs):
-        super().__init__(out,phase=phase,simplex_id=simplex_id,**kwargs)
-        self.f = energy_func
+    def __init__(self, engine,phase=2,simplex_id=None, **kwargs):
+        super().__init__(engine,phase=phase,simplex_id=simplex_id,**kwargs)
+        self.f = engine.energy_func
         
     def is_epigraph(self):
         self.ABC = self._get_plane_equation()
@@ -241,16 +230,17 @@ class TestEpiGraph(base):
         """ Visualize the epigraph and simplex 
         
         wrapper function for base_visualize that additionally plots the point evaluations
-        of the energy function given in 'energy_func' (self.f)
+        of the energy function given in self.f
         """
         
         fig, ax = self.base_visualize()
         
         f_actual = [self.f(p) for p in self.interval.T]
         f_convex = [self._get_convex_energy(p) for p in self.interval.T]
-        
-        ax.scatter(self.interval[0,:], self.interval[1,:], f_actual, label='Energy function')
-        ax.scatter(self.interval[0,:], self.interval[1,:], f_convex, label='Convex approx')
+        ax.plot_trisurf(self.interval[0,:], self.interval[1,:], f_actual,
+                                 linewidth=0.01, antialiased=True, fc = 'tab:blue')
+        #ax.scatter(self.interval[0,:], self.interval[1,:], f_actual, label='Energy function')
+        #ax.scatter(self.interval[0,:], self.interval[1,:], f_convex)
         ax.set_zlim(min(f_convex), max(f_actual))
         
         return fig, ax
@@ -273,7 +263,7 @@ class TestPhaseSplits(base):
         run                   : tests the phase splits matching for any selected simplex
     """
     def __init__(self, engine,phase=2, simplex_id=None, threshold=0.1):
-        super().__init__(engine.as_dict(),phase=phase,simplex_id=simplex_id,**engine.get_kwargs())
+        super().__init__(engine,phase=phase,simplex_id=simplex_id)
         self.engine = engine
         self.threshold = threshold
         indx = list(combinations(range(3),2))
@@ -314,6 +304,31 @@ class TestPhaseSplits(base):
         if self.phase==3:
             matches = splits>self.threshold
             return matches.all()    
+    
+    def check_centroid(self):
+        """Check if simplex can split the centroid as labelled
+        """
+        points = np.asarray(self.parametric_points)
+        self.centroid_ = np.sum(points, axis=0)/3
+        x, self.equilibrium_phases_, _ = self.engine(self.centroid_)
+        is_match = self.is_correct_phasesplit(x)
+        if not is_match and self.phase==2:
+            decision,_,_ = self._min_edge_lengths_equal()
+        else:
+            decision = is_match
+            
+        self.centroid_splits_ = x
+        
+        return decision
+    
+    def _min_edge_lengths_equal(self):
+        
+        v = self.vertices[self.min_edge_verts,:-1]
+        a = np.linalg.norm(v[0,:]-self.centroid_[:-1])
+        b = np.linalg.norm(v[1,:]-self.centroid_[:-1])
+        
+        return np.isclose(a,b, atol=1e-2), a,b
+    
     
     def run(self):
         """Check if a simplex phase splits all points inside correctlty
@@ -368,10 +383,27 @@ class TestPhaseSplits(base):
         else:
             return fig, ax
     
+    def visualize_centroid(self, ax=None, show=True):
+        from matplotlib.patches import Polygon
+        from matplotlib.collections import PatchCollection
+        
+        if ax is None:
+            fig, ax = plt.subplots()
+        else:
+            fig = plt.gcf()
+        patch = Polygon(self.vertices[:,:-1], True)  
+        p = PatchCollection([patch], alpha=0.4, fc='gray')
+        ax.add_collection(p)
+        ax.scatter(self.vertices[:,0], self.vertices[:,1], color='k')
+        ax.scatter(self.centroid_[0], self.centroid_[1], color='tab:red')
+        if show:
+            plt.show()
+            return
+        else:
+            return fig, ax
     
     
-    
-    
+
     
     
     

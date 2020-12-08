@@ -23,12 +23,21 @@ def _utri2mat(utri, dimension):
 
     return ret
 
-def flory_huggins(x, M,chi,beta=0.0):
+def _ln(x, thresh=1e-2):
+    if x<thresh:
+        return x-1
+    else:
+        return np.log(x)
+
+def flory_huggins(x, M,chi,beta=0.0, logapprox=True):
     """ Free energy formulation """
     CHI = _utri2mat(chi, len(M))
     T1 = 0
     for i,xi in enumerate(x):
-        T1 += (xi*np.log(xi))/M[i] + beta/xi
+        if not logapprox:
+            T1 += (xi*np.log(xi))/M[i] + beta/xi
+        else:
+            T1 += (xi*_ln(xi))/M[i] + beta/xi
     T2 = 0.5*np.matmul((np.matmul(x,CHI)),np.transpose(x)) 
     
     return T1+T2  
@@ -147,10 +156,14 @@ def _compute_weighted_chi(vec1,vec2,V, W):
 def get_chi_vector(deltas, V0, approach=1):
     """
     Given a list of deltas, computes binary interactions of chis
+    
+    Chi values are ordered in the basis of the input deltas.
+    For example, for a ternary system with deltas input as [polymer, sm, solvent]
+    chi values are [(p,sm), (p, solv), (sm, solv)]
     """
     combs = combinations(deltas,2)
     inds = list((i,j) for ((i,_),(j,_)) in combinations(enumerate(deltas), 2))
-      
+
     if approach==1:
         chi = [_compute_chi(np.linalg.norm(i[0]),np.linalg.norm(i[1]),V0) for i in combs]
     elif approach==2:

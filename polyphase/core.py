@@ -53,7 +53,7 @@ class PHASE:
         self.use_parallel = kwargs.get('use_parallel', False)
         self.verbose = kwargs.get('verbose', False)
         self.correction = kwargs.get('correction', 'edge')
-        self.lift_label = kwargs.get('lift_label',False)
+        self.lift_label = kwargs.get('lift_label',True)
         self.refine_simplices = kwargs.get('refine_simplices',True)
         self.thresholding = kwargs.get('thresholding','uniform')
         self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
@@ -114,8 +114,6 @@ class PHASE:
 
             A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
             b = np.hstack((point[:-1],1))
-
-            #x = np.linalg.solve(A, b)
             
             lb = np.zeros(self.dimension)
             ub = np.ones(self.dimension)
@@ -125,7 +123,7 @@ class PHASE:
                 # STOP if you found a simplex that has x>0
                 break
         
-        return x, vertices, num_comps
+        return x, vertices.T, num_comps
     
     __call__ = get_phase_compositions
     
