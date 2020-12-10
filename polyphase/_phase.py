@@ -96,7 +96,8 @@ def get_max_delaunay_edge_length(grid):
             max_delaunay_edge = current_max
     
     return max_delaunay_edge       
-            
+
+""" Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
     """
     Main python function to obtain a phase diagram for n-component polymer mixture system.
@@ -170,29 +171,27 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
             print('Using beta (={:.2E}) correction for energy landscape'.format(beta))
          
     energy = np.asarray([f(x) for x in grid.T])
-    
+
     lap = time.time()
     if verbose:
         print('Energy computed at {:.2f}s'.format(lap-since))
-        
+    
+    max_energy = np.max(energy)
     # Make energy a paraboloid like by extending the landscape at the borders
     if flag_make_energy_paraboloid:
-        max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
         if verbose:
             print('Making energy manifold a paraboloid with {:d}x'
                   ' padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
         boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
-        energy[boundary_points] = pad_energy*max_energy
-                
+        energy[boundary_points] = pad_energy*max_energy         
     elif flag_lift_purecomp_energy:
-        max_energy = np.max(energy)
         pad_energy = kwargs.get('pad_energy',2)
         if verbose:
             print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
         pure_points = np.asarray([is_pure_component(x) for x in grid.T])
         energy[pure_points] = pad_energy*max_energy
-                
+    
     outdict['energy'] = energy
     
     lap = time.time()
@@ -202,7 +201,7 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     # 3. Compute convex hull
     if not use_weighted_delaunay:
         _method = 'Convexhull'
-        points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)
+        points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)                   
         hull = ConvexHull(points)
         outdict['hull'] = hull
     else:
@@ -211,19 +210,6 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     lap = time.time()
     if verbose:
         print('{} is computed at {:.2f}s'.format(_method,lap-since))
-    
-    # determine threshold
-    threshold_type = kwargs.get('threshold_type','delaunay')
-    if threshold_type=='delaunay':
-        thresh = get_max_delaunay_edge_length(grid) + thresh_epsilon
-    elif threshold_type=='uniform':
-        thresh_scale = kwargs.get('thresh_scale',1.25)
-        thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
-    
-    if verbose:
-        print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
-        
-    outdict['thresh'] = thresh
     
     if not flag_refine_simplices:
         simplices = hull.simplices
@@ -239,6 +225,19 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     outdict['simplices'] = simplices
     if verbose:
         print('Total of {} simplices in the convex hull'.format(len(simplices)))
+        
+    # determine threshold
+    threshold_type = kwargs.get('threshold_type','delaunay')
+    if threshold_type=='delaunay':
+        thresh = get_max_delaunay_edge_length(grid) + thresh_epsilon
+    elif threshold_type=='uniform':
+        thresh_scale = kwargs.get('thresh_scale',1.25)
+        thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
+    
+    if verbose:
+        print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
+        
+    outdict['thresh'] = thresh
     
     # 4. for each simplex in the hull compute number of connected components (parallel)
     num_comps = [label_simplex(grid, simplex, thresh) for simplex in simplices]

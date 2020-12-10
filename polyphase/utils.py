@@ -1,12 +1,18 @@
 import numpy as np
 import pdb
 from itertools import combinations
+
+""" Plot tools """
 import mpltern
 import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+
+import plotly.graph_objects as go
+import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
+
+from .helpers import get_ternary_coords 
 from scipy.constants import gas_constant
-import time
-from math import pi
 
 def _utri2mat(utri, dimension):
     """ convert list of chi values to a matrix form """
@@ -17,12 +23,34 @@ def _utri2mat(utri, dimension):
 
     return ret
 
-def flory_huggins(x, M,chi,beta=0.0):
-    """ Free energy formulation """
+def _ln(x, thresh=1e-2):
+    if x<thresh:
+        return x-1
+    else:
+        return np.log(x)
+
+def flory_huggins(x, M,chi,beta=0.0, logapprox=False):
+    """ Free energy formulation 
+    
+    parameters:
+    -----------
+        x    :  Composition as a list (dim, )
+        M    :  Degree of polymerization
+        chi  :  flory-huggins interaction parameters as a list of (nCdim)
+    
+    Optional:
+    ---------
+        beta        : Coefficients the beta correction term (default, 0.0)
+        logapprox   : Whether to use the approximation as log(x)=x-1 when x~0  
+    
+    """
     CHI = _utri2mat(chi, len(M))
     T1 = 0
     for i,xi in enumerate(x):
-        T1 += (xi*np.log(xi))/M[i] + beta/xi
+        if not logapprox:
+            T1 += (xi*np.log(xi))/M[i] + beta/xi
+        else:
+            T1 += (xi*_ln(xi))/M[i] + beta/xi
     T2 = 0.5*np.matmul((np.matmul(x,CHI)),np.transpose(x)) 
     
     return T1+T2  
@@ -40,15 +68,6 @@ def polynomial_energy(x):
 
     return e*1e3
 
-def _utri2mat(utri, dimension):
-    """ convert list of chi values to a matrix form """
-    inds = np.triu_indices(dimension,1)
-    ret = np.zeros((dimension, dimension))
-    ret[inds] = utri
-    ret.T[inds] = utri
-
-    return ret
-
 def set_ternlabel(ax):
     ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)
     ax.set_llabel("$\\varphi_{s}$",fontsize=15)
@@ -59,8 +78,10 @@ def set_ternlabel(ax):
     sns.axes_style("ticks")
     
     return ax
-    
+
+
 """ Compute chi from solubilities """
+
 def _compute_chi(delta_i,delta_j,V):
     """
     total solubility parameters delta_i, delta_j are computed from hydrogen, polar, dispersive components
@@ -87,10 +108,14 @@ def _compute_weighted_chi(vec1,vec2,V, W):
 def get_chi_vector(deltas, V0, approach=1):
     """
     Given a list of deltas, computes binary interactions of chis
+    
+    Chi values are ordered in the basis of the input deltas.
+    For example, for a ternary system with deltas input as [polymer, sm, solvent]
+    chi values are [(p,sm), (p, solv), (sm, solv)]
     """
     combs = combinations(deltas,2)
     inds = list((i,j) for ((i,_),(j,_)) in combinations(enumerate(deltas), 2))
-      
+
     if approach==1:
         chi = [_compute_chi(np.linalg.norm(i[0]),np.linalg.norm(i[1]),V0) for i in combs]
     elif approach==2:
@@ -150,66 +175,3 @@ def get_data(name='ow',fhid=0):
     info = {'params':r'M:{},$\chi$:{}'.format(M,chi),'fname':fname}
     
     return M, CHI, info
-
-
-def compute_chemical_potential(phi,m,chi):
-    mu1 = (phi[1]**2)*chi[0] + chi[1]*(phi[2]**2) + \
-    phi[2]*(1-(1/m[2]) + phi[1]*(chi[0]+chi[1]-chi[2])) + np.log(phi[0])
-    
-    mu2 = chi[0]*(phi[1]-1)**2 + chi[1]*phi[2]**2 - phi[2]/m[2] + \
-    phi[2]*((1 + (phi[1]-1))*(chi[0]+chi[1])+chi[2] - phi[1]*chi[2]) + np.log(phi[1])
-    
-    mu3 = 1 - phi[2] + m[2]*(-1 + chi[1] + chi[1]*phi[2]**2) + \
-    m[2]*(phi[2]*(1-2*chi[1]+phi[1]*(chi[0] + chi[1]-chi[2])) + phi[1]*(chi[0]*(phi[1]-1)-chi[1] + chi[2])) + np.log(phi[2])
-    
-    return np.array([mu1,mu2,mu3])
-
-def get_ternary_coords(point):
-    """ Compute 2d embedding of a 3d hyperplane """
-    a, b, c = point
-    x = 0.5 - a * np.cos(pi / 3) + b / 2;
-    y = 0.866 - a * np.sin(pi / 3) - b * (1 / np.tan(pi / 6) / 2);
-
-    return [x, y]
-
-
-def from4d23d(fourd_coords):
-    """ Compute 3d embedding of a 4d hyperplane """
-    x, y, z, w = fourd_coords
-    u = y + 0.5 * (z + w)
-    v = np.sqrt(3) * (z / 2 + w / 6)
-    w = np.sqrt(6) * (w / 3)
-
-    return [u, v, w]
-
-
-def inpolyhedron(ph, points):
-    """
-    Given a polyhedron vertices in `ph`, and `points` return 
-    critera that each point is either with in or outside the polyhedron
-    
-    Both polyhedron and points should have the same shape i.e. num_points X num_dimensions
-    
-    Returns a boolian array : True if inside, False if outside
-    
-    """
-    tri = Delaunay(ph)
-    inside = Delaunay.find_simplex(tri, points)
-    criteria = inside < 0
-    return ~criteria
-
-def get_convex_faces(v):
-    verts = [[v[0], v[1], v[3]], [v[1], v[2], v[3]], \
-             [v[0], v[2], v[3]], [v[0], v[1], v[2]]]
-    return verts
-
-class timer:
-    def __init__(self):
-        self.start = time.time()
-
-    def end(self):
-        end = time.time()
-        hours, rem = divmod(end - self.start, 3600)
-        minutes, seconds = divmod(rem, 60)
-
-        return "{:0>2} Hr:{:0>2} min:{:05.2f} sec".format(int(hours), int(minutes), seconds)

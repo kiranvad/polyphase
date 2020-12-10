@@ -7,12 +7,12 @@ import mpltern
 from matplotlib.cm import ScalarMappable
 from matplotlib import colors
 
-from .utils import *
-from ._phase import is_boundary_point
-
+from .helpers import *
+from .phase import is_boundary_point
 def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
     from matplotlib.cm import ScalarMappable
+    from matplotlib import colors
 
     """ 
     Given a PhaseModelling object, plots the phase diagram by just gluing simplices together 
@@ -90,13 +90,25 @@ def _set_axislabels_mpltern(ax):
     ax.raxis.set_label_position('tick1')
 
 def plot_mpltern(grid, simplices, num_comps, ax = None):
+    """ A phase diagram with simplices glued together with phase colorcoded 
     
+    parameters:
+    -----------
+        grid          :  polyphase.PHASE.grid
+        simplices     :  polyphase.PHASE.simplices
+        num_comps     :  polyphase.PHASE.num_comps
+        
+    options:
+    --------
+        ax            :  matplotlib.pyplot.Axis object
+    
+    """
+
     if ax is None:
         fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
     else:
         fig = plt.gcf()
     
-    """ A phase diagram with simplices glued together with phase colorcoded """
     phase_colors =['w','tab:red','tab:olive','tab:cyan']
     cmap = colors.ListedColormap(phase_colors[1:])
     triangle = np.array([[0, 0, 1], [1, 0, 0], [0,1,0]])
@@ -117,7 +129,7 @@ def plot_mpltern(grid, simplices, num_comps, ax = None):
 def plot_lifted_label_ternary(output, ax = None):
     """ A point cloud phase diagram from the lifted simplices 
     
-    Input should the output attribute from the compute function
+    Input should the polyphase.PHASE.df instance
     """
     if ax is None:
         fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
@@ -142,6 +154,10 @@ def plot_lifted_label_ternary(output, ax = None):
 
 def plot_energy_landscape(outdict,mode='full', ax = None):
     """ Plots a convex hull of a energy landscape 
+    
+    parameters:
+    -----------
+        outdict     :  polyphase.PHASE.as_dict()
     
     This function takes an optional argument in mode which can be used to 
     visualize the just the convex hull (mode='convex_hull') approximation instead
@@ -175,7 +191,29 @@ def plot_energy_landscape(outdict,mode='full', ax = None):
     
     return ax, fig    
     
+def plain_phase_diagram(output, ax = None):
+    """ 
+    Plot phase diagrams as points without any labels or stuff
+    Used as a data point for dimensionality reduction and clustering
     
+    parameters:
+    -----------
+        outdict     :  polyphase.PHASE.as_dict()    
+
+    """
+    if ax is None:
+        fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
+    else:
+        fig = plt.gcf()
+    
+    phase_colors =['w','r','g','b']
+    df = output.transpose()
+    for i, p in df.groupby('label'):
+        ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
+        
+    plt.axis('off')
+    
+    return ax     
     
     
     

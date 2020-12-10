@@ -14,6 +14,15 @@ MIN_POINT_PRECISION = 1e-8
                      
 class PHASE:
     def __init__(self,energy_func, meshsize,dimension):
+        """Computing phase diagram using Convex Hull Method
+        
+        Parameters:
+        -----------
+            energy_func      :  (callable) Energy function that takes a d-dimensional list of 
+                                compositions and returns a scalar energy
+            meshsize         :  (int) Number of points to be sampled per dimension
+            dimension        :  (int) Dimension of the the system 
+        """
         if not callable(energy_func):
             raise ValueError('Vairable energy needs to be a function such as utils.flory_huggins')
         self.energy_func = energy_func
@@ -47,13 +56,45 @@ class PHASE:
         
         Arguments:
         ----------
-            use_parallel   : (bool) whether to use a parallel computation (default, False)
+            use_parallel       : (bool) whether to use a parallel computation (default, False)
+            verbose            : (bool) whether to print more information as the computation progresses
+            correction         : (string) Two types of corrections to energy surface are provided
+                                        1. 'edge' -- where all the energy values near the boundary of
+                                            hyperplane will be lifted to a constant energy (default)
+                                        2. 'vertex' -- similar to 'edge' but the process is performed
+                                            only for points at the vertices of hyperplane
+            lift_label         : (bool) whether to interpolate the label of a simplex into points 
+                                        inside it (default, True)
+            refine_simplices   : (bool) whether to remove simplices that are on the "upper convex hull".
+                                        (default, True) Note that the Gibbs criteria uses the lower 
+                                        convex hull, thus it is recommended to set the
+                                        simplex refinement to True
+            thresholding       : (string) Two types of thresholding methods are implemented
+                                          1. 'uniform' -- where the reference distance for number 
+                                             of connected components of a simplex is computed 
+                                             using the original grid length (default)
+                                          2. 'delaunay'-- the length is computed using a delaunay 
+                                              edge length of the initial mesh
+                                              
+            thresh_scale       : (float) scaling to be used for the edge length of the reference 
+                                         in 'thresholding'
+                                         
+        Attributes:
+        -----------
+            grid         :  Grid used to compute the energy surface (array of shape (dim, points))
+            energy       :  Free energy computed using self.energy_func (array of shape (points,))
+            hull         :  scipy.spatial.ConvexHull instance of computed for energy landscape
+            thresh       :  length scale used to compute adjacency matrix
+            upper_hull   :  boolean flagg of each simplex in hull.simplices whether its a upper hull
+            simplices    :  simplices of the lower convex hull of the energy landscape
+            num_comps    :  connected components of each simplex as a list
+            df           :  pandas.DataFrame with volume fractions and labels rows
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)
         self.verbose = kwargs.get('verbose', False)
         self.correction = kwargs.get('correction', 'edge')
-        self.lift_label = kwargs.get('lift_label',False)
+        self.lift_label = kwargs.get('lift_label',True)
         self.refine_simplices = kwargs.get('refine_simplices',True)
         self.thresholding = kwargs.get('thresholding','uniform')
         self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
@@ -90,6 +131,8 @@ class PHASE:
             vertices  : Compositions of coexisting phases. Each row correspond to 
                         an entry in x with the same index
         """
+        from scipy.optimize import lsq_linear
+        
         if not self.is_solved:
             raise RuntimeError('Phase diagram is not computed\n'
                                'Use .solve() before requesting phase compositions')
@@ -100,16 +143,28 @@ class PHASE:
             raise RuntimeError('Boundary points are not considered in the computation.')
         
         inside = np.asarray([self.in_simplex(point, s) for s in self.simplices], dtype=bool)
-        simplex = self.simplices[inside][0] #just pick any one simplex it belongs to
-        num_comps = np.asarray(self.num_comps)[inside][0]
-        vertices = self.grid[:,simplex]
         
-        A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
-        b = np.hstack((point[:-1],1))
+        for i in np.where(inside)[0]:
+            simplex = self.simplices[i]
+            num_comps = np.asarray(self.num_comps)[i]
+            vertices = self.grid[:,simplex]
+            
+            if num_comps==1:
+                # no-phase splits if the simplex is labelled 1-phase
+                continue
 
-        x = np.linalg.solve(A, b)
+            A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
+            b = np.hstack((point[:-1],1))
+            
+            lb = np.zeros(self.dimension)
+            ub = np.ones(self.dimension)
+            res = lsq_linear(A, b, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
+            x = res.x
+            if not (x<0).any():
+                # STOP if you found a simplex that has x>0
+                break
         
-        return x, vertices, num_comps
+        return x, vertices.T, num_comps
     
     __call__ = get_phase_compositions
     
