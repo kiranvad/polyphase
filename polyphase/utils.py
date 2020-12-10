@@ -29,8 +29,21 @@ def _ln(x, thresh=1e-2):
     else:
         return np.log(x)
 
-def flory_huggins(x, M,chi,beta=0.0, logapprox=True):
-    """ Free energy formulation """
+def flory_huggins(x, M,chi,beta=0.0, logapprox=False):
+    """ Free energy formulation 
+    
+    parameters:
+    -----------
+        x    :  Composition as a list (dim, )
+        M    :  Degree of polymerization
+        chi  :  flory-huggins interaction parameters as a list of (nCdim)
+    
+    Optional:
+    ---------
+        beta        : Coefficients the beta correction term (default, 0.0)
+        logapprox   : Whether to use the approximation as log(x)=x-1 when x~0  
+    
+    """
     CHI = _utri2mat(chi, len(M))
     T1 = 0
     for i,xi in enumerate(x):
@@ -55,15 +68,6 @@ def polynomial_energy(x):
 
     return e*1e3
 
-def _utri2mat(utri, dimension):
-    """ convert list of chi values to a matrix form """
-    inds = np.triu_indices(dimension,1)
-    ret = np.zeros((dimension, dimension))
-    ret[inds] = utri
-    ret.T[inds] = utri
-
-    return ret
-
 def set_ternlabel(ax):
     ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)
     ax.set_llabel("$\\varphi_{s}$",fontsize=15)
@@ -75,59 +79,7 @@ def set_ternlabel(ax):
     
     return ax
 
-def plot_triangulated_surface(u, v, x,y,z, **kwargs):
-    points2D = np.vstack([u,v]).T
-    tri = Delaunay(points2D)
-    simplices = tri.simplices
-    fig = ff.create_trisurf(x=x, y=y, z=z,
-                         simplices=simplices, **kwargs)
-    
-    return fig
 
-def make_torus():
-    u = np.linspace(0, 2*np.pi, 20)
-    v = np.linspace(0, 2*np.pi, 20)
-    u,v = np.meshgrid(u,v)
-    u = u.flatten()
-    v = v.flatten()
-
-    x = (3 + (np.cos(v)))*np.cos(u)
-    y = (3 + (np.cos(v)))*np.sin(u)
-    z = np.sin(v)
-    
-    return u, v, x, y, z
-
-def make_mobious_strip():
-    u = np.linspace(0, 2*np.pi, 24)
-    v = np.linspace(-1, 1, 8)
-    u,v = np.meshgrid(u,v)
-    u = u.flatten()
-    v = v.flatten()
-
-    tp = 1 + 0.5*v*np.cos(u/2.)
-    x = tp*np.cos(u)
-    y = tp*np.sin(u)
-    z = 0.5*v*np.sin(u/2.)
-    
-    return u, v, x, y, z
-
-def test_plot_triangulated_surface():
-    u, v, x, y, z = make_mobious_strip()
-    fig = plot_triangulated_surface(u, v, x, y, z)
-    fig.update_layout(title=config_str,scene=dict(
-        xaxis_title="x",
-        yaxis_title="y",
-        zaxis_title = "z"),
-        coloraxis_colorbar=dict(title='z'),
-        font=dict(
-            family="Courier New, monospace",
-            size=18,
-            color="RebeccaPurple")
-    )
-    fig.write_html('../figures/3dplots/test_mobious.html')    
-    
-
-    
 """ Compute chi from solubilities """
 
 def _compute_chi(delta_i,delta_j,V):
@@ -223,16 +175,3 @@ def get_data(name='ow',fhid=0):
     info = {'params':r'M:{},$\chi$:{}'.format(M,chi),'fname':fname}
     
     return M, CHI, info
-
-
-def compute_chemical_potential(phi,m,chi):
-    mu1 = (phi[1]**2)*chi[0] + chi[1]*(phi[2]**2) + \
-    phi[2]*(1-(1/m[2]) + phi[1]*(chi[0]+chi[1]-chi[2])) + np.log(phi[0])
-    
-    mu2 = chi[0]*(phi[1]-1)**2 + chi[1]*phi[2]**2 - phi[2]/m[2] + \
-    phi[2]*((1 + (phi[1]-1))*(chi[0]+chi[1])+chi[2] - phi[1]*chi[2]) + np.log(phi[1])
-    
-    mu3 = 1 - phi[2] + m[2]*(-1 + chi[1] + chi[1]*phi[2]**2) + \
-    m[2]*(phi[2]*(1-2*chi[1]+phi[1]*(chi[0] + chi[1]-chi[2])) + phi[1]*(chi[0]*(phi[1]-1)-chi[1] + chi[2])) + np.log(phi[2])
-    
-    return np.array([mu1,mu2,mu3])

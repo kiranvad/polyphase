@@ -14,6 +14,15 @@ MIN_POINT_PRECISION = 1e-8
                      
 class PHASE:
     def __init__(self,energy_func, meshsize,dimension):
+        """Computing phase diagram using Convex Hull Method
+        
+        Parameters:
+        -----------
+            energy_func      :  (callable) Energy function that takes a d-dimensional list of 
+                                compositions and returns a scalar energy
+            meshsize         :  (int) Number of points to be sampled per dimension
+            dimension        :  (int) Dimension of the the system 
+        """
         if not callable(energy_func):
             raise ValueError('Vairable energy needs to be a function such as utils.flory_huggins')
         self.energy_func = energy_func
@@ -47,7 +56,39 @@ class PHASE:
         
         Arguments:
         ----------
-            use_parallel   : (bool) whether to use a parallel computation (default, False)
+            use_parallel       : (bool) whether to use a parallel computation (default, False)
+            verbose            : (bool) whether to print more information as the computation progresses
+            correction         : (string) Two types of corrections to energy surface are provided
+                                        1. 'edge' -- where all the energy values near the boundary of
+                                            hyperplane will be lifted to a constant energy (default)
+                                        2. 'vertex' -- similar to 'edge' but the process is performed
+                                            only for points at the vertices of hyperplane
+            lift_label         : (bool) whether to interpolate the label of a simplex into points 
+                                        inside it (default, True)
+            refine_simplices   : (bool) whether to remove simplices that are on the "upper convex hull".
+                                        (default, True) Note that the Gibbs criteria uses the lower 
+                                        convex hull, thus it is recommended to set the
+                                        simplex refinement to True
+            thresholding       : (string) Two types of thresholding methods are implemented
+                                          1. 'uniform' -- where the reference distance for number 
+                                             of connected components of a simplex is computed 
+                                             using the original grid length (default)
+                                          2. 'delaunay'-- the length is computed using a delaunay 
+                                              edge length of the initial mesh
+                                              
+            thresh_scale       : (float) scaling to be used for the edge length of the reference 
+                                         in 'thresholding'
+                                         
+        Attributes:
+        -----------
+            grid         :  Grid used to compute the energy surface (array of shape (dim, points))
+            energy       :  Free energy computed using self.energy_func (array of shape (points,))
+            hull         :  scipy.spatial.ConvexHull instance of computed for energy landscape
+            thresh       :  length scale used to compute adjacency matrix
+            upper_hull   :  boolean flagg of each simplex in hull.simplices whether its a upper hull
+            simplices    :  simplices of the lower convex hull of the energy landscape
+            num_comps    :  connected components of each simplex as a list
+            df           :  pandas.DataFrame with volume fractions and labels rows
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)

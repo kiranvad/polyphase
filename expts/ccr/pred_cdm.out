@@ -1,0 +1,143 @@
+SLURM_JOBID=4598263
+SLURM_JOB_NODELIST=cpn-p28-[11,15-20,23-31]
+SLURM_NNODES=16
+SLURMTMPDIR=/scratch/4598263
+working directory = /projects/academic/olgawodo/kiranvad/Projects/Spring2020/PhaseModelling/expts
+IP Head: 10.116.28.11:6379
+STARTING HEAD at cpn-p28-11
+starting ray head node
+2020-12-09 12:25:24,283	INFO scripts.py:453 -- Local node IP: 10.116.28.11
+2020-12-09 12:25:34,060	SUCC scripts.py:473 -- --------------------
+2020-12-09 12:25:34,060	SUCC scripts.py:474 -- Ray runtime started.
+2020-12-09 12:25:34,061	SUCC scripts.py:475 -- --------------------
+2020-12-09 12:25:34,061	INFO scripts.py:477 -- Next steps
+2020-12-09 12:25:34,061	INFO scripts.py:479 -- To connect to this Ray runtime from another node, run
+2020-12-09 12:25:34,061	INFO scripts.py:483 --   ray start --address='10.116.28.11:6379' --redis-password='d670556b-3357-4520-906c-09d0c5f6560f'
+2020-12-09 12:25:34,061	INFO scripts.py:485 -- Alternatively, use the following Python code:
+2020-12-09 12:25:34,062	INFO scripts.py:488 -- import ray
+2020-12-09 12:25:34,062	INFO scripts.py:495 -- ray.init(address='auto', _redis_password='d670556b-3357-4520-906c-09d0c5f6560f')
+2020-12-09 12:25:34,062	INFO scripts.py:498 -- If connection fails, check your firewall settings and network configuration.
+2020-12-09 12:25:34,063	INFO scripts.py:502 -- To terminate the Ray runtime, run
+2020-12-09 12:25:34,063	INFO scripts.py:503 --   ray stop
+STARTING WORKER 1 at cpn-p28-15
+starting ray worker node
+STARTING WORKER 2 at cpn-p28-16
+starting ray worker node
+STARTING WORKER 3 at cpn-p28-17
+starting ray worker node
+STARTING WORKER 4 at cpn-p28-18
+starting ray worker node
+2020-12-09 12:25:52,435	INFO scripts.py:568 -- Local node IP: 10.116.28.16
+2020-12-09 12:25:52,510	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:25:52,511	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:25:52,511	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:25:52,511	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:25:52,511	INFO scripts.py:588 --   ray stop
+2020-12-09 12:25:52,436	INFO scripts.py:568 -- Local node IP: 10.116.28.15
+2020-12-09 12:25:52,520	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:25:52,520	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:25:52,520	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:25:52,520	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:25:52,520	INFO scripts.py:588 --   ray stop
+STARTING WORKER 5 at cpn-p28-19
+starting ray worker node
+2020-12-09 12:25:56,911	INFO scripts.py:568 -- Local node IP: 10.116.28.17
+2020-12-09 12:25:57,101	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:25:57,101	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:25:57,102	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:25:57,102	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:25:57,102	INFO scripts.py:588 --   ray stop
+STARTING WORKER 6 at cpn-p28-20
+starting ray worker node
+2020-12-09 12:26:03,680	INFO scripts.py:568 -- Local node IP: 10.116.28.19
+2020-12-09 12:26:03,785	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:03,785	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:03,786	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:03,786	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:03,786	INFO scripts.py:588 --   ray stop
+STARTING WORKER 7 at cpn-p28-23
+starting ray worker node
+STARTING WORKER 8 at cpn-p28-24
+starting ray worker node
+2020-12-09 12:26:13,021	INFO scripts.py:568 -- Local node IP: 10.116.28.20
+2020-12-09 12:26:13,130	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:13,130	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:13,130	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:13,130	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:13,130	INFO scripts.py:588 --   ray stop
+STARTING WORKER 9 at cpn-p28-25
+2020-12-09 12:26:14,777	INFO scripts.py:568 -- Local node IP: 10.116.28.24
+2020-12-09 12:26:14,994	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:14,994	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:14,994	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:14,994	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:14,994	INFO scripts.py:588 --   ray stop
+starting ray worker node
+2020-12-09 12:26:17,583	INFO scripts.py:568 -- Local node IP: 10.116.28.23
+2020-12-09 12:26:17,803	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:17,803	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:17,803	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:17,803	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:17,803	INFO scripts.py:588 --   ray stop
+2020-12-09 12:26:19,485	INFO scripts.py:568 -- Local node IP: 10.116.28.18
+2020-12-09 12:26:19,610	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:19,610	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:19,610	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:19,610	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:19,610	INFO scripts.py:588 --   ray stop
+STARTING WORKER 10 at cpn-p28-26
+starting ray worker node
+2020-12-09 12:26:23,969	INFO scripts.py:568 -- Local node IP: 10.116.28.26
+2020-12-09 12:26:24,007	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:24,007	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:24,007	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:24,007	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:24,007	INFO scripts.py:588 --   ray stop
+STARTING WORKER 11 at cpn-p28-27
+2020-12-09 12:26:24,978	INFO scripts.py:568 -- Local node IP: 10.116.28.25
+2020-12-09 12:26:25,054	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:25,054	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:25,054	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:25,054	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:25,054	INFO scripts.py:588 --   ray stop
+starting ray worker node
+STARTING WORKER 12 at cpn-p28-28
+starting ray worker node
+2020-12-09 12:26:30,353	INFO scripts.py:568 -- Local node IP: 10.116.28.27
+2020-12-09 12:26:30,417	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:30,417	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:30,417	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:30,417	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:30,417	INFO scripts.py:588 --   ray stop
+STARTING WORKER 13 at cpn-p28-29
+starting ray worker node
+2020-12-09 12:26:35,463	INFO scripts.py:568 -- Local node IP: 10.116.28.28
+2020-12-09 12:26:35,536	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:35,536	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:35,536	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:35,536	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:35,536	INFO scripts.py:588 --   ray stop
+STARTING WORKER 14 at cpn-p28-30
+starting ray worker node
+STARTING WORKER 15 at cpn-p28-31
+starting ray worker node
+Launch Python job
+2020-12-09 12:26:51,422	INFO scripts.py:568 -- Local node IP: 10.116.28.30
+2020-12-09 12:26:51,593	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:51,593	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:51,593	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:51,594	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:51,594	INFO scripts.py:588 --   ray stop
+2020-12-09 12:26:53,572	INFO scripts.py:568 -- Local node IP: 10.116.28.31
+2020-12-09 12:26:53,731	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:53,731	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:53,731	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:53,731	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:53,732	INFO scripts.py:588 --   ray stop
+2020-12-09 12:26:53,567	INFO scripts.py:568 -- Local node IP: 10.116.28.29
+2020-12-09 12:26:53,735	SUCC scripts.py:583 -- --------------------
+2020-12-09 12:26:53,735	SUCC scripts.py:584 -- Ray runtime started.
+2020-12-09 12:26:53,735	SUCC scripts.py:585 -- --------------------
+2020-12-09 12:26:53,735	INFO scripts.py:587 -- To terminate the Ray runtime, run
+2020-12-09 12:26:53,735	INFO scripts.py:588 --   ray stop
+All Done!
