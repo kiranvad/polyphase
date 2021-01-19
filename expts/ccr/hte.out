@@ -1,0 +1,378 @@
+Total number of nodes are 8
+[2m[36m(pid=3415)[0m Computing ../figures/artificial/1_IDIC_PTB7-Th.png on 10.116.28.9
+[2m[36m(pid=3404)[0m Computing ../figures/artificial/2_IDIC_PTB7-Th.png on 10.116.28.9
+[2m[36m(pid=3399)[0m Computing ../figures/artificial/3_IDIC_PTB7-Th.png on 10.116.28.9
+[2m[36m(pid=3419)[0m Computing ../figures/artificial/0_IDIC_PTB7-Th.png on 10.116.28.9
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computing ../figures/artificial/12_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computing ../figures/artificial/14_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computing ../figures/artificial/8_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computing ../figures/artificial/19_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computing ../figures/artificial/4_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=6448, ip=10.116.28.10)[0m Computing ../figures/artificial/15_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computing ../figures/artificial/21_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computing ../figures/artificial/17_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=27437, ip=10.116.28.13)[0m Computing ../figures/artificial/31_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=27440, ip=10.116.28.13)[0m Computing ../figures/artificial/30_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computing ../figures/artificial/29_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computing ../figures/artificial/6_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computing ../figures/artificial/18_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computing ../figures/artificial/22_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computing ../figures/artificial/5_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computing ../figures/artificial/10_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computing ../figures/artificial/27_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computing ../figures/artificial/28_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=15415, ip=10.116.28.14)[0m Computing ../figures/artificial/25_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=15405, ip=10.116.28.14)[0m Computing ../figures/artificial/26_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computing ../figures/artificial/16_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computing ../figures/artificial/7_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computing ../figures/artificial/13_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=15817, ip=10.116.28.12)[0m Computing ../figures/artificial/9_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computing ../figures/artificial/23_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computing ../figures/artificial/24_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=3449, ip=10.116.28.11)[0m Computing ../figures/artificial/11_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computing ../figures/artificial/20_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computation took 247.53s
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computation took 255.08s
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computation took 262.64s
+[2m[36m(pid=6448, ip=10.116.28.10)[0m Computation took 263.92s
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computation took 268.24s
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computation took 275.07s
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computation took 275.42s
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computation took 278.91s
+[2m[36m(pid=15817, ip=10.116.28.12)[0m Computation took 249.89s
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computation took 254.49s
+[2m[36m(pid=3399)[0m Computation took 302.04s
+[2m[36m(pid=3419)[0m Computation took 305.38s
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computation took 258.50s
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computation took 261.89s
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computation took 262.37s
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computation took 262.58s
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computation took 262.89s
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computation took 264.54s
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computation took 264.65s
+[2m[36m(pid=3404)[0m Computation took 316.76s
+[2m[36m(pid=3415)[0m Computation took 323.19s
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computation took 277.00s
+[2m[36m(pid=15415, ip=10.116.28.14)[0m Computation took 277.17s
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computation took 277.85s
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computation took 280.53s
+[2m[36m(pid=27440, ip=10.116.28.13)[0m Computation took 280.80s
+[2m[36m(pid=3449, ip=10.116.28.11)[0m Computation took 282.28s
+Processed : ../figures/artificial/True_0_38_14_IDIC_PTB7-Th.png
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computing ../figures/artificial/32_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computation took 285.86s
+[2m[36m(pid=27437, ip=10.116.28.13)[0m Computation took 286.93s
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computation took 287.41s
+Processed : ../figures/artificial/True_0_36_19_IDIC_PTB7-Th.png
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computing ../figures/artificial/33_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computation took 292.79s
+[2m[36m(pid=15405, ip=10.116.28.14)[0m Computation took 295.89s
+Processed : ../figures/artificial/True_0_27_4_IDIC_PTB7-Th.png
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computing ../figures/artificial/34_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_0_77_8_IDIC_PTB7-Th.png
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computing ../figures/artificial/35_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_0_101_15_IDIC_PTB7-Th.png
+[2m[36m(pid=6448, ip=10.116.28.10)[0m Computing ../figures/artificial/36_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_0_24_9_IDIC_PTB7-Th.png
+[2m[36m(pid=15817, ip=10.116.28.12)[0m Computing ../figures/artificial/37_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_0_112_21_IDIC_PTB7-Th.png
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computing ../figures/artificial/38_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_0_29_24_IDIC_PTB7-Th.png
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computing ../figures/artificial/39_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_22_29_IDIC_PTB7-Th.png
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computing ../figures/artificial/40_IDIC_PTB7-Th.png on 10.116.28.14
+Processed : ../figures/artificial/True_0_57_3_IDIC_PTB7-Th.png
+[2m[36m(pid=3399)[0m Computing ../figures/artificial/41_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_77_28_IDIC_PTB7-Th.png
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computing ../figures/artificial/42_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_0_61_20_IDIC_PTB7-Th.png
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computing ../figures/artificial/43_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_101_13_IDIC_PTB7-Th.png
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computing ../figures/artificial/44_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_0_116_22_IDIC_PTB7-Th.png
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computing ../figures/artificial/45_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_0_115_0_IDIC_PTB7-Th.png
+[2m[36m(pid=3419)[0m Computing ../figures/artificial/46_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_63_23_IDIC_PTB7-Th.png
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computing ../figures/artificial/47_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_144_5_IDIC_PTB7-Th.png
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computing ../figures/artificial/48_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_0_119_2_IDIC_PTB7-Th.png
+[2m[36m(pid=3404)[0m Computing ../figures/artificial/49_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_129_10_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_1_227_12_IDIC_PTB7-Th.png
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computing ../figures/artificial/50_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computing ../figures/artificial/51_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_0_106_18_IDIC_PTB7-Th.png
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computing ../figures/artificial/52_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_0_169_7_IDIC_PTB7-Th.png
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computing ../figures/artificial/53_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_1_205_27_IDIC_PTB7-Th.png
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computing ../figures/artificial/54_IDIC_PTB7-Th.png on 10.116.28.14
+Processed : ../figures/artificial/True_1_268_17_IDIC_PTB7-Th.png
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computing ../figures/artificial/55_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_0_198_25_IDIC_PTB7-Th.png
+[2m[36m(pid=15415, ip=10.116.28.14)[0m Computing ../figures/artificial/56_IDIC_PTB7-Th.png on 10.116.28.14
+Processed : ../figures/artificial/True_1_169_1_IDIC_PTB7-Th.png
+[2m[36m(pid=3415)[0m Computing ../figures/artificial/57_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_246_16_IDIC_PTB7-Th.png
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computing ../figures/artificial/58_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_1_219_6_IDIC_PTB7-Th.png
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computing ../figures/artificial/59_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_1_246_30_IDIC_PTB7-Th.png
+[2m[36m(pid=27440, ip=10.116.28.13)[0m Computing ../figures/artificial/60_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_1_242_11_IDIC_PTB7-Th.png
+[2m[36m(pid=3449, ip=10.116.28.11)[0m Computing ../figures/artificial/61_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_318_26_IDIC_PTB7-Th.png
+[2m[36m(pid=15405, ip=10.116.28.14)[0m Computing ../figures/artificial/62_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computation took 267.97s
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computation took 280.17s
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computation took 269.53s
+Processed : ../figures/artificial/True_1_421_31_IDIC_PTB7-Th.png
+[2m[36m(pid=27437, ip=10.116.28.13)[0m Computing ../figures/artificial/63_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computation took 280.61s
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computation took 265.21s
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computation took 252.49s
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computation took 283.68s
+[2m[36m(pid=6448, ip=10.116.28.10)[0m Computation took 303.07s
+[2m[36m(pid=15817, ip=10.116.28.12)[0m Computation took 292.51s
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computation took 274.75s
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computation took 259.65s
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computation took 283.86s
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computation took 286.62s
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computation took 258.38s
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computation took 246.64s
+Processed : ../figures/artificial/True_0_42_34_IDIC_PTB7-Th.png
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computing ../figures/artificial/64_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_0_120_33_IDIC_PTB7-Th.png
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computing ../figures/artificial/65_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computation took 273.89s
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computation took 294.10s
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computation took 304.37s
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computation took 297.12s
+[2m[36m(pid=3419)[0m Computation took 316.13s
+[2m[36m(pid=3399)[0m Computation took 339.60s
+[2m[36m(pid=3404)[0m Computation took 305.22s
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computation took 304.15s
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computation took 282.99s
+Processed : ../figures/artificial/True_0_47_39_IDIC_PTB7-Th.png
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computing ../figures/artificial/66_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_54_44_IDIC_PTB7-Th.png
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computing ../figures/artificial/67_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computation took 272.46s
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computation took 273.27s
+[2m[36m(pid=27440, ip=10.116.28.13)[0m Computation took 287.82s
+Processed : ../figures/artificial/True_0_94_45_IDIC_PTB7-Th.png
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computing ../figures/artificial/68_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=15415, ip=10.116.28.14)[0m Computation took 320.92s
+Processed : ../figures/artificial/True_0_33_54_IDIC_PTB7-Th.png
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computing ../figures/artificial/69_IDIC_PTB7-Th.png on 10.116.28.14
+Processed : ../figures/artificial/True_1_215_35_IDIC_PTB7-Th.png
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computing ../figures/artificial/70_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_0_94_48_IDIC_PTB7-Th.png
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computing ../figures/artificial/71_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_0_177_38_IDIC_PTB7-Th.png
+[2m[36m(pid=3449, ip=10.116.28.11)[0m Computation took 305.48s
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computing ../figures/artificial/72_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_1_294_32_IDIC_PTB7-Th.png
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computing ../figures/artificial/73_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_1_183_40_IDIC_PTB7-Th.png
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computing ../figures/artificial/74_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=3415)[0m Computation took 349.33s
+Processed : ../figures/artificial/True_0_204_43_IDIC_PTB7-Th.png
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computing ../figures/artificial/75_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_103_53_IDIC_PTB7-Th.png
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computing ../figures/artificial/76_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_0_34_49_IDIC_PTB7-Th.png
+[2m[36m(pid=3404)[0m Computing ../figures/artificial/77_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_43_59_IDIC_PTB7-Th.png
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computing ../figures/artificial/78_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=15405, ip=10.116.28.14)[0m Computation took 312.05s
+Processed : ../figures/artificial/True_0_154_58_IDIC_PTB7-Th.png
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computing ../figures/artificial/79_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=27437, ip=10.116.28.13)[0m Computation took 275.87s
+Processed : ../figures/artificial/True_0_260_47_IDIC_PTB7-Th.png
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computing ../figures/artificial/80_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_233_46_IDIC_PTB7-Th.png
+[2m[36m(pid=3419)[0m Computing ../figures/artificial/81_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_297_50_IDIC_PTB7-Th.png
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computing ../figures/artificial/82_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_1_296_52_IDIC_PTB7-Th.png
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computing ../figures/artificial/83_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computation took 271.69s
+Processed : ../figures/artificial/True_0_424_42_IDIC_PTB7-Th.png
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computing ../figures/artificial/84_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_1_361_55_IDIC_PTB7-Th.png
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computing ../figures/artificial/85_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computation took 286.11s
+Processed : ../figures/artificial/True_0_319_60_IDIC_PTB7-Th.png
+[2m[36m(pid=27440, ip=10.116.28.13)[0m Computing ../figures/artificial/86_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_0_486_37_IDIC_PTB7-Th.png
+[2m[36m(pid=15817, ip=10.116.28.12)[0m Computing ../figures/artificial/87_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_0_425_51_IDIC_PTB7-Th.png
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computing ../figures/artificial/88_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computation took 252.56s
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computation took 290.23s
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computation took 304.28s
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computation took 269.94s
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computation took 287.26s
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computation took 285.20s
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computation took 263.75s
+Processed : ../figures/artificial/True_0_60_64_IDIC_PTB7-Th.png
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computing ../figures/artificial/89_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_0_435_41_IDIC_PTB7-Th.png
+[2m[36m(pid=3399)[0m Computing ../figures/artificial/90_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_532_36_IDIC_PTB7-Th.png
+[2m[36m(pid=6448, ip=10.116.28.10)[0m Computing ../figures/artificial/91_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computation took 271.92s
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computation took 302.75s
+Processed : ../figures/artificial/True_0_291_63_IDIC_PTB7-Th.png
+[2m[36m(pid=27437, ip=10.116.28.13)[0m Computing ../figures/artificial/92_IDIC_PTB7-Th.png on 10.116.28.13
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computation took 287.84s
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computation took 281.25s
+Processed : ../figures/artificial/True_0_70_69_IDIC_PTB7-Th.png
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computing ../figures/artificial/93_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computation took 302.87s
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computation took 257.27s
+Processed : ../figures/artificial/True_0_40_74_IDIC_PTB7-Th.png
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computing ../figures/artificial/94_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=3404)[0m Computation took 338.73s
+Processed : ../figures/artificial/True_0_130_70_IDIC_PTB7-Th.png
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computing ../figures/artificial/95_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_1_444_57_IDIC_PTB7-Th.png
+[2m[36m(pid=3415)[0m Computing ../figures/artificial/96_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_146_73_IDIC_PTB7-Th.png
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computing ../figures/artificial/97_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_0_330_65_IDIC_PTB7-Th.png
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computing ../figures/artificial/98_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_0_35_79_IDIC_PTB7-Th.png
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computing ../figures/artificial/99_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computation took 319.29s
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computation took 249.07s
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computation took 295.93s
+Processed : ../figures/artificial/True_0_112_78_IDIC_PTB7-Th.png
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computing ../figures/artificial/100_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computation took 314.15s
+Processed : ../figures/artificial/True_0_520_62_IDIC_PTB7-Th.png
+[2m[36m(pid=15405, ip=10.116.28.14)[0m Computing ../figures/artificial/101_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computation took 284.62s
+Processed : ../figures/artificial/True_0_587_61_IDIC_PTB7-Th.png
+[2m[36m(pid=3449, ip=10.116.28.11)[0m Computing ../figures/artificial/102_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=3419)[0m Computation took 372.34s
+[2m[36m(pid=27440, ip=10.116.28.13)[0m Computation took 311.16s
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computation took 293.20s
+[2m[36m(pid=15817, ip=10.116.28.12)[0m Computation took 299.80s
+Processed : ../figures/artificial/True_0_47_84_IDIC_PTB7-Th.png
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computing ../figures/artificial/103_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_0_332_75_IDIC_PTB7-Th.png
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computing ../figures/artificial/104_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computation took 273.38s
+Processed : ../figures/artificial/True_0_436_67_IDIC_PTB7-Th.png
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computing ../figures/artificial/105_IDIC_PTB7-Th.png on 10.116.28.12
+Processed : ../figures/artificial/True_0_411_68_IDIC_PTB7-Th.png
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computing ../figures/artificial/106_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_0_410_71_IDIC_PTB7-Th.png
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computing ../figures/artificial/107_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_0_170_83_IDIC_PTB7-Th.png
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computing ../figures/artificial/108_IDIC_PTB7-Th.png on 10.116.28.13
+Processed : ../figures/artificial/True_0_522_56_IDIC_PTB7-Th.png
+[2m[36m(pid=15415, ip=10.116.28.14)[0m Computing ../figures/artificial/109_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=6448, ip=10.116.28.10)[0m Computation took 295.29s
+Processed : ../figures/artificial/True_0_447_66_IDIC_PTB7-Th.png
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computing ../figures/artificial/110_IDIC_PTB7-Th.png on 10.116.28.11
+[2m[36m(pid=27437, ip=10.116.28.13)[0m Computation took 286.65s
+Processed : ../figures/artificial/True_0_409_72_IDIC_PTB7-Th.png
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computing ../figures/artificial/111_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=15412, ip=10.116.28.14)[0m Computation took 283.58s
+[2m[36m(pid=3399)[0m Computation took 337.89s
+Processed : ../figures/artificial/True_0_330_77_IDIC_PTB7-Th.png
+[2m[36m(pid=3404)[0m Computing ../figures/artificial/112_IDIC_PTB7-Th.png on 10.116.28.9
+Processed : ../figures/artificial/True_0_427_76_IDIC_PTB7-Th.png
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computing ../figures/artificial/113_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computation took 269.31s
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computation took 273.25s
+Processed : ../figures/artificial/True_0_71_89_IDIC_PTB7-Th.png
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computing ../figures/artificial/114_IDIC_PTB7-Th.png on 10.116.28.10
+[2m[36m(pid=4763, ip=10.116.28.16)[0m Computation took 285.59s
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computation took 258.79s
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computation took 272.14s
+[2m[36m(pid=3415)[0m Computation took 344.49s
+Processed : ../figures/artificial/True_1_409_80_IDIC_PTB7-Th.png
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computing ../figures/artificial/115_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_74_94_IDIC_PTB7-Th.png
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computing ../figures/artificial/116_IDIC_PTB7-Th.png on 10.116.28.14
+[2m[36m(pid=32308, ip=10.116.28.15)[0m Computation took 299.86s
+Processed : ../figures/artificial/True_0_376_85_IDIC_PTB7-Th.png
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computing ../figures/artificial/117_IDIC_PTB7-Th.png on 10.116.28.10
+Processed : ../figures/artificial/True_1_140_95_IDIC_PTB7-Th.png
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computing ../figures/artificial/118_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=3449, ip=10.116.28.11)[0m Computation took 280.55s
+Processed : ../figures/artificial/True_0_46_99_IDIC_PTB7-Th.png
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computing ../figures/artificial/119_IDIC_PTB7-Th.png on 10.116.28.12
+[2m[36m(pid=15405, ip=10.116.28.14)[0m Computation took 303.15s
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computation took 257.37s
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computation took 255.24s
+Processed : ../figures/artificial/True_1_394_88_IDIC_PTB7-Th.png
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computing ../figures/artificial/120_IDIC_PTB7-Th.png on 10.116.28.16
+Processed : ../figures/artificial/True_0_159_98_IDIC_PTB7-Th.png
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computing ../figures/artificial/121_IDIC_PTB7-Th.png on 10.116.28.16
+[2m[36m(pid=15815, ip=10.116.28.12)[0m Computation took 284.69s
+[2m[36m(pid=15415, ip=10.116.28.14)[0m Computation took 264.12s
+Processed : ../figures/artificial/True_1_512_82_IDIC_PTB7-Th.png
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computing ../figures/artificial/122_IDIC_PTB7-Th.png on 10.116.28.15
+[2m[36m(pid=27443, ip=10.116.28.13)[0m Computation took 291.08s
+[2m[36m(pid=27444, ip=10.116.28.13)[0m Computation took 293.15s
+[2m[36m(pid=3440, ip=10.116.28.11)[0m Computation took 293.37s
+[2m[36m(pid=32305, ip=10.116.28.15)[0m Computation took 313.23s
+Processed : ../figures/artificial/True_0_26_104_IDIC_PTB7-Th.png
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computing ../figures/artificial/123_IDIC_PTB7-Th.png on 10.116.28.11
+Processed : ../figures/artificial/True_0_100_103_IDIC_PTB7-Th.png
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computing ../figures/artificial/124_IDIC_PTB7-Th.png on 10.116.28.15
+Processed : ../figures/artificial/True_0_438_92_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_451_91_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_411_93_IDIC_PTB7-Th.png
+[2m[36m(pid=6443, ip=10.116.28.10)[0m Computation took 313.66s
+[2m[36m(pid=6447, ip=10.116.28.10)[0m Computation took 270.98s
+Processed : ../figures/artificial/True_0_54_109_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_532_87_IDIC_PTB7-Th.png
+[2m[36m(pid=15825, ip=10.116.28.12)[0m Computation took 291.77s
+Processed : ../figures/artificial/True_1_272_100_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_1_271_102_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_402_97_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_434_90_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_150_108_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_608_86_IDIC_PTB7-Th.png
+[2m[36m(pid=3404)[0m Computation took 352.87s
+[2m[36m(pid=15403, ip=10.116.28.14)[0m Computation took 244.19s
+Processed : ../figures/artificial/True_0_65_114_IDIC_PTB7-Th.png
+[2m[36m(pid=6444, ip=10.116.28.10)[0m Computation took 249.69s
+Processed : ../figures/artificial/True_0_430_101_IDIC_PTB7-Th.png
+[2m[36m(pid=15822, ip=10.116.28.12)[0m Computation took 233.68s
+Processed : ../figures/artificial/True_0_417_107_IDIC_PTB7-Th.png
+[2m[36m(pid=3444, ip=10.116.28.11)[0m Computation took 286.23s
+Processed : ../figures/artificial/True_0_406_96_IDIC_PTB7-Th.png
+[2m[36m(pid=4757, ip=10.116.28.16)[0m Computation took 269.44s
+Processed : ../figures/artificial/True_1_333_105_IDIC_PTB7-Th.png
+[2m[36m(pid=4756, ip=10.116.28.16)[0m Computation took 240.80s
+Processed : ../figures/artificial/True_0_306_110_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_278_113_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_65_119_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_444_116_IDIC_PTB7-Th.png
+[2m[36m(pid=4750, ip=10.116.28.16)[0m Computation took 249.32s
+[2m[36m(pid=3439, ip=10.116.28.11)[0m Computation took 203.62s
+[2m[36m(pid=32299, ip=10.116.28.15)[0m Computation took 197.54s
+[2m[36m(pid=32304, ip=10.116.28.15)[0m Computation took 249.09s
+Processed : ../figures/artificial/True_0_127_120_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_313_115_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_141_123_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_535_81_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_433_117_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_38_124_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_572_111_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_512_112_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_415_118_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_404_121_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_512_106_IDIC_PTB7-Th.png
+Processed : ../figures/artificial/True_0_409_122_IDIC_PTB7-Th.png
+Total of 0/125 failed
+Program took 00 Hr:34 min:57.09 sec

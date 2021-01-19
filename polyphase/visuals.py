@@ -7,6 +7,11 @@ import mpltern
 from matplotlib.cm import ScalarMappable
 from matplotlib import colors
 
+<<<<<<< HEAD
+=======
+from .helpers import *
+from .phase import is_boundary_point
+>>>>>>> 413624912961e0622d07f8cfe0184921dc3f6d70
 def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
     from matplotlib.cm import ScalarMappable

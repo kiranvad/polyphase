@@ -11,6 +11,7 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
 
+<<<<<<< HEAD
 from scipy.constants import gas_constant
 
 import time
@@ -25,6 +26,11 @@ class timer:
 
         return "{:0>2} Hr:{:0>2} min:{:05.2f} sec".format(int(hours),int(minutes),seconds)
 
+=======
+from .helpers import get_ternary_coords 
+from scipy.constants import gas_constant
+
+>>>>>>> 413624912961e0622d07f8cfe0184921dc3f6d70
 def _utri2mat(utri, dimension):
     """ convert list of chi values to a matrix form """
     inds = np.triu_indices(dimension,1)

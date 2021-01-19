@@ -1,0 +1,252 @@
+Total number of nodes are 16
+[2m[36m(pid=15908, ip=10.116.28.28)[0m Staging 75 on 10.116.28.28
+[2m[36m(pid=15915, ip=10.116.28.28)[0m Staging 57 on 10.116.28.28
+[2m[36m(pid=15897, ip=10.116.28.28)[0m Staging 93 on 10.116.28.28
+[2m[36m(pid=15913, ip=10.116.28.28)[0m Staging 119 on 10.116.28.28
+[2m[36m(pid=15910, ip=10.116.28.28)[0m Staging 82 on 10.116.28.28
+[2m[36m(pid=15904, ip=10.116.28.28)[0m Staging 91 on 10.116.28.28
+[2m[36m(pid=15914, ip=10.116.28.28)[0m Staging 43 on 10.116.28.28
+[2m[36m(pid=15912, ip=10.116.28.28)[0m Staging 65 on 10.116.28.28
+[2m[36m(pid=15918, ip=10.116.28.28)[0m Staging 116 on 10.116.28.28
+[2m[36m(pid=851, ip=10.116.28.20)[0m Staging 115 on 10.116.28.20
+[2m[36m(pid=857, ip=10.116.28.20)[0m Staging 33 on 10.116.28.20
+[2m[36m(pid=859, ip=10.116.28.20)[0m Staging 112 on 10.116.28.20
+[2m[36m(pid=852, ip=10.116.28.20)[0m Staging 64 on 10.116.28.20
+[2m[36m(pid=853, ip=10.116.28.20)[0m Staging 114 on 10.116.28.20
+[2m[36m(pid=856, ip=10.116.28.20)[0m Staging 44 on 10.116.28.20
+[2m[36m(pid=865, ip=10.116.28.20)[0m Staging 123 on 10.116.28.20
+[2m[36m(pid=854, ip=10.116.28.20)[0m Staging 40 on 10.116.28.20
+[2m[36m(pid=11016, ip=10.116.28.17)[0m Staging 108 on 10.116.28.17
+[2m[36m(pid=11006, ip=10.116.28.17)[0m Staging 79 on 10.116.28.17
+[2m[36m(pid=11015, ip=10.116.28.17)[0m Staging 24 on 10.116.28.17
+[2m[36m(pid=11008, ip=10.116.28.17)[0m Staging 87 on 10.116.28.17
+[2m[36m(pid=11014, ip=10.116.28.17)[0m Staging 53 on 10.116.28.17
+[2m[36m(pid=11000, ip=10.116.28.17)[0m Staging 106 on 10.116.28.17
+[2m[36m(pid=11017, ip=10.116.28.17)[0m Staging 20 on 10.116.28.17
+[2m[36m(pid=11012, ip=10.116.28.17)[0m Staging 27 on 10.116.28.17
+[2m[36m(pid=11004, ip=10.116.28.17)[0m Staging 95 on 10.116.28.17
+[2m[36m(pid=18960, ip=10.116.28.19)[0m Staging 113 on 10.116.28.19
+[2m[36m(pid=18964, ip=10.116.28.19)[0m Staging 122 on 10.116.28.19
+[2m[36m(pid=18975, ip=10.116.28.19)[0m Staging 70 on 10.116.28.19
+[2m[36m(pid=18976, ip=10.116.28.19)[0m Staging 100 on 10.116.28.19
+[2m[36m(pid=18959, ip=10.116.28.19)[0m Staging 121 on 10.116.28.19
+[2m[36m(pid=18972, ip=10.116.28.19)[0m Staging 71 on 10.116.28.19
+[2m[36m(pid=18980, ip=10.116.28.19)[0m Staging 62 on 10.116.28.19
+[2m[36m(pid=18973, ip=10.116.28.19)[0m Staging 66 on 10.116.28.19
+[2m[36m(pid=18985, ip=10.116.28.19)[0m Staging 23 on 10.116.28.19
+[2m[36m(pid=18969, ip=10.116.28.19)[0m Staging 88 on 10.116.28.19
+[2m[36m(pid=24635, ip=10.116.28.25)[0m Staging 103 on 10.116.28.25
+[2m[36m(pid=24621, ip=10.116.28.25)[0m Staging 51 on 10.116.28.25
+[2m[36m(pid=24636, ip=10.116.28.25)[0m Staging 78 on 10.116.28.25
+[2m[36m(pid=24624, ip=10.116.28.25)[0m Staging 101 on 10.116.28.25
+[2m[36m(pid=24634, ip=10.116.28.25)[0m Staging 81 on 10.116.28.25
+[2m[36m(pid=20594)[0m Staging 13 on 10.116.28.11
+[2m[36m(pid=20595)[0m Staging 0 on 10.116.28.11
+[2m[36m(pid=20587)[0m Staging 2 on 10.116.28.11
+[2m[36m(pid=20593)[0m Staging 9 on 10.116.28.11
+[2m[36m(pid=20596)[0m Staging 18 on 10.116.28.11
+[2m[36m(pid=20602)[0m Staging 5 on 10.116.28.11
+[2m[36m(pid=20589)[0m Staging 1 on 10.116.28.11
+[2m[36m(pid=20591)[0m Staging 19 on 10.116.28.11
+[2m[36m(pid=20600)[0m Staging 4 on 10.116.28.11
+[2m[36m(pid=20583)[0m Staging 10 on 10.116.28.11
+[2m[36m(pid=20590)[0m Staging 6 on 10.116.28.11
+[2m[36m(pid=20601)[0m Staging 7 on 10.116.28.11
+[2m[36m(pid=20586)[0m Staging 15 on 10.116.28.11
+[2m[36m(pid=20584)[0m Staging 17 on 10.116.28.11
+[2m[36m(pid=20597)[0m Staging 11 on 10.116.28.11
+[2m[36m(pid=20588)[0m Staging 12 on 10.116.28.11
+[2m[36m(pid=20598)[0m Staging 8 on 10.116.28.11
+[2m[36m(pid=20582)[0m Staging 3 on 10.116.28.11
+[2m[36m(pid=20599)[0m Staging 16 on 10.116.28.11
+[2m[36m(pid=20585)[0m Staging 14 on 10.116.28.11
+[2m[36m(pid=21459, ip=10.116.28.29)[0m Staging 31 on 10.116.28.29
+[2m[36m(pid=21450, ip=10.116.28.29)[0m Staging 80 on 10.116.28.29
+[2m[36m(pid=21445, ip=10.116.28.29)[0m Staging 29 on 10.116.28.29
+[2m[36m(pid=21449, ip=10.116.28.29)[0m Staging 49 on 10.116.28.29
+[2m[36m(pid=21440, ip=10.116.28.29)[0m Staging 73 on 10.116.28.29
+[2m[36m(pid=21457, ip=10.116.28.29)[0m Staging 39 on 10.116.28.29
+[2m[36m(pid=21452, ip=10.116.28.29)[0m Staging 42 on 10.116.28.29
+[2m[36m(pid=21437, ip=10.116.28.29)[0m Staging 102 on 10.116.28.29
+[2m[36m(pid=10681, ip=10.116.28.31)[0m Staging 34 on 10.116.28.31
+[2m[36m(pid=10689, ip=10.116.28.31)[0m Staging 54 on 10.116.28.31
+[2m[36m(pid=10665, ip=10.116.28.31)[0m Staging 107 on 10.116.28.31
+[2m[36m(pid=10678, ip=10.116.28.31)[0m Staging 38 on 10.116.28.31
+[2m[36m(pid=10671, ip=10.116.28.31)[0m Staging 76 on 10.116.28.31
+[2m[36m(pid=10677, ip=10.116.28.31)[0m Staging 67 on 10.116.28.31
+[2m[36m(pid=10674, ip=10.116.28.31)[0m Staging 61 on 10.116.28.31
+[2m[36m(pid=10683, ip=10.116.28.31)[0m Staging 28 on 10.116.28.31
+[2m[36m(pid=10687, ip=10.116.28.31)[0m Staging 45 on 10.116.28.31
+[2m[36m(pid=10685, ip=10.116.28.31)[0m Staging 56 on 10.116.28.31
+[2m[36m(pid=2266, ip=10.116.28.30)[0m Staging 77 on 10.116.28.30
+[2m[36m(pid=2256, ip=10.116.28.30)[0m Staging 89 on 10.116.28.30
+[2m[36m(pid=2274, ip=10.116.28.30)[0m Staging 59 on 10.116.28.30
+[2m[36m(pid=2255, ip=10.116.28.30)[0m Staging 99 on 10.116.28.30
+[2m[36m(pid=2270, ip=10.116.28.30)[0m Staging 46 on 10.116.28.30
+[2m[36m(pid=2254, ip=10.116.28.30)[0m Staging 118 on 10.116.28.30
+[2m[36m(pid=2276, ip=10.116.28.30)[0m Staging 41 on 10.116.28.30
+Processed : 123 took 00 Hr:00 min:11.69 sec 
+[2m[36m(pid=22699, ip=10.116.28.27)[0m Staging 35 on 10.116.28.27
+[2m[36m(pid=22705, ip=10.116.28.27)[0m Staging 21 on 10.116.28.27
+[2m[36m(pid=22697, ip=10.116.28.27)[0m Staging 86 on 10.116.28.27
+[2m[36m(pid=22688, ip=10.116.28.27)[0m Staging 109 on 10.116.28.27
+[2m[36m(pid=22706, ip=10.116.28.27)[0m Staging 69 on 10.116.28.27
+[2m[36m(pid=22702, ip=10.116.28.27)[0m Staging 68 on 10.116.28.27
+[2m[36m(pid=26155, ip=10.116.28.26)[0m Staging 117 on 10.116.28.26
+[2m[36m(pid=26136, ip=10.116.28.26)[0m Staging 110 on 10.116.28.26
+[2m[36m(pid=26138, ip=10.116.28.26)[0m Staging 52 on 10.116.28.26
+[2m[36m(pid=26142, ip=10.116.28.26)[0m Staging 105 on 10.116.28.26
+[2m[36m(pid=26137, ip=10.116.28.26)[0m Staging 37 on 10.116.28.26
+[2m[36m(pid=26144, ip=10.116.28.26)[0m Staging 26 on 10.116.28.26
+[2m[36m(pid=3632, ip=10.116.28.24)[0m Staging 92 on 10.116.28.24
+[2m[36m(pid=3631, ip=10.116.28.24)[0m Staging 96 on 10.116.28.24
+[2m[36m(pid=3646, ip=10.116.28.24)[0m Staging 55 on 10.116.28.24
+[2m[36m(pid=3647, ip=10.116.28.24)[0m Staging 94 on 10.116.28.24
+[2m[36m(pid=3650, ip=10.116.28.24)[0m Staging 48 on 10.116.28.24
+[2m[36m(pid=3640, ip=10.116.28.24)[0m Staging 72 on 10.116.28.24
+[2m[36m(pid=12765, ip=10.116.28.16)[0m Staging 30 on 10.116.28.16
+[2m[36m(pid=12764, ip=10.116.28.16)[0m Staging 36 on 10.116.28.16
+[2m[36m(pid=12746, ip=10.116.28.16)[0m Staging 120 on 10.116.28.16
+[2m[36m(pid=19831, ip=10.116.28.15)[0m Staging 58 on 10.116.28.15
+[2m[36m(pid=19813, ip=10.116.28.15)[0m Staging 85 on 10.116.28.15
+[2m[36m(pid=19830, ip=10.116.28.15)[0m Staging 22 on 10.116.28.15
+[2m[36m(pid=19823, ip=10.116.28.15)[0m Staging 83 on 10.116.28.15
+[2m[36m(pid=19814, ip=10.116.28.15)[0m Staging 97 on 10.116.28.15
+[2m[36m(pid=19835, ip=10.116.28.15)[0m Staging 60 on 10.116.28.15
+[2m[36m(pid=19293, ip=10.116.28.23)[0m Staging 104 on 10.116.28.23
+[2m[36m(pid=19294, ip=10.116.28.23)[0m Staging 63 on 10.116.28.23
+[2m[36m(pid=19289, ip=10.116.28.23)[0m Staging 32 on 10.116.28.23
+[2m[36m(pid=19303, ip=10.116.28.23)[0m Staging 74 on 10.116.28.23
+[2m[36m(pid=19292, ip=10.116.28.23)[0m Staging 25 on 10.116.28.23
+[2m[36m(pid=19287, ip=10.116.28.23)[0m Staging 90 on 10.116.28.23
+Processed : 122 took 00 Hr:00 min:28.22 sec 
+Processed : 120 took 00 Hr:00 min:17.05 sec 
+Processed : 121 took 00 Hr:00 min:40.69 sec 
+[2m[36m(pid=10644, ip=10.116.28.18)[0m Staging 98 on 10.116.28.18
+[2m[36m(pid=10630, ip=10.116.28.18)[0m Staging 84 on 10.116.28.18
+[2m[36m(pid=10629, ip=10.116.28.18)[0m Staging 47 on 10.116.28.18
+[2m[36m(pid=10632, ip=10.116.28.18)[0m Staging 50 on 10.116.28.18
+[2m[36m(pid=10635, ip=10.116.28.18)[0m Staging 111 on 10.116.28.18
+Processed : 119 took 00 Hr:01 min:04.36 sec 
+Processed : 118 took 00 Hr:00 min:58.68 sec 
+Processed : 117 took 00 Hr:00 min:59.25 sec 
+Processed : 115 took 00 Hr:01 min:29.97 sec 
+Processed : 114 took 00 Hr:01 min:38.40 sec 
+Processed : 116 took 00 Hr:01 min:38.31 sec 
+Processed : 112 took 00 Hr:01 min:52.21 sec 
+Processed : 110 took 00 Hr:01 min:48.61 sec 
+Processed : 113 took 00 Hr:02 min:10.10 sec 
+Processed : 111 took 00 Hr:01 min:31.35 sec 
+Processed : 109 took 00 Hr:02 min:07.93 sec 
+Processed : 105 took 00 Hr:02 min:16.07 sec 
+Processed : 103 took 00 Hr:02 min:27.45 sec 
+Processed : 101 took 00 Hr:02 min:38.98 sec 
+Processed : 104 took 00 Hr:02 min:47.47 sec 
+Processed : 108 took 00 Hr:03 min:23.13 sec 
+Processed : 98 took 00 Hr:02 min:43.43 sec 
+Processed : 106 took 00 Hr:03 min:45.11 sec 
+Processed : 99 took 00 Hr:03 min:37.72 sec 
+Processed : 107 took 00 Hr:03 min:56.94 sec 
+Processed : 81 took 00 Hr:04 min:02.23 sec 
+Processed : 96 took 00 Hr:03 min:53.22 sec 
+Processed : 97 took 00 Hr:03 min:51.22 sec 
+Processed : 102 took 00 Hr:04 min:04.46 sec 
+Processed : 78 took 00 Hr:04 min:10.48 sec 
+Processed : 100 took 00 Hr:04 min:15.92 sec 
+Processed : 94 took 00 Hr:04 min:07.05 sec 
+Processed : 84 took 00 Hr:03 min:41.34 sec 
+Processed : 36 took 00 Hr:04 min:11.55 sec 
+Processed : 92 took 00 Hr:04 min:18.10 sec 
+Processed : 30 took 00 Hr:04 min:19.89 sec 
+Processed : 90 took 00 Hr:04 min:24.17 sec 
+Processed : 51 took 00 Hr:04 min:49.13 sec 
+Processed : 89 took 00 Hr:04 min:47.20 sec 
+Processed : 86 took 00 Hr:04 min:48.33 sec 
+Processed : 93 took 00 Hr:05 min:27.99 sec 
+Processed : 95 took 00 Hr:05 min:32.77 sec 
+Processed : 85 took 00 Hr:05 min:16.96 sec 
+Processed : 91 took 00 Hr:05 min:45.28 sec 
+Processed : 83 took 00 Hr:05 min:27.75 sec 
+Processed : 88 took 00 Hr:05 min:55.71 sec 
+Processed : 72 took 00 Hr:05 min:41.34 sec 
+Processed : 50 took 00 Hr:05 min:15.25 sec 
+Processed : 77 took 00 Hr:05 min:53.97 sec 
+Processed : 47 took 00 Hr:05 min:19.10 sec 
+Processed : 52 took 00 Hr:06 min:04.41 sec 
+Processed : 64 took 00 Hr:06 min:18.87 sec 
+Processed : 74 took 00 Hr:05 min:52.72 sec 
+Processed : 69 took 00 Hr:06 min:23.41 sec 
+Processed : 68 took 00 Hr:06 min:26.56 sec 
+Processed : 87 took 00 Hr:06 min:40.69 sec 
+Processed : 55 took 00 Hr:06 min:27.98 sec 
+Processed : 82 took 00 Hr:06 min:50.49 sec 
+Processed : 37 took 00 Hr:06 min:40.79 sec 
+Processed : 48 took 00 Hr:06 min:37.83 sec 
+Processed : 63 took 00 Hr:06 min:38.23 sec 
+Processed : 26 took 00 Hr:06 min:55.72 sec 
+Processed : 59 took 00 Hr:07 min:08.79 sec 
+Processed : 60 took 00 Hr:07 min:05.25 sec 
+Processed : 75 took 00 Hr:07 min:29.53 sec 
+Processed : 58 took 00 Hr:07 min:10.91 sec 
+Processed : 79 took 00 Hr:07 min:36.25 sec 
+Processed : 44 took 00 Hr:07 min:42.17 sec 
+Processed : 80 took 00 Hr:07 min:36.88 sec 
+Processed : 40 took 00 Hr:07 min:53.08 sec 
+Processed : 46 took 00 Hr:07 min:44.89 sec 
+Processed : 71 took 00 Hr:07 min:53.61 sec 
+Processed : 41 took 00 Hr:07 min:51.79 sec 
+Processed : 33 took 00 Hr:08 min:02.72 sec 
+Processed : 70 took 00 Hr:07 min:59.15 sec 
+Processed : 35 took 00 Hr:07 min:58.90 sec 
+Processed : 65 took 00 Hr:08 min:12.13 sec 
+Processed : 66 took 00 Hr:08 min:15.74 sec 
+Processed : 22 took 00 Hr:08 min:02.01 sec 
+Processed : 21 took 00 Hr:08 min:17.59 sec 
+Processed : 62 took 00 Hr:08 min:26.80 sec 
+Processed : 32 took 00 Hr:08 min:03.70 sec 
+Processed : 57 took 00 Hr:08 min:34.96 sec 
+Processed : 73 took 00 Hr:08 min:35.18 sec 
+Processed : 25 took 00 Hr:08 min:16.90 sec 
+Processed : 43 took 00 Hr:08 min:55.29 sec 
+Processed : 23 took 00 Hr:09 min:20.52 sec 
+Processed : 53 took 00 Hr:10 min:06.99 sec 
+Processed : 76 took 00 Hr:10 min:23.83 sec 
+Processed : 49 took 00 Hr:11 min:20.72 sec 
+Processed : 27 took 00 Hr:11 min:50.78 sec 
+Processed : 24 took 00 Hr:11 min:59.20 sec 
+Processed : 20 took 00 Hr:12 min:04.66 sec 
+Processed : 42 took 00 Hr:11 min:59.42 sec 
+Processed : 67 took 00 Hr:12 min:04.46 sec 
+Processed : 39 took 00 Hr:12 min:11.83 sec 
+Processed : 31 took 00 Hr:12 min:33.85 sec 
+Processed : 29 took 00 Hr:12 min:36.60 sec 
+Processed : 61 took 00 Hr:13 min:02.48 sec 
+Processed : 56 took 00 Hr:13 min:59.88 sec 
+Processed : 54 took 00 Hr:14 min:01.08 sec 
+Processed : 45 took 00 Hr:14 min:51.10 sec 
+Processed : 38 took 00 Hr:15 min:20.38 sec 
+Processed : 34 took 00 Hr:15 min:31.35 sec 
+Processed : 28 took 00 Hr:15 min:39.63 sec 
+Processed : 19 took 01 Hr:01 min:54.77 sec 
+Processed : 18 took 01 Hr:02 min:29.96 sec 
+Processed : 17 took 01 Hr:03 min:03.75 sec 
+Processed : 16 took 01 Hr:03 min:31.86 sec 
+Processed : 15 took 01 Hr:04 min:33.13 sec 
+Processed : 14 took 01 Hr:04 min:34.15 sec 
+Processed : 13 took 01 Hr:04 min:58.47 sec 
+Processed : 12 took 01 Hr:05 min:22.86 sec 
+Processed : 11 took 01 Hr:05 min:44.25 sec 
+Processed : 10 took 01 Hr:06 min:03.61 sec 
+Processed : 9 took 01 Hr:06 min:23.87 sec 
+Processed : 8 took 01 Hr:06 min:40.24 sec 
+Processed : 7 took 01 Hr:06 min:55.31 sec 
+Processed : 6 took 01 Hr:07 min:09.41 sec 
+Processed : 5 took 01 Hr:07 min:20.98 sec 
+Processed : 4 took 01 Hr:07 min:31.58 sec 
+Processed : 3 took 01 Hr:07 min:39.93 sec 
+Processed : 2 took 01 Hr:07 min:46.78 sec 
+Processed : 1 took 01 Hr:07 min:51.77 sec 
+Processed : 0 took 01 Hr:07 min:56.42 sec 
+
+Computation took : 01 Hr:08 min:48.82 sec
+Distance matrix has shape: (125, 125)
