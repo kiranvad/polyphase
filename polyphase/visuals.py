@@ -7,11 +7,6 @@ import mpltern
 from matplotlib.cm import ScalarMappable
 from matplotlib import colors
 
-<<<<<<< HEAD
-=======
-from .helpers import *
-from .phase import is_boundary_point
->>>>>>> 413624912961e0622d07f8cfe0184921dc3f6d70
 def plot_4d_phase_simplex_addition(pm,sliceat=0.5):
     from mpl_toolkits.mplot3d.art3d import Poly3DCollection
     from matplotlib.cm import ScalarMappable
@@ -85,9 +80,9 @@ def _set_axislabels_mpltern(ax):
     Sets axis labels for phase plots using mpltern 
     in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
     """
-    ax.set_tlabel('solvent', fontsize=20)
-    ax.set_llabel('polymer', fontsize=20)
-    ax.set_rlabel('small molecule', fontsize=20)
+    ax.set_tlabel('solvent')
+    ax.set_llabel('polymer')
+    ax.set_rlabel('small molecule')
     ax.taxis.set_label_position('tick1')
     ax.laxis.set_label_position('tick1')
     ax.raxis.set_label_position('tick1')
