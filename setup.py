@@ -13,7 +13,7 @@ setup(name="polyphase",
       'matplotlib', 'pandas', 'ray', 'plotly', 'mpltern'],
       extras_require = {},
       packages=find_packages(),
-      long_description=open('readme.md').read(),
+      long_description=open('README.md').read(),
       long_description_content_type="text/markdown",
       classifiers=[
         "Programming Language :: Python :: 3",
