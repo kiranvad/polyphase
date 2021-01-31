@@ -24,6 +24,7 @@ cd $SLURM_SUBMIT_DIR
 
 module use /projects/academic/olgawodo/kiranvad/modulefiles
 module load python/mypython37
+source ~/.venv/polyphase/bin/activate
 ulimit -s unlimited
 
 ################# DON NOT CHANGE THINGS HERE UNLESS YOU KNOW WHAT YOU ARE DOING ###############

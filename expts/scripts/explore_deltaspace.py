@@ -2,12 +2,13 @@ import numpy as np
 import pandas as pd
 import polyphase
 from itertools import product
-import polyphase
 import matplotlib.pyplot as plt
 import os, shutil
 from collections import Counter
-plt.rcParams.update({
-    "text.usetex": True})
+plt.rcParams.update({"text.usetex": True})
+from math import pi
+
+T = polyphase.timer()
 
 def touchup3d(ax):
     ax.xaxis.pane.fill = False
@@ -19,8 +20,36 @@ def touchup3d(ax):
     ax.grid(False)
     ax.zaxis._axinfo['juggled'] = (1,2,0)
 
-        
-NUM_PER_DIMENSION = 5
+def get_ternary_coords(point):
+    """ Compute 2d embedding of a 3d hyperplane """
+    a,b,c = point
+    x = 0.5-a*np.cos(pi/3)+b/2;
+    y = 0.866-a*np.sin(pi/3)-b*(1/np.tan(pi/6)/2);
+    
+    return [x,y]
+
+def get_simplex_area(engine, simplex_id):
+    matrix = []
+    for s in engine.simplices[simplex_id]:
+        v = engine.grid[:,s]
+        matrix.append(get_ternary_coords(v))
+
+    matrix = np.hstack((np.asarray(matrix), np.ones((3,1))))
+    area = 0.5*np.linalg.det(matrix)
+    return np.abs(area)
+
+def get_phase_area(engine, phase_label):
+    total_area = 0
+    phase_simplices = np.where(np.asarray(engine.num_comps)==phase_label)[0]
+    if len(phase_simplices)==0:
+        return 0
+    for ps in phase_simplices:
+        total_area += get_simplex_area(engine, ps)
+    
+    return total_area/0.43    
+    
+           
+NUM_PER_DIMENSION = 8
 RUN_IDENTIFIER = 'IDIC_PTB7-Th'
 
 delta_d = np.linspace(15,20, num=NUM_PER_DIMENSION)
@@ -75,11 +104,8 @@ for i, row in df.iterrows():
     f = lambda x: polyphase.flory_huggins(x , M, chi)
     engine = polyphase.PHASE(f, 200,3)
     engine.compute(use_parallel=False)
-    phaselabels = engine.num_comps 
-    twophase = np.sum(np.asarray(phaselabels)==2)
-    onephase = np.sum(np.asarray(phaselabels)==1)
-    threephase = np.sum(np.asarray(phaselabels)==3)
-    num_simplices.append([onephase, twophase, threephase])
+    num_simplices.append([get_phase_area(engine, 1), get_phase_area(engine, 2),
+                          get_phase_area(engine, 3)])
     
     polyphase.plain_phase_diagram(engine.df)
     plt.savefig(dirname+'{}.png'.format(i), bbox_inches='tight', dpi=300)
@@ -107,8 +133,12 @@ for i,ax in enumerate(axs):
 fig.legend()
 
 plt.savefig('../figures/deltaspace/{}.png'.format(RUN_IDENTIFIER), dpi=500, bbox_inches='tight')
-  
-    
+ 
+# save data for re-use
+df.to_pickle("../figures/deltaspace/df_{}.pkl".format(RUN_IDENTIFIER))
+np.savez("../figures/deltaspace/plot_{}.npz".format(RUN_IDENTIFIER), x, sm, polymer, cvalues)
+
+print('Computation completed. Total runtime is {}'.format(T.end()))    
 
 
 

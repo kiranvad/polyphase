@@ -82,9 +82,9 @@ def _set_axislabels_mpltern(ax):
     Sets axis labels for phase plots using mpltern 
     in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
     """
-    ax.set_tlabel('solvent', fontsize=20)
-    ax.set_llabel('polymer', fontsize=20)
-    ax.set_rlabel('small molecule', fontsize=20)
+    ax.set_tlabel('solvent')
+    ax.set_llabel('polymer')
+    ax.set_rlabel('small molecule')
     ax.taxis.set_label_position('tick1')
     ax.laxis.set_label_position('tick1')
     ax.raxis.set_label_position('tick1')

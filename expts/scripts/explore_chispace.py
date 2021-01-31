@@ -8,6 +8,7 @@ import os, shutil
 from collections import Counter
 plt.rcParams.update({
     "text.usetex": True})
+from math import pi
 
 def touchup3d(ax):
     ax.xaxis.pane.fill = False
@@ -19,6 +20,34 @@ def touchup3d(ax):
     ax.grid(False)
     ax.zaxis._axinfo['juggled'] = (1,2,0)
 
+def get_ternary_coords(point):
+    """ Compute 2d embedding of a 3d hyperplane """
+    a,b,c = point
+    x = 0.5-a*np.cos(pi/3)+b/2;
+    y = 0.866-a*np.sin(pi/3)-b*(1/np.tan(pi/6)/2);
+    
+    return [x,y]
+    
+def get_simplex_area(engine, simplex_id):
+    matrix = []
+    for s in engine.simplices[simplex_id]:
+        v = engine.grid[:,s]
+        matrix.append(get_ternary_coords(v))
+
+    matrix = np.hstack((np.asarray(matrix), np.ones((3,1))))
+    area = 0.5*np.linalg.det(matrix)
+    return np.abs(area)
+
+def get_phase_area(engine, phase_label):
+    total_area = 0
+    phase_simplices = np.where(np.asarray(engine.num_comps)==phase_label)[0]
+    if len(phase_simplices)==0:
+        return 0
+    for ps in phase_simplices:
+        total_area += get_simplex_area(engine, ps)
+    
+    return total_area/0.43   
+
 Mp = 10
 chi12 = np.linspace(1.3,1.44, num=5)
 chi13 = [0.3,0.6,1,2,3]
@@ -26,6 +55,7 @@ chi23 = [0.3,0.6,1,2,3]
 chispace = list(product(chi12, chi13, chi23))
 chispace = np.asarray(chispace)
 df = pd.DataFrame(chispace, columns=['chi12', 'chi13', 'chi23'])
+df.to_pickle("../figures/chispace/{}.pkl".format(Mp))
 
 dirname = '../figures/chispace/dimred/'
 if os.path.exists(dirname):
@@ -35,23 +65,20 @@ os.makedirs(dirname)
 num_simplices = []
 for i, chi in df.iterrows():
     M = [Mp,10,1]
-    f = lambda x: polyphase.flory_huggins(x , M, chi, logapprox=True)
+    f = lambda x: polyphase.flory_huggins(x , M, chi)
     engine = polyphase.PHASE(f, 200,3)
     engine.compute(use_parallel=False)
-    phaselabels = engine.num_comps 
-    twophase = np.sum(np.asarray(phaselabels)==2)
-    onephase = np.sum(np.asarray(phaselabels)==1)
-    threephase = np.sum(np.asarray(phaselabels)==3)
-    num_simplices.append([onephase, twophase, threephase])
+    num_simplices.append([get_phase_area(engine, 1), get_phase_area(engine, 2),
+                          get_phase_area(engine, 3)])
     
     polyphase.plain_phase_diagram(engine.df)
     plt.savefig(dirname+'{}.png'.format(i), bbox_inches='tight', dpi=300)
     plt.close()
     
 fig, axs = plt.subplots(1,3, figsize=(3*6,6),subplot_kw={'projection':'3d'})
+fig.subplots_adjust(wspace=0.4)
 cvalues = np.asarray(num_simplices)
 x = df.to_numpy()
-
 
 for i,ax in enumerate(axs):
     path = ax.scatter(x[:,0], x[:,1], x[:,2],c=cvalues[:,i],

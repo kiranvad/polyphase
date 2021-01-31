@@ -5,7 +5,7 @@ from ..helpers import timer
 
 from scipy.spatial.distance import squareform
 
-@ray.remote
+@ray.remote(num_cpus=5)
 def _get_distance_row(data, metric, rowid, triuids):
     print('Staging {} on {}'.format(rowid, ray.services.get_node_ip_address()))
     T = timer()

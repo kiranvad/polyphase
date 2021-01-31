@@ -1,13 +1,13 @@
 #!/bin/sh
 
-#SBATCH --time=12:00:00
+#SBATCH --time=10:00:00
 #SBATCH --cluster=faculty
 #SBATCH --partition=planex --qos=planex
 #SBATCH --nodes=1
 #SBATCH --ntasks-per-node=20
-#SBATCH --job-name="deltaspace"
-#SBATCH --output=ccr/deltaspace.out
-#SBATCH --error=ccr/err_deltaspace.out
+#SBATCH --job-name="hamming"
+#SBATCH --output=ccr/pred_hamming.out
+#SBATCH --error=ccr/err_hamming.out
 #SBATCH --mail-user=kiranvad@buffalo.edu
 #SBATCH --mail-type=END
 #SBATCH --exclusive
@@ -25,7 +25,7 @@ source ~/.venv/polyphase/bin/activate
 ulimit -s unlimited
 
 echo "Launch Python job"
-python -u scripts/explore_deltaspace.py > ccr/explore_deltaspace.out
+python -u scripts/compute_hamming.py > ccr/hamming.out
 
 #
 echo "All Done!"
