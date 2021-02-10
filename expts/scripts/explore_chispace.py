@@ -57,7 +57,7 @@ chispace = np.asarray(chispace)
 df = pd.DataFrame(chispace, columns=['chi12', 'chi13', 'chi23'])
 df.to_pickle("../figures/chispace/{}.pkl".format(Mp))
 
-dirname = '../figures/chispace/dimred/'
+dirname = '../figures/chispace/chinamed/'
 if os.path.exists(dirname):
     shutil.rmtree(dirname)    
 os.makedirs(dirname)
@@ -72,7 +72,8 @@ for i, chi in df.iterrows():
                           get_phase_area(engine, 3)])
     
     polyphase.plain_phase_diagram(engine.df)
-    plt.savefig(dirname+'{}.png'.format(i), bbox_inches='tight', dpi=300)
+    fname = '_'.join('{}'.format(i) for i in chi).replace('.','p')
+    plt.savefig(dirname+'{}.png'.format(fname), bbox_inches='tight', dpi=300)
     plt.close()
     
 fig, axs = plt.subplots(1,3, figsize=(3*6,6),subplot_kw={'projection':'3d'})

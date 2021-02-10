@@ -47,7 +47,7 @@ def distance_hamming(data,i,j):
 # os.makedirs(dirname)
 # os.makedirs(dirname + '/pds')
 
-# htedf = pd.read_pickle('../data/htev2.pkl')
+# htedf = pd.read_pickle('../data/htev3.pkl')
 # smstr = 'Y6'
 # polymerstr  = 'PM6'
 # _, sys_df = get_batch_of_phasediags(htedf, smstr, polymerstr)
@@ -105,6 +105,7 @@ for i, chi in df.iterrows():
     data_synth.save(y)
     
     polyphase.plain_phase_diagram(engine.df)
+    #fname = '_'.join('{}'.format(i) for i in chi).replace('.','p')
     plt.savefig(dirname+'/pds/{}.png'.format(i), bbox_inches='tight', dpi=300)
     plt.close()
 

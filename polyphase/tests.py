@@ -13,6 +13,34 @@ from itertools import combinations
 from .helpers import inpolyhedron
 from .visuals import _set_axislabels_mpltern
 
+class CentralDifference:
+    """Compute central difference gradinet of energy
+    Works only for a 3-dimensional grid or a ternary system
+    given the energy function
+    """
+    def __init__(self, grid, energy):
+        if callable(energy):
+            self.func = energy
+        else:
+            raise RuntimeError
+
+    def __call__(self,phi, h = 1e-3):
+        """
+        x,y : coordinates (float)
+        h   : gridspacing (float)
+
+        """
+        p1,p2,p3 = phi
+        f_right = self.func([p1+h,p2,1-p1-h-p2])
+        f_left = self.func([p1-h,p2,1-p1+h-p2])
+        df_dx = (f_right - f_left)/(2*h)
+        
+        f_right = self.func([p1,p2+h,1-p1-h-p2])
+        f_left = self.func([p1,p2-h,1-p1+h-p2])
+        df_dy = (f_right - f_left)/(2*h)
+        
+        return [df_dx, df_dy]
+
 class base:
     def __init__(self,engine, phase=2,simplex_id= None):
         self.engine = engine
