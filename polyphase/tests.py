@@ -50,6 +50,7 @@ class base:
         self.energy = self.engine.energy
         self.X = self.engine.df
         self.phase = phase
+        self.coplanar = self.engine.coplanar
         
         if simplex_id is None:
             self.get_random_simplex()
@@ -71,6 +72,9 @@ class base:
         self.vertices = self.X.iloc[:3,self.rnd_simplex].to_numpy().T
         self.parametric_points = np.hstack((self.vertices[:,:2],
                                             self.energy[self.rnd_simplex].reshape(-1,1))).tolist()
+        if not self.coplanar[simplex_id]:
+            raise RuntimeError('The chosen simplex with vertices {} is flat.'
+                               'The tests cannot be performed.'.format(self.vertices))
     
     def base_visualize(self):
         """ Visualize the test case base function
@@ -85,11 +89,11 @@ class base:
         poly = Poly3DCollection(self.parametric_points,  alpha=1.0, lw=1.0, 
                                 facecolors=['tab:gray'], edgecolors=['k'])
         ax.add_collection3d(poly)
-
+        ax.set_label('Energy landscape')
         ax.set_xlabel('Polymer')
         ax.set_ylabel('Small molecule')
         ax.set_zlabel('Energy')
-        ax.view_init(elev=16, azim=54)
+        ax.view_init(elev=16, azim=60)
         
         return fig, ax        
         
@@ -166,7 +170,7 @@ class TestAngles(base):
         
         return np.degrees(np.arccos(np.clip(np.dot(v, w), -1.0, 1.0)))
 
-    def visualize(self, required=[1,2,3]):
+    def visualize(self, required=[1,2]):
         """ Visualize the test case
         
         By default plots: 
@@ -197,13 +201,14 @@ class TestAngles(base):
             if 4 in required:
                 ax.quiver(v[0], v[1], e, uru[0],uru[1],uru[2], length=0.1, normalize=True, color='k')
                 ax.quiver(v[0], v[1], e, urv[0],urv[1],urv[2], length=0.1, normalize=True, color='purple')
-            ax.quiver(pp[0], pp[1], pp[2], uv[0], uv[1], uv[2], length=0.1, normalize=True, color='tab:red' )
+            ax.quiver(pp[0], pp[1], pp[2], uv[0], uv[1], uv[2], length=0.1, normalize=True, color='tab:red', 
+                      label='Tangent normal' if i==0 else '')
                 
         facet_normal = self._angles_outdict['facet_normal']
         rnd_simplex_centroid = np.mean(self.parametric_points, axis=0)
         ax.quiver(rnd_simplex_centroid[0], rnd_simplex_centroid[1], rnd_simplex_centroid[2],
                   facet_normal[0], facet_normal[1], facet_normal[2], 
-                  length=0.1, normalize=True, color='k' )
+                  length=0.1, normalize=True, color='k', label='Facet normal')
         
         # plot phase diagram in 2D
         labels = self.X.loc['label',:].to_numpy()

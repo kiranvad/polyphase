@@ -89,6 +89,7 @@ class PHASE:
             simplices    :  simplices of the lower convex hull of the energy landscape
             num_comps    :  connected components of each simplex as a list
             df           :  pandas.DataFrame with volume fractions and labels rows
+            coplanar.    :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)
@@ -113,6 +114,7 @@ class PHASE:
         self.simplices = outdict['simplices']
         self.num_comps = outdict['num_comps'] 
         self.df = outdict['output']
+        self.coplanar = np.asarray(outdict['coplanar'], dtype=bool)
         
         self.is_solved = True
         

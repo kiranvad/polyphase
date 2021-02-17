@@ -70,7 +70,7 @@ def plot_mpltern(grid, simplices, num_comps, ax = None):
     phase_colors =['w','tab:red','tab:olive','tab:cyan']
     cmap = colors.ListedColormap(phase_colors[1:])
     triangle = np.array([[0, 0, 1], [1, 0, 0], [0,1,0]])
-    ax.fill(triangle[:,2], triangle[:,0], triangle[:,1], facecolor=phase_colors[0], edgecolor='none', alpha=0.75)
+    #ax.fill(triangle[:,2], triangle[:,0], triangle[:,1], facecolor=phase_colors[0], edgecolor='none', alpha=0.75)
     for l,s in zip(num_comps, simplices):
         simplex_points = np.asarray([grid[:,x] for x in s])
         ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
