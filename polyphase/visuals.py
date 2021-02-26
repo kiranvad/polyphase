@@ -78,7 +78,8 @@ def plot_mpltern(grid, simplices, num_comps, ax = None):
     boundaries = np.linspace(1,4,4)
     norm = colors.BoundaryNorm(boundaries, cmap.N)
     mappable = ScalarMappable(norm=norm, cmap=cmap)
-    cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5],ax=ax)
+    cax = ax.inset_axes([1.05, 0.1, 0.05, 0.9], transform=ax.transAxes)
+    cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5],cax=cax)
     cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase'])
     
     return ax, cbar    
