@@ -24,7 +24,7 @@ class PHASE:
             dimension        :  (int) Dimension of the the system 
         """
         if not callable(energy_func):
-            raise ValueError('Vairable energy needs to be a function such as utils.flory_huggins')
+            raise ValueError('Vairable energy needs to be a function such as `polyphase.utils.flory_huggins`')
         self.energy_func = energy_func
         self.meshsize = meshsize
         self.dimension = dimension

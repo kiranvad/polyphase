@@ -9,32 +9,7 @@ from matplotlib import colors
 
 from .helpers import *
 from ._phase import is_boundary_point
-""" Ternary plots for 3-component system """
-    
-def plot_3d_phasediagram(grid, simplices, num_comps, ax = None):
-    """ Depreciated fucntion """
-    if ax is None:
-        fig, ax = plt.subplots()
-    else:
-        fig = plt.gcf()
-    ax.set_aspect('equal')
-    
-    coords = np.asarray([get_ternary_coords(pt) for pt in grid.T])
-    tpc = ax.tripcolor(coords[:,0], coords[:,1], simplices, facecolors=np.asarray(num_comps), edgecolors='none')
-    cbar = fig.colorbar(tpc, ticks=[1, 2, 3])
-    cbar.ax.set_yticklabels(['1-phase', '2-phase', '3-phase'])
-    cbar.set_label('Phase region identification')
-
-    words = [r'$\varphi_{1}$',r'$\varphi_{2}$',r'$\varphi_{3}$']
-    xs = [-0.15,1,0.5]
-    ys = [0,0,np.sqrt(3)/2+0.01]
-    for x, y, s in zip(xs,ys,words):
-        ax.text(x,y,s,fontsize=20)
-
-    plt.axis('off')
-    
-    return ax, cbar    
-    
+     
 def _set_axislabels_mpltern(ax):
     """ 
     Sets axis labels for phase plots using mpltern 
@@ -150,14 +125,15 @@ def plot_energy_landscape(outdict,mode='full', ax = None):
     
     return ax, fig    
     
-def plain_phase_diagram(output, ax = None):
+def plain_phase_diagram(df, ax = None):
     """ 
     Plot phase diagrams as points without any labels or stuff
     Used as a data point for dimensionality reduction and clustering
     
     parameters:
     -----------
-        outdict     :  polyphase.PHASE.as_dict()    
+        df     :  polyphase.PHASE.df (after calling .compute(), 
+                  you should have access to the attribute .df if run with 'lift_label'=True)   
 
     """
     if ax is None:
@@ -166,7 +142,6 @@ def plain_phase_diagram(output, ax = None):
         fig = plt.gcf()
     
     phase_colors =['w','r','g','b']
-    df = output.transpose()
     for i, p in df.groupby('label'):
         ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
         
