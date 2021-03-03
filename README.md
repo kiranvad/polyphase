@@ -27,4 +27,4 @@ If you would like to run a multi-node parallel high-throughput computation use t
 engine.compute(use_parallel=True, verbose=True, lift_label=True)
 ```
 
-To run a simple example in jupyter use the following [example](/notebooks/example.ipynb)
+A more concrete example can be found as a jupyter notebook in the [example](/notebooks/example.ipynb)

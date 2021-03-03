@@ -10,8 +10,23 @@ import mpltern
 import numpy as np
 from scipy.spatial.distance import pdist, cdist
 from itertools import combinations
-from .helpers import inpolyhedron
 from .visuals import _set_axislabels_mpltern
+from scipy.spatial import Delaunay
+
+def inpolyhedron(ph,points):
+    """
+    Given a polyhedron vertices in `ph`, and `points` return 
+    critera that each point is either with in or outside the polyhedron
+    
+    Both polyhedron and points should have the same shape i.e. num_points X num_dimensions
+    
+    Returns a boolian array : True if inside, False if outside
+    
+    """
+    tri = Delaunay(ph)
+    inside = Delaunay.find_simplex(tri,points)
+    criteria = inside<0
+    return ~criteria
 
 class CentralDifference:
     """Compute central difference gradinet of energy
