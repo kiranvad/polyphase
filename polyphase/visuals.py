@@ -6,8 +6,9 @@ import numpy as np
 import mpltern
 from matplotlib.cm import ScalarMappable
 from matplotlib import colors
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-from .helpers import *
+#from .helpers import *
 from ._phase import is_boundary_point
      
 def _set_axislabels_mpltern(ax):
@@ -150,4 +151,190 @@ def plain_phase_diagram(df, ax = None):
     return ax     
     
     
+class QuaternaryPlot:
+    def __init__(self, engine):
+        """Plot 4-component system with in a Quaternary plot
+        Inputs:
+        =======
+            model  :  `polyphase.PHASE` class after .compute(*args,**kwargs) is called
+            
+        Methods:
+        ========
+            from4d23d             :  Convert from 4-dimensional hyperplane to 3d embedding 
+                                    (conformmaly using barycentric coordinates)
+            _get_convex_faces     :  Utility function to plot a 3d simplex from its vertices
+            add_outline           :  Add border of a tetrahedron to the plot
+            add_colored_simplices :  Add simplices (from engine.simplices) and color them based 
+                                     on the phase label (engine.num_comps)
+            add_scatter           :  plot points in a 3D scatter plot and color them based on the labels
+            add_colorbar          :  Add a colorbar to the figure
+            
+            
+            plot_points           :  Plot the phase diagram using the points interplotated labels from engine.df
+            
+            plot_simplices        :  Plot the phase diagram by gluing the simplices together from engine.simplices
+            
+        Attributes:
+        ===========
+            phase_colors     : colors used (and indexed) for each phase label 
+            vertices         : Vertices of the tetrahedron outline
+            threed_coords    : Three dimensional embedding coordinates. 
+                               Avalaible only if the `.plot_points(*args,**kwargs)` method is called
+                               
+        Examples:
+        =========
+        1. Plot using simplices
+            >>> qtplot = polyphase.QuaternaryPlot(engine)
+            >>> [fig, axs, cbar] = qtplot.plot_simplices(sliceat=0.5)
+            >>> fig.suptitle('Sliced at z={:.2f}'.format(t))
+            >>> plt.show()
+            
+        2. Plot using points
+            >>> qtplot = polyphase.QuaternaryPlot(engine)
+            >>> [fig, axs, cbar] = qtplot.plot_points(sliceat=0.5)
+            >>> fig.suptitle('Sliced at z={:.2f}'.format(t))
+            >>> plt.show()    
+        
+            
+        """
+        if engine.is_solved:
+            self.engine = engine
+        else:
+            raise RuntimeError('Requires the `polyphase.PHASE` class to be solved.')
+            
+        assert self.engine.dimension==4, 'This functions works only for dimension 4 but'
+        '{} PHASE class is provided'.format(engine.dimension)
+        
+        self.vertices = np.array([[0, 0, 0], 
+                                  [1, 0, 0], 
+                                  [1/2,np.sqrt(3)/2,0],
+                                  [1/2,np.sqrt(3)/6,np.sqrt(6)/3]]
+                                )
+        self.phase_colors =['tab:red','tab:olive','tab:cyan','tab:purple']
     
+    def from4d23d(self,fourd_coords):
+        """Compute 3D coordinates of 4-component composition
+        
+        Inputs:
+        =======
+        fourd_coords  :  Four component composition as a list
+        
+        Outputs:
+        ========
+            [u,v,w]   : 3D coordinates
+            
+        """
+        x,y,z,w = fourd_coords
+        u = y+0.5*(z+w)
+        v = np.sqrt(3)*(z/2 + w/6) 
+        w = np.sqrt(6)*(w/3)
+
+        return [u,v,w]
+    
+    def _get_convex_faces(self,v):
+        """Return set of faces of tetrahedron simplex
+        Inputs:
+        =======
+            v.  :  Vertices of the simplex
+            
+        Outputs:
+        ========
+            verts  :  list of face vertices
+            
+        """
+        verts = [ [v[0],v[1],v[3]], [v[1],v[2],v[3]],\
+                 [v[0],v[2],v[3]], [v[0],v[1],v[2]]]
+        return verts
+
+    def add_outline(self,ax):
+        """Add tetrahedron outline to the axis
+        
+        ax : a 3D matplotlib.pyplot axis
+        
+        """
+        ax.scatter3D(self.vertices[:, 0], self.vertices[:, 1], self.vertices[:, 2],
+                     color='black')
+        emb_verts = self._get_convex_faces(self.vertices)
+        ax.add_collection3d(Poly3DCollection(emb_verts, facecolors='black', 
+                                             linewidths=0.5, edgecolors='black', alpha=.05))
+        labels = [r'$\phi_{1}$',r'$\phi_{2}$',r'$\phi_{3}$',r'$\phi_{4}$']
+        for vi,w in zip(self.vertices,labels):
+            ax.text(vi[0],vi[1],vi[2],w)
+            
+    def add_colored_simplices(self,ax,sliceat=0.5):  
+        """
+        ax      : a 3D matplotlib.pyplot axis
+        sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
+        
+        """
+        for i,simplex in zip(self.engine.num_comps,self.engine.simplices):
+            simplex_vertices = [self.engine.grid[:,x] for x in simplex]
+            v = np.asarray([self.from4d23d(vertex) for vertex in simplex_vertices])
+            if np.all(np.asarray(simplex_vertices)[:,3]<sliceat):
+                verts = self._get_convex_faces(v)
+                ax.add_collection3d(
+                    Poly3DCollection(verts,facecolors=self.phase_colors[int(i-1)],
+                                     edgecolors=None)
+                )
+                
+    def add_scatter(self,ax,sliceat=0.5):
+        """
+        ax      : a 3D matplotlib.pyplot axis
+        sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
+        
+        """
+        
+        for label,group in self.engine.df.T.groupby('label'):
+            cluster_ids = group.index.to_numpy()
+            slice_ids = np.where(self.threed_coords[:,2]<sliceat)
+            ids = np.intersect1d(slice_ids,cluster_ids)
+            ax.scatter(self.threed_coords[ids,0], self.threed_coords[ids,1],
+                       self.threed_coords[ids,2], color=self.phase_colors[int(label)])
+    
+    def plot_points(self,sliceat=0.5):
+        """
+        sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
+        """
+        
+        self.threed_coords = []
+        for i,row in self.engine.df.T.iterrows():
+            self.threed_coords.append(self.from4d23d(row[:-1].to_list()))
+
+        self.threed_coords = np.asarray(self.threed_coords)
+        
+        fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
+        axs = axs.flatten()
+        for ax in axs:
+            self.add_outline(ax)
+            self.add_scatter(ax,sliceat=sliceat)
+        cbar = self.add_colorbar(fig)
+        
+        return [fig, axs, cbar]
+    
+    def plot_simplices(self, sliceat=0.5):
+        """
+        sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
+        """
+        
+        fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
+        axs = axs.flatten()
+        for ax in axs:
+            self.add_outline(ax)
+            self.add_colored_simplices(ax,sliceat=sliceat)
+        cbar = self.add_colorbar(fig)
+        
+        return [fig, axs, cbar]
+            
+    def add_colorbar(self,fig):
+        """
+        fig. : matplotlib.pyplot figure handle
+        """
+        cmap = colors.ListedColormap(self.phase_colors)        
+        boundaries = np.linspace(1,5,5)
+        norm = colors.BoundaryNorm(boundaries, cmap.N)
+        mappable = ScalarMappable(norm=norm, cmap=cmap)
+        cax = fig.add_axes([1.05, 0.25, 0.03, 0.5])
+        cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5,4.5],cax=cax)
+        cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase','4-Phase'])
+        
+        return cbar   
