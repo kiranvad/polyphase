@@ -16,9 +16,7 @@ engine.compute(use_parallel=False, verbose=True, lift_label=True)
 This generates phase diagrams of the confuguration mentioned.
 Few useful visualization tools are also provided. For example, phase diagram generated above can be visualized using:
 ```python
-import matplotlib.pyplot as plt
-
-phase.plot_mpltern(engine.grid, engine.simplices, engine.num_comps)
+engine.plotter()
 plt.show()
 ```
 
@@ -27,4 +25,4 @@ If you would like to run a multi-node parallel high-throughput computation use t
 engine.compute(use_parallel=True, verbose=True, lift_label=True)
 ```
 
-A more concrete example can be found as a jupyter notebook in the [example](/notebooks/example.ipynb)
+To run a simple example in jupyter use the following [example](/notebooks/example.ipynb)

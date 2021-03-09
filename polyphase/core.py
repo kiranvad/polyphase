@@ -9,6 +9,8 @@ from ._phase import (_serialcompute,
                      is_boundary_point, is_pure_component,
                     get_max_delaunay_edge_length)
 from scipy.spatial import Delaunay
+from .visuals import TernaryPlot, QuaternaryPlot
+import matplotlib.pyplot as plt
 
 MIN_POINT_PRECISION = 1e-8
                      
@@ -24,7 +26,7 @@ class PHASE:
             dimension        :  (int) Dimension of the the system 
         """
         if not callable(energy_func):
-            raise ValueError('Vairable energy needs to be a function such as utils.flory_huggins')
+            raise ValueError('Vairable energy needs to be a function such as `polyphase.utils.flory_huggins`')
         self.energy_func = energy_func
         self.meshsize = meshsize
         self.dimension = dimension
@@ -89,6 +91,7 @@ class PHASE:
             simplices    :  simplices of the lower convex hull of the energy landscape
             num_comps    :  connected components of each simplex as a list
             df           :  pandas.DataFrame with volume fractions and labels rows
+            coplanar.    :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)
@@ -113,6 +116,7 @@ class PHASE:
         self.simplices = outdict['simplices']
         self.num_comps = outdict['num_comps'] 
         self.df = outdict['output']
+        self.coplanar = np.asarray(outdict['coplanar'], dtype=bool)
         
         self.is_solved = True
         
@@ -215,7 +219,19 @@ class PHASE:
         
         return out
     
-    
+    def plotter(self):
+        """A helper function for a quick visualization
+        For more details on the plotting, look at `polyphase.visuals`
+        """
+        if self.dimension==3:
+            self.renderer = TernaryPlot(self)
+        elif self.dimension==4:
+            self.renderer = QuaternaryPlot(self)
+        else:
+            raise Exception('For dimensions>4, not renderings exists')
+            
+        self.renderer.plot_simplices()
+        plt.show()
     
     
     
