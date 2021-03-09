@@ -1,6 +1,5 @@
 from .utils import *
 from .utils import _utri2mat
-from .helpers import *
 from .visuals import *
 from .parallel import *
 from .tests import TestAngles, TestEpiGraph, TestPhaseSplits, CentralDifference

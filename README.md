@@ -17,7 +17,6 @@ This generates phase diagrams of the confuguration mentioned.
 Few useful visualization tools are also provided. For example, phase diagram generated above can be visualized using:
 ```python
 engine.plotter()
-plt.show()
 ```
 
 If you would like to run a multi-node parallel high-throughput computation use the serial version instead by replacing the compute line as below:
