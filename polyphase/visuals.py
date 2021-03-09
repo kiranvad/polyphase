@@ -11,82 +11,6 @@ from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 #from .helpers import *
 from ._phase import is_boundary_point
      
-def _set_axislabels_mpltern(ax):
-    """ 
-    Sets axis labels for phase plots using mpltern 
-    in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
-    """
-    ax.set_tlabel(r'$\phi_2$', fontsize=15)
-    ax.set_llabel(r'$\phi_1$', fontsize=15)
-    ax.set_rlabel(r'$\phi_3$', fontsize=15)
-    ax.taxis.set_label_position('tick1')
-    ax.laxis.set_label_position('tick1')
-    ax.raxis.set_label_position('tick1')
-
-def plot_mpltern(grid, simplices, num_comps, ax = None):
-    """ A phase diagram with simplices glued together with phase colorcoded 
-    
-    parameters:
-    -----------
-        grid          :  polyphase.PHASE.grid
-        simplices     :  polyphase.PHASE.simplices
-        num_comps     :  polyphase.PHASE.num_comps
-        
-    options:
-    --------
-        ax            :  matplotlib.pyplot.Axis object
-    
-    """
-
-    if ax is None:
-        fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
-    else:
-        fig = plt.gcf()
-    
-    phase_colors =['w','tab:red','tab:olive','tab:cyan']
-    cmap = colors.ListedColormap(phase_colors[1:])
-    triangle = np.array([[0, 0, 1], [1, 0, 0], [0,1,0]])
-    #ax.fill(triangle[:,2], triangle[:,0], triangle[:,1], facecolor=phase_colors[0], edgecolor='none', alpha=0.75)
-    for l,s in zip(num_comps, simplices):
-        simplex_points = np.asarray([grid[:,x] for x in s])
-        ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
-    _set_axislabels_mpltern(ax)
-    boundaries = np.linspace(1,4,4)
-    norm = colors.BoundaryNorm(boundaries, cmap.N)
-    mappable = ScalarMappable(norm=norm, cmap=cmap)
-    cax = ax.inset_axes([1.05, 0.1, 0.05, 0.9], transform=ax.transAxes)
-    cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5],cax=cax)
-    cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase'])
-    
-    return ax, cbar    
-    
-
-def plot_lifted_label_ternary(output, ax = None):
-    """ A point cloud phase diagram from the lifted simplices 
-    
-    Input should the polyphase.PHASE.df instance
-    """
-    if ax is None:
-        fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
-    else:
-        fig = plt.gcf()
-    
-    #phase_colors =['tab:red','tab:olive','tab:cyan']
-    phase_colors =['w','r','g','b']
-    cmap = colors.ListedColormap(phase_colors[1:])
-    df = output.transpose()
-    for i, p in df.groupby('label'):
-        ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
-    _set_axislabels_mpltern(ax)
-    
-    boundaries = np.linspace(1,4,4)
-    norm = colors.BoundaryNorm(boundaries, cmap.N)
-    mappable = ScalarMappable(norm=norm, cmap=cmap)
-    cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5],ax=ax)
-    cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase'])
-    
-    return ax, cbar 
-
 def plot_energy_landscape(outdict,mode='full', ax = None):
     """ Plots a convex hull of a energy landscape 
     
@@ -150,6 +74,92 @@ def plain_phase_diagram(df, ax = None):
     
     return ax     
     
+class TernaryPlot:
+    def __init__(self,engine):
+        """Plot 3-component system phase diagram in a ternary plot
+        
+        Inputs:
+        =======
+            engine    :  `polyphase.PHASE` class after .compute(*args,**kwargs) is called
+            
+        Methods:
+        ========
+        
+        """
+        self.engine = engine
+        
+    def plot_simplices(self,ax=None):
+        """A phase diagram with simplices glued together with phase colorcoded 
+        Input:
+        --------
+            ax            :  matplotlib.pyplot.Axis object
+
+        """
+
+        if ax is None:
+            fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
+        else:
+            fig = plt.gcf()
+            
+        self._check_ternary_projection(ax)
+        
+        phase_colors =['w','tab:red','tab:olive','tab:cyan']
+        cmap = colors.ListedColormap(phase_colors[1:])
+        for l,s in zip(self.engine.num_comps, self.engine.simplices):
+            simplex_points = np.asarray([self.engine.grid[:,x] for x in s])
+            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
+        self._set_axislabels_mpltern(ax)
+        boundaries = np.linspace(1,4,4)
+        norm = colors.BoundaryNorm(boundaries, cmap.N)
+        mappable = ScalarMappable(norm=norm, cmap=cmap)
+        cax = ax.inset_axes([1.05, 0.1, 0.05, 0.9], transform=ax.transAxes)
+        cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5],cax=cax)
+        cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase'])
+
+        return ax, cbar    
+    
+    def plot_points(self,ax = None):
+        """ A point cloud phase diagram from the lifted simplices 
+
+        Input should the polyphase.PHASE.df instance
+        """
+        if ax is None:
+            fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
+        else:
+            fig = plt.gcf()
+
+        self._check_ternary_projection(ax)
+        phase_colors =['w','r','g','b']
+        cmap = colors.ListedColormap(phase_colors[1:])
+        df = self.engine.df.T
+        for i, p in df.groupby('label'):
+            ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
+        self._set_axislabels_mpltern(ax)
+
+        boundaries = np.linspace(1,4,4)
+        norm = colors.BoundaryNorm(boundaries, cmap.N)
+        mappable = ScalarMappable(norm=norm, cmap=cmap)
+        cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5],ax=ax)
+        cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase'])
+
+        return ax, cbar
+    
+    def _check_ternary_projection(self,ax):
+        if not ax.name=='ternary':
+            raise Exception('Axis needs to be a ternary projection')
+            
+    def _set_axislabels_mpltern(self,ax):
+        """ 
+        Sets axis labels for phase plots using mpltern 
+        in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
+        """
+        self._check_ternary_projection(ax)
+        ax.set_tlabel(r'$\phi_2$', fontsize=15)
+        ax.set_llabel(r'$\phi_1$', fontsize=15)
+        ax.set_rlabel(r'$\phi_3$', fontsize=15)
+        ax.taxis.set_label_position('tick1')
+        ax.laxis.set_label_position('tick1')
+        ax.raxis.set_label_position('tick1')    
     
 class QuaternaryPlot:
     def __init__(self, engine):
@@ -261,13 +271,15 @@ class QuaternaryPlot:
         for vi,w in zip(self.vertices,labels):
             ax.text(vi[0],vi[1],vi[2],w)
             
-    def add_colored_simplices(self,ax,sliceat=0.5):  
+    def add_colored_simplices(self,ax,cluster,sliceat=0.5):  
         """
         ax      : a 3D matplotlib.pyplot axis
         sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
         
         """
-        for i,simplex in zip(self.engine.num_comps,self.engine.simplices):
+        flag_targets = np.asarray(self.engine.num_comps)==cluster
+        
+        for i,simplex in zip(np.asarray(self.engine.num_comps)[flag_targets],self.engine.simplices[flag_targets]):
             simplex_vertices = [self.engine.grid[:,x] for x in simplex]
             v = np.asarray([self.from4d23d(vertex) for vertex in simplex_vertices])
             if np.all(np.asarray(simplex_vertices)[:,3]<sliceat):
@@ -277,19 +289,18 @@ class QuaternaryPlot:
                                      edgecolors=None)
                 )
                 
-    def add_scatter(self,ax,sliceat=0.5):
+    def add_scatter(self,ax,cluster,sliceat=0.5):
         """
         ax      : a 3D matplotlib.pyplot axis
         sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
         
         """
         
-        for label,group in self.engine.df.T.groupby('label'):
-            cluster_ids = group.index.to_numpy()
-            slice_ids = np.where(self.threed_coords[:,2]<sliceat)
-            ids = np.intersect1d(slice_ids,cluster_ids)
-            ax.scatter(self.threed_coords[ids,0], self.threed_coords[ids,1],
-                       self.threed_coords[ids,2], color=self.phase_colors[int(label)])
+        cluster_ids = np.where(self.engine.df.T['label']==cluster)
+        slice_ids = np.where(self.threed_coords[:,2]<sliceat)
+        ids = np.intersect1d(slice_ids,cluster_ids)
+        ax.scatter(self.threed_coords[ids,0], self.threed_coords[ids,1],
+                   self.threed_coords[ids,2], color=self.phase_colors[int(cluster-1)])
     
     def plot_points(self,sliceat=0.5):
         """
@@ -304,23 +315,23 @@ class QuaternaryPlot:
         
         fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
         axs = axs.flatten()
-        for ax in axs:
+        for i,ax in enumerate(axs):
             self.add_outline(ax)
-            self.add_scatter(ax,sliceat=sliceat)
+            self.add_scatter(ax,i+1,sliceat=sliceat)
         cbar = self.add_colorbar(fig)
         
         return [fig, axs, cbar]
     
-    def plot_simplices(self, sliceat=0.5):
+    def plot_simplices(self, sliceat=1.0):
         """
         sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
         """
         
         fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
         axs = axs.flatten()
-        for ax in axs:
+        for i,ax in enumerate(axs):
             self.add_outline(ax)
-            self.add_colored_simplices(ax,sliceat=sliceat)
+            self.add_colored_simplices(ax,i+1,sliceat=sliceat)
         cbar = self.add_colorbar(fig)
         
         return [fig, axs, cbar]
@@ -329,6 +340,7 @@ class QuaternaryPlot:
         """
         fig. : matplotlib.pyplot figure handle
         """
+        
         cmap = colors.ListedColormap(self.phase_colors)        
         boundaries = np.linspace(1,5,5)
         norm = colors.BoundaryNorm(boundaries, cmap.N)

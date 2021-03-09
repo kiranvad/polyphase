@@ -9,6 +9,8 @@ from ._phase import (_serialcompute,
                      is_boundary_point, is_pure_component,
                     get_max_delaunay_edge_length)
 from scipy.spatial import Delaunay
+from .visuals import TernaryPlot, QuaternaryPlot
+import matplotlib.pyplot as plt
 
 MIN_POINT_PRECISION = 1e-8
                      
@@ -217,7 +219,19 @@ class PHASE:
         
         return out
     
-    
+    def plotter(self):
+        """A helper function for a quick visualization
+        For more details on the plotting, look at `polyphase.visuals`
+        """
+        if self.dimension==3:
+            self.renderer = TernaryPlot(self)
+        elif self.dimension==4:
+            self.renderer = QuaternaryPlot(self)
+        else:
+            raise Exception('For dimensions>4, not renderings exists')
+            
+        self.renderer.plot_simplices()
+        plt.show()
     
     
     
