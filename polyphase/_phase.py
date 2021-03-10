@@ -245,7 +245,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     if verbose:
         print('Simplices are labelled at {:.2f}s'.format(lap-since))
     outdict['num_comps'] = num_comps
-
+    outdict['coplanar'] = None
+    
     if flag_lift_label:
         
         # 5. lift the labels from simplices to points (parallel)
@@ -256,12 +257,13 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
             
         inside = [lift_label(grid, lift_grid, simplex, label) for simplex, label in zip(simplices, num_comps)]
         
-        flags = [item[1] for item in inside]
+        coplanar = [item[1] for item in inside]
+        outdict['coplanar']=coplanar
         lap = time.time()
         if verbose:
             print('Labels are lifted at {:.2f}s'.format(lap-since))
 
-            print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
+            print('Total {}/{} coplanar simplices'.format(Counter(coplanar)[0],len(simplices)))
 
         phase = np.zeros(lift_grid.shape[1])
         for i,label in zip(inside,num_comps):
@@ -469,7 +471,7 @@ def _parcompute(f, dimension, meshsize,**kwargs):
     outdict['num_comps'] = num_comps
     
     del num_comps_ray
-    
+    outdict['coplanar'] = None
     if flag_lift_label:
         
         # 5. lift the labels from simplices to points (parallel)
@@ -484,13 +486,14 @@ def _parcompute(f, dimension, meshsize,**kwargs):
                                             simplex, label) for simplex, label in zip(simplices, num_comps)]
         inside = ray.get(inside_ray)
         
-        flags = [item[1] for item in inside]
+        coplanar = [item[1] for item in inside]
+        outdict['coplanar'] = None
         lap = time.time()
         
         if verbose:
             print('Labels are lifted at {:.2f}s'.format(lap-since))
 
-            print('Total {}/{} coplanar simplices'.format(Counter(flags)[0],len(simplices)))
+            print('Total {}/{} coplanar simplices'.format(Counter(coplanar)[0],len(simplices)))
 
         phase = np.zeros(lift_grid.shape[1])
         for i,label in zip(inside,num_comps):
