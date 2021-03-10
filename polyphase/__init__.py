@@ -1,6 +1,7 @@
 from .utils import *
 from .utils import _utri2mat
 from .visuals import *
+from .visuals import _set_axislabels_mpltern
 from .parallel import *
 from .tests import TestAngles, TestEpiGraph, TestPhaseSplits, CentralDifference
 from .core import PHASE
