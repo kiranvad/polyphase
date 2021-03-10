@@ -11,7 +11,6 @@ import plotly.graph_objects as go
 import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
 
-from .helpers import get_ternary_coords 
 from scipy.constants import gas_constant
 
 def _utri2mat(utri, dimension):

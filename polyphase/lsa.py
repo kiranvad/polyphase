@@ -88,7 +88,7 @@ class LSA:
         x0 : composiiton as a list of length N
         """
         self.evaluate(x0)
-        return (anp.prod(self.eigen_values, axis=1)<=0).all()
+        return ~(self.eigen_values[1:]>0).any()
     
     def plot(self):
         fig,ax = plt.subplots()

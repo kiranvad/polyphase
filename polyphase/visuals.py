@@ -8,9 +8,20 @@ from matplotlib.cm import ScalarMappable
 from matplotlib import colors
 from mpl_toolkits.mplot3d.art3d import Poly3DCollection
 
-#from .helpers import *
 from ._phase import is_boundary_point
-     
+
+def _set_axislabels_mpltern(ax):
+    """ 
+    Sets axis labels for phase plots using mpltern 
+    in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
+    """
+    ax.set_tlabel(r'$\phi_2$', fontsize=15)
+    ax.set_llabel(r'$\phi_1$', fontsize=15)
+    ax.set_rlabel(r'$\phi_3$', fontsize=15)
+    ax.taxis.set_label_position('tick1')
+    ax.laxis.set_label_position('tick1')
+    ax.raxis.set_label_position('tick1')   
+
 def plot_energy_landscape(outdict,mode='full', ax = None):
     """ Plots a convex hull of a energy landscape 
     
@@ -108,7 +119,7 @@ class TernaryPlot:
         for l,s in zip(self.engine.num_comps, self.engine.simplices):
             simplex_points = np.asarray([self.engine.grid[:,x] for x in s])
             ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
-        self._set_axislabels_mpltern(ax)
+        _set_axislabels_mpltern(ax)
         boundaries = np.linspace(1,4,4)
         norm = colors.BoundaryNorm(boundaries, cmap.N)
         mappable = ScalarMappable(norm=norm, cmap=cmap)
@@ -134,7 +145,7 @@ class TernaryPlot:
         df = self.engine.df.T
         for i, p in df.groupby('label'):
             ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
-        self._set_axislabels_mpltern(ax)
+        _set_axislabels_mpltern(ax)
 
         boundaries = np.linspace(1,4,4)
         norm = colors.BoundaryNorm(boundaries, cmap.N)
@@ -147,20 +158,7 @@ class TernaryPlot:
     def _check_ternary_projection(self,ax):
         if not ax.name=='ternary':
             raise Exception('Axis needs to be a ternary projection')
-            
-    def _set_axislabels_mpltern(self,ax):
-        """ 
-        Sets axis labels for phase plots using mpltern 
-        in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
-        """
-        self._check_ternary_projection(ax)
-        ax.set_tlabel(r'$\phi_2$', fontsize=15)
-        ax.set_llabel(r'$\phi_1$', fontsize=15)
-        ax.set_rlabel(r'$\phi_3$', fontsize=15)
-        ax.taxis.set_label_position('tick1')
-        ax.laxis.set_label_position('tick1')
-        ax.raxis.set_label_position('tick1')    
-    
+             
 class QuaternaryPlot:
     def __init__(self, engine):
         """Plot 4-component system with in a Quaternary plot
