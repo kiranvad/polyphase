@@ -79,17 +79,6 @@ def polynomial_energy(x):
 
     return e*1e3
 
-def set_ternlabel(ax):
-    ax.set_tlabel("$\\varphi_{p1}$",fontsize=15)
-    ax.set_llabel("$\\varphi_{s}$",fontsize=15)
-    ax.set_rlabel("$\\varphi_{p2}$",fontsize=15)
-    ax.taxis.set_label_position('corner')
-    ax.laxis.set_label_position('corner')
-    ax.raxis.set_label_position('corner')
-    sns.axes_style("ticks")
-    
-    return ax
-
 
 """ Compute chi from solubilities """
 
