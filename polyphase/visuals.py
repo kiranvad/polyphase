@@ -78,7 +78,7 @@ def plain_phase_diagram(df, ax = None):
         fig = plt.gcf()
     
     phase_colors =['w','r','g','b']
-    for i, p in df.groupby('label'):
+    for i, p in df.T.groupby('label'):
         ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
         
     plt.axis('off')

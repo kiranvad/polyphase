@@ -33,7 +33,7 @@ class CentralDifference:
     Works only for a 3-dimensional grid or a ternary system
     given the energy function
     """
-    def __init__(self, grid, energy):
+    def __init__(self, energy):
         if callable(energy):
             self.func = energy
         else:
@@ -116,16 +116,12 @@ class TestAngles(base):
         """
         super().__init__(engine,phase=phase,simplex_id=simplex_id,**kwargs)
 
-    def get_angles(self,gradient,**kwargs):
+    def get_angles(self,gradient):
         """Compute angles between tangent planes at the simplex vertices and facet normal
         
         Facet normal can be compute by generating a plane equation or using the hull facet equations
         from `out_[hull].equations`. 
         
-        use_findiff trigger the gradient computation using central difference of an interpolated energy
-        see `class::CentralDifference` for more details
-         
-         
         returns dictonary of dictonaries with the following keys:
         'facet_normal' : facet normal of simplex from the convexhull
         'thetas'       : dictonary with vertices named in numeric keys (0,1,2) with each numeric key
@@ -176,9 +172,10 @@ class TestAngles(base):
         from : https://stackoverflow.com/a/13849249
         
         """
+
         v = v / np.linalg.norm(v)
         w = w / np.linalg.norm(w)
-        
+
         return np.degrees(np.arccos(np.clip(np.dot(v, w), -1.0, 1.0)))
 
     def visualize(self, required=[1,2,3]):
