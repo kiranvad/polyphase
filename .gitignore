@@ -134,4 +134,5 @@ figures*
 data/
 figures/
 expts/data/
-expts/
+*.out
+*.sh
