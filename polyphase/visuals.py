@@ -99,11 +99,12 @@ class TernaryPlot:
         """
         self.engine = engine
         
-    def plot_simplices(self,ax=None):
+    def plot_simplices(self,ax=None,label=True):
         """A phase diagram with simplices glued together with phase colorcoded 
         Input:
         --------
             ax            :  matplotlib.pyplot.Axis object
+            label         :  (boolean, True) Whether to add labels to the plot
 
         """
 
@@ -119,7 +120,8 @@ class TernaryPlot:
         for l,s in zip(self.engine.num_comps, self.engine.simplices):
             simplex_points = np.asarray([self.engine.grid[:,x] for x in s])
             ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
-        _set_axislabels_mpltern(ax)
+        if label:
+            _set_axislabels_mpltern(ax)
         boundaries = np.linspace(1,4,4)
         norm = colors.BoundaryNorm(boundaries, cmap.N)
         mappable = ScalarMappable(norm=norm, cmap=cmap)
@@ -129,10 +131,13 @@ class TernaryPlot:
 
         return ax, cbar    
     
-    def plot_points(self,ax = None):
+    def plot_points(self,ax = None, label=True):
         """ A point cloud phase diagram from the lifted simplices 
 
-        Input should the polyphase.PHASE.df instance
+        Input:
+        --------
+            ax            :  matplotlib.pyplot.Axis object
+            label         :  (boolean, True) Whether to add labels to the plot
         """
         if ax is None:
             fig, ax = plt.subplots(subplot_kw={'projection':'ternary'})
@@ -145,7 +150,8 @@ class TernaryPlot:
         df = self.engine.df.T
         for i, p in df.groupby('label'):
             ax.scatter(p['Phi_3'], p['Phi_1'], p['Phi_2'], c=phase_colors[int(i)])
-        _set_axislabels_mpltern(ax)
+        if label:
+            _set_axislabels_mpltern(ax)
 
         boundaries = np.linspace(1,4,4)
         norm = colors.BoundaryNorm(boundaries, cmap.N)
@@ -154,6 +160,9 @@ class TernaryPlot:
         cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase'])
 
         return ax, cbar
+    
+    def show(self,*args,**kwargs):
+        self.plot_simplices(*args,**kwargs)
     
     def _check_ternary_projection(self,ax):
         if not ax.name=='ternary':
@@ -219,6 +228,13 @@ class QuaternaryPlot:
                                   [1/2,np.sqrt(3)/6,np.sqrt(6)/3]]
                                 )
         self.phase_colors =['tab:red','tab:olive','tab:cyan','tab:purple']
+        
+        self.threed_coords = []
+        for i,row in self.engine.df.T.iterrows():
+            self.threed_coords.append(self.from4d23d(row[:-1].to_list()))
+            
+        self.threed_coords = np.asarray(self.threed_coords)
+        
     
     def from4d23d(self,fourd_coords):
         """Compute 3D coordinates of 4-component composition
@@ -304,10 +320,6 @@ class QuaternaryPlot:
         """
         sliceat : (float, 0.5) Where to slice the tetraehdron in z-direction
         """
-        
-        self.threed_coords = []
-        for i,row in self.engine.df.T.iterrows():
-            self.threed_coords.append(self.from4d23d(row[:-1].to_list()))
 
         self.threed_coords = np.asarray(self.threed_coords)
         
@@ -347,4 +359,47 @@ class QuaternaryPlot:
         cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5,4.5],cax=cax)
         cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase','4-Phase'])
         
-        return cbar   
+        return cbar  
+    
+    def show(self, mode='simplices'):
+        fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
+        axs = axs.flatten()
+        for ax,t in zip(axs,[0.025,0.25,0.5,1.0]):
+            ax.set_title(r'$\phi_{4}\leq$'+'{:.2f}'.format(t), pad=0.0)
+            ax._axis3don = False
+            self.add_outline(ax)
+            if mode=='simplices':
+                for i,simplex in zip(np.asarray(self.engine.num_comps),self.engine.simplices):
+                    simplex_vertices = [self.engine.grid[:,x] for x in simplex]
+                    v = np.asarray([self.from4d23d(vertex) for vertex in simplex_vertices])
+                    if np.all(np.asarray(simplex_vertices)[:,3]<t):
+                        verts = self._get_convex_faces(v)
+                        ax.add_collection3d(
+                            Poly3DCollection(verts,facecolors=self.phase_colors[int(i-1)],
+                                             edgecolors=None)
+                        )
+                        
+            elif mode=='points':
+                for cluster in [1,2,3,4]:
+                    cluster_ids = np.where(self.engine.df.T['label']==cluster)
+                    slice_ids = np.where(self.engine.df.T['Phi_4']<t)
+                    ids = np.intersect1d(slice_ids,cluster_ids)
+                    ax.scatter(self.threed_coords[ids,0], self.threed_coords[ids,1],
+                               self.threed_coords[ids,2], color=self.phase_colors[int(cluster-1)])
+                
+            else:
+                raise RuntimeError('Only the simplices or points mode is avaliable')
+        cbar = self.add_colorbar(fig)
+        
+        return [fig, axs, cbar]
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        
