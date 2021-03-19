@@ -1,16 +1,7 @@
 import numpy as np
 import pdb
 from itertools import combinations
-
-""" Plot tools """
-import mpltern
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-
-import plotly.graph_objects as go
-import plotly.figure_factory as ff
 from scipy.spatial import Delaunay
-
 from scipy.constants import gas_constant
 
 import time
