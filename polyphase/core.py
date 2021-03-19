@@ -219,10 +219,11 @@ class PHASE:
         
         return out
     
-    def plotter(self):
+    def plot(self):
         """A helper function for a quick visualization
         For more details on the plotting, look at `polyphase.visuals`
         """
+        
         if self.dimension==3:
             self.renderer = TernaryPlot(self)
         elif self.dimension==4:
@@ -230,7 +231,7 @@ class PHASE:
         else:
             raise Exception('For dimensions>4, not renderings exists')
             
-        self.renderer.plot_simplices()
+        self.renderer.show()
         plt.show()
     
     
