@@ -222,7 +222,7 @@ class TestAngles(base):
         phase_colors =['r','g','b']
         if 3 in required:
             for i in [1,2,3]:
-                criteria = np.logical_and(labels==i, ~boundary_points)
+                criteria = np.logical_and(labels==i, ~self.boundary_points)
                 ax.scatter(self.grid[0,criteria], self.grid[1,criteria], zs=-0.5, zdir='z',
                            c=phase_colors[int(i-1)])
         

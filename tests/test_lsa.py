@@ -21,7 +21,7 @@ class TestLSA(unittest.TestCase):
         self.engine = polyphase.PHASE(fh,100,3)
         self.engine.compute()
         df = self.engine.df.T
-        p1,p2,p3,l = df[df['label']==2].sample().values[0]
+        p1,p2,p3,l = df[df['label']==1].sample().values[0]
         self.point = np.asarray([p1,p2])
         
     def test_lsa(self):
@@ -32,7 +32,7 @@ class TestLSA(unittest.TestCase):
         num_k, num_eigs = np.shape(lsa.eigen_values)
         self.assertEqual(num_k, 50)
         self.assertEqual(num_eigs, 2)
-        self.assertFalse(lsa.is_stable(self.point))
+        self.assertTrue(lsa.is_stable(self.point))
         lsa.plot()
         
         print('class LSA passed')
