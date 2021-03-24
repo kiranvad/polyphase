@@ -43,6 +43,23 @@ def label_simplex(grid, simplex, thresh):
 
     return n_components
 
+def is_purecomp_hull(grid, simplex):
+    """ 
+    return True if a simplex connects only the pure components
+    The assumption when using this function as a simplex refining method is that, 
+    the lower conex hull only consists the simplex coming from the pure component connections.
+    """
+    dim = grid.shape[0]
+    points = grid[:,simplex]
+    flags = np.zeros(dim)
+    for ind,pt in enumerate(points):
+        flags[ind] = is_nzero_comp(dim-1,pt)
+        
+    if np.sum(flags)==dim:
+        return True
+    else:
+        return False
+
 def is_upper_hull(grid, simplex):
     """ 
     return True if a simplex connects anything on the edge.
@@ -96,6 +113,14 @@ def get_max_delaunay_edge_length(grid):
             max_delaunay_edge = current_max
     
     return max_delaunay_edge       
+
+
+def is_nzero_comp(n,point, zero_value = MIN_POINT_PRECISION):
+    n_out = np.sum(np.isclose(point, MIN_POINT_PRECISION))
+    
+    return n_out>=n
+
+
 
 """ Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
@@ -162,6 +187,17 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     
     flag_make_energy_paraboloid = kwargs.get('flag_make_energy_paraboloid',True)
     flag_lift_purecomp_energy = kwargs.get('flag_lift_purecomp_energy',False)
+    num_doctor_energy = kwargs.get('num_doctor_energy',None)
+    
+    # determine the energy correction mode
+    if flag_make_energy_paraboloid:
+        energy_correct= 'boundary'
+    elif flag_lift_purecomp_energy:
+        energy_correct = 'vertex'
+    elif num_doctor_energy is not None:
+        energy_correct = 'doctor'
+    else:
+        energy_correct = None
     
     if np.logical_or(flag_make_energy_paraboloid, flag_lift_purecomp_energy):
         beta = 0.0
@@ -177,21 +213,29 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
         print('Energy computed at {:.2f}s'.format(lap-since))
     
     max_energy = np.max(energy)
-    # Make energy a paraboloid like by extending the landscape at the borders
-    if flag_make_energy_paraboloid:
-        pad_energy = kwargs.get('pad_energy',2)
-        if verbose:
-            print('Making energy manifold a paraboloid with {:d}x'
-                  ' padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
-        boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
-        energy[boundary_points] = pad_energy*max_energy         
-    elif flag_lift_purecomp_energy:
-        pad_energy = kwargs.get('pad_energy',2)
-        if verbose:
-            print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
-        pure_points = np.asarray([is_pure_component(x) for x in grid.T])
-        energy[pure_points] = pad_energy*max_energy
     
+    # Make energy a paraboloid like by extending the landscape at the borders
+    if energy_correct is not None:
+        pad_energy = kwargs.get('pad_energy',2)
+        if energy_correct=='boundary':
+            if verbose:
+                print('Making energy manifold a paraboloid with {:d}x'
+                      ' padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
+            boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
+            energy[boundary_points] = pad_energy*max_energy   
+            
+        elif energy_correct=='vertex':
+            if verbose:
+                print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
+            pure_points = np.asarray([is_pure_component(x) for x in grid.T])
+            energy[pure_points] = pad_energy*max_energy
+            
+        elif energy_correct=='doctor':
+            if verbose:
+                print('Aplpying {:d}x padding of {:.2f} maximum energy to compositions of <={} zeros'.format(pad_energy, max_energy,num_doctor_energy))
+            doctor_points = np.asarray([is_nzero_comp(num_doctor_energy,x) for x in grid.T])
+            energy[doctor_points] = pad_energy*max_energy
+
     outdict['energy'] = energy
     
     lap = time.time()

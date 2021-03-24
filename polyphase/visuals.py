@@ -115,11 +115,11 @@ class TernaryPlot:
             
         self._check_ternary_projection(ax)
         
-        phase_colors =['w','tab:red','tab:olive','tab:cyan']
-        cmap = colors.ListedColormap(phase_colors[1:])
+        phase_colors =['tab:red','tab:olive','tab:cyan']
+        cmap = colors.ListedColormap(phase_colors)
         for l,s in zip(self.engine.num_comps, self.engine.simplices):
             simplex_points = np.asarray([self.engine.grid[:,x] for x in s])
-            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
+            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l-1)])
         if label:
             _set_axislabels_mpltern(ax)
         boundaries = np.linspace(1,4,4)
@@ -219,8 +219,7 @@ class QuaternaryPlot:
         else:
             raise RuntimeError('Requires the `polyphase.PHASE` class to be solved.')
             
-        assert self.engine.dimension==4, 'This functions works only for dimension 4 but'
-        '{} PHASE class is provided'.format(engine.dimension)
+        assert self.engine.dimension==4, 'This functions works only for dimension 4 but {} PHASE class is provided'.format(engine.dimension)
         
         self.vertices = np.array([[0, 0, 0], 
                                   [1, 0, 0], 
@@ -279,8 +278,8 @@ class QuaternaryPlot:
         ax.scatter3D(self.vertices[:, 0], self.vertices[:, 1], self.vertices[:, 2],
                      color='black')
         emb_verts = self._get_convex_faces(self.vertices)
-        ax.add_collection3d(Poly3DCollection(emb_verts, facecolors='black', 
-                                             linewidths=0.5, edgecolors='black', alpha=.05))
+        ax.add_collection3d(Poly3DCollection(emb_verts, facecolors='white', 
+                                             linewidths=0.5, edgecolors='grey', alpha=.05))
         labels = [r'$\phi_{1}$',r'$\phi_{2}$',r'$\phi_{3}$',r'$\phi_{4}$']
         for vi,w in zip(self.vertices,labels):
             ax.text(vi[0],vi[1],vi[2],w)

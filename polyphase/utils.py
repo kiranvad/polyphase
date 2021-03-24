@@ -118,7 +118,20 @@ def get_chi_vector(deltas, V0, approach=1):
         
     return chi, inds
     
-
+def get_sample_data(ind):
+    if ind==0:
+        M = [5,5,1]
+        chi = [1,0.5,0.5]
+    if ind==1:
+        M = [64,1,1]
+        chi = [1,0.3,0.2]
+    if ind==2:
+        M = [1,1,1,1] 
+        chi = 3.10*np.ones(int(0.5*4*(4-1)))
+    
+    return M,chi
+    
+    
 """ utilities for some example runs """
 
 def get_data(name='ow',fhid=0):

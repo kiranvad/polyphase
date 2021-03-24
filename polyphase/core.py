@@ -60,11 +60,13 @@ class PHASE:
         ----------
             use_parallel       : (bool) whether to use a parallel computation (default, False)
             verbose            : (bool) whether to print more information as the computation progresses
-            correction         : (string) Two types of corrections to energy surface are provided
+            correction         : (string or int) Two types of corrections to energy surface are provided
                                         1. 'edge' -- where all the energy values near the boundary of
                                             hyperplane will be lifted to a constant energy (default)
                                         2. 'vertex' -- similar to 'edge' but the process is performed
                                             only for points at the vertices of hyperplane
+                                        3. int -- Correct only the points with n zero components. 
+                                                  This method is not available in parallel mode.
             lift_label         : (bool) whether to interpolate the label of a simplex into points 
                                         inside it (default, True)
             refine_simplices   : (bool) whether to remove simplices that are on the "upper convex hull".
@@ -211,6 +213,7 @@ class PHASE:
             'flag_make_energy_paraboloid': True if self.correction=='edge' else False, 
             'pad_energy': 2,
             'flag_lift_purecomp_energy': True if self.correction=='vertex' else False,
+            'num_doctor_energy': self.correction if type(self.correction)==int else None,
             'threshold_type': self.thresholding ,
             'thresh_scale':self.thresh_scale if self.thresholding=='uniform' else 1,
             'lift_grid_size':self.meshsize,
