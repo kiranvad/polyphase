@@ -53,7 +53,7 @@ def plot_energy_landscape(outdict,mode='full', ax = None):
     elif mode=='convex_hull':
         ax.plot_trisurf(grid[0,:], grid[1,:], 
                         energy, triangles=outdict['simplices'], 
-                        linewidth=0.01, antialiased=True)
+                        linewidth=1.0,edgecolor='k', antialiased=False,facecolor='grey',alpha=0.05)
     ax.set_xlabel('Polymer')
     ax.set_ylabel('Small molecule')
     ax.set_zlabel('Energy')

@@ -228,13 +228,13 @@ class PHASE:
         """
         
         if self.dimension==3:
-            self.renderer = TernaryPlot(self)
+            renderer = TernaryPlot(self)
         elif self.dimension==4:
-            self.renderer = QuaternaryPlot(self)
+            renderer = QuaternaryPlot(self)
         else:
-            raise Exception('For dimensions>4, not renderings exists')
+            raise Exception('For dimensions>4, no renderings exists')
             
-        self.renderer.show()
+        renderer.show()
         plt.show()
     
     

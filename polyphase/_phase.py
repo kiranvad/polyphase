@@ -120,7 +120,17 @@ def is_nzero_comp(n,point, zero_value = MIN_POINT_PRECISION):
     
     return n_out>=n
 
-
+def get_lower_convexhull(points):
+    inf_ind = np.shape(points)[0]
+    base_points = points[:,:-1].mean(axis=0)
+    inf_height = 1e10*max(points[:,-1])
+    p_inf = np.hstack((base_points,inf_height))
+    points_inf = np.vstack((points,p_inf))
+    hull = ConvexHull(points_inf)
+    lower = ~(hull.simplices==inf_ind).any(axis=1)
+    lower_hull = hull.simplices[lower]
+    
+    return lower_hull, hull
 
 """ Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
@@ -246,7 +256,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     if not use_weighted_delaunay:
         _method = 'Convexhull'
         points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)                   
-        hull = ConvexHull(points)
+        #hull = ConvexHull(points)
+        lower_hull, hull = get_lower_convexhull(points)
         outdict['hull'] = hull
     else:
         raise NotImplemented
@@ -256,7 +267,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
         print('{} is computed at {:.2f}s'.format(_method,lap-since))
     
     if not flag_refine_simplices:
-        simplices = hull.simplices
+        #simplices = hull.simplices
+        simplices = lower_hull
     else:
         upper_hull = np.asarray([is_upper_hull(grid,simplex) for simplex in hull.simplices])
         simplices = hull.simplices[~upper_hull]
