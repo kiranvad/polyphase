@@ -120,17 +120,24 @@ def is_nzero_comp(n,point, zero_value = MIN_POINT_PRECISION):
     
     return n_out>=n
 
-def get_lower_convexhull(points):
+def point_at_inifinity_convexhull(points):
     inf_ind = np.shape(points)[0]
     base_points = points[:,:-1].mean(axis=0)
-    inf_height = 1e10*max(points[:,-1])
+    inf_height = 1e10*abs(max(points[:,-1]))
     p_inf = np.hstack((base_points,inf_height))
     points_inf = np.vstack((points,p_inf))
     hull = ConvexHull(points_inf)
     lower = ~(hull.simplices==inf_ind).any(axis=1)
     lower_hull = hull.simplices[lower]
     
-    return lower_hull, hull
+    return lower_hull, hull,~lower
+
+def negative_znorm_convexhull(points):
+    hull = ConvexHull(points)
+    zlower = hull.equations[:,-2]<=0
+    lower_hull = hull.simplices[zlower]
+    
+    return lower_hull, hull, ~zlower
 
 """ Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
@@ -146,7 +153,11 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
         
         kwargs:
         -------
-        flag_refine_simplices        : whether to remove simplices that connect pure components (default: True)
+        lower_hull_method            : Method to use to obtain a lower hull from the convex hull (default : None)
+                                       This method is envoked only if the flag_refine_simplices is set to True
+                                       1. None -- Defaults to using the approach where we simply remove the simplices that connect boundaries of a given energy landscape
+                                       2. 'point_at_infinity' -- Computes the lower convex hull by adding an imaginary point at the infinity height of the landscape. 
+                                       3. 'negative_znorm' -- Simply assumes that the upper hull consists of simplices whose normal in the height direction is positive.
         flag_lift_label              : Whether to list labels of simplices to a point cloud of constant size (default: False). Point cloud                                          is constantsize regadless of original meshsize and is computed using a 200 points per dimension mesh.         use_weighted_delaunay        : Uses a weighted delaunay triangulation to compute triangulation of design space. (not complete yet)
         beta                         : beta correction value used to compute flory-huggins free energy (default 1e-4)
         flag_remove_collinear        : In three dimensional case, removes simplices that lift to collinear points in phi space. 
@@ -174,9 +185,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
           
     """
     verbose = kwargs.get('verbose', False)
-    flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
+    lower_hull_method = kwargs.get('lower_hull_method', None)
     flag_lift_label = kwargs.get('flag_lift_label',False)
-    use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
     lift_grid_size = kwargs.get('lift_grid_size', meshsize)
                                            
     since = time.time()
@@ -251,32 +261,23 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     lap = time.time()
     if verbose:
         print('Energy is corrected at {:.2f}s'.format(lap-since))
+    points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1) 
     
-    # 3. Compute convex hull
-    if not use_weighted_delaunay:
-        _method = 'Convexhull'
-        points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)                   
-        #hull = ConvexHull(points)
-        lower_hull, hull = get_lower_convexhull(points)
-        outdict['hull'] = hull
-    else:
-        raise NotImplemented
-        
-    lap = time.time()
-    if verbose:
-        print('{} is computed at {:.2f}s'.format(_method,lap-since))
-    
-    if not flag_refine_simplices:
-        #simplices = hull.simplices
-        simplices = lower_hull
-    else:
+    if lower_hull_method is None:    
+        hull = ConvexHull(points)
         upper_hull = np.asarray([is_upper_hull(grid,simplex) for simplex in hull.simplices])
         simplices = hull.simplices[~upper_hull]
-        outdict['upper_hull']=upper_hull
- 
+    elif lower_hull_method=='point_at_infinity':
+        simplices, hull,upper_hull = point_at_inifinity_convexhull(points)
+    elif lower_hull_method=='negative_znorm':
+        simplices, hull,upper_hull = negative_znorm_convexhull(points)
+            
+    outdict['upper_hull']=upper_hull
+    outdict['hull'] = hull
+    
     lap = time.time()
     if verbose:
-        print('Simplices are refined at {:.2f}s'.format(lap-since))
+        print('Simplices are computed and refined at {:.2f}s'.format(lap-since))
         
     outdict['simplices'] = simplices
     if verbose:

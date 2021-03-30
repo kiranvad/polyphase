@@ -58,29 +58,40 @@ class PHASE:
         
         Arguments:
         ----------
-            use_parallel       : (bool) whether to use a parallel computation (default, False)
-            verbose            : (bool) whether to print more information as the computation progresses
-            correction         : (string or int) Two types of corrections to energy surface are provided
+            use_parallel        : (bool) whether to use a parallel computation (default, False)
+            
+            verbose             : (bool) whether to print more information as the computation progresses
+            
+            correction          : (string or int) Two types of corrections to energy surface are provided
                                         1. 'edge' -- where all the energy values near the boundary of
                                             hyperplane will be lifted to a constant energy (default)
                                         2. 'vertex' -- similar to 'edge' but the process is performed
                                             only for points at the vertices of hyperplane
                                         3. int -- Correct only the points with n zero components. 
                                                   This method is not available in parallel mode.
-            lift_label         : (bool) whether to interpolate the label of a simplex into points 
+                                                  
+            lift_label          : (bool) whether to interpolate the label of a simplex into points 
                                         inside it (default, True)
-            refine_simplices   : (bool) whether to remove simplices that are on the "upper convex hull".
-                                        (default, True) Note that the Gibbs criteria uses the lower 
-                                        convex hull, thus it is recommended to set the
-                                        simplex refinement to True
-            thresholding       : (string) Two types of thresholding methods are implemented
+                                        
+            lower_hull_method   : (string or None) Method to use to obtain a lower hull from the convex hull (default : None)
+                                       whether to remove simplices that are on the "upper convex hull".
+                                       Note that the Gibbs criteria uses the lower convex hull, 
+                                       thus it is recommended 
+                                       1. None -- Defaults to using the approach where we simply remove the simplices that
+                                          connect boundaries of a given energy landscape
+                                       2. 'point_at_infinity' -- Computes the lower convex hull by adding an imaginary point at 
+                                          the infinity height of the landscape. 
+                                       3. 'negative_znorm' -- Simply assumes that the upper hull consists of simplices whose 
+                                          normal in the height direction is positive.   
+                                          
+            thresholding        : (string) Two types of thresholding methods are implemented
                                           1. 'uniform' -- where the reference distance for number 
                                              of connected components of a simplex is computed 
                                              using the original grid length (default)
                                           2. 'delaunay'-- the length is computed using a delaunay 
                                               edge length of the initial mesh
                                               
-            thresh_scale       : (float) scaling to be used for the edge length of the reference 
+            thresh_scale        : (float) scaling to be used for the edge length of the reference 
                                          in 'thresholding'
                                          
         Attributes:
@@ -93,7 +104,7 @@ class PHASE:
             simplices    :  simplices of the lower convex hull of the energy landscape
             num_comps    :  connected components of each simplex as a list
             df           :  pandas.DataFrame with volume fractions and labels rows
-            coplanar.    :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
+            coplanar     :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)
@@ -101,6 +112,7 @@ class PHASE:
         self.correction = kwargs.get('correction', 'edge')
         self.lift_label = kwargs.get('lift_label',True)
         self.refine_simplices = kwargs.get('refine_simplices',True)
+        self.lower_hull_method = kwargs.get('lower_hull_method', None)
         self.thresholding = kwargs.get('thresholding','uniform')
         self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
         _kwargs = self.get_kwargs()
@@ -204,8 +216,7 @@ class PHASE:
 
         """
         out = {
-            
-            'flag_refine_simplices':self.refine_simplices,
+            'lower_hull_method' : self.lower_hull_method,
             'flag_lift_label': self.lift_label,
             'use_weighted_delaunay': False,
             'flag_remove_collinear' : False, 

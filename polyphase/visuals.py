@@ -15,9 +15,9 @@ def _set_axislabels_mpltern(ax):
     Sets axis labels for phase plots using mpltern 
     in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
     """
-    ax.set_tlabel(r'$\phi_2$', fontsize=15)
+    ax.set_tlabel(r'$\phi_3$', fontsize=15)
     ax.set_llabel(r'$\phi_1$', fontsize=15)
-    ax.set_rlabel(r'$\phi_3$', fontsize=15)
+    ax.set_rlabel(r'$\phi_2$', fontsize=15)
     ax.taxis.set_label_position('tick1')
     ax.laxis.set_label_position('tick1')
     ax.raxis.set_label_position('tick1')   
@@ -119,7 +119,8 @@ class TernaryPlot:
         cmap = colors.ListedColormap(phase_colors)
         for l,s in zip(self.engine.num_comps, self.engine.simplices):
             simplex_points = np.asarray([self.engine.grid[:,x] for x in s])
-            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l-1)])
+            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], 
+                    facecolor=phase_colors[int(l-1)])
         if label:
             _set_axislabels_mpltern(ax)
         boundaries = np.linspace(1,4,4)
