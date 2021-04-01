@@ -24,6 +24,28 @@ class PHASE:
                                 compositions and returns a scalar energy
             meshsize         :  (int) Number of points to be sampled per dimension
             dimension        :  (int) Dimension of the the system 
+            
+        Methods:
+        --------
+            as_dict      :  Return the attributes of the class as a dictonary
+            get_kwargs   :  Return settings of the compute method as kwargs for the private functions in _phase.py
+            compute      :  Compute a phase diagram
+            __call__     :  Once the phase diagram is solved using .compute(), returns the phase splitting 
+                            ratios given a composition array
+            plot         :  Visualize the phase diagram of 3 and 4 components
+            
+                                                 
+        Attributes:
+        -----------
+            grid         :  Grid used to compute the energy surface (array of shape (dim, points))
+            energy       :  Free energy computed using self.energy_func (array of shape (points,))
+            hull         :  scipy.spatial.ConvexHull instance of computed for energy landscape
+            thresh       :  length scale used to compute adjacency matrix
+            upper_hull   :  boolean flagg of each simplex in hull.simplices whether its a upper hull
+            simplices    :  simplices of the lower convex hull of the energy landscape
+            num_comps    :  connected components of each simplex as a list
+            df           :  pandas.DataFrame with volume fractions and labels rows
+            coplanar     :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
         """
         if not callable(energy_func):
             raise ValueError('Vairable energy needs to be a function such as `polyphase.utils.flory_huggins`')
@@ -62,14 +84,14 @@ class PHASE:
             
             verbose             : (bool) whether to print more information as the computation progresses
             
-            correction          : (string or int) Two types of corrections to energy surface are provided
-                                        1. 'edge' -- where all the energy values near the boundary of
-                                            hyperplane will be lifted to a constant energy (default)
-                                        2. 'vertex' -- similar to 'edge' but the process is performed
-                                            only for points at the vertices of hyperplane
-                                        3. int -- Correct only the points with n zero components. 
-                                                  This method is not available in parallel mode.
-                                                  
+            correction          : (int) Type of energy correction to be performed:
+                                        1 -- Correct the energy at the boundary of the hyperplane
+                                        dimension -- No energy correction is performed
+                                        anyother -- Correct compositions with that many zeros
+                    
+            pad_energy          : (float) Scale the energy where the correction is request to maximum energy 
+                                          time the 'pad_energy'     
+                                          
             lift_label          : (bool) whether to interpolate the label of a simplex into points 
                                         inside it (default, True)
                                         
@@ -83,37 +105,24 @@ class PHASE:
                                           the infinity height of the landscape. 
                                        3. 'negative_znorm' -- Simply assumes that the upper hull consists of simplices whose 
                                           normal in the height direction is positive.   
-                                          
-            thresholding        : (string) Two types of thresholding methods are implemented
-                                          1. 'uniform' -- where the reference distance for number 
-                                             of connected components of a simplex is computed 
-                                             using the original grid length (default)
-                                          2. 'delaunay'-- the length is computed using a delaunay 
-                                              edge length of the initial mesh
                                               
             thresh_scale        : (float) scaling to be used for the edge length of the reference 
-                                         in 'thresholding'
-                                         
-        Attributes:
-        -----------
-            grid         :  Grid used to compute the energy surface (array of shape (dim, points))
-            energy       :  Free energy computed using self.energy_func (array of shape (points,))
-            hull         :  scipy.spatial.ConvexHull instance of computed for energy landscape
-            thresh       :  length scale used to compute adjacency matrix
-            upper_hull   :  boolean flagg of each simplex in hull.simplices whether its a upper hull
-            simplices    :  simplices of the lower convex hull of the energy landscape
-            num_comps    :  connected components of each simplex as a list
-            df           :  pandas.DataFrame with volume fractions and labels rows
-            coplanar     :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
+                                         in thresholding
+        
+        NOTES: 
+        ------
+        In parallel mode, energy correction is not used, the lower convex hull is computed using the point at 
+        infinity method instead.
+        
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)
         self.verbose = kwargs.get('verbose', False)
-        self.correction = kwargs.get('correction', 'edge')
+        self.correction = kwargs.get('correction', self.dimension)
+        self.pad_energy = kwargs.get('pad_energy', 2)
         self.lift_label = kwargs.get('lift_label',True)
         self.refine_simplices = kwargs.get('refine_simplices',True)
         self.lower_hull_method = kwargs.get('lower_hull_method', None)
-        self.thresholding = kwargs.get('thresholding','uniform')
         self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
         _kwargs = self.get_kwargs()
         
@@ -218,15 +227,10 @@ class PHASE:
         out = {
             'lower_hull_method' : self.lower_hull_method,
             'flag_lift_label': self.lift_label,
-            'use_weighted_delaunay': False,
             'flag_remove_collinear' : False, 
-            'beta':0.0, # not used 
-            'flag_make_energy_paraboloid': True if self.correction=='edge' else False, 
-            'pad_energy': 2,
-            'flag_lift_purecomp_energy': True if self.correction=='vertex' else False,
-            'num_doctor_energy': self.correction if type(self.correction)==int else None,
-            'threshold_type': self.thresholding ,
-            'thresh_scale':self.thresh_scale if self.thresholding=='uniform' else 1,
+            'pad_energy': self.pad_energy,
+            'energy_correction': self.correction,
+            'thresh_scale':self.thresh_scale, 
             'lift_grid_size':self.meshsize,
             'verbose' : self.verbose
          }

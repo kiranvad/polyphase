@@ -41,7 +41,7 @@ def distance_hamming(data,i,j):
 1. Compute PM6-Y6-86 solvents distance matrix
 """
 
-dirname = '../data/hamming/pm6y6_crop'
+dirname = '../data/hamming/pm6y6'
 if os.path.exists(dirname):
     shutil.rmtree(dirname)
 os.makedirs(dirname)
@@ -62,7 +62,7 @@ for i,row in sys_df.iterrows():
     engine.compute(use_parallel=False, verbose=False, lift_label=True)
     
     # threshold it to a certain solvent level
-    below_solvent_threshold = engine.df.loc['Phi_3',:]>0.8
+    below_solvent_threshold = engine.df.loc['Phi_3',:]>1.0
     y = engine.df.loc['label',below_solvent_threshold].to_numpy().astype('int')
     data_pm6y6.save(y)
     
