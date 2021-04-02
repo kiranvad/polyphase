@@ -13,6 +13,9 @@ from itertools import combinations
 from .visuals import _set_axislabels_mpltern
 from scipy.spatial import Delaunay
 
+import re
+FLAT_SIMPLEX_ERROR = 'Initial simplex is flat' 
+
 def inpolyhedron(ph,points):
     """
     Given a polyhedron vertices in `ph`, and `points` return 
@@ -28,6 +31,7 @@ def inpolyhedron(ph,points):
     criteria = inside<0
     return ~criteria
 
+     
 class CentralDifference:
     """Compute central difference gradinet of energy
     Works only for a 3-dimensional grid or a ternary system
@@ -71,6 +75,10 @@ class base:
             self.get_random_simplex()
         else:
             self.set_simplex_data(simplex_id)
+            
+        if self.is_flatsimplex():
+            raise RuntimeError('The chosen simplex with vertices {} is flat.'
+                               'The tests cannot be performed.'.format(self.vertices))
         
         v = self.vertices[:,:-1]
         inside = inpolyhedron(v, self.grid[:-1,:].T)
@@ -87,9 +95,19 @@ class base:
         self.vertices = self.X.iloc[:3,self.rnd_simplex].to_numpy().T
         self.parametric_points = np.hstack((self.vertices[:,:2],
                                             self.energy[self.rnd_simplex].reshape(-1,1))).tolist()
-        if not self.coplanar[simplex_id]:
-            raise RuntimeError('The chosen simplex with vertices {} is flat.'
-                               'The tests cannot be performed.'.format(self.vertices))
+
+    def is_flatsimplex(self):
+        v = np.asarray([self.grid[:-1,x] for x in self.rnd_simplex])
+        try:
+            Delaunay(v)
+            return False
+        except Exception as err:
+            return_err = re.split('[\n]',str(err))[0]
+            if FLAT_SIMPLEX_ERROR in return_err:
+                return True
+            else:
+                raise err
+    
     
     def base_visualize(self):
         """ Visualize the test case base function
@@ -146,13 +164,13 @@ class TestAngles(base):
             angle = self._angle_between_vectors(self.facet_normal, normal_p)
             dot_product = np.abs(np.clip(np.dot(self.facet_normal, normal_p), -1.0, 1.0))
             
-            # tuple of simplex, tangent normal, andle and dot product with facet normal                     
+            # tuple of vertex, tangent normal, andle and dot product with facet normal                     
             thetas.update({i:(self.rnd_simplex[i], normal_p, angle, dot_product)})
             # tuple of gradients along phi_1, phi_2 and the normal of the tangent plane
             gradients.update({i:(dx,dy, normal_p)}) 
 
         outdict = {'facet_normal': self.facet_normal, 'thetas':thetas, 'gradients':gradients}  
-        
+
         self._angles_outdict = outdict
         
         return outdict
@@ -353,9 +371,9 @@ class TestPhaseSplits(base):
     def check_centroid(self):
         """Check if simplex can split the centroid as labelled
         """
-        points = np.asarray(self.parametric_points)
+        points = np.asarray(self.vertices)
         self.centroid_ = np.sum(points, axis=0)/3
-        x, self.equilibrium_phases_, _ = self.engine(self.centroid_)
+        x, self.equilibrium_phases_, _ = self.engine(self.centroid_, simplex_id = self.rnd_simplex_indx)
         is_match = self.is_correct_phasesplit(x)
         if not is_match and self.phase==2:
             decision,_,_ = self._min_edge_lengths_equal()
@@ -373,8 +391,7 @@ class TestPhaseSplits(base):
         b = np.linalg.norm(v[1,:]-self.centroid_[:-1])
         
         return np.isclose(a,b, atol=1e-2), a,b
-    
-    
+
     def run(self):
         """Check if a simplex phase splits all points inside correctlty
         

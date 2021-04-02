@@ -54,10 +54,9 @@ def plot_energy_landscape(outdict,mode='full', ax = None):
         ax.plot_trisurf(grid[0,:], grid[1,:], 
                         energy, triangles=outdict['simplices'], 
                         linewidth=1.0,edgecolor='k', antialiased=False,facecolor='grey',alpha=0.05)
-    ax.set_xlabel('Polymer')
-    ax.set_ylabel('Small molecule')
+    ax.set_xlabel(r'$\phi_{1}$')
+    ax.set_ylabel(r'$\phi_{2}$')
     ax.set_zlabel('Energy')
-    ax.set_title('Energy landscape', pad=42)
     
     return ax, fig    
     

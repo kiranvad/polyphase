@@ -10,6 +10,7 @@ from ._phase import (_serialcompute,
                     get_max_delaunay_edge_length)
 from scipy.spatial import Delaunay
 from .visuals import TernaryPlot, QuaternaryPlot
+from .tests import TestAngles, TestEpiGraph, TestPhaseSplits, CentralDifference
 import matplotlib.pyplot as plt
 
 MIN_POINT_PRECISION = 1e-8
@@ -145,7 +146,7 @@ class PHASE:
         
         return
 
-    def get_phase_compositions(self, point):
+    def get_phase_compositions(self, point, simplex_id=None):
         """Compute phase contributions given a composition
         
         input:
@@ -159,30 +160,34 @@ class PHASE:
                         an entry in x with the same index
         """
         from scipy.optimize import lsq_linear
-        
+         
         if not self.is_solved:
             raise RuntimeError('Phase diagram is not computed\n'
-                               'Use .solve() before requesting phase compositions')
+                               'Use .compute() before requesting phase compositions')
             
         assert len(point)==self.dimension,'Expected {}-component composition got {}'.format(self.dimension, len(point))
         
         if self.is_boundary_point(point):
             raise RuntimeError('Boundary points are not considered in the computation.')
         
-        inside = np.asarray([self.in_simplex(point, s) for s in self.simplices], dtype=bool)
-        
-        for i in np.where(inside)[0]:
+        if simplex_id is None:
+            inside = np.asarray([self.in_simplex(point, s) for s in self.simplices[~self.coplanar]], dtype=bool)
+            in_simplices_ids = np.where(inside)[0]
+        else:
+            in_simplices_ids = [simplex_id]
+            
+        for i in in_simplices_ids:
             simplex = self.simplices[i]
             num_comps = np.asarray(self.num_comps)[i]
             vertices = self.grid[:,simplex]
+            energies = np.asarray([self.energy_func(x) for x in vertices.T])
             
             if num_comps==1:
                 # no-phase splits if the simplex is labelled 1-phase
                 continue
 
-            A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
-            b = np.hstack((point[:-1],1))
-            
+            A = np.vstack((vertices.T[:-1,:], energies))
+            b = np.hstack((point[:-1],self.energy_func(point)))
             lb = np.zeros(self.dimension)
             ub = np.ones(self.dimension)
             res = lsq_linear(A, b, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
@@ -251,8 +256,29 @@ class PHASE:
             
         renderer.show()
         plt.show()
+        
+    def test(self):
+        gradient = CentralDifference(self.energy_func) 
+        results = {}
+        for simplex_id, phaseid in enumerate(self.num_comps):
+            # 1. performing tangent normal test
+            try:
+                angles = TestAngles(self,phase=phaseid,simplex_id=simplex_id)
+                angles_out = angles.get_angles(gradient)
+                TestAngles_dotprods = [t[-1] for _,t in angles_out['thetas'].items()] 
+            except Exception as err :
+                TestAngles_dotprods = str(err)
+
+            # 2. Perform phase splitting test
+            try:
+                phasesplits = TestPhaseSplits(self,phase=phaseid,simplex_id=simplex_id, threshold=0.05)
+                TestPhaseSplits_centroid = phasesplits.check_centroid()
+            except Exception as err :
+                TestPhaseSplits_centroid = str(err)
+
+            results[simplex_id] = [TestAngles_dotprods,TestPhaseSplits_centroid]
     
-    
+        return results
     
     
     

@@ -72,6 +72,9 @@ def is_upper_hull(grid, simplex):
         return True
     else:
         return False
+
+    
+
     
 def lift_label(grid,lift_grid, simplex, label):
     """ Lifting the labels from simplices to points """
@@ -81,12 +84,12 @@ def lift_label(grid,lift_grid, simplex, label):
         tri = Delaunay(v)
         inside = Delaunay.find_simplex(tri,lift_grid[:-1,:].T)
         inside =~(inside<0)
-        flag = 1
+        iscoplanar = False
     except:
         inside = None
-        flag = 0
+        iscoplanar = True
         
-    return inside, flag
+    return inside, iscoplanar
    
 def is_boundary_point(point, zero_value = MIN_POINT_PRECISION):
     if np.isclose(point, MIN_POINT_PRECISION).any():
@@ -406,7 +409,7 @@ def _parcompute(f, dimension, meshsize,**kwargs):
         inside = ray.get(inside_ray)
         
         coplanar = [item[1] for item in inside]
-        outdict['coplanar'] = None
+        outdict['coplanar'] = coplanar
         lap = time.time()
         
         if verbose:
