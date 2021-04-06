@@ -49,6 +49,19 @@ class TestTests(unittest.TestCase):
         TEST.get_angles(gradient)
         TEST.visualize()
         
+    def test_TestPhaseSplits(self):
+        PHASE_ID = 2
+        phase_simplex_ids = np.where(np.asarray(self.engine.num_comps)==PHASE_ID)[0]
+        simplex_id = phase_simplex_ids[0]
+        phasesplits = polyphase.TestPhaseSplits(self.engine,phase=PHASE_ID,
+                                                simplex_id=simplex_id, threshold=0.05)
+        phasesplits.check_centroid()
+        x_obtained = phasesplits.centroid_splits_
+        x_expected = [0.33,0.66,0.02]
+        np.testing.assert_allclose(x_obtained, x_expected, rtol=1e-1, atol=0)
+        phasesplits.visualize_centroid()
+        
+        
         
         
         

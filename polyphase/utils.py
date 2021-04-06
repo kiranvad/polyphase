@@ -46,7 +46,7 @@ def flory_huggins(x, M,chi,beta=0.0, logapprox=False):
         logapprox   : Whether to use the approximation as log(x)=x-1 when x~0  
     
     """
-    assert np.isclose(sum(x),1),'The composition should sum up to 1 not {}'.format(sum(x))
+    assert np.isclose(sum(x),1, rtol=1e-2),'The composition should sum up to 1 not {}'.format(sum(x))
     CHI = _utri2mat(chi, len(M))
     T1 = 0
     for i,xi in enumerate(x):

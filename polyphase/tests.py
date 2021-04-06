@@ -373,7 +373,8 @@ class TestPhaseSplits(base):
         """
         points = np.asarray(self.vertices)
         self.centroid_ = np.sum(points, axis=0)/3
-        x, self.equilibrium_phases_, _ = self.engine(self.centroid_, simplex_id = self.rnd_simplex_indx)
+        x, self.equilibrium_phases_, _ = self.engine(self.centroid_, 
+                                                     simplex_id = self.rnd_simplex_indx)
         is_match = self.is_correct_phasesplit(x)
         if not is_match and self.phase==2:
             decision,_,_ = self._min_edge_lengths_equal()
@@ -383,6 +384,13 @@ class TestPhaseSplits(base):
         self.centroid_splits_ = x
         
         return decision
+    
+    def _get_barycenter_coordinates(self):
+        tri = Delaunay(self.vertices[:,:-1])
+        T = tri.transform
+        b = T[0,:2].dot(np.transpose(self.centroid_[:-1] - T[0,2]))
+        
+        return np.concatenate((b, 1-sum(b)), axis=None)
     
     def _min_edge_lengths_equal(self):
         

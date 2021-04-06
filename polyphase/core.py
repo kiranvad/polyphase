@@ -185,12 +185,11 @@ class PHASE:
             if num_comps==1:
                 # no-phase splits if the simplex is labelled 1-phase
                 continue
-
-            A = np.vstack((vertices.T[:-1,:], energies))
-            b = np.hstack((point[:-1],self.energy_func(point)))
+            A = np.vstack((vertices.T[:-1,:], energies, np.ones(self.dimension)))
+            B = np.hstack((point[:-1],self.energy_func(point),1))
             lb = np.zeros(self.dimension)
             ub = np.ones(self.dimension)
-            res = lsq_linear(A, b, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
+            res = lsq_linear(A, B, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
             x = res.x
             if not (x<0).any():
                 # STOP if you found a simplex that has x>0
@@ -199,14 +198,12 @@ class PHASE:
         return x, vertices.T, num_comps
     
     __call__ = get_phase_compositions
-    
+
     def as_dict(self):
         """ Get a output dictonary
         Utility function to get output of the 
         legacy functions in phase.py and parphase.py
         
-        For the dictonary structure look at docstring of polyphase.phase 
-        or polyphase.parphase
         """
         if not self.is_solved:
             raise RuntimeError('Phase diagram is not computed\n'
