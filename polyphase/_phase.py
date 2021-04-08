@@ -32,9 +32,9 @@ def makegridnd(meshsize, dimension):
 
     return plane_mesh
 
-def label_simplex(grid, simplex, thresh):
+def label_simplex(grid, simplex, thresh,indices):
     """ given a simplex, labels it to be a n-phase region by computing number of connected components """
-    coords = [grid[:,x] for x in simplex]
+    coords = [grid[indices,x] for x in simplex]
     dist = squareform(pdist(coords,'euclidean'))
     adjacency = dist<thresh
     adjacency =  adjacency.astype(int)  
@@ -73,16 +73,12 @@ def is_upper_hull(grid, simplex):
     else:
         return False
 
-    
-
-    
-def lift_label(grid,lift_grid, simplex, label):
+def lift_label(grid,lift_grid, simplex, label, indices):
     """ Lifting the labels from simplices to points """
     try:
-        v = np.asarray([grid[:-1,x] for x in simplex])
-        #inside = inpolyhedron(v, grid[:-1,:].T)
+        v = np.asarray([grid[indices,x] for x in simplex])
         tri = Delaunay(v)
-        inside = Delaunay.find_simplex(tri,lift_grid[:-1,:].T)
+        inside = Delaunay.find_simplex(tri,lift_grid[indices,:].T)
         inside =~(inside<0)
         iscoplanar = False
     except:
@@ -104,8 +100,8 @@ def is_pure_component(point, zero_value = MIN_POINT_PRECISION):
     else:
         return False
 
-def get_max_delaunay_edge_length(grid):
-    delaunay = Delaunay(np.asarray(grid[:-1,:].T))
+def get_max_delaunay_edge_length(grid, indices):
+    delaunay = Delaunay(np.asarray(grid[indices,:].T))
     max_delaunay_edge = 0.0
     for sx in delaunay.simplices:
         vertex_sx = [grid[:,x] for x in sx]
@@ -152,6 +148,7 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     flag_lift_label = kwargs.get('flag_lift_label',False)
     lift_grid_size = kwargs.get('lift_grid_size', meshsize)
     energy_correction = kwargs.get('energy_correction', dimension)
+    indices = kwargs.get('indices', list(range(dimension-1)))
     
     since = time.time()
     
@@ -189,7 +186,7 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     lap = time.time()
     if verbose:
         print('Energy is corrected at {:.2f}s'.format(lap-since))
-    points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1) 
+    points = np.concatenate((grid[indices,:].T,energy.reshape(-1,1)),axis=1) 
     
     if lower_hull_method is None:    
         hull = ConvexHull(points)
@@ -211,8 +208,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     if verbose:
         print('Total of {} simplices in the convex hull'.format(len(simplices)))
 
-    thresh_scale = kwargs.get('thresh_scale',1.25)
-    thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
+    thresh_scale = kwargs.get('thresh_scale',np.sqrt(2))
+    thresh = thresh_scale*euclidean(grid[indices,0],grid[indices,1])
     
     if verbose:
         print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
@@ -220,7 +217,7 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     outdict['thresh'] = thresh
     
     # 4. for each simplex in the hull compute number of connected components (parallel)
-    num_comps = [label_simplex(grid, simplex, thresh) for simplex in simplices]
+    num_comps = [label_simplex(grid, simplex, thresh, indices) for simplex in simplices]
     lap = time.time()
     if verbose:
         print('Simplices are labelled at {:.2f}s'.format(lap-since))
@@ -233,7 +230,7 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
         else:
             lift_grid = makegridnd(lift_grid_size, dimensions) # we lift labels to a constant mesh 
             
-        inside = [lift_label(grid, lift_grid, simplex, label) for simplex, label in zip(simplices, num_comps)]
+        inside = [lift_label(grid, lift_grid, simplex, label, indices) for simplex, label in zip(simplices, num_comps)]
         
         coplanar = [item[1] for item in inside]
         outdict['coplanar']=coplanar
