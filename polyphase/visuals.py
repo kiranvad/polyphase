@@ -15,9 +15,9 @@ def _set_axislabels_mpltern(ax):
     Sets axis labels for phase plots using mpltern 
     in the order of solvent (index 2), polymer (index 0), non-solvent (index 1)
     """
-    ax.set_tlabel(r'$\phi_2$', fontsize=15)
+    ax.set_tlabel(r'$\phi_3$', fontsize=15)
     ax.set_llabel(r'$\phi_1$', fontsize=15)
-    ax.set_rlabel(r'$\phi_3$', fontsize=15)
+    ax.set_rlabel(r'$\phi_2$', fontsize=15)
     ax.taxis.set_label_position('tick1')
     ax.laxis.set_label_position('tick1')
     ax.raxis.set_label_position('tick1')   
@@ -53,11 +53,10 @@ def plot_energy_landscape(outdict,mode='full', ax = None):
     elif mode=='convex_hull':
         ax.plot_trisurf(grid[0,:], grid[1,:], 
                         energy, triangles=outdict['simplices'], 
-                        linewidth=0.01, antialiased=True)
-    ax.set_xlabel('Polymer')
-    ax.set_ylabel('Small molecule')
+                        linewidth=1.0,edgecolor='k', antialiased=False,facecolor='grey',alpha=0.05)
+    ax.set_xlabel(r'$\phi_{1}$')
+    ax.set_ylabel(r'$\phi_{2}$')
     ax.set_zlabel('Energy')
-    ax.set_title('Energy landscape', pad=42)
     
     return ax, fig    
     
@@ -115,11 +114,12 @@ class TernaryPlot:
             
         self._check_ternary_projection(ax)
         
-        phase_colors =['w','tab:red','tab:olive','tab:cyan']
-        cmap = colors.ListedColormap(phase_colors[1:])
+        phase_colors =['tab:red','tab:olive','tab:cyan']
+        cmap = colors.ListedColormap(phase_colors)
         for l,s in zip(self.engine.num_comps, self.engine.simplices):
             simplex_points = np.asarray([self.engine.grid[:,x] for x in s])
-            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], facecolor=phase_colors[int(l)])
+            ax.fill(simplex_points[:,2], simplex_points[:,0], simplex_points[:,1], 
+                    facecolor=phase_colors[int(l-1)])
         if label:
             _set_axislabels_mpltern(ax)
         boundaries = np.linspace(1,4,4)
@@ -219,8 +219,7 @@ class QuaternaryPlot:
         else:
             raise RuntimeError('Requires the `polyphase.PHASE` class to be solved.')
             
-        assert self.engine.dimension==4, 'This functions works only for dimension 4 but'
-        '{} PHASE class is provided'.format(engine.dimension)
+        assert self.engine.dimension==4, 'This functions works only for dimension 4 but {} PHASE class is provided'.format(engine.dimension)
         
         self.vertices = np.array([[0, 0, 0], 
                                   [1, 0, 0], 
@@ -279,8 +278,8 @@ class QuaternaryPlot:
         ax.scatter3D(self.vertices[:, 0], self.vertices[:, 1], self.vertices[:, 2],
                      color='black')
         emb_verts = self._get_convex_faces(self.vertices)
-        ax.add_collection3d(Poly3DCollection(emb_verts, facecolors='black', 
-                                             linewidths=0.5, edgecolors='black', alpha=.05))
+        ax.add_collection3d(Poly3DCollection(emb_verts, facecolors='white', 
+                                             linewidths=0.5, edgecolors='grey', alpha=.05))
         labels = [r'$\phi_{1}$',r'$\phi_{2}$',r'$\phi_{3}$',r'$\phi_{4}$']
         for vi,w in zip(self.vertices,labels):
             ax.text(vi[0],vi[1],vi[2],w)

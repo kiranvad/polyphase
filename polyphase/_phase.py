@@ -43,6 +43,23 @@ def label_simplex(grid, simplex, thresh):
 
     return n_components
 
+def is_purecomp_hull(grid, simplex):
+    """ 
+    return True if a simplex connects only the pure components
+    The assumption when using this function as a simplex refining method is that, 
+    the lower conex hull only consists the simplex coming from the pure component connections.
+    """
+    dim = grid.shape[0]
+    points = grid[:,simplex]
+    flags = np.zeros(dim)
+    for ind,pt in enumerate(points):
+        flags[ind] = is_nzero_comp(dim-1,pt)
+        
+    if np.sum(flags)==dim:
+        return True
+    else:
+        return False
+
 def is_upper_hull(grid, simplex):
     """ 
     return True if a simplex connects anything on the edge.
@@ -55,6 +72,9 @@ def is_upper_hull(grid, simplex):
         return True
     else:
         return False
+
+    
+
     
 def lift_label(grid,lift_grid, simplex, label):
     """ Lifting the labels from simplices to points """
@@ -64,12 +84,12 @@ def lift_label(grid,lift_grid, simplex, label):
         tri = Delaunay(v)
         inside = Delaunay.find_simplex(tri,lift_grid[:-1,:].T)
         inside =~(inside<0)
-        flag = 1
+        iscoplanar = False
     except:
         inside = None
-        flag = 0
+        iscoplanar = True
         
-    return inside, flag
+    return inside, iscoplanar
    
 def is_boundary_point(point, zero_value = MIN_POINT_PRECISION):
     if np.isclose(point, MIN_POINT_PRECISION).any():
@@ -97,57 +117,45 @@ def get_max_delaunay_edge_length(grid):
     
     return max_delaunay_edge       
 
+
+def is_nzero_comp(n,point, zero_value = MIN_POINT_PRECISION):
+    n_out = np.sum(np.isclose(point, MIN_POINT_PRECISION))
+    
+    return n_out>=n
+
+def point_at_inifinity_convexhull(points):
+    inf_ind = np.shape(points)[0]
+    base_points = points[:,:-1].mean(axis=0)
+    inf_height = 1e10*abs(max(points[:,-1]))
+    p_inf = np.hstack((base_points,inf_height))
+    points_inf = np.vstack((points,p_inf))
+    hull = ConvexHull(points_inf)
+    lower = ~(hull.simplices==inf_ind).any(axis=1)
+    lower_hull = hull.simplices[lower]
+    
+    return lower_hull, hull,~lower
+
+def negative_znorm_convexhull(points):
+    hull = ConvexHull(points)
+    zlower = hull.equations[:,-2]<=0
+    lower_hull = hull.simplices[zlower]
+    
+    return lower_hull, hull, ~zlower
+
 """ Main comoutation function """
 def _serialcompute(f, dimension, meshsize,**kwargs):
     """
-    Main python function to obtain a phase diagram for n-component polymer mixture system.
-    
-    parameters:
-    -----------
-        f             : Energy function that take a composition and returns a scalar value
-                        forexample : phase.polynomial_energy or lambda x : phase.flory_huggins(x, M,chi,beta=0.0)
-        dimension     : number of components in the material system (int)                
-        meshsize      : number of grid points per dimension  
-        
-        kwargs:
-        -------
-        flag_refine_simplices        : whether to remove simplices that connect pure components (default: True)
-        flag_lift_label              : Whether to list labels of simplices to a point cloud of constant size (default: False). Point cloud                                          is constantsize regadless of original meshsize and is computed using a 200 points per dimension mesh.         use_weighted_delaunay        : Uses a weighted delaunay triangulation to compute triangulation of design space. (not complete yet)
-        beta                         : beta correction value used to compute flory-huggins free energy (default 1e-4)
-        flag_remove_collinear        : In three dimensional case, removes simplices that lift to collinear points in phi space. 
-                                       (default, False)
-        flag_make_energy_paraboloid  : Bypasses the beta correction and makes the boundary points to have a constant energy (default, True)
-        pad_energy                   : factor of maximum energy used as a padding near the boundary of manifold. (default, 2)
-        flag_lift_purecomp_energy    : Makes the energy of pure components `pad_energy` times the maximum energy
-        threshold_type               : Whether to use an 'uniform' threshold method (thresh= edge length) or to use more mathematically                                            sound 'delaunay' (thresh = maximum delaunay edge + epsilon)
-        thresh_scale                 : (scale value of) Uniform edge length threshold to compute adjacency matrix 
-                                       (default: 1.25 times the uniform edge in the grid)
-        lift_grid_size               : A uniform grid to which simplex labels will be lifted to points inside corresponding simplices
-        
-    
-    Output:
-    -------
-    A dictonary with the following keys:
-        grid                         : Uniform grid used for discrete energy computation
-        energy                       : (corrected) energy at each discrete point of the 'grid'
-        thresh                       : Numerical distance threshold used for graph generation to compute number of connected components
-        simplices                    : Simplices of convex hull of the energy landscape
-        num_comps                    : Number of connected components of each simplex in 'simplices'
-        output                       : A pandas dataframe with the rows corresponding to volume fractions (x dimensions) and a point phase                                          label computed using the lifting method 
-                                       (if label=0 corresponding grid point is either does not belong to any simplex 
-                                       or it lies on a collinear simplex) 
-          
+    Main python function to obtain a phase diagram for n-component polymer mixture system.   
     """
     verbose = kwargs.get('verbose', False)
-    flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
+    lower_hull_method = kwargs.get('lower_hull_method', None)
     flag_lift_label = kwargs.get('flag_lift_label',False)
-    use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
     lift_grid_size = kwargs.get('lift_grid_size', meshsize)
-                                           
+    energy_correction = kwargs.get('energy_correction', dimension)
+    
     since = time.time()
     
     outdict = defaultdict(list)
-    thresh_epsilon = 5e-3
     
     """ Perform a parallel computation of phase diagram """
     # 1. generate grid
@@ -158,18 +166,7 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     if verbose:
         print('{}-dimensional grid generated at {:.2f}s'.format(dimension,lap-since))
 
-    # 2. compute free energy on the grid (parallel)
-    
-    flag_make_energy_paraboloid = kwargs.get('flag_make_energy_paraboloid',True)
-    flag_lift_purecomp_energy = kwargs.get('flag_lift_purecomp_energy',False)
-    
-    if np.logical_or(flag_make_energy_paraboloid, flag_lift_purecomp_energy):
-        beta = 0.0
-    else:
-        beta = kwargs.get('beta',1e-4)
-        if verbose:
-            print('Using beta (={:.2E}) correction for energy landscape'.format(beta))
-         
+    energy_correction = kwargs.get('energy_correction',None)  
     energy = np.asarray([f(x) for x in grid.T])
 
     lap = time.time()
@@ -177,62 +174,45 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
         print('Energy computed at {:.2f}s'.format(lap-since))
     
     max_energy = np.max(energy)
-    # Make energy a paraboloid like by extending the landscape at the borders
-    if flag_make_energy_paraboloid:
+    
+    if lower_hull_method is None:
         pad_energy = kwargs.get('pad_energy',2)
-        if verbose:
-            print('Making energy manifold a paraboloid with {:d}x'
-                  ' padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
-        boundary_points= np.asarray([is_boundary_point(x) for x in grid.T])
-        energy[boundary_points] = pad_energy*max_energy         
-    elif flag_lift_purecomp_energy:
-        pad_energy = kwargs.get('pad_energy',2)
-        if verbose:
-            print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
-        pure_points = np.asarray([is_pure_component(x) for x in grid.T])
-        energy[pure_points] = pad_energy*max_energy
+        doctor_points = np.asarray([is_nzero_comp(energy_correction,x) for x in grid.T])
+        energy[doctor_points] = pad_energy*max_energy
+    
+    if verbose:
+        print('Aplpying {:d}x padding of {:.2f} maximum energy'
+              'to compositions of <={} zeros'.format(pad_energy, max_energy,num_doctor_energy))
     
     outdict['energy'] = energy
     
     lap = time.time()
     if verbose:
         print('Energy is corrected at {:.2f}s'.format(lap-since))
+    points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1) 
     
-    # 3. Compute convex hull
-    if not use_weighted_delaunay:
-        _method = 'Convexhull'
-        points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)                   
+    if lower_hull_method is None:    
         hull = ConvexHull(points)
-        outdict['hull'] = hull
-    else:
-        raise NotImplemented
-        
-    lap = time.time()
-    if verbose:
-        print('{} is computed at {:.2f}s'.format(_method,lap-since))
-    
-    if not flag_refine_simplices:
-        simplices = hull.simplices
-    else:
         upper_hull = np.asarray([is_upper_hull(grid,simplex) for simplex in hull.simplices])
         simplices = hull.simplices[~upper_hull]
-        outdict['upper_hull']=upper_hull
- 
+    elif lower_hull_method=='point_at_infinity':
+        simplices, hull,upper_hull = point_at_inifinity_convexhull(points)
+    elif lower_hull_method=='negative_znorm':
+        simplices, hull,upper_hull = negative_znorm_convexhull(points)
+            
+    outdict['upper_hull']=upper_hull
+    outdict['hull'] = hull
+    
     lap = time.time()
     if verbose:
-        print('Simplices are refined at {:.2f}s'.format(lap-since))
+        print('Simplices are computed and refined at {:.2f}s'.format(lap-since))
         
     outdict['simplices'] = simplices
     if verbose:
         print('Total of {} simplices in the convex hull'.format(len(simplices)))
-        
-    # determine threshold
-    threshold_type = kwargs.get('threshold_type','delaunay')
-    if threshold_type=='delaunay':
-        thresh = get_max_delaunay_edge_length(grid) + thresh_epsilon
-    elif threshold_type=='uniform':
-        thresh_scale = kwargs.get('thresh_scale',1.25)
-        thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
+
+    thresh_scale = kwargs.get('thresh_scale',1.25)
+    thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
     
     if verbose:
         print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
@@ -248,8 +228,6 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     outdict['coplanar'] = None
     
     if flag_lift_label:
-        
-        # 5. lift the labels from simplices to points (parallel)
         if lift_grid_size == meshsize:
             lift_grid = grid
         else:
@@ -347,7 +325,6 @@ def _parcompute(f, dimension, meshsize,**kwargs):
     parallel version of serialcompute
     """
     verbose = kwargs.get('verbose', False)
-    flag_refine_simplices = kwargs.get('flag_refine_simplices', True)
     flag_lift_label = kwargs.get('flag_lift_label',False)
     use_weighted_delaunay = kwargs.get('use_weighted_delaunay', False)
     lift_grid_size = kwargs.get('lift_grid_size', 200)
@@ -359,6 +336,7 @@ def _parcompute(f, dimension, meshsize,**kwargs):
     
     outdict = {}
     thresh_epsilon = 5e-3
+    
     """ Perform a parallel computation of phase diagram """
     # 1. generate grid
     grid = makegridnd(meshsize, dimension)
@@ -367,48 +345,13 @@ def _parcompute(f, dimension, meshsize,**kwargs):
     lap = time.time()
     if verbose:
         print('{}-dimensional grid generated at {:.2f}s'.format(dimension,lap-since))
-        
-    # 2. compute free energy on the grid (parallel)
-    flag_make_energy_paraboloid = kwargs.get('flag_make_energy_paraboloid',True)
-    flag_lift_purecomp_energy = kwargs.get('flag_lift_purecomp_energy',False)
-    
-    if np.logical_or(flag_make_energy_paraboloid, flag_lift_purecomp_energy):
-        beta = 0.0
-    else:
-        beta = kwargs.get('beta',1e-4)
-        if verbose:
-            print('Using beta (={:.2E}) correction for energy landscape'.format(beta))   
-            
+       
     energy = np.asarray([f(x) for x in grid.T])   
     
     lap = time.time()
     if verbose:
         print('Energy computed at {:.2f}s'.format(lap-since))
-        
-    # Make energy a paraboloid like by extending the landscape at the borders
-    if flag_make_energy_paraboloid:
-        max_energy = np.max(energy)
-        pad_energy = kwargs.get('pad_energy',2)
-        if verbose:
-            print('Making energy manifold a paraboloid with {:d}x padding of'
-                  ' {:.2f} maximum energy'.format(pad_energy, max_energy))
-        boundary_points_ray = [ray_is_boundary_point.remote(x) for x in grid.T]
-        boundary_points = np.asarray(ray.get(boundary_points_ray))
-        energy[boundary_points] = pad_energy*max_energy
-        
-        del boundary_points_ray
-        
-    elif flag_lift_purecomp_energy:
-        max_energy = np.max(energy)
-        pad_energy = kwargs.get('pad_energy',2)
-        if verbose:
-            print('Aplpying {:d}x padding of {:.2f} maximum energy to pure components'.format(pad_energy, max_energy))
-        pure_points_ray = [ray_is_pure_component.remote(x) for x in grid.T]
-        pure_points = np.asarray(ray.get(pure_points_ray))
-        energy[pure_points] = pad_energy*max_energy
-        
-        del pure_points_ray
-        
+
     outdict['energy'] = energy
     
     lap = time.time()
@@ -416,48 +359,27 @@ def _parcompute(f, dimension, meshsize,**kwargs):
         print('Energy is corrected at {:.2f}s'.format(lap-since))
     
     # 3. Compute convex hull
-    if not use_weighted_delaunay:
-        _method = 'Convexhull'
-        points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1)
-        hull = ConvexHull(points)
-        outdict['hull'] = hull
-    else:
-        _method = 'Weighted Delaunay'
-        points = grid[:-1,:].T
-        weights = energy.reshape(-1)
-        hull = WeightedDelaunay(points, weights)
-        outdict['hull'] = hull
+    points = np.concatenate((grid[:-1,:].T,energy.reshape(-1,1)),axis=1) 
+    simplices, hull,upper_hull = point_at_inifinity_convexhull(points)
+    outdict['upper_hull']=upper_hull
+    outdict['hull'] = hull    
+    outdict['simplices'] = simplices
+        
+    if verbose:
+        print('Total of {} simplices in the convex hull'.format(len(simplices)))
         
     lap = time.time()
     if verbose:
         print('{} is computed at {:.2f}s'.format(_method,lap-since))
-    
-    # determine threshold
-    threshold_type = kwargs.get('threshold_type','delaunay')
-    if threshold_type=='delaunay':
-        thresh = get_max_delaunay_edge_length(grid) + thresh_epsilon
-    elif threshold_type=='uniform':
-        thresh_scale = kwargs.get('thresh_scale',1.25)
-        thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
+
+    thresh_scale = kwargs.get('thresh_scale',1.25)
+    thresh = thresh_scale*euclidean(grid[:,0],grid[:,1])
     
     if verbose:
         print('Using {:.2E} as a threshold for Laplacian of a simplex'.format(thresh)) 
         
     outdict['thresh'] = thresh
-    
-    if not flag_refine_simplices:
-        simplices = hull.simplices
-    else:
-        upper_hull_ray = [ray_is_upper_hull.remote(grid_ray,simplex) for simplex in hull.simplices]
-        upper_hull = np.asarray(ray.get(upper_hull_ray))
-        simplices = hull.simplices[~upper_hull]
-        outdict['upper_hull'] = upper_hull
-        del upper_hull_ray
 
-    outdict['simplices'] = simplices
-    if verbose:
-        print('Total of {} simplices in the convex hull'.format(len(simplices)))
-    
     lap = time.time()
     if verbose:
         print('Simplices are refined at {:.2f}s'.format(lap-since))
@@ -487,7 +409,7 @@ def _parcompute(f, dimension, meshsize,**kwargs):
         inside = ray.get(inside_ray)
         
         coplanar = [item[1] for item in inside]
-        outdict['coplanar'] = None
+        outdict['coplanar'] = coplanar
         lap = time.time()
         
         if verbose:

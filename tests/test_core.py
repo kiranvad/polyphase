@@ -25,10 +25,8 @@ class TestCore(unittest.TestCase):
         self.engine.compute()
         self.assertFalse(self.engine.use_parallel)
         self.assertFalse(self.engine.verbose)
-        self.assertEqual(self.engine.correction,'edge')
+        self.assertEqual(self.engine.correction,3)
         self.assertTrue(self.engine.lift_label)
-        self.assertTrue(self.engine.refine_simplices)
-        self.assertEqual(self.engine.thresholding,'uniform')
         self.assertEqual(self.engine.thresh_scale, 0.1*50)
         
         self.assertTrue(self.engine.is_solved) 
@@ -45,7 +43,7 @@ class TestCore(unittest.TestCase):
         self.assertEqual(num_comps,2)
         
     def test_parallel(self):
-        self.engine.compute(use_parallel=False) 
+        self.engine.compute(use_parallel=False, lower_hull_method='point_at_infinity') 
         serial = self.engine.as_dict()
         self.engine.compute(use_parallel=True)
         parallel = self.engine.as_dict()

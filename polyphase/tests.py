@@ -4,7 +4,7 @@ from matplotlib import colors
 from collections import Counter
 import pdb
 import polyphase as phase
-import matplotlib.tri as mtri
+
 import matplotlib.pyplot as plt
 import mpltern
 import numpy as np
@@ -12,6 +12,9 @@ from scipy.spatial.distance import pdist, cdist
 from itertools import combinations
 from .visuals import _set_axislabels_mpltern
 from scipy.spatial import Delaunay
+
+import re
+FLAT_SIMPLEX_ERROR = 'Initial simplex is flat' 
 
 def inpolyhedron(ph,points):
     """
@@ -28,6 +31,7 @@ def inpolyhedron(ph,points):
     criteria = inside<0
     return ~criteria
 
+     
 class CentralDifference:
     """Compute central difference gradinet of energy
     Works only for a 3-dimensional grid or a ternary system
@@ -65,11 +69,16 @@ class base:
         self.energy = self.engine.energy
         self.X = self.engine.df
         self.phase = phase
+        self.coplanar = self.engine.coplanar
         
         if simplex_id is None:
             self.get_random_simplex()
         else:
             self.set_simplex_data(simplex_id)
+            
+        if self.is_flatsimplex():
+            raise RuntimeError('The chosen simplex with vertices {} is flat.'
+                               'The tests cannot be performed.'.format(self.vertices))
         
         v = self.vertices[:,:-1]
         inside = inpolyhedron(v, self.grid[:-1,:].T)
@@ -86,6 +95,19 @@ class base:
         self.vertices = self.X.iloc[:3,self.rnd_simplex].to_numpy().T
         self.parametric_points = np.hstack((self.vertices[:,:2],
                                             self.energy[self.rnd_simplex].reshape(-1,1))).tolist()
+
+    def is_flatsimplex(self):
+        v = np.asarray([self.grid[:-1,x] for x in self.rnd_simplex])
+        try:
+            Delaunay(v)
+            return False
+        except Exception as err:
+            return_err = re.split('[\n]',str(err))[0]
+            if FLAT_SIMPLEX_ERROR in return_err:
+                return True
+            else:
+                raise err
+    
     
     def base_visualize(self):
         """ Visualize the test case base function
@@ -100,11 +122,11 @@ class base:
         poly = Poly3DCollection(self.parametric_points,  alpha=1.0, lw=1.0, 
                                 facecolors=['tab:gray'], edgecolors=['k'])
         ax.add_collection3d(poly)
-
+        ax.set_label('Energy landscape')
         ax.set_xlabel('Polymer')
         ax.set_ylabel('Small molecule')
         ax.set_zlabel('Energy')
-        ax.view_init(elev=16, azim=54)
+        ax.view_init(elev=16, azim=60)
         
         return fig, ax        
         
@@ -142,13 +164,13 @@ class TestAngles(base):
             angle = self._angle_between_vectors(self.facet_normal, normal_p)
             dot_product = np.abs(np.clip(np.dot(self.facet_normal, normal_p), -1.0, 1.0))
             
-            # tuple of simplex, tangent normal, andle and dot product with facet normal                     
+            # tuple of vertex, tangent normal, andle and dot product with facet normal                     
             thetas.update({i:(self.rnd_simplex[i], normal_p, angle, dot_product)})
             # tuple of gradients along phi_1, phi_2 and the normal of the tangent plane
             gradients.update({i:(dx,dy, normal_p)}) 
 
         outdict = {'facet_normal': self.facet_normal, 'thetas':thetas, 'gradients':gradients}  
-        
+
         self._angles_outdict = outdict
         
         return outdict
@@ -178,7 +200,7 @@ class TestAngles(base):
 
         return np.degrees(np.arccos(np.clip(np.dot(v, w), -1.0, 1.0)))
 
-    def visualize(self, required=[1,2,3]):
+    def visualize(self, required=[1,2]):
         """ Visualize the test case
         
         By default plots: 
@@ -209,20 +231,21 @@ class TestAngles(base):
             if 4 in required:
                 ax.quiver(v[0], v[1], e, uru[0],uru[1],uru[2], length=0.1, normalize=True, color='k')
                 ax.quiver(v[0], v[1], e, urv[0],urv[1],urv[2], length=0.1, normalize=True, color='purple')
-            ax.quiver(pp[0], pp[1], pp[2], uv[0], uv[1], uv[2], length=0.1, normalize=True, color='tab:red' )
+            ax.quiver(pp[0], pp[1], pp[2], uv[0], uv[1], uv[2], length=0.1, normalize=True, color='tab:red', 
+                      label='Tangent normal' if i==0 else '')
                 
         facet_normal = self._angles_outdict['facet_normal']
         rnd_simplex_centroid = np.mean(self.parametric_points, axis=0)
         ax.quiver(rnd_simplex_centroid[0], rnd_simplex_centroid[1], rnd_simplex_centroid[2],
                   facet_normal[0], facet_normal[1], facet_normal[2], 
-                  length=0.1, normalize=True, color='k' )
+                  length=0.1, normalize=True, color='k', label='Facet normal')
         
         # plot phase diagram in 2D
         labels = self.X.loc['label',:].to_numpy()
         phase_colors =['r','g','b']
         if 3 in required:
             for i in [1,2,3]:
-                criteria = np.logical_and(labels==i, ~self.boundary_points)
+                criteria = np.logical_and(labels==i, ~boundary_points)
                 ax.scatter(self.grid[0,criteria], self.grid[1,criteria], zs=-0.5, zdir='z',
                            c=phase_colors[int(i-1)])
         
@@ -348,9 +371,10 @@ class TestPhaseSplits(base):
     def check_centroid(self):
         """Check if simplex can split the centroid as labelled
         """
-        points = np.asarray(self.parametric_points)
+        points = np.asarray(self.vertices)
         self.centroid_ = np.sum(points, axis=0)/3
-        x, self.equilibrium_phases_, _ = self.engine(self.centroid_)
+        x, self.equilibrium_phases_, _ = self.engine(self.centroid_, 
+                                                     simplex_id = self.rnd_simplex_indx)
         is_match = self.is_correct_phasesplit(x)
         if not is_match and self.phase==2:
             decision,_,_ = self._min_edge_lengths_equal()
@@ -361,6 +385,13 @@ class TestPhaseSplits(base):
         
         return decision
     
+    def _get_barycenter_coordinates(self):
+        tri = Delaunay(self.vertices[:,:-1])
+        T = tri.transform
+        b = T[0,:2].dot(np.transpose(self.centroid_[:-1] - T[0,2]))
+        
+        return np.concatenate((b, 1-sum(b)), axis=None)
+    
     def _min_edge_lengths_equal(self):
         
         v = self.vertices[self.min_edge_verts,:-1]
@@ -368,8 +399,7 @@ class TestPhaseSplits(base):
         b = np.linalg.norm(v[1,:]-self.centroid_[:-1])
         
         return np.isclose(a,b, atol=1e-2), a,b
-    
-    
+
     def run(self):
         """Check if a simplex phase splits all points inside correctlty
         

@@ -10,7 +10,12 @@ from ._phase import (_serialcompute,
                     get_max_delaunay_edge_length)
 from scipy.spatial import Delaunay
 from .visuals import TernaryPlot, QuaternaryPlot
+from .tests import TestAngles, TestEpiGraph, TestPhaseSplits, CentralDifference
 import matplotlib.pyplot as plt
+import re
+
+FLAT_SIMPLEX_ERROR = 'Initial simplex is flat' 
+INPUT_DIMENSION_ERROR = 'input is less than {}-dimensional'
 
 MIN_POINT_PRECISION = 1e-8
                      
@@ -24,6 +29,28 @@ class PHASE:
                                 compositions and returns a scalar energy
             meshsize         :  (int) Number of points to be sampled per dimension
             dimension        :  (int) Dimension of the the system 
+            
+        Methods:
+        --------
+            as_dict      :  Return the attributes of the class as a dictonary
+            get_kwargs   :  Return settings of the compute method as kwargs for the private functions in _phase.py
+            compute      :  Compute a phase diagram
+            __call__     :  Once the phase diagram is solved using .compute(), returns the phase splitting 
+                            ratios given a composition array
+            plot         :  Visualize the phase diagram of 3 and 4 components
+            
+                                                 
+        Attributes:
+        -----------
+            grid         :  Grid used to compute the energy surface (array of shape (dim, points))
+            energy       :  Free energy computed using self.energy_func (array of shape (points,))
+            hull         :  scipy.spatial.ConvexHull instance of computed for energy landscape
+            thresh       :  length scale used to compute adjacency matrix
+            upper_hull   :  boolean flagg of each simplex in hull.simplices whether its a upper hull
+            simplices    :  simplices of the lower convex hull of the energy landscape
+            num_comps    :  connected components of each simplex as a list
+            df           :  pandas.DataFrame with volume fractions and labels rows
+            coplanar     :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
         """
         if not callable(energy_func):
             raise ValueError('Vairable energy needs to be a function such as `polyphase.utils.flory_huggins`')
@@ -44,7 +71,21 @@ class PHASE:
             return False
         else:
             return True
-
+    
+    def is_flatsimplex(self, simplex):
+        v = np.asarray([self.grid[:-1,x] for x in simplex])
+        try:
+            Delaunay(v)
+            return False
+        except Exception as err:
+            return_err = re.split('[\n]',str(err))[0]
+            if FLAT_SIMPLEX_ERROR in return_err:
+                return True
+            elif INPUT_DIMENSION_ERROR.format(self.dimension) in return_err:
+                return True
+            else:
+                raise err
+    
     def is_boundary_point(self,point):
         
         return is_boundary_point(point)
@@ -58,48 +99,49 @@ class PHASE:
         
         Arguments:
         ----------
-            use_parallel       : (bool) whether to use a parallel computation (default, False)
-            verbose            : (bool) whether to print more information as the computation progresses
-            correction         : (string) Two types of corrections to energy surface are provided
-                                        1. 'edge' -- where all the energy values near the boundary of
-                                            hyperplane will be lifted to a constant energy (default)
-                                        2. 'vertex' -- similar to 'edge' but the process is performed
-                                            only for points at the vertices of hyperplane
-            lift_label         : (bool) whether to interpolate the label of a simplex into points 
+            use_parallel        : (bool) whether to use a parallel computation (default, False)
+            
+            verbose             : (bool) whether to print more information as the computation progresses
+            
+            correction          : (int) Type of energy correction to be performed:
+                                        1 -- Correct the energy at the boundary of the hyperplane
+                                        dimension -- No energy correction is performed
+                                        anyother -- Correct compositions with that many zeros
+                    
+            pad_energy          : (float) Scale the energy where the correction is request to maximum energy 
+                                          time the 'pad_energy'     
+                                          
+            lift_label          : (bool) whether to interpolate the label of a simplex into points 
                                         inside it (default, True)
-            refine_simplices   : (bool) whether to remove simplices that are on the "upper convex hull".
-                                        (default, True) Note that the Gibbs criteria uses the lower 
-                                        convex hull, thus it is recommended to set the
-                                        simplex refinement to True
-            thresholding       : (string) Two types of thresholding methods are implemented
-                                          1. 'uniform' -- where the reference distance for number 
-                                             of connected components of a simplex is computed 
-                                             using the original grid length (default)
-                                          2. 'delaunay'-- the length is computed using a delaunay 
-                                              edge length of the initial mesh
+                                        
+            lower_hull_method   : (string or None) Method to use to obtain a lower hull from the convex hull (default : None)
+                                       whether to remove simplices that are on the "upper convex hull".
+                                       Note that the Gibbs criteria uses the lower convex hull, 
+                                       thus it is recommended 
+                                       1. None -- Defaults to using the approach where we simply remove the simplices that
+                                          connect boundaries of a given energy landscape
+                                       2. 'point_at_infinity' -- Computes the lower convex hull by adding an imaginary point at 
+                                          the infinity height of the landscape. 
+                                       3. 'negative_znorm' -- Simply assumes that the upper hull consists of simplices whose 
+                                          normal in the height direction is positive.   
                                               
-            thresh_scale       : (float) scaling to be used for the edge length of the reference 
-                                         in 'thresholding'
-                                         
-        Attributes:
-        -----------
-            grid         :  Grid used to compute the energy surface (array of shape (dim, points))
-            energy       :  Free energy computed using self.energy_func (array of shape (points,))
-            hull         :  scipy.spatial.ConvexHull instance of computed for energy landscape
-            thresh       :  length scale used to compute adjacency matrix
-            upper_hull   :  boolean flagg of each simplex in hull.simplices whether its a upper hull
-            simplices    :  simplices of the lower convex hull of the energy landscape
-            num_comps    :  connected components of each simplex as a list
-            df           :  pandas.DataFrame with volume fractions and labels rows
-            coplanar.    :  a list of boolean values one for each simplex (True- coplanar, False- not, None- Not computed)
+            thresh_scale        : (float) scaling to be used for the edge length of the reference 
+                                         in thresholding
+        
+        NOTES: 
+        ------
+        In parallel mode, energy correction is not used, the lower convex hull is computed using the point at 
+        infinity method instead.
+        
         """
         
         self.use_parallel = kwargs.get('use_parallel', False)
         self.verbose = kwargs.get('verbose', False)
-        self.correction = kwargs.get('correction', 'edge')
+        self.correction = kwargs.get('correction', self.dimension)
+        self.pad_energy = kwargs.get('pad_energy', 2)
         self.lift_label = kwargs.get('lift_label',True)
         self.refine_simplices = kwargs.get('refine_simplices',True)
-        self.thresholding = kwargs.get('thresholding','uniform')
+        self.lower_hull_method = kwargs.get('lower_hull_method', None)
         self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
         _kwargs = self.get_kwargs()
         
@@ -122,7 +164,7 @@ class PHASE:
         
         return
 
-    def get_phase_compositions(self, point):
+    def get_phase_compositions(self, point, simplex_id=None):
         """Compute phase contributions given a composition
         
         input:
@@ -136,33 +178,36 @@ class PHASE:
                         an entry in x with the same index
         """
         from scipy.optimize import lsq_linear
-        
+         
         if not self.is_solved:
             raise RuntimeError('Phase diagram is not computed\n'
-                               'Use .solve() before requesting phase compositions')
+                               'Use .compute() before requesting phase compositions')
             
         assert len(point)==self.dimension,'Expected {}-component composition got {}'.format(self.dimension, len(point))
         
         if self.is_boundary_point(point):
             raise RuntimeError('Boundary points are not considered in the computation.')
         
-        inside = np.asarray([self.in_simplex(point, s) for s in self.simplices], dtype=bool)
-        
-        for i in np.where(inside)[0]:
+        if simplex_id is None:
+            inside = np.asarray([self.in_simplex(point, s) for s in self.simplices[~self.coplanar]], dtype=bool)
+            in_simplices_ids = np.where(inside)[0]
+        else:
+            in_simplices_ids = [simplex_id]
+            
+        for i in in_simplices_ids:
             simplex = self.simplices[i]
             num_comps = np.asarray(self.num_comps)[i]
             vertices = self.grid[:,simplex]
+            energies = np.asarray([self.energy_func(x) for x in vertices.T])
             
             if num_comps==1:
                 # no-phase splits if the simplex is labelled 1-phase
                 continue
-
-            A = np.vstack((vertices.T[:-1,:], np.ones(self.dimension)))
-            b = np.hstack((point[:-1],1))
-            
+            A = np.vstack((vertices.T[:-1,:], energies, np.ones(self.dimension)))
+            B = np.hstack((point[:-1],self.energy_func(point),1))
             lb = np.zeros(self.dimension)
             ub = np.ones(self.dimension)
-            res = lsq_linear(A, b, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
+            res = lsq_linear(A, B, bounds=(lb, ub), lsmr_tol='auto', verbose=0)
             x = res.x
             if not (x<0).any():
                 # STOP if you found a simplex that has x>0
@@ -171,14 +216,12 @@ class PHASE:
         return x, vertices.T, num_comps
     
     __call__ = get_phase_compositions
-    
+
     def as_dict(self):
         """ Get a output dictonary
         Utility function to get output of the 
         legacy functions in phase.py and parphase.py
         
-        For the dictonary structure look at docstring of polyphase.phase 
-        or polyphase.parphase
         """
         if not self.is_solved:
             raise RuntimeError('Phase diagram is not computed\n'
@@ -202,17 +245,12 @@ class PHASE:
 
         """
         out = {
-            
-            'flag_refine_simplices':self.refine_simplices,
+            'lower_hull_method' : self.lower_hull_method,
             'flag_lift_label': self.lift_label,
-            'use_weighted_delaunay': False,
             'flag_remove_collinear' : False, 
-            'beta':0.0, # not used 
-            'flag_make_energy_paraboloid': True if self.correction=='edge' else False, 
-            'pad_energy': 2,
-            'flag_lift_purecomp_energy': True if self.correction=='vertex' else False,
-            'threshold_type': self.thresholding ,
-            'thresh_scale':self.thresh_scale if self.thresholding=='uniform' else 1,
+            'pad_energy': self.pad_energy,
+            'energy_correction': self.correction,
+            'thresh_scale':self.thresh_scale, 
             'lift_grid_size':self.meshsize,
             'verbose' : self.verbose
          }
@@ -225,16 +263,37 @@ class PHASE:
         """
         
         if self.dimension==3:
-            self.renderer = TernaryPlot(self)
+            renderer = TernaryPlot(self)
         elif self.dimension==4:
-            self.renderer = QuaternaryPlot(self)
+            renderer = QuaternaryPlot(self)
         else:
-            raise Exception('For dimensions>4, not renderings exists')
+            raise Exception('For dimensions>4, no renderings exists')
             
-        self.renderer.show()
+        renderer.show()
         plt.show()
+        
+    def test(self):
+        gradient = CentralDifference(self.energy_func) 
+        results = {}
+        for simplex_id, phaseid in enumerate(self.num_comps):
+            # 1. performing tangent normal test
+            try:
+                angles = TestAngles(self,phase=phaseid,simplex_id=simplex_id)
+                angles_out = angles.get_angles(gradient)
+                TestAngles_dotprods = [t[-1] for _,t in angles_out['thetas'].items()] 
+            except Exception as err :
+                TestAngles_dotprods = str(err)
+
+            # 2. Perform phase splitting test
+            try:
+                phasesplits = TestPhaseSplits(self,phase=phaseid,simplex_id=simplex_id, threshold=0.05)
+                TestPhaseSplits_centroid = phasesplits.check_centroid()
+            except Exception as err :
+                TestPhaseSplits_centroid = str(err)
+
+            results[simplex_id] = [TestAngles_dotprods,TestPhaseSplits_centroid]
     
-    
+        return results
     
     
     
