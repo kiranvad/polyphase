@@ -12,6 +12,10 @@ from scipy.spatial import Delaunay
 from .visuals import TernaryPlot, QuaternaryPlot
 from .tests import TestAngles, TestEpiGraph, TestPhaseSplits, CentralDifference
 import matplotlib.pyplot as plt
+import re
+
+FLAT_SIMPLEX_ERROR = 'Initial simplex is flat' 
+INPUT_DIMENSION_ERROR = 'input is less than {}-dimensional'
 
 MIN_POINT_PRECISION = 1e-8
                      
@@ -67,7 +71,21 @@ class PHASE:
             return False
         else:
             return True
-
+    
+    def is_flatsimplex(self, simplex):
+        v = np.asarray([self.grid[:-1,x] for x in simplex])
+        try:
+            Delaunay(v)
+            return False
+        except Exception as err:
+            return_err = re.split('[\n]',str(err))[0]
+            if FLAT_SIMPLEX_ERROR in return_err:
+                return True
+            elif INPUT_DIMENSION_ERROR.format(self.dimension) in return_err:
+                return True
+            else:
+                raise err
+    
     def is_boundary_point(self,point):
         
         return is_boundary_point(point)
