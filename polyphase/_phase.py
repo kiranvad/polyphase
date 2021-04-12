@@ -73,19 +73,17 @@ def is_upper_hull(grid, simplex):
     else:
         return False
 
-    
 
-    
 def lift_label(grid,lift_grid, simplex, label):
     """ Lifting the labels from simplices to points """
     try:
         v = np.asarray([grid[:-1,x] for x in simplex])
-        #inside = inpolyhedron(v, grid[:-1,:].T)
         tri = Delaunay(v)
         inside = Delaunay.find_simplex(tri,lift_grid[:-1,:].T)
         inside =~(inside<0)
         iscoplanar = False
-    except:
+    except Exception as err:
+        print(err.__class__.__name__)
         inside = None
         iscoplanar = True
         
@@ -150,11 +148,9 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     verbose = kwargs.get('verbose', False)
     lower_hull_method = kwargs.get('lower_hull_method', None)
     flag_lift_label = kwargs.get('flag_lift_label',False)
-    lift_grid_size = kwargs.get('lift_grid_size', meshsize)
-    energy_correction = kwargs.get('energy_correction', dimension)
-    
+    lift_grid_size = kwargs.get('lift_grid_size', meshsize)    
     since = time.time()
-    
+  
     outdict = defaultdict(list)
     
     """ Perform a parallel computation of phase diagram """
@@ -166,7 +162,6 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     if verbose:
         print('{}-dimensional grid generated at {:.2f}s'.format(dimension,lap-since))
 
-    energy_correction = kwargs.get('energy_correction',None)  
     energy = np.asarray([f(x) for x in grid.T])
 
     lap = time.time()
@@ -177,12 +172,11 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     
     if lower_hull_method is None:
         pad_energy = kwargs.get('pad_energy',2)
-        doctor_points = np.asarray([is_nzero_comp(energy_correction,x) for x in grid.T])
+        doctor_points = np.asarray([is_boundary_point(x) for x in grid.T])
         energy[doctor_points] = pad_energy*max_energy
-    
-    if verbose:
-        print('Aplpying {:d}x padding of {:.2f} maximum energy'
-              'to compositions of <={} zeros'.format(pad_energy, max_energy,num_doctor_energy))
+        
+        if verbose:
+            print('Aplpying {:d}x padding of {:.2f} maximum energy'.format(pad_energy, max_energy))
     
     outdict['energy'] = energy
     
@@ -232,20 +226,20 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
             lift_grid = grid
         else:
             lift_grid = makegridnd(lift_grid_size, dimensions) # we lift labels to a constant mesh 
-            
+        
         inside = [lift_label(grid, lift_grid, simplex, label) for simplex, label in zip(simplices, num_comps)]
         
         coplanar = [item[1] for item in inside]
-        outdict['coplanar']=coplanar
+        outdict['coplanar']=np.asarray(coplanar)
         lap = time.time()
         if verbose:
             print('Labels are lifted at {:.2f}s'.format(lap-since))
 
-            print('Total {}/{} coplanar simplices'.format(Counter(coplanar)[0],len(simplices)))
+            print('Total {}/{} coplanar simplices'.format(np.sum(coplanar),len(simplices)))
 
         phase = np.zeros(lift_grid.shape[1])
         for i,label in zip(inside,num_comps):
-            if i[1]==1:
+            if not i[1]:
                 phase[i[0]] = label
         phase = phase.reshape(1,-1)
         output = np.vstack((lift_grid,phase))

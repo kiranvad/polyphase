@@ -137,10 +137,8 @@ class PHASE:
         
         self.use_parallel = kwargs.get('use_parallel', False)
         self.verbose = kwargs.get('verbose', False)
-        self.correction = kwargs.get('correction', self.dimension)
         self.pad_energy = kwargs.get('pad_energy', 2)
         self.lift_label = kwargs.get('lift_label',True)
-        self.refine_simplices = kwargs.get('refine_simplices',True)
         self.lower_hull_method = kwargs.get('lower_hull_method', None)
         self.thresh_scale = kwargs.get('thresh_scale', 0.1*self.meshsize)
         _kwargs = self.get_kwargs()
@@ -246,10 +244,8 @@ class PHASE:
         """
         out = {
             'lower_hull_method' : self.lower_hull_method,
-            'flag_lift_label': self.lift_label,
-            'flag_remove_collinear' : False, 
+            'flag_lift_label': self.lift_label, 
             'pad_energy': self.pad_energy,
-            'energy_correction': self.correction,
             'thresh_scale':self.thresh_scale, 
             'lift_grid_size':self.meshsize,
             'verbose' : self.verbose

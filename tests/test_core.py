@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import polyphase
 import unittest
+import pdb
 
 def f(x):
     M = [5,5,1]
@@ -25,11 +26,13 @@ class TestCore(unittest.TestCase):
         self.engine.compute()
         self.assertFalse(self.engine.use_parallel)
         self.assertFalse(self.engine.verbose)
-        self.assertEqual(self.engine.correction,3)
         self.assertTrue(self.engine.lift_label)
         self.assertEqual(self.engine.thresh_scale, 0.1*50)
-        
+  
         self.assertTrue(self.engine.is_solved) 
+        np.testing.assert_array_equal(np.unique(self.engine.num_comps), np.array([1,2]))
+        self.assertEqual(np.sum(self.engine.coplanar),0)
+        np.testing.assert_array_equal(self.engine.df.T['label'].unique(), np.array([0,1,2]))
         
     def test_get_phase_compositions(self):
         x = np.asarray([0.333,0.333,0.334])

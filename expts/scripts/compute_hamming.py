@@ -59,14 +59,16 @@ for i,row in sys_df.iterrows():
     M = row['dop']
     f = lambda x : polyphase.flory_huggins(x, M, chi)
     engine = polyphase.PHASE(f,100,3)
-    engine.compute(use_parallel=False, verbose=False, lift_label=True)
+    engine.compute(lift_label=True)
     
     # threshold it to a certain solvent level
-    below_solvent_threshold = engine.df.loc['Phi_3',:]>1.0
-    y = engine.df.loc['label',below_solvent_threshold].to_numpy().astype('int')
+#     below_solvent_threshold = engine.df.loc['Phi_3',:]>0.0
+#     y = engine.df.loc['label',below_solvent_threshold].to_numpy().astype('int')
+
+    y = engine.df.loc['label',:].to_numpy().astype('int')
     data_pm6y6.save(y)
     
-    polyphase.plain_phase_diagram(engine.df.loc[:,below_solvent_threshold])
+    polyphase.plain_phase_diagram(engine.df)
     plt.savefig(dirname+'/pds/{}.png'.format(i), bbox_inches='tight', dpi=300)
     plt.close()
     
