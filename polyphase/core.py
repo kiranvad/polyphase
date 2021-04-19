@@ -253,7 +253,7 @@ class PHASE:
         
         return out
     
-    def plot(self):
+    def plot(self, ax = None, show=True):
         """A helper function for a quick visualization
         For more details on the plotting, look at `polyphase.visuals`
         """
@@ -265,8 +265,9 @@ class PHASE:
         else:
             raise Exception('For dimensions>4, no renderings exists')
             
-        renderer.show()
-        plt.show()
+        renderer.show(ax=ax)
+        if show:
+            plt.show()
         
     def test(self):
         gradient = CentralDifference(self.energy_func) 

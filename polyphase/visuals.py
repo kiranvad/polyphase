@@ -323,10 +323,12 @@ class QuaternaryPlot:
         self.threed_coords = np.asarray(self.threed_coords)
         
         fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
+        fig.subplots_adjust(wspace=-0.1,hspace=-0.1)
         axs = axs.flatten()
         for i,ax in enumerate(axs):
             self.add_outline(ax)
             self.add_scatter(ax,i+1,sliceat=sliceat)
+            ax.axis('off')
         cbar = self.add_colorbar(fig)
         
         return [fig, axs, cbar]
@@ -337,10 +339,12 @@ class QuaternaryPlot:
         """
         
         fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
+        fig.subplots_adjust(wspace=-0.1,hspace=-0.1)
         axs = axs.flatten()
         for i,ax in enumerate(axs):
             self.add_outline(ax)
             self.add_colored_simplices(ax,i+1,sliceat=sliceat)
+            ax.axis('off')
         cbar = self.add_colorbar(fig)
         
         return [fig, axs, cbar]
@@ -354,17 +358,18 @@ class QuaternaryPlot:
         boundaries = np.linspace(1,5,5)
         norm = colors.BoundaryNorm(boundaries, cmap.N)
         mappable = ScalarMappable(norm=norm, cmap=cmap)
-        cax = fig.add_axes([1.05, 0.25, 0.03, 0.5])
+        cax = fig.add_axes([0.9, 0.25, 0.03, 0.5])
         cbar = fig.colorbar(mappable,shrink=0.5, aspect=5, ticks=[1.5,2.5,3.5,4.5],cax=cax)
         cbar.ax.set_yticklabels(['1-Phase', '2-Phase', '3-Phase','4-Phase'])
         
         return cbar  
     
-    def show(self, mode='simplices'):
+    def show(self, mode='simplices',ax=None):
         fig, axs = plt.subplots(2,2,subplot_kw={'projection': '3d'}, figsize=(8,8))
+        fig.subplots_adjust(wspace=-0.1,hspace=-0.1)
         axs = axs.flatten()
         for ax,t in zip(axs,[0.025,0.25,0.5,1.0]):
-            ax.set_title(r'$\phi_{4}\leq$'+'{:.2f}'.format(t), pad=0.0)
+            ax.set_title(r'$\phi_{4}\leq$'+'{:.2f}'.format(t), loc='left')
             ax._axis3don = False
             self.add_outline(ax)
             if mode=='simplices':
@@ -390,6 +395,9 @@ class QuaternaryPlot:
                 raise RuntimeError('Only the simplices or points mode is avaliable')
         cbar = self.add_colorbar(fig)
         
+        for ax in axs:
+            ax.axis('off')
+            
         return [fig, axs, cbar]
 
     

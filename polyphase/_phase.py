@@ -83,7 +83,6 @@ def lift_label(grid,lift_grid, simplex, label):
         inside =~(inside<0)
         iscoplanar = False
     except Exception as err:
-        print(err.__class__.__name__)
         inside = None
         iscoplanar = True
         
@@ -253,7 +252,8 @@ def _serialcompute(f, dimension, meshsize,**kwargs):
     outdict['output'] = output 
     
     lap = time.time()
-    print('Computation took {:.2f}s'.format(lap-since))
+    if verbose:
+        print('Computation took {:.2f}s'.format(lap-since))
     
     return outdict
 
