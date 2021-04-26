@@ -4,6 +4,10 @@ import polyphase
 import unittest
 import pdb
 
+# ignore the ray warnings
+import warnings
+warnings.filterwarnings("ignore")
+
 def f(x):
     M = [5,5,1]
     chi = [1,0.5,0.5]
