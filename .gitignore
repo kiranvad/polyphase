@@ -136,3 +136,4 @@ figures/
 expts/data/
 *.out
 *.sh
+*.png
