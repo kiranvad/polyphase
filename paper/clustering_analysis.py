@@ -4,6 +4,7 @@ import pandas as pd
 import pickle
 from math import floor, ceil
 import glob
+import time
 
 try:
     from sklearn.manifold import MDS, Isomap
@@ -309,6 +310,8 @@ ax.set_zlabel(r'$\delta_{H}$')
 fig.legend(ncol=2)
 touchup3d(ax)
 plt.savefig('designspace.png')
+
+print('**Total system + CPU time is {:.2f} seconds**'.format(time.process_time()))
 
 """
 To apply the approach to the model dataset, change the dirname to './data/chispace'
